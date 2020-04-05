@@ -1,19 +1,17 @@
 
-#Nutritional value per 100# gram
+#Nutritional value per 100# gram of an ingredient
 class NutritionalValue:
-
-    
     def __init__(self,nutritionalValue):
         self.__calories = nutritionalValue['calories']
         self.__fat = nutritionalValue['fat']
         self.__saturates = nutritionalValue['saturates']
         self.__carbs = nutritionalValue['carbs']
         self.__sugar = nutritionalValue['sugar']
-        self.__fiber = nutritionalValue['fiber']
+        self.__fibre = nutritionalValue['fibre']
         self.__protein = nutritionalValue['protein']
         self.__salt = nutritionalValue['salt']
 
-    #Can have a static method to add it to
+    #Can have a static method to add the list of nutrient
 
     def get_calories(self):
         return self.__calories
