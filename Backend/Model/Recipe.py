@@ -1,3 +1,4 @@
+from .NutritionalValue import NutritionalValue
 class Recipe:
 
     # Add rating, comment, changes later
@@ -10,6 +11,11 @@ class Recipe:
         self.__ingredient_list = ingredient_list
         self.__step_list = step_list
         self.__price = price
+
+    def recalculateNutritionValue(self):
+        total = NutritionalValue()
+        for ingredient in self.__ingredient_list:
+            calories = ingredient.get_amount() / ingredient.get_ingredient
 
     # Later change this to pull price from wallmart
     def price(self):
