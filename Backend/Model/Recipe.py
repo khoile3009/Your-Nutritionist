@@ -1,4 +1,6 @@
 from .NutritionalValue import NutritionalValue
+
+
 class Recipe:
 
     # Add rating, comment, changes later
@@ -9,15 +11,27 @@ class Recipe:
         self.__type = meal_type  # desert, breakfast, etc
         self.__num_people = num_people
         self.__ingredient_list = ingredient_list
+        self.__nutritional_value = self.__calculate_nutrition_value()
         self.__step_list = step_list
         self.__price = price
 
-    def recalculateNutritionValue(self):
+    def __calculate_nutrition_value(self):
         total = NutritionalValue()
         for ingredient in self.__ingredient_list:
-            calories = ingredient.get_amount() / ingredient.get_ingredient
+            total.add(ingredient.get_nutritional_value())
+        return total
 
-    # Later change this to pull price from wallmart
+    def scale_recipe(self, num_people):
+        pass
+
+    def has_ingredients(self, ingredients):
+        for ingredient in ingredients:
+            for recipe_ingredient in self.__ingredient_list:
+                if ingredient.get_name() == recipe_ingredient.get_name():
+                    return True
+        return False
+
+    # Later change this to pull price from Walmart
     def price(self):
         return self.__price
 
