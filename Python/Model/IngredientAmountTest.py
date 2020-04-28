@@ -1,6 +1,6 @@
-from Backend.Model.Ingredient import Ingredient
-from Backend.Model.NutritionalValue import NutritionalValue
-from Backend.Model.IngredientAmount import IngredientAmount
+from Python.Model.Ingredient import Ingredient
+from Python.Model.NutritionalValue import NutritionalValue
+from Python.Model.IngredientAmount import IngredientAmount
 
 
 def test_nutrition_value():

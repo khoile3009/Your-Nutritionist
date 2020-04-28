@@ -13,3 +13,15 @@ Fibre	30 grams
 1 g of carbohydrates contains 4 kcal
 1 g of protein contains 4 kcal
 1 g of fat contains 9 kcal
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'eborhdiq',
+        'USER': 'eborhdiq',
+        'PASSWORD': '7geZYeDmxuIs17785Z3YUxcf7GwN4Ic5',
+        'HOST': 'drona.db.elephantsql.com',
+        'PORT': '5432'
+    }
+}
