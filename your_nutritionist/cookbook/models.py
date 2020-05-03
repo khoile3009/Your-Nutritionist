@@ -15,7 +15,6 @@ class Ingredient(models.Model):
         (7, 'Seasoning'),
         (8, 'Spice'),
         (9, 'Other'),
-        
     )
     category = models.IntegerField(choices=CATEGORY_CHOICE)
 

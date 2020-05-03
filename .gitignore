@@ -1,1 +1,4 @@
 env/
+
+your-nutritionist/frontend/node_modules/
+your-nutritionist/db.sqlite3
