@@ -1,0 +1,143 @@
+{
+    "name": "Fried Chicken",
+    "description": "Nothing can go wrong with fry chicken:",
+    "number_person": 6,
+    "time": {
+        "prep_time": 10,
+        "cook_time": 30
+    },
+    "ingredient_sections": [
+        {
+            "name": "Main",
+            "ingredients": [
+                {
+                    "amount": 6.0,
+                    "measurement": 2,
+                    "name": "Chicken Thigh"
+                },
+                {
+                    "amount": 6.0,
+                    "measurement": 2,
+                    "name": "Chicken Drumstick"
+                },
+                {
+                    "amount": 10.0,
+                    "measurement": 1,
+                    "name": "Salt"
+                },
+                {
+                    "amount": 10.0,
+                    "measurement": 1,
+                    "name": "Pepper"
+                },
+                {
+                    "amount": 30.0,
+                    "measurement": 1,
+                    "name": "Buffalo Hot Sauce"
+                },
+                {
+                    "amount": 200.0,
+                    "measurement": 1,
+                    "name": "Butter Milk"
+                }
+            ]
+        },
+        {
+            "name": "Dredging Mixture",
+            "ingredients": [
+                {
+                    "amount": 1.0,
+                    "measurement": 1,
+                    "name": "Salt"
+                },
+                {
+                    "amount": 30.0,
+                    "measurement": 1,
+                    "name": "Paprika"
+                },
+                {
+                    "amount": 30.0,
+                    "measurement": 1,
+                    "name": "Dried Oregano"
+                },
+                {
+                    "amount": 30.0,
+                    "measurement": 1,
+                    "name": "Dried Basil"
+                },
+                {
+                    "amount": 30.0,
+                    "measurement": 1,
+                    "name": "White Pepper"
+                },
+                {
+                    "amount": 30.0,
+                    "measurement": 1,
+                    "name": "Cayenne Pepper"
+                },
+                {
+                    "amount": 50.0,
+                    "measurement": 1,
+                    "name": "Corn starch"
+                },
+                {
+                    "amount": 60.0,
+                    "measurement": 1,
+                    "name": "Onion Powder"
+                },
+                {
+                    "amount": 60.0,
+                    "measurement": 1,
+                    "name": "Garlic Powder"
+                },
+                {
+                    "amount": 300.0,
+                    "measurement": 1,
+                    "name": "All-purpose flour"
+                },
+                {
+                    "amount": 500.0,
+                    "measurement": 1,
+                    "name": "Vegetable Oil"
+                }
+            ]
+        }
+    ],
+    "step_sections": [
+        {
+            "name": "Main",
+            "steps": [
+                {
+                    "order": 1,
+                    "direction": "In a large mixing bowl, whisk together buttermilk, hot sauce (optional, for added flavor), salt, and pepper in a mixing bowl. Add in chicken pieces. Cover the bowl with plastic wrap and refrigerate 4 hours.",
+                    "parallel": true,
+                    "time": 240
+                },
+                {
+                    "order": 2,
+                    "direction": "When ready to cook, pour the vegetable oil in a skillet until it is about 3/4 inch deep. Heat to 350 degrees.",
+                    "parallel": false,
+                    "time": 5
+                },
+                {
+                    "order": 3,
+                    "direction": "Prepare the breading by combining the flour, cornstarch, onion powder, garlic powder, oregano, basil, white pepper, cayenne pepper, paprika, and salt in a gallon-sized resealable plastic bag or shallow dish. Mix it thoroughly.",
+                    "parallel": false,
+                    "time": 5
+                },
+                {
+                    "order": 4,
+                    "direction": "Place the breaded chicken into the 350 degree oil. Fry 3 or 4 pieces at a time. The chicken will drop the temperature of the oil so keep it as close to 350 degrees as possible. Fry each piece for 14 minutes, turning each piece over about every 2 minutes, until the chicken reaches an internal temperature of 165 degrees F.",
+                    "parallel": false,
+                    "time": 30
+                },
+                {
+                    "order": 5,
+                    "direction": "Remove from the oil and place on paper towels. Let them rest for at least 10 minutes before serving.",
+                    "parallel": true,
+                    "time": 10
+                }
+            ]
+        }
+    ]
+}

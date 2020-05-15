@@ -1,0 +1,34 @@
+.outline-formgroup{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.circle-button{
+    border-radius: 50%;
+}
+
+.center{
+    margin: 5px auto;
+    display: block
+}
+
+.full-width{
+    width: 100%;
+    padding: 0;
+}
+
+.no-padding-left{
+    padding-left: 0;
+}
+
+.no-padding-right{
+    padding-right: 0;
+}
+
+.flexbox{
+    display: flex;
+}
+
+.bold{
+    font-weight: 700;
+}

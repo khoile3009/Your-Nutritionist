@@ -1,0 +1,7 @@
+this.addStepSection = this.addStepSection.bind(this)
+        this.deleteStep = this.deleteStep.bind(this)
+        this.deleteStepSection = this.deleteStepSection.bind(this)
+        this.addStep = this.addStep.bind(this)
+        this.handleChangeStepSectionName = this.handleChangeStepSectionName.bind(this)
+        this.handleChangeSameName = this.handleChangeSameName.bind(this)
+        this.handleChangeStep = this.handleChangeStep.bind(this) 

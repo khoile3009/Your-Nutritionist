@@ -10,7 +10,7 @@ const IngredientSections = (props) => {
                 <SubsectionName name={ingredient_section.name}></SubsectionName>
                 <ul>
                     {ingredient_section.ingredients.map((ingredient, index) => {
-                        return <li className='text-left'><p className='items'>{ingredient.amount} {ingredient.measurement} {ingredient.name}</p></li>
+                        return <li className='text-left'><p className='items'>{ingredient}</p></li>
                     })}
                 </ul>
             </div>
@@ -26,7 +26,7 @@ const StepsSections = (props) => {
             return <div><SubsectionName name={step_section.name}></SubsectionName>
                 <ol>
                     {step_section.steps.map((step,index) => {
-                        return <li className='text-left'><p className='items'>{step.direction}</p></li>
+                        return <li className='text-left'><p className='items'>{step}</p></li>
                     })}
                 </ol>
             </div>
@@ -36,7 +36,7 @@ const StepsSections = (props) => {
 
 
 const SubsectionName = (props) => {
-    return props.name != 'Main' ?
+    return props.name != '' ?
         <p className='subsection-name text-left'>{props.name}</p> :
         null
 }

@@ -12,7 +12,7 @@ const RecipeShow = (props) => {
             </Col>
         </Row>
         <Row>
-            <Col><p className='subtitle text-left'>{props.recipe.number_person} servings     |     Prep Time: {props.recipe.time.prep_time} minutes     |     Cook Time: {props.recipe.time.cook_time} minutes</p></Col>
+            <Col><p className='subtitle text-left'>{props.recipe.number_person} servings     |     Prep Time: {props.recipe.prep_time} minutes     |     Cook Time: {props.recipe.cook_time} minutes</p></Col>
         </Row>
 
         <hr></hr>

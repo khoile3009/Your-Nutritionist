@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .utils import get_recipe_info
+from .recipe import get_recipe_info, create_recipe
 
 import json
 
@@ -17,9 +17,11 @@ def recipe_view(request,*args, **kwargs):
 @csrf_exempt 
 def recipe_create_view(request,*args, **kwargs):
     if(request.method == 'POST'):
-        print('post')
-    
-    return HttpResponse('<h1>Post request</h1>')
+        print(request.FILES)
+        recipe = json.loads(request.POST['recipe'])
+        recipe_id = create_recipe(recipe)
+
+    return JsonResponse({'recipe_id': recipe_id})
 
 
 

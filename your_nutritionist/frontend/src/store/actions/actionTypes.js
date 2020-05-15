@@ -1,0 +1,10 @@
+export const AUTH_START = 'AUTH_START';
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_FAIL = 'AUTH_FAIL';
+export const AUTH_LOGOUT = 'AUTH_LOGOUT';
+export const CLEAR_ERROR = 'CLEAR_ERROR';
+
+export const SHOW_SIGNIN_MODAL = 'SHOW_SIGNIN_MODAL';
+export const SHOW_REGISTER_MODAL = 'SHOW_REGISTER_MODAL';
+export const SHOW_FORGET_PASSWORD_MODAL  = 'SHOW_FORGET_PASSWORD_MODAL';
+export const HIDE_MODAL = 'HIDE_MODAL';

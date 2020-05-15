@@ -40,8 +40,14 @@ INSTALLED_APPS = [
     "corsheaders",
 
     'rest_framework',
-    'cookbook'
+    'knox',
+    'cookbook',
+    'accounts'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES' : ('knox.auth.TokenAuthentication',)
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # added to solve CORS
