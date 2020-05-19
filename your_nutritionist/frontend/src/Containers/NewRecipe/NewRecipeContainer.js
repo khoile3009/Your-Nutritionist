@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import NewRecipe from '../../Components/NewRecipe/NewRecipe';
 import axios from '../../axios-orders';
+import SigninRequired from '../SigninRequired/SigninRequired';
+import { connect } from 'react-redux';
+
 // import {Route} from 'react-router-dom';
 class NewRecipeContainer extends Component {
 
@@ -63,12 +66,9 @@ class NewRecipeContainer extends Component {
     // Submit 
     submitForm = () => {
         let data = this.recipe_data_from_form()
-        console.log(this.state)
-        axios({ url: 'api/recipe/create', 
-            data: data,
-            method: 'POST',
-            headers: {
-                'Content-Type': "multipart/form-data"
+        axios.post('api/recipe/create', data,{headers: {
+                'Content-Type': "multipart/form-data",
+                'Authorization': 'Token ' + this.props.token
             }
         })
         .then((response) => {
@@ -80,6 +80,7 @@ class NewRecipeContainer extends Component {
         let data = new FormData()
         data.append('recipe',  JSON.stringify({
             name: this.state.name,
+            userId: this.props.userId,
             description: this.state.description,
             number_person: parseInt(this.state.number_person),
             prep_time: parseInt(this.state.prep_time),
@@ -217,7 +218,7 @@ class NewRecipeContainer extends Component {
 
 
     render() {
-        return <NewRecipe
+        return <SigninRequired content={<NewRecipe
             handleChangeSameName={this.handleChangeSameName}
             submitForm={this.submitForm}
 
@@ -247,8 +248,15 @@ class NewRecipeContainer extends Component {
             onChangeImage = {this.onChangeImage}
             addImage = {this.addImage}
             deleteImage = {this.deleteImage}
-        ></NewRecipe>
+        ></NewRecipe>}></SigninRequired>
     }
 }
 
-export default NewRecipeContainer;
+const mapStateToProps = state => {
+    return{
+        token: state.auth.token,
+        userId: state.auth.userId
+    }
+}
+
+export default connect(mapStateToProps,() => {})(NewRecipeContainer);

@@ -7,6 +7,7 @@
     color: black;
     font-weight: 700;
     font-size: 30px;
+    padding-right: 10px;
 }
 
 .section-name {
@@ -36,3 +37,9 @@ p {
 /* .items{
     font-size: 5px;
 } */
+
+.title-wrapper{
+    display: flex;
+    width: 100%;
+}
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Form, FormGroup, Button, FormFile } from 'react-bootstrap';
 import './NewRecipe.css';
-import { IngredientFormSection, StepFormSection, ImageForm } from './FormSections';
+import { IngredientFormSection, StepFormSection, ImageForm } from './FormSections/FormSections';
 
 const NewRecipe = (props) => {
     return <Container className='shadow custom-container' fluid='sm' >

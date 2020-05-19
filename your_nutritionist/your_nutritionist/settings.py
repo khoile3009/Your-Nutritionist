@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'knox',
-    'cookbook',
+    'recipe',
     'accounts'
 ]
 

@@ -4,12 +4,14 @@ import ModalContainer from '../Authentication/ModalContainer'
 import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
 import {UserNav, AuthenticationNav} from '../../Components/Header/RightNav'
-import { retrieveUserFromToken } from '../../store/actions/auth';
+
 class HeaderContainer extends Component {
 
     constructor(props) {
         super(props);
         this.toHomePage = this.toHomePage.bind(this)
+        this.showRegisterModal = this.showRegisterModal.bind(this)
+        this.showSigninModal = this.showSigninModal.bind(this)
         // this.state = {
         //     modalShow: false,
         //     modalType: 1
@@ -47,6 +49,7 @@ class HeaderContainer extends Component {
     // }
 
     componentDidMount() {
+        if (this.props.token)
         this.props.retrieveUserFromToken(this.props.token)
     }
 
@@ -56,6 +59,16 @@ class HeaderContainer extends Component {
 
     toHomePage = (userId) => {
         this.props.history.push('user/' + userId)
+    }
+
+    showSigninModal = (event) => {
+        event.preventDefault()
+        this.props.showSigninModal()
+    }
+
+    showRegisterModal = (event) => {
+        event.preventDefault()
+        this.props.showRegisterModal()
     }
 
     render() {

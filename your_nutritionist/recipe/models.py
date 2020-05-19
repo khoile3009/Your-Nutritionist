@@ -33,7 +33,7 @@ from django.contrib.auth.models import  User
 
 class Recipe(models.Model):
     name = models.CharField(max_length=200)
-    creator_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)  #Authentication later
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True)  #Authentication later
     created_at = models.DateTimeField(auto_now_add=True)
     number_person = models.IntegerField()
     prep_time = models.IntegerField()
@@ -49,7 +49,7 @@ class Recipe(models.Model):
 
 class Section(models.Model):
     name = models.CharField(max_length=100, blank=True)
-    recipe_id = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     order = models.IntegerField()
     PART = (
         (0, 'Ingredients'),
@@ -64,7 +64,7 @@ class Section(models.Model):
         return f'{self.recipe_id} {self.name} {self.part}'
     
 class IngredientAmount(models.Model):
-    section_id = models.ForeignKey(Section, on_delete=models.CASCADE)
+    section = models.ForeignKey(Section, on_delete=models.CASCADE)
     description = models.TextField()
     order = models.IntegerField()
     class Meta:
@@ -78,7 +78,7 @@ class Step(models.Model):
     order = models.IntegerField()
     # time = models.IntegerField()  # in minute
     direction = models.TextField()
-    section_id = models.ForeignKey(Section, on_delete=models.CASCADE)
+    section = models.ForeignKey(Section, on_delete=models.CASCADE)
     class Meta:
         ordering = ['order']
 
@@ -86,7 +86,7 @@ class Step(models.Model):
         return f'{self.section_id} {self.order}'
 
 class Image(models.Model):
-    recipe_id = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     path = models.CharField(max_length=300)
     class Meta:
         ordering = ['recipe_id']

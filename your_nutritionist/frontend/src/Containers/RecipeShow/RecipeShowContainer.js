@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from '../../axios-orders';
 
 import RecipeShow from '../../Components/RecipeShow/RecipeShow'
-
+import NullPage from '../../Components/NullPage/NullPage'
 class RecipeShowContainer extends Component {
 
     constructor(props) {
@@ -15,8 +15,8 @@ class RecipeShowContainer extends Component {
     componentDidMount() {
         let params = this.props.match.params
 
-        axios.get('api/recipe/' + params['recipe_id'] + '/',
-        ).then(
+        axios.get('api/recipe/' + params['recipe_id'] + '/info')
+        .then(
             (response) => {
                 this.setState({recipe: response.data})
             }
@@ -25,7 +25,7 @@ class RecipeShowContainer extends Component {
     render() {
         return this.state.recipe ? 
         <RecipeShow recipe={this.state.recipe}></RecipeShow> :
-        <h1>Nothing here</h1>
+        <NullPage></NullPage>  //Update this to null page
     }
 
 }

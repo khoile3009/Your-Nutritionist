@@ -1,5 +1,5 @@
 import React from 'react';
-import './RecipeShow.css';
+import '../RecipeShow.css';
 
 const IngredientSections = (props) => {
 
@@ -36,7 +36,7 @@ const StepsSections = (props) => {
 
 
 const SubsectionName = (props) => {
-    return props.name != '' ?
+    return props.name !== '' ?
         <p className='subsection-name text-left'>{props.name}</p> :
         null
 }

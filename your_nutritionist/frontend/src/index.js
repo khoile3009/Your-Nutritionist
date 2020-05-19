@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-
+import {createBrowserHistory} from 'history';
 
 
 
@@ -29,10 +29,10 @@ const store = createStore(rootReducer, composeEnhancers(
   applyMiddleware(thunk)
 ));
 
-
+const history = createBrowserHistory();
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter j>
+    <BrowserRouter history={history}>
       <App />
     </BrowserRouter>
   </Provider>
