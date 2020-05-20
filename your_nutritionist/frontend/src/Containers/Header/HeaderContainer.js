@@ -3,6 +3,8 @@ import Header from '../../Components/Header/Header';
 import ModalContainer from '../Authentication/ModalContainer'
 import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
+
 import {UserNav, AuthenticationNav} from '../../Components/Header/RightNav'
 
 class HeaderContainer extends Component {
@@ -10,8 +12,10 @@ class HeaderContainer extends Component {
     constructor(props) {
         super(props);
         this.toHomePage = this.toHomePage.bind(this)
+        this.toUserPage = this.toUserPage.bind(this)
         this.showRegisterModal = this.showRegisterModal.bind(this)
         this.showSigninModal = this.showSigninModal.bind(this)
+        this.toCreateRecipe = this.toCreateRecipe.bind(this)
         // this.state = {
         //     modalShow: false,
         //     modalType: 1
@@ -57,8 +61,14 @@ class HeaderContainer extends Component {
         return localStorage.getItem('TOKEN');
     }
 
-    toHomePage = (userId) => {
-        this.props.history.push('user/' + userId)
+    toUserPage = (event) => {
+        event.preventDefault()
+        this.props.history.push('/user/' + this.props.userId)
+    }
+
+    toHomePage = (event) => {
+        event.preventDefault()
+        this.props.history.push('/home')
     }
 
     showSigninModal = (event) => {
@@ -71,12 +81,18 @@ class HeaderContainer extends Component {
         this.props.showRegisterModal()
     }
 
+    toCreateRecipe = (event) => {
+        event.preventDefault()
+        this.props.history.push('/recipe/create')
+    }
     render() {
         return (
             <>
                 <Header
                     showSigninModal={this.props.showSigninModal}
                     showRegisterModal={this.props.showRegisterModal}
+                    toCreateRecipe={this.toCreateRecipe}
+                    toHomePage={this.toHomePage}
                     rightNav={this.props.username === null 
                         ? 
                         <AuthenticationNav
@@ -86,7 +102,7 @@ class HeaderContainer extends Component {
                         :
                         <UserNav
                             username = {this.props.username}
-                            toHomePage = {this.toHomePage}
+                            toUserPage = {this.toUserPage}
                             signout={() => {this.props.signout(this.props.token)}}
                         ></UserNav>
                     }
@@ -109,7 +125,8 @@ class HeaderContainer extends Component {
 const mapStateToProps = state => {
     return{
         username: state.auth.username,
-        token: state.auth.token
+        token: state.auth.token,
+        userId: state.auth.userId
     }
 }
 
@@ -122,4 +139,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps,)(HeaderContainer);
+export default connect(mapStateToProps, mapDispatchToProps,)(withRouter(HeaderContainer));

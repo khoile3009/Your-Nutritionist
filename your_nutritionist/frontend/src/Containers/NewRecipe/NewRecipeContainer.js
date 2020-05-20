@@ -4,7 +4,7 @@ import NewRecipe from '../../Components/NewRecipe/NewRecipe';
 import axios from '../../axios-orders';
 import SigninRequired from '../SigninRequired/SigninRequired';
 import { connect } from 'react-redux';
-
+import {withRouter} from 'react-router-dom';
 // import {Route} from 'react-router-dom';
 class NewRecipeContainer extends Component {
 
@@ -72,7 +72,7 @@ class NewRecipeContainer extends Component {
             }
         })
         .then((response) => {
-            this.props.history.push('' + response.data.recipe_id)
+            this.props.history.push('/recipe/' + response.data.recipe_id)
         })
     }
 
@@ -259,4 +259,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps,() => {})(NewRecipeContainer);
+export default connect(mapStateToProps,() => {})(withRouter(NewRecipeContainer));

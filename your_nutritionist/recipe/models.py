@@ -41,7 +41,7 @@ class Recipe(models.Model):
 
     description = models.TextField(default='')
     class Meta:
-        ordering = ['name']
+        ordering = ['created_at']
 
     def __str__(self):
         return f'{self.name}'
@@ -93,4 +93,7 @@ class Image(models.Model):
 
     def __str__(self):
         return f'{self.path}'
+
+
+
 

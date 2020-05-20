@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from '../../axios-orders';
-
+import {withRouter} from 'react-router-dom'
 
 import NullPage from '../../Components/NullPage/NullPage'
 
@@ -15,6 +15,7 @@ class UserShowContainer extends Component {
             user_info: null
         }
         this.getUserRecipe = this.getUserRecipe.bind(this)
+        console.log(this.props)
 
     }
 
@@ -43,7 +44,7 @@ class UserShowContainer extends Component {
             )
     }
 
-
+    
 
     render() {
         return (this.state.user_info)
@@ -51,6 +52,7 @@ class UserShowContainer extends Component {
                 <UserInfo
                     user_info={this.state.user_info}
                 ></UserInfo>
+                <p className='subtitle'>Recipes</p>
                 {
                     this.state.user_recipes
                         ? <RecipeList
@@ -65,4 +67,4 @@ class UserShowContainer extends Component {
 
 }
 
-export default UserShowContainer;
+export default withRouter(UserShowContainer);

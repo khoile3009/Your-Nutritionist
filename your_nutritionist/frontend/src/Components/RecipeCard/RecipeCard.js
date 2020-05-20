@@ -4,10 +4,10 @@ import { Row, Col } from 'react-bootstrap'
 
 
 const RecipeCard = (props) => {
-    return <div className='card' style={{
-        backgroundImage: "url('" + props.thumbnail + "')"
-    }}>
-        <div className='recipe-info'>
+    return <div className='card' 
+    style={{backgroundImage: "url('" + props.thumbnail + "')"}} 
+    onClick={props.toRecipePage}>
+        <div className='recipe-info' >
             <Row>
                 <Col className='info-container'>
                     <p className='info'>

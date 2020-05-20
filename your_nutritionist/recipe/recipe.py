@@ -105,20 +105,22 @@ def create_step_section(recipe_instance, step_sections):
 def create_ingredient(section_instance, ingredients):
     for ingredient_order in range(len(ingredients)):
         ingredient = ingredients[ingredient_order]
-        IngredientAmount.objects.create(
-            section = section_instance,
-            description = ingredient,
-            order = ingredient_order
-        )
+        if(ingredient != ''):
+            IngredientAmount.objects.create(
+                section = section_instance,
+                description = ingredient,
+                order = ingredient_order
+            )
 
 def create_steps(section_instance, steps):
     for step_order  in range(len(steps)):
         step = steps[step_order]
-        Step.objects.create(
-            order = step_order,
-            direction = step,
-            section = section_instance
-        )  
+        if(step != ''):
+            Step.objects.create(
+                order = step_order,
+                direction = step,
+                section = section_instance
+            )  
 
 # -------------------------------------------------------------------------------------------------------------------------
 # Recipes queries 

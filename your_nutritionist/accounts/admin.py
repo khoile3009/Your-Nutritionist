@@ -5,3 +5,4 @@ from .models import UserHeadline, UserIntroduction
 
 
 admin.site.register(UserHeadline)
+admin.site.register(UserIntroduction)

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Row, Col } from 'react-bootstrap'
 import axios from '../../axios-orders';
+import {withRouter} from 'react-router-dom'
 
 import RecipeCard from '../../Components/RecipeCard/RecipeCard'
 import './RecipeList.css'
@@ -9,14 +10,15 @@ class RecipeList extends Component {
 
     constructor(props){
         super(props)
-        console.log(this.props)
         this.state = {
             recipes: props.recipes
         }
-        console.log(this.props.history)
+        this.toRecipePage = this.toRecipePage.bind(this)
     }
 
-    
+    toRecipePage(recipe_id){
+        this.props.history.push('/recipe/' + recipe_id)
+    }
 
     render(){
         let recipe_cards = []
@@ -34,6 +36,7 @@ class RecipeList extends Component {
                             number_person={recipe.number_person}
                             cook_time={recipe.cook_time}
                             likes={recipe.likes}
+                            toRecipePage={() => {this.toRecipePage(recipe.recipe_id)}}
                         ></RecipeCard>
                     </Col>)
                 }
@@ -57,4 +60,4 @@ class RecipeList extends Component {
     }
 }
 
-export default RecipeList;
+export default withRouter(RecipeList);

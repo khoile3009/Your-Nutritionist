@@ -3,6 +3,9 @@ import axios from '../../axios-orders';
 
 import RecipeShow from '../../Components/RecipeShow/RecipeShow'
 import NullPage from '../../Components/NullPage/NullPage'
+
+import {withRouter} from 'react-router-dom';
+
 class RecipeShowContainer extends Component {
 
     constructor(props) {
@@ -22,6 +25,11 @@ class RecipeShowContainer extends Component {
             }
         )   
     }
+
+
+    
+
+
     render() {
         return this.state.recipe ? 
         <RecipeShow recipe={this.state.recipe}></RecipeShow> :
@@ -30,4 +38,4 @@ class RecipeShowContainer extends Component {
 
 }
 
-export default RecipeShowContainer;
+export default withRouter(RecipeShowContainer);

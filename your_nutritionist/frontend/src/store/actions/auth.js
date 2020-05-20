@@ -162,7 +162,7 @@ export const retrieveUserFromToken = (token) => {
             'Authorization': 'Token ' + token
         }
 
-        let url = 'api/auth/user';
+        let url = 'api/user/auth/user';
         axios.get(url, { headers: headers })
             .then(response => {
                 console.log(response);
