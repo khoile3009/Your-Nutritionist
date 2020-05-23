@@ -18,15 +18,7 @@ def recipe_view(request,*args, **kwargs):
     #     print(section)
         return JsonResponse(context, safe=True)
 
-@csrf_exempt
-@permission_classes([IsAuthenticated])
-def recipe_create_view(request,*args, **kwargs):
-    if(request.method =='POST' or request.method == 'OPTIONS'):
-        print(request.FILES)
-        recipe = json.loads(request.POST['recipe'])
-        recipe_id = create_recipe(recipe)
 
-    return JsonResponse({'recipe_id': recipe_id})
 
 def get_recipes(request,*args, **kwargs):
     if(request.method == 'GET'):

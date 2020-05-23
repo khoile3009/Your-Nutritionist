@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap'
 
 
 const RecipeCard = (props) => {
-    return <div className='card' 
+    return <div className='recipe-card card clickable' 
     style={{backgroundImage: "url('" + props.thumbnail + "')"}} 
     onClick={props.toRecipePage}>
         <div className='recipe-info' >

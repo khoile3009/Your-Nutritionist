@@ -13,10 +13,12 @@ def get_user_info(user_id):
     context['user_id'] = user_id
     context['name'] = user_instance.get_full_name()
     context['headline'] = get_headline(user_id)
-    context['introduction'] = get_introduction(user_id)
+
     # context
     return context
     
+
+
 def get_user_recipes(user_id, queries):
     user_recipes = Recipe.objects.filters(user_id)
     context = {}

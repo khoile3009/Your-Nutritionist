@@ -80,7 +80,6 @@ class NewRecipeContainer extends Component {
         let data = new FormData()
         data.append('recipe',  JSON.stringify({
             name: this.state.name,
-            userId: this.props.userId,
             description: this.state.description,
             number_person: parseInt(this.state.number_person),
             prep_time: parseInt(this.state.prep_time),

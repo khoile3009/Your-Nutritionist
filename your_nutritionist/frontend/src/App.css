@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.card{
+  box-shadow: 2px 2px gray;
+  border-radius: 15px;
+  border: 0;
+}
+
+.clickable:hover{
+  animation: highlight 0.5s ;
+  animation-fill-mode: forwards;
+}

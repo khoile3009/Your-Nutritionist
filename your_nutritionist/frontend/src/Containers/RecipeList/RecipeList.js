@@ -22,7 +22,7 @@ class RecipeList extends Component {
 
     render(){
         let recipe_cards = []
-        if (this.state.recipes) {
+        if (this.state.recipes.length !== 0) {
             for(var row_index = 0; row_index < Math.round(this.state.recipes.length); row_index++){
                 let recipes_row = []
                 let num_col = Math.min(2, this.state.recipes.length -  row_index * 2)

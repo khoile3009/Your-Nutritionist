@@ -54,9 +54,9 @@ def get_recipe_info(recipe_id):
     return context
 
 # /create
-def create_recipe(recipe):
+def create_recipe(recipe,creator_id):
     #Initialize Recipe
-    creator = get_user_from_id(recipe['userId'])
+    creator = get_user_from_id(creator_id)
     recipe_instance = Recipe.objects.create(
         name = recipe['name'],
         creator = creator,

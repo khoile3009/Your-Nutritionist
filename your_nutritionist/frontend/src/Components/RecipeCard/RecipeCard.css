@@ -1,31 +1,35 @@
-.card{
+.recipe-card{
     height: 200px;
     min-width: 250px;
     margin-top: 5px;
     margin-bottom: 5px;
-    border-radius: 20px;
-    box-shadow: 1px 1px gray;
+    
+    background-position: 50%;
     display: flex;
     flex-direction: column-reverse;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.card:hover{
-    animation: highlight 0.5s ;
-    animation-fill-mode: forwards;
-}
+
 
 
 @media screen and (min-width: 1300px) {
-    .card{
+    .recipe-card{
         height: 250px;
+    }
+    .info{
+        font-size: 15px;
     }
 }
 
 @media screen and (min-width: 1600px) {
-    .card{
+    .recipe-card{
         height: 300px;
+ 
+    }
+    .info{
+        font-size: 18px;
     }
 }
 
@@ -33,8 +37,8 @@
     height: 40px;
     width: 100%;
     background-color: white;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     box-shadow: 2px 2px gray;
 }
 
@@ -51,7 +55,7 @@
 }
 
 .info{
-    font-size: 20px;
+    font-size: 12px;
     margin: auto 0;
 }
 

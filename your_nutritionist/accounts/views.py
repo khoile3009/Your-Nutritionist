@@ -40,3 +40,9 @@ def set_user_introduction(request, *args, **kwargs):
         print(data)
         create_user_introduction(user_id, data['introduction'])
         return JsonResponse({'status': 'ok'}, safe=True)
+
+def user_introduction_view(request, *args, **kwargs):
+    if(request.method == 'GET'):
+        user_id = kwargs['user_id']
+        context = {'introduction':get_introduction(user_id)}
+        return JsonResponse(context, safe=True)

@@ -1,10 +1,9 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 
 import './UserInfo.css'
 
 const UserInfo = (props) => {
-
     return <>
         <Row>
             <Col>
@@ -15,31 +14,21 @@ const UserInfo = (props) => {
                             <p className='title'>{props.user_info.name}</p>
                             <p className='subtitle'>@{props.user_info.username} </p>
                             <p className='headline'>{props.user_info.headline}</p>
+
+                            {!props.isSelf
+                                ?
+                                props.following == false
+                                    ? <Button onClick={props.follow}>Follow</Button>
+                                    : <Button onClick={props.unfollow}>Following</Button>
+                                : null
+                            }
                         </div>
                     </div>
                 </div>
             </Col>
 
         </Row >
-        <hr></hr>
-        {
-            props.user_info.introduction !== ''
-                ?
-                <>
-                    <Row>
-                        <Col>
-                            <p className='subtitle'>Introduction</p>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <p className='headline'>{props.user_info.introduction}</p>
-                        </Col>
-                    </Row>
-                    <hr></hr>
-                </>
-                : null
-        }
+        
 
 
 

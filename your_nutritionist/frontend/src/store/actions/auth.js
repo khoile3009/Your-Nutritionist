@@ -119,7 +119,7 @@ export const submitIntroduction= (introduction, user_id, token) => {
             'Content-Type': 'application/json',
             'Authorization': 'Token ' + token
         }
-        let url = 'api/user/' + user_id + '/introduction';
+        let url = 'api/user/' + user_id + '/introduction/set';
         axios.post(url, data, {headers: headers})
             .then(response => {
                 console.log(response)

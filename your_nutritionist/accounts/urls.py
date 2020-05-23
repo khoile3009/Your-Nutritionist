@@ -12,5 +12,6 @@ urlpatterns = [
 
   path('<int:user_id>/info', views.user_info_view),
   path('<int:user_id>/headline', views.set_user_headline),
-  path('<int:user_id>/introduction', views.set_user_introduction)
+  path('<int:user_id>/introduction/set', views.set_user_introduction),
+  path('<int:user_id>/introduction', views.user_introduction_view)
 ]

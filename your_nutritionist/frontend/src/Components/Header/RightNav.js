@@ -11,7 +11,7 @@ const AuthenticationNav = (props) => {
 const UserNav = (props) => {
     return <Nav >
         <NavDropdown title={props.username} id="basic-nav-dropdown" alignRight>
-            <NavDropdown.Item onClick={props.toUserPage}>Home page</NavDropdown.Item>
+            <NavDropdown.Item onClick={props.toUserPage}>Profile</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item onClick={props.signout}>Sign out</NavDropdown.Item>
         </NavDropdown>

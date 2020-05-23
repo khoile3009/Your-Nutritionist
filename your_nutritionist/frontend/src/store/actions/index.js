@@ -15,3 +15,8 @@ export {
     showInfoModal,
     hideModal,
 } from './UI'
+
+export {
+    follow,
+    unfollow
+} from './social'
