@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const RecipeShow = (props) => {
     console.log(props.recipe)
-    return <Container className='shadow  custom-container' fluid='sm'>
+    return <>
         <div className='title-wrapper'>
             <p className='title text-left'>{props.recipe.name}</p>
             <p>
@@ -35,12 +35,11 @@ const RecipeShow = (props) => {
                 <IngredientSections ingredient_sections={props.recipe.ingredient_sections}></IngredientSections>
             </Col>
             <Col xs={8}>
-                <StepsSections step_sections={props.recipe.step_sections}></StepsSections>
+                <StepsSections step_sections={props.recipe.step_sections} goToSecondOnMedia={props.goToSecondOnMedia}></StepsSections>
             </Col>
         </Row>
 
-
-    </Container>
+    </>
 }
 
 

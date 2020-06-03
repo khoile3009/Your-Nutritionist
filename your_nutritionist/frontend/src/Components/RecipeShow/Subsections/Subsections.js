@@ -10,7 +10,7 @@ const IngredientSections = (props) => {
                 <SubsectionName name={ingredient_section.name}></SubsectionName>
                 <ul>
                     {ingredient_section.ingredients.map((ingredient, index) => {
-                        return <li className='text-left'><p className='items'>{ingredient}</p></li>
+                        return <li className='text-left'><p className='items'>{ingredient.amount + ' ' + ingredient.unit + ' of ' + ingredient.name}</p></li>
                     })}
                 </ul>
             </div>
@@ -26,7 +26,10 @@ const StepsSections = (props) => {
             return <div><SubsectionName name={step_section.name}></SubsectionName>
                 <ol>
                     {step_section.steps.map((step,index) => {
-                        return <li className='text-left'><p className='items'>{step}</p></li>
+                        console.log(step)
+                        return <li className='text-left'>
+                            <p className='items'>{step.direction}<button onClick={()=>{props.goToSecondOnMedia(step.timestamp,step.mediaId)}}>{'>'}</button></p>
+                        </li>
                     })}
                 </ol>
             </div>

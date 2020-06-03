@@ -1,0 +1,49 @@
+.amount-input{
+    width: 100px;
+}
+
+.unit-input{
+    width: 100px;
+}
+
+.timestamp-input{
+    width: 100px;
+}
+
+.mediaId-input{
+    width: 150px;
+}
+
+.media-input{
+    width: 100px;
+}
+
+.name-input{
+    width: 150px;
+}
+
+@media screen and (min-width: 920px) {
+    .amount-input{
+        width: 150px
+    }
+    
+    .unit-input{
+        width: 150px;
+    }
+
+    .timestamp-input{
+        width: 150px;
+    }
+    
+    .mediaId-input{
+        width: 200px;
+    }
+    
+    .media-input{
+        width: 150px;
+    }
+    
+    .name-input{
+        width: 200px;
+    }
+}

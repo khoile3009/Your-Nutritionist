@@ -9,7 +9,7 @@ class UserInfoContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user_info: null,
+            user_info: this.props.user_info,
             following: false
         }
         this.checkFollowing = this.checkFollowing.bind(this)
@@ -18,27 +18,12 @@ class UserInfoContainer extends Component {
     }
 
 
-    componentDidMount() {
-        let headers = {
-            'Content-Type': 'application/json',
-            'Authorization': 'Token ' + this.props.token
-        }
-        axios.get('api/user/' + this.props.userId + '/info', { headers: headers })
-            .then(
-                (response) => {
-                    this.setState({ user_info: response.data })
-                    this.props.success()
-                    this.checkFollowing()
-                }
-            )
-            .catch(
-                (err) => {
-                    console.log(err)
-                    this.props.fail()
-                }
-            )
+    componentDidMount = () => {
+
+        this.checkFollowing()
     }
 
+    
     checkFollowing = () => {
         if (this.props.token) {
             let headers = {

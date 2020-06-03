@@ -1,0 +1,32 @@
+@media screen and (min-width: 920px) {
+    .media-container {
+        width: 60%;
+    }
+}
+
+.media-container{
+    display: grid;
+
+    grid-template-areas: 'media';
+}
+
+.left-field{
+    height:40vh;
+    width: 30px;
+    left: 0px;
+    position: absolute;
+    z-index: 100;
+}
+
+.right-field{
+    height:40vh;
+    width: 30px;
+    right: 0px;
+    z-index: 100;
+    position:absolute;
+}
+
+.trigger-field{
+    width: 100%;
+    height: 75%;
+}

@@ -1,21 +1,21 @@
-import {Component} from 'react';
+import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
-
+import SigninRequiredForm from '../../Components/SigninRequiredForm/SigninRequiredForm'
 class SigninRequired extends (Component) {
     constructor(props){
         super(props)
     }
 
-    componentWillUnmount(){
-        this.props.hideModal()
-    }
 
     render() {
-        if (this.props.token === null && this.props.showModal === false) {
-            this.props.showSigninRequiredModal()
-        }
-        return this.props.content
+        return this.props.token === null
+        ?<SigninRequiredForm
+            showSigninModal={this.props.showSigninModal}
+            showRegisterModal={this.props.showRegisterModal}
+        
+        ></SigninRequiredForm>
+        : this.props.content
     }
 }
 
@@ -28,8 +28,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        showSigninRequiredModal: () => dispatch(actions.showSigninRequiredModal()),
-        hideModal : () => dispatch(actions.hideModal())
+        showSigninModal: () => dispatch(actions.showSigninModal()),
+        showRegisterModal: () => dispatch(actions.showRegisterModal()),
     };
 };
 

@@ -16,25 +16,58 @@ class UserShowContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            exist : null,
-            loading: true
         }
         this.getUserRecipes = this.getUserRecipes.bind(this)
         this.getUserActions = this.getUserActions.bind(this)
-        this.success = this.success.bind(this)
-        this.fail = this.fail.bind(this)
     }
 
-    success = () => {
-        this.setState({exist: true, loading: false})
-        this.getUserRecipes()
-        this.getUserActions()
+
+    componentDidMount() {
+        let headers = {
+            'Content-Type': 'application/json',
+            'Authorization': 'Token ' + this.props.token
+        }
+        axios.get('api/user/' + this.props.match.params['user_id'] + '/info', { headers: headers })
+            .then(
+                (response) => {
+                    this.setState({ user_info: response.data })
+                    this.getUserRecipes()
+                    this.getUserActions()
+                }
+            )
+            .catch(
+                (err) => {
+                    console.log(err)
+                }
+            )
     }
 
-    fail = () => {
-        console.log('fail')
-        this.setState({exist: false,  loading: false})
+    componentWillReceiveProps(){
+        console.log('props')
+        this.setState({
+            user_info:null,
+            user_actions:null,
+            user_recipes:null
+        })
+        let headers = {
+            'Content-Type': 'application/json',
+            'Authorization': 'Token ' + this.props.token
+        }
+        axios.get('api/user/' + this.props.match.params['user_id'] + '/info', { headers: headers })
+            .then(
+                (response) => {
+                    this.setState({ user_info: response.data })
+                    this.getUserRecipes()
+                    this.getUserActions()
+                }
+            )
+            .catch(
+                (err) => {
+                    console.log(err)
+                }
+            )
     }
+
 
     getUserRecipes = () => {
         axios.get('api/recipe', {
@@ -65,11 +98,11 @@ class UserShowContainer extends Component {
     
 
     render() {
-        return (this.state.loading == true || this.state.exist == true)
+
+        return this.state.user_info
             ? <Container className="shadow custom-container">
                 <UserInfoContainer
-                    success = {this.success}
-                    fail = {this.fail}
+                    user_info= {this.state.user_info}
                     userId = {parseInt(this.props.match.params['user_id'])}
                 ></UserInfoContainer>
                 <hr></hr>

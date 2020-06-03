@@ -11,7 +11,7 @@ class Rating(models.Model):
     comment = models.TextField()
     rater = models.ForeignKey(User, on_delete=models.CASCADE)
     class Meta:
-        ordering = ['rate_at']
+        ordering = ['-rate_at']
 
 
 class Action(models.Model):
@@ -30,7 +30,7 @@ class Action(models.Model):
     target_id = models.IntegerField()
 
     class Meta:
-        ordering = ['done_at']
+        ordering = ['-done_at']
 
 class Follow(models.Model):
     target_user = models.ForeignKey(User, related_name='target_user', on_delete=models.CASCADE)

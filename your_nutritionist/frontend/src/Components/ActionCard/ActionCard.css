@@ -8,7 +8,7 @@
     background-size: cover;
 }
 
-.action-description{
+.action-description-container{
     background-color: rgba(255,255,255,0.7);
     position: absolute;
     left: 0;
@@ -16,7 +16,22 @@
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
     padding: 5px;
+    
+}
+
+.action-description{
+    font-size: 12px;
 
 }
 
+@media screen and (min-width: 1300px) {
+    .action-description{
+        font-size: 15px;
+    }
+}
 
+@media screen and (min-width: 1600px) {
+    .action-description{
+        font-size: 18px;
+    }
+}

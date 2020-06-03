@@ -1,0 +1,10 @@
+.rating-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.rate{
+    display: flex;
+    flex-direction: row;
+}

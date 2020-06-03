@@ -1,23 +1,27 @@
 import React from 'react';
 import { Form, FormGroup, Col, Row, Button } from 'react-bootstrap'
-
+import './FormSections.css'
 
 const IngredientFormSection = (props) => {
+
     return <FormGroup>
         <Row>
             <Col xs='2'><p>Section name: </p></Col>
-            <Col xs='9'><Form.Control type='text' placeholder='Leave blank if main section' value={props.ingredient_section.name} onChange={(event) => {props.handleChangeIngredientSectionName(props.section_index,event)}}></Form.Control></Col>
-            <Col xs='1'><Button variant='secondary' onClick={() => {props.deleteIngredientSection(props.section_index)}}>x</Button></Col>
+            <Col xs='9'><Form.Control type='text' placeholder='Leave blank if main section' value={props.ingredient_section.name} onChange={(event) => { props.handleChangeIngredientSectionName(props.section_index, event) }}></Form.Control></Col>
+            <Col xs='1'><Button variant='secondary' onClick={() => { props.deleteIngredientSection(props.section_index) }}>x</Button></Col>
         </Row>
         <div className="outline-formgroup" >
             {props.ingredient_section.ingredients.map((ingredient, index) => {
                 return <IngredientForm
-                deleteIngredient={() => {props.deleteIngredient(props.section_index, index)}}
-                handleChangeIngredient = {(event) => {props.handleChangeIngredient(props.section_index, index, event)}}
-                ingredient = {ingredient}
+                    deleteIngredient={() => { props.deleteIngredient(props.section_index, index) }}
+                    handleChangeIngredientName={(event) => { props.handleChangeIngredientName(props.section_index, index, event) }}
+                    handleChangeIngredientUnit={(event) => { props.handleChangeIngredientUnit(props.section_index, index, event) }}
+                    handleChangeIngredientAmount={(event) => { props.handleChangeIngredientAmount(props.section_index, index, event) }}
+                    ingredient={ingredient}
+                    units={props.units}
                 ></IngredientForm>
             })}
-            <Button variant="outline-dark" className="circle-button center" onClick={() => {props.addIngredient(props.section_index)}}> + </Button>
+            <Button variant="outline-dark" className="circle-button center" onClick={() => { props.addIngredient(props.section_index) }}> + </Button>
         </div>
     </FormGroup>
 }
@@ -26,32 +30,59 @@ const StepFormSection = (props) => {
     return <FormGroup>
         <Row>
             <Col xs='2'><p>Section name: </p></Col>
-            <Col xs='9'><Form.Control type='text' placeholder='Leave blank if main section' value={props.step_section.name} onChange={(event) => {props.handleChangeStepSectionName(props.section_index,event)}}></Form.Control></Col>
-            <Col xs='1'><Button variant='secondary' onClick={() => {props.deleteStepSection(props.section_index)}}>x</Button></Col>
+            <Col xs='9'><Form.Control type='text' placeholder='Leave blank if main section' value={props.step_section.name} onChange={(event) => { props.handleChangeStepSectionName(props.section_index, event) }}></Form.Control></Col>
+            <Col xs='1'><Button variant='secondary' onClick={() => { props.deleteStepSection(props.section_index) }}>x</Button></Col>
         </Row>
         <div className="outline-formgroup" >
             {props.step_section.steps.map((step, index) => {
                 return <StepForm
-                deleteStep={() => {props.deleteStep(props.section_index, index)}}
-                handleChangeStep = {(event) => {props.handleChangeStep(props.section_index, index, event)}}
-                step = {step}
+                    deleteStep={() => { props.deleteStep(props.section_index, index) }}
+                    handleChangeStepDirection={(event) => { props.handleChangeStepDirection(props.section_index, index, event) }}
+                    handleChangeStepTimestamp={(event) => { props.handleChangeStepTimestamp(props.section_index, index, event) }}
+                    handleChangeStepMediaId={(event) => { props.handleChangeStepMediaId(props.section_index, index, event) }}
+                    step={step}
+                    videoOptions={props.videoOptions}
                 ></StepForm>
             })}
-            <Button variant="outline-dark" className="circle-button center" onClick={() => {props.addStep(props.section_index)}}> + </Button>
+            <Button variant="outline-dark" className="circle-button center" onClick={() => { props.addStep(props.section_index) }}> + </Button>
         </div>
     </FormGroup>
 }
 
 const IngredientForm = (props) => {
     return <div className='flexbox'>
-        <Form.Control type="text" placeholder="Ingredient" name="step" value={props.ingredient} onChange={props.handleChangeIngredient}/>
+        <Form.Control type='number' className='amount-input' placeholder='Amount' name='amount' value={props.ingredient.amount} onChange={props.handleChangeIngredientAmount}></Form.Control>
+        <Form.Control as='select' className='unit-input' onChange={props.handleChangeIngredientUnit}>
+            <option value={-1}>Choose...</option>
+            {
+                props.units
+                    ? props.units.map((unit) => {
+                        return <option value={unit.index}>{unit.unit}</option>
+                    })
+                    : null
+            }
+        </Form.Control>
+        <Form.Control type="text" placeholder="Ingredient" name="name" value={props.ingredient.name} onChange={props.handleChangeIngredientName} />
         <Button variant='secondary' onClick={props.deleteIngredient} >x</Button>
     </div>
 }
 
 const StepForm = (props) => {
+
     return <div className='flexbox'>
-        <Form.Control type="text" placeholder="Step" name="step" value={props.step} onChange={props.handleChangeStep} as='textarea' row='3'/>
+        <Form.Control type='number' className='timestamp-input' placeholder='second' name='timestamp' value={props.step.timestamp} onChange={props.handleChangeStepTimestamp}></Form.Control>
+        <Form.Control as='select' className='mediaId-input' value={props.step.mediaId} onChange={props.handleChangeStepMediaId}>
+            <option value='-1'>Choose...</option>
+            {
+                props.videoOptions
+                ? props.videoOptions.map(
+                    (videoOption) => {
+                    return <option value={videoOption.index}>{videoOption.name}</option>
+                })
+                : null
+            }
+        </Form.Control>
+        <Form.Control type="text" placeholder="Step" name="step" value={props.step.direction} onChange={props.handleChangeStepDirection} as='textarea' rows='1' />
         <Button variant='secondary' onClick={props.deleteStep} >x</Button>
 
     </div>
@@ -59,12 +90,37 @@ const StepForm = (props) => {
 
 const ImageForm = (props) => {
     return <div className='flexbox'>
-        <Form.File name="myImage" accept="image/x-png,image/gif,image/jpeg" onChange={props.onChangeImage} label={props.label} custom/>
-        <Button variant='secondary' onClick={props.deleteImage} >x</Button>
+        <Form.Control className='media-input' as='select' onChange={props.handleChangeMediaType} value={props.media.type}>
+            <option value={0}>Image URL</option>
+            <option value={1}>Image Upload</option>
+            <option value={2}>Youtube URL</option>
+            <option value={3}>Video Upload</option>
+        </Form.Control>
+        <Form.Control className='name-input' type="text" placeholder="Title" name="name" value={props.media.name} onChange={props.handleChangeMediaName} />
+        {
+            (props.media.type == 0 || props.media.type == 2)
+                ? <Form.Control
+                    name='url'
+                    placeholder='URL'
+                    value={props.media.url}
+                    onChange={props.handleChangeMediaUrl} />
+                : <Form.File
+                    name="myImage"
+                    accept={
+                        props.media.type == 1
+                            ? "image/x-png,image/gif,image/jpeg"
+                            : "video/mp4,video/m4v"
+                    }
+                    onChange={props.handleChangeMediaFile}
+                    label={<p style={{overflowX:'hidden'}}>{props.media.label}</p>}
+                    custom />
+        }
+
+        <Button variant='secondary' onClick={props.deleteMedia} >x</Button>
     </div>
 }
 
 
 export { IngredientFormSection }
 export { StepFormSection }
-export { ImageForm}
+export { ImageForm }

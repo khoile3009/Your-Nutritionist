@@ -4,7 +4,8 @@ import './NewRecipe.css';
 import { IngredientFormSection, StepFormSection, ImageForm } from './FormSections/FormSections';
 
 const NewRecipe = (props) => {
-    return <Container className='shadow custom-container' fluid='sm' >
+    console.log(props.medias)
+    return <>
         <Row>
             <Col>
                 <p className='title text-center' > Create New Recipe </p>
@@ -44,15 +45,18 @@ const NewRecipe = (props) => {
 
             <Form.Label><p className='bold'>Ingredients</p></Form.Label>
             {props.ingredient_sections.map((ingredient_section, index) => {
-                return <IngredientFormSection 
-                addIngredient={props.addIngredient}
-                section_index={index} 
-                ingredient_section={ingredient_section}
-                deleteIngredient = {props.deleteIngredient}
-                deleteIngredientSection = {props.deleteIngredientSection}
-                handleChangeIngredientSectionName = {props.handleChangeIngredientSectionName}
-                handleChangeIngredient = {props.handleChangeIngredient}
-            ></IngredientFormSection>
+                return <IngredientFormSection
+                    units={props.units}
+                    addIngredient={props.addIngredient}
+                    section_index={index}
+                    ingredient_section={ingredient_section}
+                    deleteIngredient={props.deleteIngredient}
+                    deleteIngredientSection={props.deleteIngredientSection}
+                    handleChangeIngredientSectionName={props.handleChangeIngredientSectionName}
+                    handleChangeIngredientName={props.handleChangeIngredientName}
+                    handleChangeIngredientUnit={props.handleChangeIngredientUnit}
+                    handleChangeIngredientAmount={props.handleChangeIngredientAmount}
+                ></IngredientFormSection>
             })}
             <Button variant="light" className=" center" onClick={props.addIngredientSection}> Add section </Button>
 
@@ -60,15 +64,33 @@ const NewRecipe = (props) => {
 
             <Form.Label><p className='bold'>Steps</p></Form.Label>
             {props.step_sections.map((step_section, index) => {
-                return <StepFormSection 
-                addStep={props.addStep}
-                section_index={index} 
-                step_section={step_section}
-                deleteStep = {props.deleteStep}
-                deleteStepSection = {props.deleteStepSection}
-                handleChangeStepSectionName = {props.handleChangeStepSectionName}
-                handleChangeStep = {props.handleChangeStep}
-            ></StepFormSection>
+                return <StepFormSection
+                    addStep={props.addStep}
+                    section_index={index}
+                    step_section={step_section}
+                    deleteStep={props.deleteStep}
+                    deleteStepSection={props.deleteStepSection}
+                    handleChangeStepSectionName={props.handleChangeStepSectionName}
+                    handleChangeStepMediaId={props.handleChangeStepMediaId}
+                    handleChangeStepTimestamp={props.handleChangeStepTimestamp}
+                    handleChangeStepDirection={props.handleChangeStepDirection}
+                    imageNames={props.imageNames}
+                    videoOptions={
+                        props.medias.map(
+                            (media, index)=>{
+                                console.log(media)
+                                if(media.type == 2 || media.type == 3){
+                                    return {
+                                        index: index,
+                                        name: media.name
+                                    }
+                                } 
+                            }
+                        ).filter(
+                            (media) => (media)
+                        )
+                    }
+                ></StepFormSection>
             })}
             <Button variant="light" className=" center" onClick={props.addStepSection}> Add section </Button>
 
@@ -76,32 +98,32 @@ const NewRecipe = (props) => {
 
             <Form.Group>
                 <Form.Label><p className='bold'>Images</p></Form.Label>
-                {props.images.map((image,index) => {
-                    return <ImageForm 
-                    onChangeImage={(event) => {props.onChangeImage(event,index)}}
-                    deleteImage={() => {props.deleteImage(index)}}
-                    label={
-                        image === undefined?
-                        'Choose an image':
-                        image.name
-                    }
-                ></ImageForm>;
+                {props.medias.map((media, index) => {
+                    return <ImageForm
+                        onChangeImage={(event) => { props.onChangeImage(event, index) }}
+                        deleteMedia={() => { props.deleteMedia(index) }}
+                        handleChangeMediaType={(event)=>{props.handleChangeMediaType(event,index)}}
+                        handleChangeMediaUrl={(event)=>{props.handleChangeMediaUrl(event, index)}}
+                        handleChangeMediaName={(event)=>{props.handleChangeMediaName(event, index)}}
+                        handleChangeMediaFile={(event)=>{props.handleChangeMediaFile(event, index)}}
+                        media={media}
+                    ></ImageForm>;
                 })}
             </Form.Group>
-            <Button variant="outline-dark" className="circle-button center" onClick={props.addImage}> + </Button>
+            <Button variant="outline-dark" className="circle-button center" onClick={props.addMedia}> + </Button>
 
             <hr></hr>
 
             <Button onClick={props.submitForm}>Create</Button>
             <Button variant='light' >Cancel</Button>
-            
+
         </Form>
 
 
 
 
 
-    </Container>
+    </>
 }
 
 export default NewRecipe;

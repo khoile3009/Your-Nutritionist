@@ -62,11 +62,37 @@ class Section(models.Model):
 
     def __str__(self):
         return f'{self.recipe_id} {self.name} {self.part}'
+
+        
+class Ingredient(models.Model):
+    name = models.CharField(max_length=100)
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return f'{self.name}'
+
     
 class IngredientAmount(models.Model):
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
-    description = models.TextField()
+    amount = models.IntegerField()
+    UNIT_CHOICE = (
+        (0, 'pieces'),
+        (1, 'grams'),
+        (2, 'kilograms'),
+        (3, 'tablespoons'),
+        (4, 'ounces'),
+        (5, 'pounds'),
+        (6, 'teaspoons'),
+        (7, 'liters'),
+        (8, 'mililiters'),
+        (9, 'drops'),
+        (10, 'cups')
+    )
+    unit = models.IntegerField(choices=UNIT_CHOICE)
+    # ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, null=True)
     order = models.IntegerField()
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, null=True)
     class Meta:
         ordering = ['order']     
 
@@ -79,20 +105,35 @@ class Step(models.Model):
     # time = models.IntegerField()  # in minute
     direction = models.TextField()
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
+    timestamp = models.IntegerField(null=True)
+    mediaId = models.IntegerField(null=True)
     class Meta:
         ordering = ['order']
 
     def __str__(self):
         return f'{self.section_id} {self.order}'
 
-class Image(models.Model):
+class Media(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    path = models.CharField(max_length=300)
+    url = models.CharField(max_length=300)
+    name = models.CharField(max_length=200)
+    media_type = models.IntegerField()
+    order = models.IntegerField()
     class Meta:
-        ordering = ['recipe_id']
+        ordering = ['recipe_id', 'order']
 
     def __str__(self):
         return f'{self.path}'
+
+class HashTag(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    hashtag = models.CharField(max_length=30)
+
+    class Meta:
+        ordering = ['hashtag']
+    
+    def __str__(self):
+        return f'{self.recipe} #{self.hashtag}'
 
 
 

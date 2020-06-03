@@ -1,5 +1,5 @@
 .recipe-card{
-    height: 200px;
+    height: 150px;
     min-width: 250px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -11,45 +11,17 @@
     background-repeat: no-repeat;
 }
 
-
-
-
-@media screen and (min-width: 1300px) {
-    .recipe-card{
-        height: 250px;
-    }
-    .info{
-        font-size: 15px;
-    }
-}
-
-@media screen and (min-width: 1600px) {
-    .recipe-card{
-        height: 300px;
- 
-    }
-    .info{
-        font-size: 18px;
-    }
-}
-
 .recipe-info{
-    height: 40px;
+    height: 20px;
     width: 100%;
     background-color: white;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     box-shadow: 2px 2px gray;
 }
-
-@keyframes highlight{
-    0% {box-shadow: 1px 1px gray;}
-    100% {box-shadow: 5px 5px gray;}
-}
-
 .recipe-name{
     padding: 5px 5px;
-    font-size: 25px;
+    font-size: 20px;
     color: white;
     text-shadow: 2px 2px black;
 }
@@ -59,9 +31,48 @@
     margin: auto 0;
 }
 
+
+@keyframes highlight{
+    0% {box-shadow: 1px 1px gray;}
+    100% {box-shadow: 5px 5px gray;}
+}
+
 .info-container{
     display: table-cell;
     vertical-align: middle;
     text-align: center;
 }
+
+@media screen and (min-width: 1300px) {
+    .recipe-card{
+        height: 200px;
+    }
+    .info{
+        font-size: 15px;
+    }
+
+    .recipe-info{
+        height: 30px;
+    }
+    .recipe-name{
+        font-size: 23px;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .recipe-card{
+        height: 250px;
+ 
+    }
+    .info{
+        font-size: 18px;
+    }
+    .recipe-info{
+        height: 40px;
+    }
+    .recipe-name{
+        font-size: 25px;
+    }
+}
+
 

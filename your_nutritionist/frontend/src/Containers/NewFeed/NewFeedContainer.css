@@ -1,0 +1,5 @@
+.newfeed-container{
+    overflow-y: scroll;
+    height: 60vh;
+    min-width: 200px;
+}

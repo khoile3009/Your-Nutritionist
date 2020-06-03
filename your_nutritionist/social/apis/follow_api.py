@@ -100,16 +100,13 @@ class IsFollowingAPI(generics.GenericAPIView):
         target_id = kwargs['target_id']
         target_user = get_user_from_id(user_id=target_id)
         from_user = self.request.user
-        print(target_user)
-        print(from_user)
         if(target_id != from_user.id):
-            try:
-                Follow.objects.get(
+            if(Follow.objects.filter(
                     target_user = target_user,
                     from_user = from_user
-                )
+                ).exists()):
                 return JsonResponse({'following': True}, safe=True)
-            except Follow.DoesNotExist:
+            else:
                 return JsonResponse({'following': False}, safe=True)
         else:
             return JsonResponse({'following': False}, safe=True)
