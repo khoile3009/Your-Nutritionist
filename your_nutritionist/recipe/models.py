@@ -97,7 +97,7 @@ class IngredientAmount(models.Model):
         ordering = ['order']     
 
     def __str__(self):
-        return f'{self.section_id} {self.description}'
+        return f'{self.section_id}'
 
 
 class Step(models.Model):

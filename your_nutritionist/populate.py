@@ -2,7 +2,7 @@ from recipe.models import Recipe, Ingredient
 from social.models import Action
 import random
 from recipe.recipe import create_recipe
-
+from django.contrib.auth.models import  User
 
 def main():
     print('a')
@@ -13,7 +13,7 @@ def populate_user():
 
 def get_random_sentence(min_length, max_length):
     length = random.randint(min_length, max_length)
-    lorem_ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lacinia neque ut ante interdum dignissim. Donec nec mi vel magna mollis consequat. In scelerisque turpis eu tincidunt ultricies. Donec at pretium enim. Maecenas tempor finibus diam vitae eleifend. Fusce eu convallis mi, non lobortis lorem. Proin porta ligula et ante elementum blandit. Quisque ullamcorper magna erat, a pharetra orci tempus quis. Duis vel accumsan mi, ut finibus nulla. Mauris eleifend turpis vel nunc placerat, quis semper eros posuere. Nulla sed sapien volutpat, malesuada lectus a, tempor arcu. In aliquam ultricies eros, vitae luctus mi congue sed. Cras vulputate, turpis nec faucibus ultricies, ligula sem feugiat est, at fermentum magna dolor id tortor. Etiam urna felis, viverra nec efficitur sed, placerat vel erat.'
+    lorem_ipsum = 'Lorem ipsum dolor #sit amet, conse#tetur adipis#cing el#it. Nam la#cinia neque ut a#nte interdum dignissim. Donec nec mi vel magna mollis consequat. In scelerisque turpis eu tincidunt ultricies. Donec at pretium enim. Maecenas tempor finibus diam vitae eleifend. Fusce eu convallis mi, non lobortis lorem. Proin porta ligula et ante elementum blandit. Quisque ullamcorper magna erat, a pharetra orci tempus quis. Duis vel accumsan mi, ut finibus nulla. Mauris eleifend turpis vel nunc placerat, quis semper eros posuere. Nulla sed sapien volutpat, malesuada lectus a, tempor arcu. In aliquam #ultricies eros, vitae luct#us mi congue sed. Cras vulputate, turpis nec faucibus ultricies, ligula sem feugiat est, at fermentum magna dolor id tortor. Et#iam urna felis, viverra nec ef#ficitur sed, pla#cerat vel erat.'
     start_index = random.randint(0, len(lorem_ipsum) - length)
     return lorem_ipsum[start_index: start_index + length]
 
@@ -48,8 +48,9 @@ def populate_recipe(number_of_recipe):
         context['step_sections'] = []
         context['medias'] = []
         recipe_id = create_recipe(context, 1, [])
+        user_instance = User.objects.get(id=1)
         Action.objects.create(
-            user = 1,
+            user = user_instance,
             action_type = 3,
             target_id = recipe_id
         )

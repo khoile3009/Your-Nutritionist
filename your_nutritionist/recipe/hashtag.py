@@ -13,4 +13,4 @@ def get_hashtag_from_description(description):
     for hashtag_word in hashtag_words:
         for word in hashtag_word.split('#')[1:]:
             hashtags.append(word)
-    return hashtags
+    return list(set(hashtags))

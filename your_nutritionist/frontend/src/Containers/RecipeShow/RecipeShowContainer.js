@@ -97,10 +97,12 @@ class RecipeShowContainer extends Component {
     }
 
     toMedia = (index) => {
-        if(this.state.medias[this.state.topMedia].type === 1){
+        console.log(this.state.medias)
+        console.log(this.players)
+        if(this.state.medias[this.state.topMedia].type === 2 || this.state.medias[this.state.topMedia].type === 3){
             this.players[this.state.topMedia].pause()
         }
-        if(this.state.medias[index].type === 1){
+        if(this.state.medias[index].type === 2 || this.state.medias[index].type === 3){
             this.players[index].play()
         }
         this.setState({topMedia: index})

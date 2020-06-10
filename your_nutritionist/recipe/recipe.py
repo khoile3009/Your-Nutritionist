@@ -3,6 +3,7 @@ from django.contrib.auth.models import  User
 from django.http import Http404
 from social.helpers import get_recipe_from_id
 from .hashtag import get_hashtag_from_description
+from .search import Search 
 
 # /<int:recipe_id>
 def get_recipe_info(recipe_id):
@@ -121,7 +122,6 @@ def create_recipe(recipe,creator_id, urls):
 
 def create_hashtags(recipe_instance, hashtags):
     for hashtag in hashtags:
-        print(hashtag)
         HashTag.objects.create(
             recipe = recipe_instance,
             hashtag = hashtag
@@ -220,11 +220,20 @@ def get_ingredient_unit_choices():
 # -------------------------------------------------------------------------------------------------------------------------
 # Recipes queries 
 # -------------------------------------------------------------------------------------------------------------------------
-def get_recipes_with_query(query):
+def get_recipes_from_user_id(user_id):
     recipes = Recipe.objects.filter(
-        creator=int(query['user_id'])
+        creator=user_id
     )
-    context = {'recipe': []}
+    return get_recipes_content(recipes)
+
+def get_recipes_from_query(query):
+    recipe_ids = Search.search(query)
+    recipes = Recipe.objects.filter(id__in=recipe_ids)
+    return get_recipes_content(recipes)
+
+
+def get_recipes_content(recipes):
+    context = {'recipes': []}
     for recipe in recipes:
         recipe_info = {}
         recipe_info['name'] = recipe.name
@@ -234,6 +243,7 @@ def get_recipes_with_query(query):
         recipe_info['recipe_id'] = recipe.id
         recipe_info['likes'] = 10 # add this later
         recipe_info['thumbnail'] = 'https://i.ibb.co/5GWjP9B/gettyimages-157588995-612x612.jpg'
-        context['recipe'].append(recipe_info)
+        context['recipes'].append(recipe_info)
     return context
+
     

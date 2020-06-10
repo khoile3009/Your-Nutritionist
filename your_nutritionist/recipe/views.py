@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .recipe import get_recipe_info, create_recipe, get_recipes_with_query, get_ingredient_unit_choices, get_media_from_recipe
+from .recipe import *
 
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -9,7 +9,6 @@ from rest_framework.permissions import IsAuthenticated
 import json
 
 def recipe_view(request,*args, **kwargs):
-    print(request.method)
     if(request.method == 'GET'):
         recipe_id = kwargs['recipe_id']
         print(recipe_id)
@@ -21,10 +20,17 @@ def recipe_view(request,*args, **kwargs):
 
 
 
-def get_recipes(request,*args, **kwargs):
+def get_recipes_views(request,*args, **kwargs):
     if(request.method == 'GET'):
-        query = request.GET
-        context = get_recipes_with_query(query)
+        if(request.GET.get('user_id') != None):
+            user_id = int(request.GET['user_id'])
+            context = get_recipes_from_user_id(user_id)
+        else:
+            query = request.GET.get('query')
+            if(query == None):
+                context = {}
+            else:
+                context = get_recipes_from_query(query)
         return JsonResponse(context, safe=True)
 
 def get_unit_choices(request,*args, **kwargs):
