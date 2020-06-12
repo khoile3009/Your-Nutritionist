@@ -1,0 +1,16 @@
+.pos1{
+    transition: 0.5s;
+    right: 20px;
+}
+
+.red-box{
+    background-color: red;
+    width: 600px;
+    height: 400px;
+    position: absolute;
+}
+
+.pos2{
+    transition: 0.5s;
+    right: 200px;
+}

@@ -14,26 +14,21 @@ class RecipeShowContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            seek: null
         }
         this.getRatings = this.getRatings.bind(this)
         this.getMedias = this.getMedias.bind(this)
-        this.setPlayer = this.setPlayer.bind(this)
-        this.rotateMediaLeft = this.rotateMediaLeft.bind(this)
-        this.rotateMediaRight = this.rotateMediaRight.bind(this)
-        this.toMedia = this.toMedia.bind(this)
-        this.goToSecondOnMedia = this.goToSecondOnMedia.bind(this)
-        this.players = []
+        this.goToSecondOnMedia = this.goToSecondOnMedia.bind(this)   
     }
 
     componentDidMount() {
+        this.mediaContainer = React.createRef();
         let params = this.props.match.params
 
         axios.get('api/recipe/' + params['recipe_id'] + '/info')
             .then(
                 (response) => {
-
                     this.setState({ recipe: response.data })
-                    
                     this.getRatings()
                     this.getMedias()
                 }
@@ -41,7 +36,6 @@ class RecipeShowContainer extends Component {
     }
 
     getRatings() {
-        console.log('getratinb')
         let params = this.props.match.params
 
         axios.get('api/recipe/' + params['recipe_id'] + '/rate/all')
@@ -57,69 +51,16 @@ class RecipeShowContainer extends Component {
         axios.get('api/recipe/' + params['recipe_id'] + '/media')
         .then(
             (response) =>{
-                this.setState({
-                    medias: response.data.medias,
-                    topMedia: 0
-                })
-                this.players=response.data.medias.map(
-                    (media, index) => {
-                        return null
-                    })
-                this.mediaIdMap = {}
-                response.data.medias.map(
-                    (media, index) => {
-                        this.mediaIdMap[media.mediaId] = index 
-                    })
+                this.setState({medias:response.data.medias})
             }
         )
     }
 
-    setPlayer = (index, player) => {
-        this.players[index] = player
-    }
-
-    rotateMediaLeft = () => {
-        if(this.state.topMedia != this.state.medias.length - 1){
-            this.toMedia(this.state.topMedia + 1)
-        }
-        else {
-            this.toMedia(0)
-        }
-    }
-
-    rotateMediaRight = () => {
-        if(this.state.topMedia != 0){
-            this.toMedia(this.state.topMedia - 1)
-        }
-        else {
-            this.toMedia(this.state.medias.length - 1)
-        }
-    }
-
-    toMedia = (index) => {
-        console.log(this.state.medias)
-        console.log(this.players)
-        if(this.state.medias[this.state.topMedia].type === 2 || this.state.medias[this.state.topMedia].type === 3){
-            this.players[this.state.topMedia].pause()
-        }
-        if(this.state.medias[index].type === 2 || this.state.medias[index].type === 3){
-            this.players[index].play()
-        }
-        this.setState({topMedia: index})
-
-    }
-
     goToSecondOnMedia = (time, mediaId) => {
-        this.toMedia(this.mediaIdMap[mediaId])
-        console.log(this.mediaIdMap[mediaId])
-        if(this.players[this.mediaIdMap[mediaId]]){
-            // console.log()
-            this.players[this.mediaIdMap[mediaId]].seek(time)
-        }
-        
+        console.log('recipe_show')
+        this.setState({seek: {time: time, mediaId: mediaId}})
     }
 
-    
 
     render() {
         return this.state.recipe
@@ -130,15 +71,17 @@ class RecipeShowContainer extends Component {
                     medias={this.state.medias}
                     topMedia={this.state.topMedia}
                     setPlayer={this.setPlayer}
-
+                    seek={this.state.seek}
                     rotateMediaLeft={this.rotateMediaLeft}
                     rotateMediaRight={this.rotateMediaRight}
                     ></MediaShowContainer>
                     : null
                 }
-                <button onClick={()=>{this.goToSecondOnMedia(20,20)}}>afdf</button>
-                <Container className='shadow  custom-container recipe' fluid='sm'>
-                    <RecipeShow recipe={this.state.recipe} goToSecondOnMedia={this.goToSecondOnMedia}></RecipeShow>
+                
+                <Container className='shadow custom-container recipe' fluid='sm'>
+                    <RecipeShow 
+                    recipe={this.state.recipe} 
+                    goToSecondOnMedia={this.goToSecondOnMedia}></RecipeShow>
                     <hr></hr>
                     <RecipeRatingContainer
                         ratings={this.state.ratings}
