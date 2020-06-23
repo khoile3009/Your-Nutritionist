@@ -145,7 +145,9 @@ class UserShowContainer extends Component {
                     userId={parseInt(this.props.match.params['user_id'])}
                 ></UserInfoContainer>
                 <hr></hr>
-                <UserIntroductionContainer></UserIntroductionContainer>
+                <UserIntroductionContainer
+                    userId={parseInt(this.props.match.params['user_id'])}
+                ></UserIntroductionContainer>
                 <hr></hr>
                 <p className='subtitle'>Recipes</p>
                 {

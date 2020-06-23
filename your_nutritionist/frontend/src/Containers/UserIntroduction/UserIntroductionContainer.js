@@ -10,7 +10,7 @@ class UserIntroductionContainer extends Component{
     }
 
     componentDidMount(){
-        axios.get('api/user/2/introduction')
+        axios.get('api/user/' + this.props.userId + '/introduction')
         .then(
             (response) => {
                 this.setState({introduction: response.data.introduction})
