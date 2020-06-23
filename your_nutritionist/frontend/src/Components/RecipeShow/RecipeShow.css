@@ -33,13 +33,18 @@ p {
     font-size: 15px;
 }
 
+button {
+    background: url(../../assets/img/next.png)
+}
+
 
 /* .items{
     font-size: 5px;
 } */
 
 .title-wrapper{
-    display: flex;
+    display: block;
     width: 100%;
+    padding-bottom: 12px;
 }
 
