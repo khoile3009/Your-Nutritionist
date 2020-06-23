@@ -21,6 +21,7 @@ def recipe_view(request,*args, **kwargs):
 
 def get_recipes_views(request,*args, **kwargs):
     if(request.method == 'GET'):
+        print(request.GET)
         if(request.GET.get('user_id') != None):
             user_id = int(request.GET['user_id'])
             context = get_recipes_from_user_id(user_id, int(request.GET.get('block')))
@@ -32,10 +33,6 @@ def get_recipes_views(request,*args, **kwargs):
                 context = get_recipes_from_query(query, int(request.GET.get('block')))
         return JsonResponse(context, safe=True)
 
-def get_unit_choices(request,*args, **kwargs):
-    if(request.method == 'GET'):
-        context = get_ingredient_unit_choices()
-        return JsonResponse(context, safe=True)
 
 def get_recipe_medias(request, *args, **kwargs):
     if(request.method == 'GET'):
