@@ -11,14 +11,16 @@ import ActionList from '../ActionList/ActionList';
 import UserIntroductionContainer from '../UserIntroduction/UserIntroductionContainer';
 import './UserShow.css'
 import { connect } from 'react-redux';
-
+import queryString from 'query-string'
 class UserShowContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            page:1
         }
         this.getUserRecipes = this.getUserRecipes.bind(this)
         this.getUserActions = this.getUserActions.bind(this)
+        this.toPage=this.toPage.bind(this)
     }
 
 
@@ -27,37 +29,16 @@ class UserShowContainer extends Component {
             'Content-Type': 'application/json',
             'Authorization': 'Token ' + this.props.token
         }
-        axios.get('api/user/' + this.props.match.params['user_id'] + '/info', { headers: headers })
-            .then(
-                (response) => {
-                    this.setState({ user_info: response.data })
-                    this.getUserRecipes()
-                    this.getUserActions()
-                }
-            )
-            .catch(
-                (err) => {
-                    console.log(err)
-                }
-            )
-    }
-
-    componentWillReceiveProps(){
-        console.log('props')
-        this.setState({
-            user_info:null,
-            user_actions:null,
-            user_recipes:null
-        })
-        let headers = {
-            'Content-Type': 'application/json',
-            'Authorization': 'Token ' + this.props.token
+        let page = 1
+        if(this.props.location.search){
+            let params = queryString.parse(this.props.location.search)
+            page = parseInt(params.page)
         }
         axios.get('api/user/' + this.props.match.params['user_id'] + '/info', { headers: headers })
             .then(
                 (response) => {
                     this.setState({ user_info: response.data })
-                    this.getUserRecipes()
+                    this.getUserRecipes(page)
                     this.getUserActions()
                 }
             )
@@ -66,18 +47,64 @@ class UserShowContainer extends Component {
                     console.log(err)
                 }
             )
+        this.num_preload = 5
+    }
+
+    componentWillReceiveProps(props){
+        let next_params = queryString.parse(props.location.search)
+        let next_page = parseInt(next_params.page);
+        if(Math.floor((next_page - 1)/ this.num_preload) !== Math.floor((this.state.page - 1)/ this.num_preload)){
+            this.getUserRecipes(next_page)
+        }
+        else{
+            this.setState({
+                page: next_page
+            })
+        }
     }
 
 
-    getUserRecipes = () => {
+    // componentWillReceiveProps(){
+
+    //     this.setState({
+    //         user_info:null,
+    //         user_actions:null,
+    //         user_recipes:null
+    //     })
+    //     let headers = {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': 'Token ' + this.props.token
+    //     }
+    //     axios.get('api/user/' + this.props.match.params['user_id'] + '/info', { headers: headers })
+    //         .then(
+    //             (response) => {
+    //                 this.setState({ user_info: response.data })
+    //                 this.getUserRecipes()
+    //                 this.getUserActions()
+    //             }
+    //         )
+    //         .catch(
+    //             (err) => {
+    //                 console.log(err)
+    //             }
+    //         )
+    // }
+
+
+    getUserRecipes = (page) => {
         axios.get('api/recipe', {
             params: {
-                user_id: this.props.match.params['user_id']
+                user_id: this.props.match.params['user_id'],
+                block: Math.floor((page - 1)/ this.num_preload)
             }
         })
             .then(
                 (response) => {
-                    this.setState({ user_recipes: response.data.recipe })
+                    console.log(response)
+                    this.setState({ 
+                        user_recipes: response.data.recipes ,
+                        page : page
+                    },()=>{console.log('a')})
                 }
             )
     }
@@ -93,6 +120,10 @@ class UserShowContainer extends Component {
                 this.setState({user_actions: response.data.actions})
             }
         )
+    }
+
+    toPage=(page)=>{
+        this.props.history.push({pathname: '/user/' + this.props.match.params['user_id'], search: queryString.stringify({page: page})})
     }
 
     
@@ -113,6 +144,8 @@ class UserShowContainer extends Component {
                     this.state.user_recipes
                         ? <RecipeList
                             recipes={this.state.user_recipes}
+                            page={this.state.page}
+                            toPage={this.toPage}
                         ></RecipeList>
                         : <h1>No recipes</h1>
                 }

@@ -65,39 +65,13 @@ class Section(models.Model):
 
         
 class Ingredient(models.Model):
+    section = models.ForeignKey(Section, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     class Meta:
         ordering = ['name']
 
     def __str__(self):
         return f'{self.name}'
-
-    
-class IngredientAmount(models.Model):
-    section = models.ForeignKey(Section, on_delete=models.CASCADE)
-    amount = models.IntegerField()
-    UNIT_CHOICE = (
-        (0, 'pieces'),
-        (1, 'grams'),
-        (2, 'kilograms'),
-        (3, 'tablespoons'),
-        (4, 'ounces'),
-        (5, 'pounds'),
-        (6, 'teaspoons'),
-        (7, 'liters'),
-        (8, 'mililiters'),
-        (9, 'drops'),
-        (10, 'cups')
-    )
-    unit = models.IntegerField(choices=UNIT_CHOICE)
-    # ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, null=True)
-    order = models.IntegerField()
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, null=True)
-    class Meta:
-        ordering = ['order']     
-
-    def __str__(self):
-        return f'{self.section_id}'
 
 
 class Step(models.Model):

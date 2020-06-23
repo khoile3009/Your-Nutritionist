@@ -2,7 +2,7 @@ import React from 'react';
 import '../RecipeShow.css';
 
 const IngredientSections = (props) => {
-
+    console.log(props)
     return <div>
         <p className='text-left section-name'>Ingredients</p>
         {props.ingredient_sections.map((ingredient_section, index) => {
@@ -10,7 +10,7 @@ const IngredientSections = (props) => {
                 <SubsectionName name={ingredient_section.name}></SubsectionName>
                 <ul>
                     {ingredient_section.ingredients.map((ingredient, index) => {
-                        return <li className='text-left'><p className='items'>{ingredient.amount + ' ' + ingredient.unit + ' of ' + ingredient.name}</p></li>
+                        return <li className='text-left'><p className='items'>{ingredient}</p></li>
                     })}
                 </ul>
             </div>

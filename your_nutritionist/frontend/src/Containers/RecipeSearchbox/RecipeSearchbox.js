@@ -46,8 +46,8 @@ class RecipeSearchbox extends Component {
 
     render() {
         return <div className='searchbox-container'>
-            <InputGroup className="mb-3 searchbox">
-                <InputGroup.Prepend>
+            <InputGroup className="mb-3 searchbox shadow">
+                {/* <InputGroup.Prepend>
                     <Popup
                     trigger={<Button variant="outline-secondary">Button</Button>}
                     position='bottom center'
@@ -56,10 +56,10 @@ class RecipeSearchbox extends Component {
                         <SearchHelp></SearchHelp>
                     </Popup>
                       
-                </InputGroup.Prepend>   
-                <FormControl aria-describedby="basic-addon1" value={this.state.searchQuery} onChange={this.handleChangeSearchQuery}/>
+                </InputGroup.Prepend>    */}
+                <FormControl className='search-txt' aria-describedby="basic-addon1" value={this.props.query} onChange={this.props.setSearchQuery}/>
                 <InputGroup.Append>
-                    <Button variant="outline-secondary" onClick={this.search}>Button</Button>
+                    <Button className='search-button' variant="secondary" onClick={this.props.search}>Button</Button>
                 </InputGroup.Append>
             </InputGroup>
 

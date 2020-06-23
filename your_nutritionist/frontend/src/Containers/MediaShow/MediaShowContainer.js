@@ -6,7 +6,10 @@ class MediaShowContainer extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            leftHovered: false,
+            rightHovered: false
+        }
         // this.players 
         this.setPlayer = this.setPlayer.bind(this)
         this.rotateMediaLeft = this.rotateMediaLeft.bind(this)
@@ -46,7 +49,7 @@ class MediaShowContainer extends Component {
         this.players[index] = player
     }
 
-    rotateMediaLeft = () => {
+    rotateMediaRight = () => {
         if (this.state.topMedia != this.state.medias.length - 1) {
             this.toMedia(this.state.topMedia + 1)
         }
@@ -55,7 +58,7 @@ class MediaShowContainer extends Component {
         }
     }
 
-    rotateMediaRight = () => {
+    rotateMediaLeft = () => {
         if (this.state.topMedia != 0) {
             this.toMedia(this.state.topMedia - 1)
         }
@@ -92,58 +95,69 @@ class MediaShowContainer extends Component {
 
 
     render() {
-
+        
         return <div>
-            <div className='left-field' >
-                <div className='trigger-field' onClick={this.rotateMediaLeft}>
+            <div className='left-field shine-field' >
+                <div 
+                className='trigger-field' 
+                onClick={this.rotateMediaLeft}
+                >
+
                 </div>
             </div>
-            <div className='right-field'>
-                <div className='trigger-field' onClick={this.rotateMediaRight}>
+            <div className='left-media-cover'
+            onClick={this.rotateMediaLeft}
+            ></div>
+            <div className='right-media-cover'
+            onClick={this.rotateMediaRight}
+            ></div>
+            <div className='right-field shine-field'>
+                <div 
+                className='trigger-field' 
+                onClick={this.rotateMediaRight} 
+                >
                 </div>
             </div>
-            <Container style={{padding: '0 0' }} className='shadow media-container'>
+            <div className='media-container'>
                 {this.state.medias
                     ? this.state.medias.map(
                         (media, index) => {
+                            let zIndex = this.state.topMedia === index
+                            ? 1
+                            : 0
+                            let classes='shadow media-card'
+                            if(this.state.topMedia - index === 1 || (this.state.topMedia === 0 && index === this.state.medias.length - 1)) {
+                                classes += ' left-card'
+                            }
+                            else if(this.state.topMedia - index === -1 || (this.state.topMedia === this.state.medias.length - 1 && index === 0)) {
+                                classes += ' right-card'
+                            }
                             switch (media.type) {
                                 case 0:
                                     return <ImageCard
                                         url={media.url}
-                                        zIndex={
-                                            this.state.topMedia === index
-                                                ? 1
-                                                : 0
-                                        }
+                                        classes = {classes}
+                                        zIndex={zIndex}
                                     ></ImageCard>;
                                 case 1:
                                     return <ImageCard
                                         url={media.url}
-                                        zIndex={
-                                            this.state.topMedia === index
-                                                ? 1
-                                                : 0
-                                        }
+                                        classes = {classes}
+                                        zIndex={zIndex}
                                     ></ImageCard>;
                                 case 2:
                                     return <VideoCard
                                         url={media.url}
-                                        zIndex={
-                                            this.state.topMedia === index
-                                                ? 1
-                                                : 0
-                                        }
+                                        zIndex={zIndex}
+                                        classes = {classes}
                                         playing={this.state.playing[index]}
                                         setPlayer={(player) => { this.setPlayer(index, player) }}
                                     ></VideoCard>
                                 case 3:
                                     return <VideoCard
                                         url={media.url}
-                                        zIndex={
-                                            this.state.topMedia === index
-                                                ? 1
-                                                : 0
-                                        }
+                                        zIndex={zIndex}
+                                        classes = {classes}
                                         playing={this.state.playing[index]}
                                         setPlayer={(player) => { this.setPlayer(index, player) }}
                                     ></VideoCard>
@@ -155,7 +169,7 @@ class MediaShowContainer extends Component {
                         }
                     )
                     : null}
-            </Container>
+            </div>
         </div>
     }
 }

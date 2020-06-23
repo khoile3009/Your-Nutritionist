@@ -18,6 +18,9 @@ const Header = (props) =>
                 <Nav.Link onClick={props.toCreateRecipe} href='/recipe/create'>
                     Create Recipe
                 </Nav.Link>
+                <Nav.Link onClick={()=>{}} href='/user'>
+                    Find User
+                </Nav.Link>
 
             </Nav>
             {props.rightNav}

@@ -69,8 +69,6 @@ class RecipeShowContainer extends Component {
                 {this.state.medias
                     ? <MediaShowContainer 
                     medias={this.state.medias}
-                    topMedia={this.state.topMedia}
-                    setPlayer={this.setPlayer}
                     seek={this.state.seek}
                     rotateMediaLeft={this.rotateMediaLeft}
                     rotateMediaRight={this.rotateMediaRight}

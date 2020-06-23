@@ -10,6 +10,7 @@
     "boostrap": "^2.0.0",
     "jquery": "^3.5.1",
     "mdbootstrap": "^4.19.0",
+    "query-string": "^6.13.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",

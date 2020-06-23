@@ -9,14 +9,38 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-@media screen and (min-width: 920px) {
+
+@media (min-width: 576px) { 
+    .custom-container {
+        width: 100%;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .custom-container {
+        width: 80%;
+    }
+}
+
+@media (min-width: 992px) {
+    .custom-container {
+        width: 70%;
+    }
+}
+
+
+@media (min-width: 1200px) {
     .custom-container {
         width: 60%;
     }
 }
-
 .custom-container{
     margin-top: 10px;
-    height : 90vh;
-    overflow-y: scroll;
+    min-height : 90vh;
+}
+
+.custom-container-full{
+    margin-top: 10px;
+    
 }

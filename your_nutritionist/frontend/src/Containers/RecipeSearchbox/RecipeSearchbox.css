@@ -5,8 +5,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: url('/Cover.jpg');
+    box-shadow: 2px 2px gray;
+    background-position: 20%;
+    margin-bottom: 20px;
 }
 
 .searchbox{
     width: 60%;
+    max-width: 800px;
+}  
+
+.search-txt{
+    height: 50px;
+    border-radius: 50px;
+    border: gray solid 1px;
+    font-size: 20px;
+    padding: 5px 20px;
 }

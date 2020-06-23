@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 import './MediaCard.css'
 import { Player } from 'video-react';
 import ReactPlayer from 'react-player';
+import { Container } from 'react-bootstrap'
 const ImageCard = (props) => {
-    return <div className='media-card' style={{
+    return <div className={props.classes} style={{
         zIndex: props.zIndex,
-        backgroundImage: "url('" + props.url + "')"
+        backgroundImage: "url('" + props.url + "')",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat"
     }}>
         {/* <h1>{props.media.url}</h1> */}
     </div>
@@ -13,7 +16,7 @@ const ImageCard = (props) => {
 }
 
 const VideoCard = (props) => {
-    return <div className='media-card' style={{ zIndex: props.zIndex }}>
+    return <div className={props.classes} style={{ zIndex: props.zIndex }}>
         <ReactPlayer
             playing={props.playing}
             url={props.url}

@@ -14,11 +14,9 @@ const IngredientFormSection = (props) => {
             {props.ingredient_section.ingredients.map((ingredient, index) => {
                 return <IngredientForm
                     deleteIngredient={() => { props.deleteIngredient(props.section_index, index) }}
-                    handleChangeIngredientName={(event) => { props.handleChangeIngredientName(props.section_index, index, event) }}
-                    handleChangeIngredientUnit={(event) => { props.handleChangeIngredientUnit(props.section_index, index, event) }}
-                    handleChangeIngredientAmount={(event) => { props.handleChangeIngredientAmount(props.section_index, index, event) }}
                     ingredient={ingredient}
                     units={props.units}
+                    handleChangeIngredient={(event)=>{props.handleChangeIngredient(props.section_index, index, event )}}
                 ></IngredientForm>
             })}
             <Button variant="outline-dark" className="circle-button center" onClick={() => { props.addIngredient(props.section_index) }}> + </Button>
@@ -51,18 +49,7 @@ const StepFormSection = (props) => {
 
 const IngredientForm = (props) => {
     return <div className='flexbox'>
-        <Form.Control type='number' className='amount-input' placeholder='Amount' name='amount' value={props.ingredient.amount} onChange={props.handleChangeIngredientAmount}></Form.Control>
-        <Form.Control as='select' className='unit-input' onChange={props.handleChangeIngredientUnit}>
-            <option value={-1}>Choose...</option>
-            {
-                props.units
-                    ? props.units.map((unit) => {
-                        return <option value={unit.index}>{unit.unit}</option>
-                    })
-                    : null
-            }
-        </Form.Control>
-        <Form.Control type="text" placeholder="Ingredient" name="name" value={props.ingredient.name} onChange={props.handleChangeIngredientName} />
+        <Form.Control type="text" placeholder="Ingredient" name="name" value={props.ingredient} onChange={props.handleChangeIngredient} />
         <Button variant='secondary' onClick={props.deleteIngredient} >x</Button>
     </div>
 }

@@ -1,4 +1,4 @@
-from .models import Recipe, Section, IngredientAmount, Step, Ingredient, Media, HashTag
+from .models import Recipe, Section,  Step, Ingredient, Media, HashTag
 from django.contrib.auth.models import  User
 from django.http import Http404
 from social.helpers import get_recipe_from_id
@@ -37,16 +37,11 @@ def get_recipe_info(recipe_id):
             'name': ingredient_section.name,
             'ingredients' : []
             })
-        ingredient_amounts = IngredientAmount.objects.filter(section=section_id)
-        for ingredient_amount in ingredient_amounts:
+        ingredients = Ingredient.objects.filter(section=section_id)
+        for ingredient in ingredients:
             context['ingredient_sections'][ingredient_section.order]['ingredients'].append(
-                {
-                    'amount': ingredient_amount.amount,
-                    'unit': ingredient_amount.get_unit_display(),
-                    'name': ingredient_amount.ingredient.name
-                }
+                ingredient.name
             )
-    
     context['step_sections'] = []
     step_sections = sections.filter(part=1)
     for step_section in step_sections:
@@ -178,15 +173,7 @@ def create_step_section(recipe_instance, step_sections, media_id_map):
 def create_ingredient(section_instance, ingredients):
     for ingredient_order in range(len(ingredients)):
         ingredient = ingredients[ingredient_order]
-        ingredient_instance,_ = Ingredient.objects.get_or_create(name=ingredient['name'])
-
-        IngredientAmount.objects.create(
-            section = section_instance,
-            amount = ingredient['amount'],
-            unit = ingredient['unit'],
-            order = ingredient_order,
-            ingredient = ingredient_instance
-        )
+        ingredient_instance,_ = Ingredient.objects.get_or_create(section=section_instance, name=ingredient)
 
 def create_steps(section_instance, steps,media_id_map):
     for step_order  in range(len(steps)):
@@ -202,33 +189,32 @@ def create_steps(section_instance, steps,media_id_map):
             section = section_instance
         )  
 
-# -------------------------------------------------------------------------------------------------------------------------
-# Unit Amount
-# -------------------------------------------------------------------------------------------------------------------------
-
-def get_ingredient_unit_choices():
-    choices = IngredientAmount._meta.get_field('unit').choices
-    units = []
-    for choice in choices:
-        units.append({
-            'index': choice[0],
-            'unit': choice[1]
-        })
-    return {'units': units}
 
 
 # -------------------------------------------------------------------------------------------------------------------------
 # Recipes queries 
 # -------------------------------------------------------------------------------------------------------------------------
-def get_recipes_from_user_id(user_id):
+def get_recipes_from_user_id(user_id, block):
     recipes = Recipe.objects.filter(
         creator=user_id
     )
-    return get_recipes_content(recipes)
+    if(block * 50 < len(recipes)):
+        recipes_block = recipes[block * 50: min(len(recipes), block * 50 + 50)]
+    else:
+        recipes_block = []
+    print(len(recipes_block))
+    return get_recipes_content(recipes_block)
 
-def get_recipes_from_query(query):
+def get_recipes_from_query(query, block):
+    print(block)
     recipe_ids = Search.search(query)
-    recipes = Recipe.objects.filter(id__in=recipe_ids)
+    if(block * 50 < len(recipe_ids)):
+        recipe_ids_block = recipe_ids[block * 50: min(len(recipe_ids), block * 50 + 50)]
+    else:
+        recipe_ids_block = []
+    print(recipe_ids_block)
+    recipes = Recipe.objects.filter(id__in=recipe_ids_block)
+
     return get_recipes_content(recipes)
 
 

@@ -50,12 +50,10 @@ const NewRecipe = (props) => {
                     addIngredient={props.addIngredient}
                     section_index={index}
                     ingredient_section={ingredient_section}
+                    handleChangeIngredient={props.handleChangeIngredient}
                     deleteIngredient={props.deleteIngredient}
                     deleteIngredientSection={props.deleteIngredientSection}
                     handleChangeIngredientSectionName={props.handleChangeIngredientSectionName}
-                    handleChangeIngredientName={props.handleChangeIngredientName}
-                    handleChangeIngredientUnit={props.handleChangeIngredientUnit}
-                    handleChangeIngredientAmount={props.handleChangeIngredientAmount}
                 ></IngredientFormSection>
             })}
             <Button variant="light" className=" center" onClick={props.addIngredientSection}> Add section </Button>

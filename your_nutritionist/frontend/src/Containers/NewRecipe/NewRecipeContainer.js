@@ -20,10 +20,7 @@ class NewRecipeContainer extends Component {
         this.addIngredient = this.addIngredient.bind(this)
         this.handleChangeIngredientSectionName = this.handleChangeIngredientSectionName.bind(this)
         this.handleChangeSameName = this.handleChangeSameName.bind(this)
-
-        this.handleChangeIngredientAmount = this.handleChangeIngredientAmount.bind(this)
-        this.handleChangeIngredientName = this.handleChangeIngredientName.bind(this)
-        this.handleChangeIngredientUnit = this.handleChangeIngredientUnit.bind(this)
+        this.handleChangeIngredient = this.handleChangeIngredient.bind(this)
 
         this.addStepSection = this.addStepSection.bind(this)
         this.deleteStep = this.deleteStep.bind(this)
@@ -31,7 +28,7 @@ class NewRecipeContainer extends Component {
         this.addStep = this.addStep.bind(this)
         this.handleChangeStepSectionName = this.handleChangeStepSectionName.bind(this)
         this.handleChangeSameName = this.handleChangeSameName.bind(this)
-
+        
         this.handleChangeStepDirection = this.handleChangeStepDirection.bind(this)
         this.handleChangeStepMediaId = this.handleChangeStepMediaId.bind(this)
         this.handleChangeStepTimestamp = this.handleChangeStepTimestamp.bind(this)
@@ -52,12 +49,7 @@ class NewRecipeContainer extends Component {
             ingredient_sections: [
                 {
                     name: '',
-                    ingredients: [
-                        {
-                            amount: 0,
-                            unit: -1,
-                            name: '',
-                        }
+                    ingredients: [''
                     ]
                 }
             ],
@@ -149,11 +141,7 @@ class NewRecipeContainer extends Component {
             {
                 name: '',
                 ingredients: [
-                    {
-                        amount: 0,
-                        unit: -1,
-                        name: '',
-                    }
+                    ''
                 ]
             }
         )
@@ -166,22 +154,27 @@ class NewRecipeContainer extends Component {
         this.setState({ ingredient_sections: tmp })
     }
 
-    handleChangeIngredientAmount = (section_index, ingredient_index, event) => {
-        let tmp = this.state.ingredient_sections
-        tmp[section_index].ingredients[ingredient_index].amount = parseInt(event.target.value)
-        this.setState({ ingredient_sections: tmp })
-    }
+    // handleChangeIngredientAmount = (section_index, ingredient_index, event) => {
+    //     let tmp = this.state.ingredient_sections
+    //     tmp[section_index].ingredients[ingredient_index].amount = parseInt(event.target.value)
+    //     this.setState({ ingredient_sections: tmp })
+    // }
 
-    handleChangeIngredientUnit = (section_index, ingredient_index, event) => {
-        let tmp = this.state.ingredient_sections
-        tmp[section_index].ingredients[ingredient_index].unit = event.target.value
-        this.setState({ ingredient_sections: tmp })
-    }
+    // handleChangeIngredientUnit = (section_index, ingredient_index, event) => {
+    //     let tmp = this.state.ingredient_sections
+    //     tmp[section_index].ingredients[ingredient_index].unit = event.target.value
+    //     this.setState({ ingredient_sections: tmp })
+    // }
 
-    handleChangeIngredientName = (section_index, ingredient_index, event) => {
+    // handleChangeIngredientName = (section_index, ingredient_index, event) => {
+    //     let tmp = this.state.ingredient_sections
+    //     tmp[section_index].ingredients[ingredient_index].name = event.target.value
+    //     this.setState({ ingredient_sections: tmp })
+    // }
+    handleChangeIngredient = (section_index, ingredient_index, event) => {
         let tmp = this.state.ingredient_sections
-        tmp[section_index].ingredients[ingredient_index].name = event.target.value
-        this.setState({ ingredient_sections: tmp })
+        tmp[section_index].ingredients[ingredient_index] = event.target.value
+        this.setState({ingredient_sections: tmp})
     }
 
     deleteIngredientSection = (section_index) => {
@@ -192,11 +185,7 @@ class NewRecipeContainer extends Component {
     addIngredient = (section_index) => {
         let tmp = this.state.ingredient_sections
         tmp[section_index].ingredients.push(
-            {
-                amount: 0,
-                unit: -1,
-                name: '',
-            }
+            ''
         )
         this.setState({ ingredient_sections: tmp })
     }
@@ -360,9 +349,7 @@ class NewRecipeContainer extends Component {
                 deleteIngredient={this.deleteIngredient}
                 deleteIngredientSection={this.deleteIngredientSection}
                 handleChangeIngredientSectionName={this.handleChangeIngredientSectionName}
-                handleChangeIngredientName={this.handleChangeIngredientName}
-                handleChangeIngredientUnit={this.handleChangeIngredientUnit}
-                handleChangeIngredientAmount={this.handleChangeIngredientAmount}
+                handleChangeIngredient = {this.handleChangeIngredient}
 
                 addStepSection={this.addStepSection}
                 addStep={this.addStep}

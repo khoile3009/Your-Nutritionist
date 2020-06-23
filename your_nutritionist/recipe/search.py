@@ -1,4 +1,4 @@
-from .models import Recipe, HashTag, Ingredient, IngredientAmount, Section
+from .models import Recipe, HashTag, Ingredient, Section
 
 
 class Search:
@@ -6,13 +6,15 @@ class Search:
     
     @staticmethod
     def search(queries_string):
+        if(queries_string == ''):
+            return []
         queries = Search.remove_duplicated_queries(queries_string.split(' '))
         recipe_ranking =  Search.process_ranking_from_query(
                 cleaned_query=queries_string, 
                 query_type='title',
                 recipe_ranking={},
                 weight=len(queries))
-        print(queries)
+
         for query in queries:
             cleaned_query, query_type = Search.classify_query(query)
             recipe_ranking = Search.process_ranking_from_query(
@@ -20,18 +22,13 @@ class Search:
                 query_type=query_type,
                 recipe_ranking=recipe_ranking,
                 weight=1)
-            print(recipe_ranking)
         recipe_ids  = Search.sort_table(recipe_ranking)
-        print(recipe_ids)
         return recipe_ids
 
     @staticmethod 
     def process_ranking_from_query(cleaned_query, query_type, recipe_ranking, weight):
-        
-        print(cleaned_query)
-        print(query_type)
         recipe_ids = Search.find_recipe_ids_from_query(cleaned_query, query_type)
-        print(recipe_ids)
+
         return Search.add_to_table(recipe_ranking, recipe_ids,weight)
 
     @staticmethod

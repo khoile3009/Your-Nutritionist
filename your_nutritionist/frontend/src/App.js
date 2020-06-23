@@ -8,8 +8,9 @@ import RecipeShowContainer from './Containers/RecipeShow/RecipeShowContainer';
 import UserShowContaner from './Containers/UserShow/UserShowContainer';
 import NewFeedContainer from './Containers/NewFeed/NewFeedContainer';
 import NewFeedPage from './Pages/NewFeed/NewFeedPage'
-import HomePage from './Pages/Home/HomePage'
+import SearchPage from './Pages/Search/SearchPage'
 import DevPage from './Pages/Dev/DevPage'
+import queryString from 'query-string';
 function App() {
   return (
     <div className="App">
@@ -17,9 +18,13 @@ function App() {
       <Switch>
         <Route path='/recipe/create' component={NewRecipeContainer}/>
         <Route path='/recipe/:recipe_id' component={RecipeShowContainer}/>
-        <Route path='/user/:user_id' component={UserShowContaner}/>
+        <Route path='/user/:user_id' render={
+          (props) => (<UserShowContaner key={props.match.params['user_id']} {...props}/>)
+        }/>
         <Route path='/feed' component={NewFeedPage}/>
-        <Route path='/home' component={HomePage}/>
+        <Route path='/search' render={
+          (props) => (<SearchPage key={queryString.parse(props.location.search).query} {...props}></SearchPage>)
+        }/>
         <Route path='/dev' component={DevPage}/>
       </Switch>
     </div>
