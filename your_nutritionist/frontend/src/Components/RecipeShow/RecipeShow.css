@@ -29,12 +29,19 @@
 }
 
 p {
+    margin-top: 1rem;
     margin-bottom: 2px;
     font-size: 15px;
 }
 
 button {
-    background: url(../../assets/img/next.png)
+    background: rgb(0, 194, 74);
+    border: none;
+    margin: 2px 2px 2px 4px;
+    padding: 5px 8 8 5;
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
 }
 
 
@@ -45,6 +52,7 @@ button {
 .title-wrapper{
     display: block;
     width: 100%;
-    padding-bottom: 12px;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 }
 

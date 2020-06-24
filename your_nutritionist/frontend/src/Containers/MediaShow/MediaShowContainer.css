@@ -7,7 +7,7 @@
 @media (min-width: 576px) {
     :root{
         --media-card-offset: 0px;
-        --media-card-width: 100%;
+        --media-card-width: 60%;
     }
 }
 
@@ -15,7 +15,7 @@
 @media (min-width: 768px) {
     :root{
         --media-card-offset: 50px;
-        --media-card-width: 80%;
+        --media-card-width: 60%;
     }
 }
 
@@ -31,20 +31,21 @@
 @media (min-width: 1200px) {
     :root{
         --media-card-offset: 150px;
-        --media-card-width: 60%;
+        --media-card-width: 70%;
     }
 }
 
 
 .media-container{
-    height: 40vh;
+    margin-top: 3rem;
+    height: 50vh;
     width: 100%;
     margin-bottom: 10px;
 }
 
 .left-field{
     height:40vh;
-    width: 100px;
+    width: 50px;
     left: 0px;
     position: absolute;
     z-index: 100;
@@ -54,7 +55,7 @@
 
 .right-field{
     height:40vh;
-    width: 100px;
+    width: 50px;
     right: 0px;
     z-index: 100;
     position:absolute;

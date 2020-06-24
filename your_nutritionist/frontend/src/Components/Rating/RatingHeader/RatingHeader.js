@@ -6,8 +6,8 @@ import Popup from 'reactjs-popup'
 const RatingHeader = (props) => {
     return <div className='rating-header'>
         <div className='rate'>
-            <p className='subtitle'>Rating: </p>
-            <p className='subtitle'>4.5</p>
+            <p className='subtitle'>Overall Rating: &nbsp;</p>
+            <p className='subtitle'>{props.overallRatingScore}</p>
         </div>
         {props.canRate
         ? <Button onClick={props.toggleFormCard}>
