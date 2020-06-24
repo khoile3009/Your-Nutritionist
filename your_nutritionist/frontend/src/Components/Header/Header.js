@@ -1,14 +1,16 @@
 import { Navbar, Nav} from 'react-bootstrap';
 import React from 'react';
 import { Link, NavLink, Route } from 'react-router-bootstrap';
+import './Header.css'
 
 const Header = (props) =>
-    <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+    <Navbar className="color-nav" collapseOnSelect expand="lg">
         {/* "Link" in brand component since just redirect is needed */}
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand as={Link} to="/" id="brand-color">
+            <img src={"https://storage.googleapis.com/your-nutritionist-cdn/Face.png"} style={{width: 50, border: '0.5px solid rgb(255,200,176)', margin: 5, }}/>
             Cookery
           </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className='mr-auto'>
                 {/* "NavLink" here since "active" class styling is needed */}

@@ -6,9 +6,8 @@ const IngredientFormSection = (props) => {
 
     return <FormGroup>
         <Row>
-            <Col xs='2'><p>Section name: </p></Col>
-            <Col xs='9'><Form.Control type='text' placeholder='Leave blank if main section' value={props.ingredient_section.name} onChange={(event) => { props.handleChangeIngredientSectionName(props.section_index, event) }}></Form.Control></Col>
-            <Col xs='1'><Button variant='secondary' onClick={() => { props.deleteIngredientSection(props.section_index) }}>x</Button></Col>
+            <Col xs='11'><Form.Control type='text' placeholder='Section Name (Leave blank if main section)' value={props.ingredient_section.name} onChange={(event) => { props.handleChangeIngredientSectionName(props.section_index, event) }}></Form.Control></Col>
+            <Col xs='1'><Button variant='secondary' onClick={() => { props.deleteIngredientSection(props.section_index) }}>X</Button></Col>
         </Row>
         <div className="outline-formgroup" >
             {props.ingredient_section.ingredients.map((ingredient, index) => {
@@ -27,9 +26,8 @@ const IngredientFormSection = (props) => {
 const StepFormSection = (props) => {
     return <FormGroup>
         <Row>
-            <Col xs='2'><p>Section name: </p></Col>
-            <Col xs='9'><Form.Control type='text' placeholder='Leave blank if main section' value={props.step_section.name} onChange={(event) => { props.handleChangeStepSectionName(props.section_index, event) }}></Form.Control></Col>
-            <Col xs='1'><Button variant='secondary' onClick={() => { props.deleteStepSection(props.section_index) }}>x</Button></Col>
+            <Col xs='11'><Form.Control type='text' placeholder='Section Name (Leave blank if main section)' value={props.step_section.name} onChange={(event) => { props.handleChangeStepSectionName(props.section_index, event) }}></Form.Control></Col>
+            <Col xs='1'><Button variant='secondary' onClick={() => { props.deleteStepSection(props.section_index) }}>X</Button></Col>
         </Row>
         <div className="outline-formgroup" >
             {props.step_section.steps.map((step, index) => {
@@ -50,7 +48,7 @@ const StepFormSection = (props) => {
 const IngredientForm = (props) => {
     return <div className='flexbox'>
         <Form.Control type="text" placeholder="Ingredient" name="name" value={props.ingredient} onChange={props.handleChangeIngredient} />
-        <Button variant='secondary' onClick={props.deleteIngredient} >x</Button>
+        <Button variant='secondary' onClick={props.deleteIngredient} >X</Button>
     </div>
 }
 
@@ -59,7 +57,7 @@ const StepForm = (props) => {
     return <div className='flexbox'>
         <Form.Control type='number' className='timestamp-input' placeholder='second' name='timestamp' value={props.step.timestamp} onChange={props.handleChangeStepTimestamp}></Form.Control>
         <Form.Control as='select' className='mediaId-input' value={props.step.mediaId} onChange={props.handleChangeStepMediaId}>
-            <option value='-1'>Choose...</option>
+            <option value='-1'>Choose video...</option>
             {
                 props.videoOptions
                 ? props.videoOptions.map(
@@ -69,15 +67,15 @@ const StepForm = (props) => {
                 : null
             }
         </Form.Control>
-        <Form.Control type="text" placeholder="Step" name="step" value={props.step.direction} onChange={props.handleChangeStepDirection} as='textarea' rows='1' />
-        <Button variant='secondary' onClick={props.deleteStep} >x</Button>
+        <Form.Control style={{height: 38}} type="text" placeholder="Step" name="step" value={props.step.direction} onChange={props.handleChangeStepDirection} as='textarea' rows='1' />
+        <Button variant='secondary' onClick={props.deleteStep} >X</Button>
 
     </div>
 }
 
 const ImageForm = (props) => {
     return <div className='flexbox'>
-        <Form.Control className='media-input' as='select' onChange={props.handleChangeMediaType} value={props.media.type}>
+        <Form.Control style={{fontSize: 10, height: 38}} className='media-input' as='select' onChange={props.handleChangeMediaType} value={props.media.type}>
             <option value={0}>Image URL</option>
             <option value={1}>Image Upload</option>
             <option value={2}>Youtube URL</option>
@@ -103,11 +101,11 @@ const ImageForm = (props) => {
                     custom />
         }
 
-        <Button variant='secondary' onClick={props.deleteMedia} >x</Button>
+        <Button variant='secondary' onClick={props.deleteMedia} >X</Button>
     </div>
 }
 
 
 export { IngredientFormSection }
-export { StepFormSection }
 export { ImageForm }
+export { StepFormSection }

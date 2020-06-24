@@ -40,7 +40,7 @@
     left: calc(50% - min(var(--media-card-width), 1140px) / 2);
     width: var(--media-card-width);
     height: 40vh;
-    max-width: 1140px;
+    max-width: 100%;
     background-color: black;
     align-items: center;
     position: absolute;

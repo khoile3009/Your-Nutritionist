@@ -1,3 +1,8 @@
 .rating-card{
-    background-color: gray;
+    background-color: rgb(249, 249, 249);
+    padding: 1rem;
+}
+
+#bold {
+    font-weight: bold;
 }
