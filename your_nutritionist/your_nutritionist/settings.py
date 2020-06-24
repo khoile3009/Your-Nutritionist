@@ -89,8 +89,17 @@ WSGI_APPLICATION = 'your_nutritionist.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+
+        'NAME': 'eborhdiq',
+
+        'USER': 'eborhdiq',
+
+        'PASSWORD': '7geZYeDmxuIs17785Z3YUxcf7GwN4Ic5',
+
+        'HOST': 'drona.db.elephantsql.com',
+
+        'PORT': '5432',
     }
 }
 
