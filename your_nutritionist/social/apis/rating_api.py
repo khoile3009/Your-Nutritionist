@@ -37,6 +37,17 @@ class RatingAPI(generics.GenericAPIView):
             )
         return JsonResponse({'status': 'ok'}, safe=True)
 
+    def get(self, *args, **kwargs):
+        recipe_id = kwargs['recipe_id']
+        rater = self.request.user
+        recipe = get_recipe_from_id(recipe_id)
+        try:
+            rating = Rating.objects.get(recipe=recipe, rater=rater)
+            return JsonResponse({'rated':True, 'rating': rating.rating, 'comment': rating.comment})
+        except Rating.DoesNotExist:
+            return JsonResponse({'rated': False})
+            
+
     def delete(self, *args, **kwargs):
         recipe_id = kwargs['recipe_id']
         rater = self.request.user
@@ -108,31 +119,27 @@ def get_total_rating(request, *args, **kwargs):
     return JsonResponse(context, safe=True)
 
 
-def get_rated(request, *args, **kwargs):
-    if(request.method == 'GET'):
-        recipe_id = kwargs['recipe_id']
-        user_id = kwargs['user_id']
-        recipe = get_recipe_from_id(recipe_id)
-        user = get_user_from_id(user_id)
+# def get_rated(request, *args, **kwargs):
+#     if(request.method == 'GET'):
+#         recipe_id = kwargs['recipe_id']
+#         user_id = kwargs['user_id']
+#         recipe = get_recipe_from_id(recipe_id)
+#         user = get_user_from_id(user_id)
         
-        if(recipe.creator.id != user_id):
-            print(Rating.objects.filter(
-                recipe = recipe,
-                rater = user
-            ).count())
-            if Rating.objects.filter(
-                recipe = recipe,
-                rater = user
-            ).exists():
-                rating_instance = Rating.objects.get(recipe = recipe, rater=user)
-                return JsonResponse({
-                    'rated': True,
-                    'rating': rating_instance.rating,
-                    'comment': rating_instance.comment
-                }, safe=True)
-            else:
-                return JsonResponse({'rated': False}, safe=True)
-        else:
-            return JsonResponse({'rated': False}, safe=True)
+#         if(recipe.creator.id != user_id):
+#             if Rating.objects.filter(
+#                 recipe = recipe,
+#                 rater = user
+#             ).exists():
+#                 rating_instance = Rating.objects.get(recipe = recipe, rater=user)
+#                 return JsonResponse({
+#                     'rated': True,
+#                     'rating': rating_instance.rating,
+#                     'comment': rating_instance.comment
+#                 }, safe=True)
+#             else:
+#                 return JsonResponse({'rated': False}, safe=True)
+#         else:
+#             return JsonResponse({'rated': False}, safe=True)
 
 
