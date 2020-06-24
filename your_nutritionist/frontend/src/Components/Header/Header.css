@@ -1,5 +1,7 @@
 .color-nav {
-    background: rgb(0, 153, 255);
+    background: #ffbd59;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 
 #brand-color {

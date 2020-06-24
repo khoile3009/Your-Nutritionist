@@ -7,6 +7,7 @@ const Header = (props) =>
     <Navbar className="color-nav" collapseOnSelect expand="lg">
         {/* "Link" in brand component since just redirect is needed */}
         <Navbar.Brand as={Link} to="/" id="brand-color">
+            <img src={"https://storage.googleapis.com/your-nutritionist-cdn/Face.png"} style={{width: 50, border: '0.5px solid rgb(255,200,176)', margin: 5, }}/>
             Cookery
           </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
