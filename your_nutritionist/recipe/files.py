@@ -22,10 +22,10 @@ class GCLOUD:
     def get_signed_url():
         pass
 
-def __viable_file_name(bucket, file_name):
-    if(bucket.get_blob(file_name) == None):
-        return file_name
-    else:
-        i = 1
-        while()
+# def __viable_file_name(bucket, file_name):
+#     if(bucket.get_blob(file_name) == None):
+#         return file_name
+#     else:
+#         i = 1
+#         while()
     
