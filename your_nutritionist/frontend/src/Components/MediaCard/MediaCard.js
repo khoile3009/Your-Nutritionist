@@ -7,8 +7,8 @@ const ImageCard = (props) => {
     return <div className={props.classes} style={{
         zIndex: props.zIndex,
         backgroundImage: "url('" + props.url + "')",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat"
+        backgroundSize: "100% 100%",
+        backgroundRepeat: "no-repeat",
     }}>
         {/* <h1>{props.media.url}</h1> */}
     </div>

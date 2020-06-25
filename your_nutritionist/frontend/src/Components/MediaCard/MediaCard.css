@@ -39,8 +39,9 @@
 .media-card{ 
     left: calc(50% - min(var(--media-card-width), 1140px) / 2);
     width: var(--media-card-width);
-    height: 40vh;
-    max-width: 100%;
+    height: 35vh;
+    max-height: 50%;
+    max-width: 50vw;
     background-color: black;
     align-items: center;
     position: absolute;

@@ -15,7 +15,7 @@
 @media (min-width: 768px) {
     :root{
         --media-card-offset: 50px;
-        --media-card-width: 60%;
+        --media-card-width: 100%;
     }
 }
 
@@ -35,10 +35,9 @@
     }
 }
 
-
 .media-container{
     margin-top: 3rem;
-    height: 50vh;
+    height: 40vh;
     width: 100%;
     margin-bottom: 10px;
 }
