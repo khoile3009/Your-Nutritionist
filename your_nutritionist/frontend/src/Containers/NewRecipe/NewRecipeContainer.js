@@ -123,6 +123,26 @@ class NewRecipeContainer extends Component {
                 )
 
         }))
+        console.log(JSON.stringify({
+            name: this.state.name,
+            description: this.state.description,
+            number_person: parseInt(this.state.number_person),
+            prep_time: parseInt(this.state.prep_time),
+            cook_time: parseInt(this.state.cook_time),
+            ingredient_sections: this.state.ingredient_sections,
+            step_sections: this.state.step_sections,
+            medias: this.state.medias.map(
+                (media) => {
+                    return {
+                        type: media.type,
+                        name: media.name,
+                        url: media.url,
+                        fileId: media.fileId
+                    }
+                }
+                )
+
+        }))
         data = this.add_images_to_form_data(data, this.state.files)
         return data
     }

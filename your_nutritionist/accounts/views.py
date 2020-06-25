@@ -46,3 +46,4 @@ def user_introduction_view(request, *args, **kwargs):
         user_id = kwargs['user_id']
         context = {'introduction':get_introduction(user_id)}
         return JsonResponse(context, safe=True)
+
