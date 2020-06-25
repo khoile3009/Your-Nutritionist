@@ -14,5 +14,5 @@ urlpatterns = [
     path('recipe/<int:recipe_id>/rate', RatingAPI.as_view()),
     path('recipe/<int:recipe_id>/rate/total', get_total_rating),
     path('recipe/<int:recipe_id>/rate/all', get_all_rating),
-    path('recipe/<int:recipe_id>/israted/<int:user_id>',get_rated)
+    # path('recipe/<int:recipe_id>/israted/<int:user_id>',get_rated)
 ]
