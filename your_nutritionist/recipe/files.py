@@ -1,6 +1,6 @@
 from google.cloud import storage
 import os
-
+from datetime import timedelta, datetime
 
 
 class GCLOUD:
@@ -13,12 +13,10 @@ class GCLOUD:
         bucket = client.get_bucket('mediastorage-cookery')
         urls = []
         for name,file in files.items():
-            print(file.content_type)
             file_name = GCLOUD.__viable_file_name(bucket, str(user_id) + '/' + file.name)
-            print(file_name)
             blob = bucket.blob(file_name)
             blob.upload_from_file(file, content_type=file.content_type)
-            urls.append(blob.public_url)
+            urls.append(file_name)
         return urls
 
     @staticmethod
@@ -34,10 +32,12 @@ class GCLOUD:
 
     @staticmethod
     def get_signed_url(public_path):
-        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'gcloud_privatekey.json'
+        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\Users\khoib\Projects\gcloud_privatekey.json'
         client = storage.Client()
         bucket = client.get_bucket('mediastorage-cookery')
-        # blob.get
+        blob = bucket.get_blob(public_path)
+        print(blob.generate_signed_url(datetime.now() + timedelta(1)))
+        return blob.generate_signed_url(datetime.now() + timedelta(1))
 
 def __viable_file_name(bucket, file_name):
     splitted_file_name = os.path.splittext(file_name)

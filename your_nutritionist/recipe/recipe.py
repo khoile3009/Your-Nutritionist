@@ -4,7 +4,7 @@ from django.http import Http404
 from social.helpers import get_recipe_from_id
 from .hashtag import get_hashtag_from_description
 from .search import Search 
-
+from .files import GCLOUD
 # /<int:recipe_id>
 def get_recipe_info(recipe_id):
     context = {}
@@ -77,13 +77,23 @@ def get_media_from_recipe(recipe_id):
     media_instances = Media.objects.filter(recipe=recipe_id)
     context = {'medias': []}
     for media_instance in media_instances:
-        context['medias'].append(
-            {
-                'url': media_instance.url,
-                'mediaId': media_instance.id,
-                'type': media_instance.media_type
-            }
-        )
+        if(media_instance.media_type in [0,2]):
+            context['medias'].append(
+                {
+                    'url': media_instance.url,
+                    'mediaId': media_instance.id,
+                    'type': media_instance.media_type
+                }
+            )
+        elif(media_instance.media_type in [1,3]):
+            context['medias'].append(
+                {
+                    'url': GCLOUD.get_signed_url(media_instance.url),
+                    'mediaId': media_instance.id,
+                    'type': media_instance.media_type
+                }
+            )
+    print(context)
     return context
 
 
