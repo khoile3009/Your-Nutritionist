@@ -1,21 +1,22 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import './RecipeShow.css';
 import { IngredientSections, StepsSections } from './Subsections/Subsections';
 import { Link } from 'react-router-dom';
+
 
 const RecipeShow = (props) => {
     console.log(props.recipe)
     return <>
         <div className='title-wrapper'>
             <p className='title text-left'>{props.recipe.name}</p>
+            {console.log(props.recipe.creator_id)}
             <p>
                 Created by
                 <Link to={'/user/' + props.recipe.creator_id}>
                     {' ' + props.recipe.creator_username + ' '} 
                 </Link>
                 {'on ' + props.recipe.create_date}
-
 
             </p>
     
@@ -41,6 +42,7 @@ const RecipeShow = (props) => {
 
     </>
 }
+
 
 
 

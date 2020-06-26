@@ -14,7 +14,7 @@ const UserInfo = (props) => {
                             <p className='title'>{props.user_info.name}</p>
                             <p className='subtitle'>@{props.user_info.username} </p>
                             <p className='headline'>{props.user_info.headline}</p>
-
+                            {console.log(props.user_info)}
                             {!props.isSelf
                                 ?
                                 props.following == false

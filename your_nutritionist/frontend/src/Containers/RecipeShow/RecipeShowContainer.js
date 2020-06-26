@@ -5,6 +5,7 @@ import RecipeShow from '../../Components/RecipeShow/RecipeShow'
 import NullPage from '../../Components/NullPage/NullPage'
 import RecipeRatingContainer from '../RecipeRating/RecipeRatingContainer'
 import MediaShowContainer from '../MediaShow/MediaShowContainer'
+import UserInfo from '../../Components/UserInfo/UserInfo'
 import { Container } from 'react-bootstrap'
 
 import { withRouter } from 'react-router-dom';
@@ -14,7 +15,8 @@ class RecipeShowContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            seek: null
+            seek: null,
+            visitor: this.props.visitorId
         }
         this.getRatings = this.getRatings.bind(this)
         this.getMedias = this.getMedias.bind(this)
@@ -33,6 +35,11 @@ class RecipeShowContainer extends Component {
                     this.getMedias()
                 }
             )
+    }
+
+    getVisitorId() {
+        let visitorId = this.props.visitorId
+        return visitorId
     }
 
     getRatings() {
