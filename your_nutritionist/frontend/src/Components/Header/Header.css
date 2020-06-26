@@ -1,9 +1,18 @@
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+@import url(https://fonts.googleapis.com/css?family=Gothic+A1);
+
 .color-nav {
-    background: #ffbd59;
+    background: #00acc1;
     padding-top: .5rem;
     padding-bottom: .5rem;
     padding-left: 2rem;
     padding-right: 2rem;
+    font-family: 'Gothic A1', sans-serif;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.navbar-brand {
+    font-family: 'Lobster', cursive;
 }
 
 #brand-color {
@@ -20,4 +29,15 @@
 
 .navbar-light .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.dropdown a {
+    font-weight: bold;
+    color: rgb(255, 255, 255) !important;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.nav-link {
+    
 }
