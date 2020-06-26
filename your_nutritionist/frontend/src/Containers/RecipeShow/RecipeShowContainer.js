@@ -37,11 +37,6 @@ class RecipeShowContainer extends Component {
             )
     }
 
-    getVisitorId() {
-        let visitorId = this.props.visitorId
-        return visitorId
-    }
-
     getRatings() {
         let params = this.props.match.params
 

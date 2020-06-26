@@ -37,26 +37,30 @@
 
 .media-container{
     margin-top: 3rem;
-    height: 40vh;
+    height: 50vh;
     max-width: 100vw;
     margin-bottom: 10px;
 }
 
 .left-field{
-    height:40vh;
+    height:20vh;
     width: 50px;
     left: 0px;
     position: absolute;
+    vertical-align: baseline;
     z-index: 100;
+    top: 27vh;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
 .right-field{
-    height:40vh;
+    height:20vh;
     width: 50px;
     right: 0px;
+    vertical-align: baseline;
     z-index: 100;
+    top: 27vh;
     position:absolute;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
