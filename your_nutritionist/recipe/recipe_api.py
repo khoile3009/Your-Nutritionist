@@ -17,7 +17,7 @@ class RecipeAPI(generics.GenericAPIView):
 
     def post(self, *args, **kwargs):
         recipe = json.loads(self.request.POST['recipe'])
-        print(self.request.FILES['image_0'].name)
+        # print(self.request.FILES['image_0'].name)
         urls = GCLOUD.upload_and_return_url(self.request.user.id,self.request.FILES)
         recipe_id = create_recipe(recipe, self.request.user.id, urls)
         Action.objects.create(
