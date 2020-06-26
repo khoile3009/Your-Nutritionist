@@ -24,8 +24,6 @@ class UserIntroductionContainer extends Component{
         ></UserIntroduction>
     }
 
-
-
 }
 
 export default UserIntroductionContainer
