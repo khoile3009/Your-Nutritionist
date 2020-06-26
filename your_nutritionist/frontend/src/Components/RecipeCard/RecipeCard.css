@@ -1,29 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+
 .recipe-card{
-    height: 150px;
-    min-width: 250px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    height: 250px;
+    max-width: 400px;
     
     background-position: 50%;
     display: flex;
     flex-direction: column-reverse;
     background-size: cover;
     background-repeat: no-repeat;
+
+    font-family: 'Anton', sans-serif;
+
+    margin: 1rem;
 }
 
-.recipe-info{
-    height: 20px;
+.recipe-row .recipe-info{
     width: 100%;
     background-color: white;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     box-shadow: 2px 2px gray;
+    height: 36pt;
 }
 .recipe-name{
     padding: 5px 5px;
-    font-size: 20px;
+    font-size: 18px;
     color: white;
     text-shadow: 2px 2px black;
+    text-transform: uppercase;
 }
 
 .info{
@@ -41,6 +47,7 @@
     display: table-cell;
     vertical-align: middle;
     text-align: center;
+    margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 1300px) {

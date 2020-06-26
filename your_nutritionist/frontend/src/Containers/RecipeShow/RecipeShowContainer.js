@@ -20,7 +20,8 @@ class RecipeShowContainer extends Component {
         }
         this.getRatings = this.getRatings.bind(this)
         this.getMedias = this.getMedias.bind(this)
-        this.goToSecondOnMedia = this.goToSecondOnMedia.bind(this)   
+        this.goToSecondOnMedia = this.goToSecondOnMedia.bind(this) 
+        this.countMedias = this.countMedias.bind(this)
     }
 
     componentDidMount() {
@@ -63,20 +64,29 @@ class RecipeShowContainer extends Component {
         this.setState({seek: {time: time, mediaId: mediaId}})
     }
 
+    countMedias = (getMedias) => {
+        let keys = Object.keys(getMedias)
+        console.log(keys)
+        for (let i = 0, len = keys.length; i << len; i++) {
+            console.log(getMedias[keys[i]]);
+        }
+    }
 
     render() {
         return this.state.recipe
             ?
-            <>
-                {this.state.medias
-                    ? <MediaShowContainer 
-                    medias={this.state.medias}
-                    seek={this.state.seek}
-                    rotateMediaLeft={this.rotateMediaLeft}
-                    rotateMediaRight={this.rotateMediaRight}
-                    ></MediaShowContainer>
-                    : null
+            <> 
+                {
+                    this.state.medias
+                        ? <MediaShowContainer 
+                        medias={this.state.medias}
+                        seek={this.state.seek}
+                        rotateMediaLeft={this.rotateMediaLeft}
+                        rotateMediaRight={this.rotateMediaRight}
+                        ></MediaShowContainer>
+                        : null
                 }
+                
                 
                 <Container className='shadow custom-container recipe' fluid='sm'>
                     <RecipeShow 
