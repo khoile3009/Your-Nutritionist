@@ -11,72 +11,66 @@
 }
 
 @media (min-width: 576px) {
-    :root{
+    :root {
         --media-card-offset: 0px;
         --media-card-width: 60%;
     }
 }
 
-
 @media (min-width: 768px) {
-    :root{
+    :root {
         --media-card-offset: 100px;
         --media-card-width: 100%;
     }
 }
 
-
 @media (min-width: 992px) {
-    :root{
+    :root {
         --media-card-offset: 200px;
         --media-card-width: 70%;
     }
 }
 
-
 @media (min-width: 1200px) {
-    :root{
+    :root {
         --media-card-offset: 1700px;
         --media-card-width: 70%;
     }
 }
 
-.media-container{
+.media-container {
     height: 40vh;
     max-width: 80vw;
-    margin: 2rem;
+    margin: 1rem;
     position: relative;
     padding: 15%;
-
 }
 
-.left-field{
+.left-field {
     position: absolute;
     z-index: 2;
     margin-top: 20vh;
     left: 0;
     height: 20vh; /* Remember to use var with this */
-
 }
 
-.right-field{
+.right-field {
     position: absolute;
     z-index: 2;
     margin-top: 20vh;
     right: 0;
     height: 20vh;
-
 }
 
-.left-media-cover{
+.left-media-cover {
     display: none;
 }
 
-.right-media-cover{
+.right-media-cover {
     display: none;
 }
 
-.trigger-field{
+.trigger-field {
     background: rgba(85, 85, 85, 0.6);
     width: 5vw;
     height: 100%;
@@ -85,7 +79,7 @@
     text-align: center;
     padding-top: 9vh;
     line-height: 0;
-    color: rgb(195, 104, 0)
+    color: rgb(195, 104, 0);
 }
 
 .trigger-field:hover {

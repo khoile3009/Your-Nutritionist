@@ -16,37 +16,34 @@
 }
 
 @media (min-width: 576px) {
-    :root{
+    :root {
         --media-card-offset: 0px;
         --media-card-width: 100%;
     }
 }
 
-
 @media (min-width: 768px) {
-    :root{
+    :root {
         --media-card-offset: 50px;
         --media-card-width: 80%;
     }
 }
 
-
 @media (min-width: 992px) {
-    :root{
+    :root {
         --media-card-offset: 100px;
         --media-card-width: 70%;
     }
 }
 
-
 @media (min-width: 1200px) {
-    :root{
+    :root {
         --media-card-offset: 150px;
         --media-card-width: 60%;
     }
 }
 
-.media-card{ 
+.media-card {
     height: 80vh;
     max-height: 100%;
     background-color: rgb(185, 185, 185);
@@ -55,22 +52,29 @@
     background-size: cover;
     box-shadow: 2px 2px gray;
     width: 100%;
-    top: 5%;
+    top: 3%;
     left: 8%;
     background-size: cover;
+    border-radius: 12px;
 }
 
-.left-card{
+.left-card {
     position: absolute;
     top: 5%;
-    left: calc(60% - min(var(--media-card-width), 1140px) / 2 - var(--media-card-offset));
+    left: calc(
+        60% - min(var(--media-card-width), 1140px) / 2 -
+            var(--media-card-offset)
+    );
     height: 50vh;
 }
 
-.right-card{
+.right-card {
     position: absolute;
     top: 5%;
-    left: calc(10% - min(var(--media-card-width), 1140px) / 2 + var(--media-card-offset));
+    left: calc(
+        10% - min(var(--media-card-width), 1140px) / 2 +
+            var(--media-card-offset)
+    );
     height: 50vh;
 }
 /* @media (min-width: 576px) {
@@ -102,6 +106,3 @@
         width: var(--width-xl);
     }
  } */
-
-
-
