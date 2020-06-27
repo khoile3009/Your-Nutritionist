@@ -8,14 +8,14 @@ class GCLOUD:
 
     @staticmethod
     def upload_and_return_url(user_id,files):
-        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\Users\khoib\Projects\gcloud_privatekey.json'
-        client = storage.Client()
-        bucket = client.get_bucket('mediastorage-cookery')
+        # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\Users\khoib\Projects\gcloud_privatekey.json'
+        # client = storage.Client()
+        # bucket = client.get_bucket('mediastorage-cookery')
         urls = []
         for name,file in files.items():
-            file_name = GCLOUD.__viable_file_name(bucket, str(user_id) + '/' + file.name)
-            blob = bucket.blob(file_name)
-            blob.upload_from_file(file, content_type=file.content_type)
+            # file_name = GCLOUD.__viable_file_name(bucket, str(user_id) + '/' + file.name)
+            # blob = bucket.blob(file_name)
+            # blob.upload_from_file(file, content_type=file.content_type)
             urls.append(file_name)
         return urls
 
