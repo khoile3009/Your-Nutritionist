@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import  User
-
-
+from django.db.models.signals import pre_delete
+from .files import GCLOUD
 # Create your models here.
 # class Ingredient(models.Model):
 #     name = models.CharField(max_length=100)
@@ -97,7 +97,7 @@ class Media(models.Model):
         ordering = ['recipe_id', 'order']
 
     def __str__(self):
-        return f'{self.path}'
+        return f'{self.url}'
 
 class HashTag(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
@@ -111,4 +111,5 @@ class HashTag(models.Model):
 
 
 
+pre_delete.connect(GCLOUD.delete_media, sender=Media)
 

@@ -39,6 +39,17 @@ class GCLOUD:
         print(blob.generate_signed_url(datetime.now() + timedelta(1)))
         return blob.generate_signed_url(datetime.now() + timedelta(1))
 
+    @staticmethod
+    def delete_media(sender, instance, **kwargs):
+        if(instance.media_type in [1,3]):
+            os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\Users\khoib\Projects\gcloud_privatekey.json'
+            client = storage.Client()
+            bucket = client.get_bucket('mediastorage-cookery')
+            blob = bucket.get_blob(instance.url)
+            blob.delete()
+
+
+
 def __viable_file_name(bucket, file_name):
     splitted_file_name = os.path.splittext(file_name)
     if(bucket.get_blob(file_name) == None):
