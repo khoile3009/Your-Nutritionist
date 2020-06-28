@@ -8,15 +8,15 @@ const Header = (props) => (
         {/* "Link" in brand component since just redirect is needed */}
         <Navbar.Brand as={Link} to="/" id="brand-color">
             <img
-                src={
-                    "https://storage.googleapis.com/your-nutritionist-cdn/transparent-bg-placeholder.png"
-                }
+                src={"https://storage.googleapis.com/your-nutritionist-cdn/transparent-bg-placeholder.png"}
                 style={{
                     width: 50,
                     margin: 5,
                 }}
             />
-            <span id="brand-title">Cookery</span>
+            <span id="brand-title">
+                <a href="/home">Cookery</a>
+            </span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

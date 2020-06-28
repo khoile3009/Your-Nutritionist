@@ -16,8 +16,6 @@
 }
 
 .subtitle {
-    font-size: 14px;
-    font-weight: bold;
 }
 
 .headline {
@@ -40,7 +38,6 @@
 
     .subtitle {
         font-size: 16px;
-        font-weight: bold;
     }
 
     .headline {
@@ -64,7 +61,6 @@
 
     .subtitle {
         font-size: 17px;
-        font-weight: bold;
     }
 
     .headline {
@@ -88,7 +84,6 @@
 
     .subtitle {
         font-size: 20px;
-        font-weight: bold;
     }
 
     .headline {

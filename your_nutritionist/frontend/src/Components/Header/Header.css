@@ -1,5 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Lobster);
-@import url(https://fonts.googleapis.com/css?family=Gothic+A1);
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+@import url("https://fonts.googleapis.com/css?family=Gothic + A1");
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@600&display=swap");
 
 :root {
     --header-color: #00acc1;
@@ -8,20 +9,28 @@
 
 .color-nav {
     background: #00acc1;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
     padding-left: 2rem;
     padding-right: 2rem;
-    font-family: 'Gothic A1', sans-serif;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    font-family: "Gothic A1", sans-serif;
+    box-shadow: 0 8px 12px rgba(172, 172, 172, 0.19),
+        0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-#brand-title {
+#brand-title a {
     padding: 8pt;
+    color: white;
+}
+#brand-title:hover a {
+    color: white;
+    text-decoration: none;
+    border: solid 3px white;
+    text-shadow: -3px 2px 4px rgba(56, 56, 56, 0.83);
 }
 
 .navbar-brand {
-    font-family: 'Lobster', cursive;
+    font-family: "Lobster", cursive;
 }
 
 #brand-color {
@@ -30,6 +39,9 @@
 
 .navbar-light .navbar-nav .nav-link {
     color: rgb(255, 255, 255);
+    font-family: "Catamaran", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.25px;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
@@ -57,4 +69,9 @@
 .navbar-nav .dropdown a.dropdown-item {
     color: var(--dropdown-color);
     font-weight: bold;
+    font-family: "Catamaran", sans-serif;
+}
+
+.show.dropdown.nav-item {
+    padding-bottom: 1rem;
 }
