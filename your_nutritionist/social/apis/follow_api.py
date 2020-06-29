@@ -20,6 +20,8 @@ class FollowAPI(generics.GenericAPIView):
         target_id = kwargs['target_id']
         from_id = self.request.user.id
         target_user = get_user_from_id(user_id=target_id)
+        if(not target_user):
+            return JsonResponse({'status': 'No recipe'}, status=404)
         from_user = self.request.user
         if(target_id != from_id):
             Follow.objects.get_or_create(
@@ -33,13 +35,15 @@ class FollowAPI(generics.GenericAPIView):
             )
             return JsonResponse({'status':'ok'}, safe=True)
         else:
-            raise Http404('Cannot self-subscribe')
+            return JsonResponse({'status':'Cannot self-follow'}, status=405)
 
 
     def delete(self, *args, **kwargs):
         target_id = kwargs['target_id']
         from_id = self.request.user.id
         target_user = get_user_from_id(user_id=target_id)
+        if(not target_user):
+            return JsonResponse({'status': 'No recipe'}, status=404)
         from_user = self.request.user
         if(target_id != from_id):
             Follow.objects.filter(
@@ -53,12 +57,14 @@ class FollowAPI(generics.GenericAPIView):
             ).delete()
             return JsonResponse({'status':'ok'}, safe=True)
         else:
-            raise Http404('Cannot self-subscribe')
+            return JsonResponse({'status':'Cannot self-follow'}, status=405)
         
 
     def get(self, *args, **kwargs):
         target_id = kwargs['target_id']
         target_user = get_user_from_id(user_id=target_id)
+        if(not target_user):
+            return JsonResponse({'status': 'No recipe'}, status=404)
         context = {'followers':[]}
         follow_instances = Follow.objects.filter(target_user = target_user)
         for follow_instance in follow_instances:
@@ -79,6 +85,8 @@ class FollowingAPI(generics.GenericAPIView):
     def get(self, *args, **kwargs):
         from_id = kwargs['from_id']
         from_user = get_user_from_id(user_id=from_id)
+        if(not from_user):
+            return JsonResponse({'status': 'No recipe'}, status=404)
         context = {'followings':[]}
         follow_instances = Follow.objects.filter(from_user = from_user)
         for follow_instance in follow_instances:
@@ -99,6 +107,8 @@ class IsFollowingAPI(generics.GenericAPIView):
     def get(self, *args, **kwargs):
         target_id = kwargs['target_id']
         target_user = get_user_from_id(user_id=target_id)
+        if(not target_user):
+            return JsonResponse({'status': 'No recipe'}, status=404)
         from_user = self.request.user
         if(target_id != from_user.id):
             if(Follow.objects.filter(

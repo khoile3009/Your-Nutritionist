@@ -97,9 +97,17 @@ def get_media_from_recipe(recipe_id):
     print(context)
     return context
 
+# ----------------------------------------------------------------------------------------
+# /edit
+# ----------------------------------------------------------------------------------------
+def edit_recipe(recipe):
+    pass
 
 
-# /create
+
+# ----------------------------------------------------------------------------------------
+# /create 
+# ----------------------------------------------------------------------------------------
 def create_recipe(recipe,creator_id, urls):
     #Initialize Recipe
     creator = get_user_from_id(creator_id)
@@ -184,7 +192,7 @@ def create_step_section(recipe_instance, step_sections, media_id_map):
 def create_ingredient(section_instance, ingredients):
     for ingredient_order in range(len(ingredients)):
         ingredient = ingredients[ingredient_order]
-        ingredient_instance,_ = Ingredient.objects.get_or_create(section=section_instance, name=ingredient)
+        ingredient_instance,_ = Ingredient.objects.get_or_create(section=section_instance, order=ingredient_order, name=ingredient)
 
 def create_steps(section_instance, steps,media_id_map):
     for step_order  in range(len(steps)):

@@ -6,7 +6,7 @@ from rest_framework import generics, permissions
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from social.models import Action
-from .recipe import create_recipe
+from .recipe import create_recipe, edit_recipe
 import json
 from .files import GCLOUD
 from .models import Recipe
@@ -47,4 +47,11 @@ class RecipeAPI(generics.GenericAPIView):
         return JsonResponse({'status': 'Deleted'})
 
     def put(self, *args, **kwargs):
-        pass
+        user_id = self.request.user
+        recipe_id =  kwargs['recipe_id']
+        recipe = get_recipe_from_id(recipe_id)
+        if(not recipe):
+            return JsonResponse({'status': 'No recipe'}, status=404)
+        if(user_id != recipe.creator.id):
+            return JsonResponse({'status': 'Not Allowed'}, status=405)
+        

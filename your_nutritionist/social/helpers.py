@@ -9,6 +9,8 @@ def get_action_target_name_url(action_type, target_id):
     }
     if(action_type == 0):
         user_instace = get_user_from_id(user_id=target_id)
+        if(not user_instace):
+            return None
         context = {
             'name': user_instace.get_full_name(),
             'image_url': 'https://i.ibb.co/nQmRB25/cook.jpg'
