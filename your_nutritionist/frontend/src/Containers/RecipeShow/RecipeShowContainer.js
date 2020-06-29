@@ -7,7 +7,7 @@ import RecipeRatingContainer from '../RecipeRating/RecipeRatingContainer'
 import MediaShowContainer from '../MediaShow/MediaShowContainer'
 import UserInfo from '../../Components/UserInfo/UserInfo'
 import { Container } from 'react-bootstrap'
-
+import {connect} from 'react-redux'
 import { withRouter } from 'react-router-dom';
 
 class RecipeShowContainer extends Component {
@@ -83,6 +83,7 @@ class RecipeShowContainer extends Component {
                         seek={this.state.seek}
                         rotateMediaLeft={this.rotateMediaLeft}
                         rotateMediaRight={this.rotateMediaRight}
+                        is_creator={this.props.token? this.state.recipe.creator_id == this.props.userId : false}
                         ></MediaShowContainer>
                         : null
                 }
@@ -90,6 +91,7 @@ class RecipeShowContainer extends Component {
                 
                 <Container className='shadow custom-container recipe' fluid='sm'>
                     <RecipeShow 
+                    i
                     recipe={this.state.recipe} 
                     goToSecondOnMedia={this.goToSecondOnMedia}></RecipeShow>
                     <hr></hr>
@@ -106,5 +108,10 @@ class RecipeShowContainer extends Component {
     }
 
 }
-
-export default withRouter(RecipeShowContainer);
+const mapStateToProps = state => {
+    return {
+        token: state.auth.token,
+        userId: state.auth.userId
+    }
+}
+export default connect(mapStateToProps, () => { })(withRouter(RecipeShowContainer));

@@ -10,16 +10,16 @@ const RecipeShow = (props) => {
         <>
             <div className="title-wrapper">
                 <p className="title text-left">{props.recipe.name}</p>
-                <Button
+
+                {props.is_creator ? <Button
                     style={{
                         fontSize: "12pt",
                         margin: "1rem 0 1rem 0",
                         fontFamily: "Catamaran",
                         background: "teal",
                     }}
-                >
-                    🖉 Edit Recipe
-                </Button>
+                >🖉 Edit Recipe</Button> : null}
+
                 {console.log(props.recipe.creator_id)}
                 <p>
                     Created by
