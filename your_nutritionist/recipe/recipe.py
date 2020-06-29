@@ -5,6 +5,7 @@ from social.helpers import get_recipe_from_id
 from .hashtag import get_hashtag_from_description
 from .search import Search 
 from .files import GCLOUD
+from rest_framework.exceptions import NotFound
 # /<int:recipe_id>
 def get_recipe_info(recipe_id):
     context = {}
@@ -12,7 +13,7 @@ def get_recipe_info(recipe_id):
     try:
         recipe = Recipe.objects.get(id=recipe_id)
     except Recipe.DoesNotExist:
-        raise Http404("No User")
+        return None
 
     context['name'] = recipe.name
     if(recipe.creator):

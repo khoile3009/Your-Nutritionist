@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from rest_framework.response import Response
+from rest_framework import status   
 from django.views.decorators.csrf import csrf_exempt
 from .recipe import *
 
@@ -12,9 +14,11 @@ def recipe_view(request,*args, **kwargs):
     if(request.method == 'GET'):
         recipe_id = kwargs['recipe_id']
         context = get_recipe_info(recipe_id=recipe_id)
+        print(context)
     # ingredient_sections = []
     # for section in sections:
-
+        if(not context):
+            return JsonResponse({'status': 'No recipe'}, status=404)
         return JsonResponse(context, safe=True)
 
 

@@ -6,4 +6,4 @@ def get_recipe_from_id(recipe_id):
     try:
         return Recipe.objects.get(id = recipe_id)
     except Recipe.DoesNotExist:
-        raise Http404("No Recipe with that ID")
+        return None

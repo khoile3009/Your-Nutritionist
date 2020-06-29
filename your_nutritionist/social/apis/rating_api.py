@@ -23,6 +23,8 @@ class RatingAPI(generics.GenericAPIView):
         rater = self.request.user
         data = json.loads(self.request.body)
         recipe = get_recipe_from_id(recipe_id)
+        if(not recipe):
+            return JsonResponse({'status': 'No recipe'}, status=404)
         if not Rating.objects.filter(recipe=recipe, rater=rater).exists():
             Rating.objects.get_or_create(
                 recipe=recipe,
@@ -41,6 +43,8 @@ class RatingAPI(generics.GenericAPIView):
         recipe_id = kwargs['recipe_id']
         rater = self.request.user
         recipe = get_recipe_from_id(recipe_id)
+        if(not recipe):
+            return JsonResponse({'status': 'No recipe'}, status=404)
         try:
             rating = Rating.objects.get(recipe=recipe, rater=rater)
             return JsonResponse({'rated':True, 'rating': rating.rating, 'comment': rating.comment})
@@ -52,6 +56,8 @@ class RatingAPI(generics.GenericAPIView):
         recipe_id = kwargs['recipe_id']
         rater = self.request.user
         recipe = get_recipe_from_id(recipe_id)
+        if(not recipe):
+            return JsonResponse({'status': 'no recipe'}, status=404)
         Rating.objects.filter(
             recipe=recipe,
             rater=rater
@@ -68,6 +74,8 @@ class RatingAPI(generics.GenericAPIView):
         rater = self.request.user
         data = json.loads(self.request.body)
         recipe = get_recipe_from_id(recipe_id)
+        if(not recipe):
+            return JsonResponse({'status': 'No recipe'}, status=404)
         try:
             rating_instance = Rating.objects.get(
                 recipe=recipe,
@@ -93,6 +101,8 @@ class RatingAPI(generics.GenericAPIView):
 def get_all_rating(request, *args, **kwargs):
     recipe_id = kwargs['recipe_id']
     recipe = get_recipe_from_id(recipe_id)
+    if(not recipe):
+        return JsonResponse({'status': 'No recipe'}, status=404)
     context = {'ratings': []}
     rating_instances = Rating.objects.filter(
         recipe = recipe
@@ -109,6 +119,8 @@ def get_all_rating(request, *args, **kwargs):
 def get_total_rating(request, *args, **kwargs):
     recipe_id = kwargs['recipe_id']
     recipe = get_recipe_from_id(recipe_id)
+    if(not recipe):
+        return JsonResponse({'status': 'No recipe'}, status=404)
     rating_instances = Rating.objects.filter(
         recipe = recipe
     )
@@ -141,5 +153,5 @@ def get_total_rating(request, *args, **kwargs):
 #                 return JsonResponse({'rated': False}, safe=True)
 #         else:
 #             return JsonResponse({'rated': False}, safe=True)
-
+ 
 

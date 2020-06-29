@@ -7,7 +7,7 @@ def get_user_info(user_id):
     try:
         user_instance = User.objects.get(id=user_id)
     except User.DoesNotExist:
-        raise Http404("No User")
+        return None
     context = {}
     context['username'] = user_instance.username
     context['user_id'] = user_id

@@ -9,8 +9,10 @@ from social.models import Action
 from .recipe import create_recipe
 import json
 from .files import GCLOUD
-
-class RecipeAPI(generics.GenericAPIView):
+from .models import Recipe
+from django.views.decorators.csrf import csrf_exempt
+from .helpers import get_recipe_from_id
+class RecipeCreateAPI(generics.GenericAPIView):
     permission_classes = [
         permissions.IsAuthenticated,
     ]
@@ -26,3 +28,23 @@ class RecipeAPI(generics.GenericAPIView):
             target_id = recipe_id
         )
         return JsonResponse({'recipe_id': recipe_id})
+
+
+class RecipeAPI(generics.GenericAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+
+    def delete(self, *args, **kwargs):
+        user_id = self.request.user
+        recipe_id =  kwargs['recipe_id']
+        recipe = get_recipe_from_id(recipe_id)
+        if(not recipe):
+            return JsonResponse({'status': 'No recipe'}, status=404)
+        if(user_id != recipe.creator.id):
+            return JsonResponse({'status': 'Not Allowed'}, status=405)
+        recipe.delete()
+        return JsonResponse({'status': 'Deleted'})
+
+    def put(self, *args, **kwargs):
+        pass
