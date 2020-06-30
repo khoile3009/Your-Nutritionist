@@ -50,14 +50,4 @@ class GCLOUD:
 
 
 
-def __viable_file_name(bucket, file_name):
-    splitted_file_name = os.path.splittext(file_name)
-    if(bucket.get_blob(file_name) == None):
-        return file_name
-    else:
-        i = 1
-        while(bucket.get_blob(splitted_file_name[0] + '(' + str(i) + ')' + splitted_file_name[1]) != None):
-            i+=1
-    return splitted_file_name[0] + '(' + str(i) + ')' + splitted_file_name[1]
-
     
