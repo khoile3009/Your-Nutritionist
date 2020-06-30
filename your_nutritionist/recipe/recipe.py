@@ -101,7 +101,6 @@ def get_media_from_recipe(recipe_id):
 # /edit
 # ----------------------------------------------------------------------------------------
 def edit_recipe(recipe, recipe_instance):
-    recipe.name = 
     pass
 
 
