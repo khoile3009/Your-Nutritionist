@@ -47,6 +47,18 @@ class RecipeAPI(generics.GenericAPIView):
         return JsonResponse({'status': 'Deleted'})
 
     def put(self, *args, **kwargs):
+        print(self.request.POST)
+        user_id = self.request.user
+        recipe = json.loads(self.request.PUT['recipe'])
+        recipe_id =  kwargs['recipe_id']
+        recipe_instance = get_recipe_from_id(recipe_id)
+        if(not recipe_instance):
+            return JsonResponse({'status': 'No recipe'}, status=404)
+        if(user_id != recipe_instance.creator.id):
+            return JsonResponse({'status': 'Not Allowed'}, status=405)
+        edit_recipe(recipe, recipe_instance)
+
+    def get(self, *args, **kwargs):
         user_id = self.request.user
         recipe = json.loads(self.request.POST['recipe'])
         recipe_id =  kwargs['recipe_id']
@@ -55,4 +67,3 @@ class RecipeAPI(generics.GenericAPIView):
             return JsonResponse({'status': 'No recipe'}, status=404)
         if(user_id != recipe_instance.creator.id):
             return JsonResponse({'status': 'Not Allowed'}, status=405)
-        edit_recipe(recipe, recipe_instance)
