@@ -5,3 +5,4 @@ your-nutritionist/db.sqlite3
 your-nutritionist/__pycache__/
 
 *.pyc
+/*.pyc
