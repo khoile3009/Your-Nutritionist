@@ -5,12 +5,12 @@ import { IngredientFormSection, StepFormSection, ImageForm } from "../NewRecipe/
 import { Link } from "react-router-dom";
 
 const EditRecipe = (props) => {
-	console.log(props.recipe);
+	console.log(props);
 	return (
 		<>
 			<Row>
 				<Col>
-					<p className="create-recipe-title text-center"> Create New Recipe </p>
+					<p className="create-recipe-title text-center"> Edit Recipe </p>
 				</Col>
 			</Row>
 			<Form>
@@ -185,7 +185,7 @@ const EditRecipe = (props) => {
 				<hr></hr>
 
 				<Button className="createRecipeBtn" onClick={props.submitForm}>
-					Create
+					Save
 				</Button>
 				<Button className="cancelRecipeBtn" variant="light">
 					Cancel
