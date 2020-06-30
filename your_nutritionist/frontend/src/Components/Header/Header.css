@@ -1,77 +1,82 @@
 @import url("https://fonts.googleapis.com/css?family=Lobster");
-@import url("https://fonts.googleapis.com/css?family=Gothic + A1");
 @import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@600&display=swap");
 
 :root {
-    --header-color: #00acc1;
-    --dropdown-color: #00acc1;
+	--header-color: #00acc1;
+	--dropdown-color: #00acc1;
 }
 
 .color-nav {
-    background: #00acc1;
-    padding-top: 0rem;
-    padding-bottom: 0rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    font-family: "Gothic A1", sans-serif;
-    box-shadow: 0 8px 12px rgba(172, 172, 172, 0.19),
-        0 6px 6px rgba(0, 0, 0, 0.23);
+	background: #00bcd4;
+	padding-top: 0rem;
+	padding-bottom: 0rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	box-shadow: 0 8px 12px rgba(172, 172, 172, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.navbar-nav a.nav-link.active {
+	color: #3a3a3a !important;
+	border-bottom: solid 1.5pt #3a3a3ab0;
 }
 
 #brand-title a {
-    padding: 8pt;
-    color: white;
+	padding: 8pt;
+	color: white;
 }
 #brand-title:hover a {
-    color: white;
-    text-decoration: none;
-    border: solid 3px white;
-    text-shadow: -3px 2px 4px rgba(56, 56, 56, 0.83);
+	color: white;
+	text-decoration: none;
+	border: solid 2px white;
+	text-shadow: -3px 2px 4px rgba(56, 56, 56, 0.83);
+	box-shadow: -3px 2px 4px rgba(78, 78, 78, 0.83);
 }
 
 .navbar-brand {
-    font-family: "Lobster", cursive;
+	font-family: "Lobster", cursive;
 }
 
 #brand-color {
-    color: white;
+	color: white;
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color: rgb(255, 255, 255);
-    font-family: "Catamaran", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.25px;
+	color: rgb(255, 255, 255);
+	font-family: "Catamaran", sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 0.25px;
+	padding: 0.25rem;
+	margin: 1rem;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-    color: rgb(228, 228, 228);
+	color: rgb(228, 228, 228);
 }
 
 .navbar-light .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 .navbar-nav .show.nav-item .dropdown-toggle {
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    text-transform: uppercase;
-    display: inline-block;
+	font-weight: bold;
+	color: rgb(255, 255, 255);
+	text-transform: uppercase;
+	display: inline-block;
 }
 
 .navbar-nav .nav-item .dropdown-toggle {
-    font-weight: bold;
-    color: rgb(255, 255, 255) !important;
-    text-transform: uppercase;
-    display: inline-block;
+	font-weight: bold;
+	color: rgb(255, 255, 255) !important;
+	text-transform: uppercase;
+	display: inline-block;
 }
 
 .navbar-nav .dropdown a.dropdown-item {
-    color: var(--dropdown-color);
-    font-weight: bold;
-    font-family: "Catamaran", sans-serif;
+	color: var(--dropdown-color);
+	font-weight: bold;
+	font-family: "Catamaran", sans-serif;
 }
 
-.show.dropdown.nav-item {
-    padding-bottom: 1rem;
-}
+/* .show.dropdown.nav-item {
+	padding-bottom: 1rem;
+} */
