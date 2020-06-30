@@ -64,3 +64,20 @@
 .col-1 {
 	padding-left: 1rem;
 }
+
+.custom-file-label p {
+	padding-top: 3pt;
+	margin: 0;
+}
+
+.media-input.form-control {
+	font-size: 10pt !important;
+}
+
+button.circle-button.center.btn {
+	font-size: 18pt;
+	height: 28pt;
+	width: 28pt;
+	font-weight: 700;
+	padding: none;
+}

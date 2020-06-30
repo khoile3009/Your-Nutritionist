@@ -2,104 +2,104 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
 
 .recipe-card {
-    height: 250px;
-    max-width: 600px;
+	height: 250px;
+	max-width: 600px;
 
-    background-position: 50%;
-    display: flex;
-    flex-direction: column-reverse;
-    background-size: cover;
-    background-repeat: no-repeat;
+	background-position: 50%;
+	display: flex;
+	flex-direction: column-reverse;
+	background-size: cover;
+	background-repeat: no-repeat;
 
-    /* font-family: "Anton", sans-serif; */
-    font-family: "Noto Sans", sans-serif;
-    border-radius: 12px;
-    margin: 1rem;
-    font-weight: normal;
-    box-shadow: 4px 2px 6px 2px rgba(204, 204, 204, 0.67);
+	/* font-family: "Anton", sans-serif; */
+	font-family: "Noto Sans", sans-serif;
+	border-radius: 12px;
+	margin: 1rem;
+	font-weight: normal;
+	box-shadow: 4px 2px 6px 2px rgba(204, 204, 204, 0.67);
 }
 
 .recipe-row .recipe-info {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.739);
-    height: 42pt;
-    color: rgb(0, 87, 128);
-    border-radius: 0px 0px 12px 12px;
-    /* text-transform: capitalize; */
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.739);
+	height: 42pt;
+	color: rgb(0, 87, 128);
+	border-radius: 0px 0px 12px 12px;
+	/* text-transform: capitalize; */
 }
 
 .recipe-name {
-    padding: 5px 5px;
-    font-size: 10px;
-    color: rgb(255, 255, 255);
-    text-shadow: 2px 2px 5px rgb(34, 34, 34);
-    text-transform: uppercase;
+	padding: 5px 5px;
+	font-size: 10pt;
+	color: rgb(255, 255, 255);
+	text-shadow: 2px 2px 5px rgb(34, 34, 34);
+	text-transform: uppercase;
 }
 
 .info {
-    font-size: 14px;
-    margin: auto 0;
+	font-size: 14px;
+	margin: auto 0;
 }
 
 @keyframes highlight {
-    0% {
-        box-shadow: 4px 2px 6px 2px rgba(204, 204, 204, 0.67);
-    }
-    100% {
-        box-shadow: 6px 4px 6px 4px rgba(151, 151, 151, 0.67);
-    }
+	0% {
+		box-shadow: 4px 2px 6px 2px rgba(204, 204, 204, 0.67);
+	}
+	100% {
+		box-shadow: 6px 4px 6px 4px rgba(151, 151, 151, 0.67);
+	}
 }
 
 .info-container {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    margin-bottom: 1rem;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 380px) {
-    .recipe-card {
-        height: 200px;
-    }
-    .info {
-        font-size: 12px;
-    }
+	.recipe-card {
+		height: 200px;
+	}
+	.info {
+		font-size: 12px;
+	}
 
-    .recipe-info {
-        height: 30px;
-    }
-    .recipe-name {
-        font-size: 18px;
-    }
+	.recipe-info {
+		height: 30px;
+	}
+	.recipe-name {
+		font-size: 18px;
+	}
 }
 
 @media screen and (min-width: 1300px) {
-    .recipe-card {
-        height: 200px;
-    }
-    .info {
-        font-size: 16px;
-    }
+	.recipe-card {
+		height: 200px;
+	}
+	.info {
+		font-size: 16px;
+	}
 
-    .recipe-info {
-        height: 30px;
-    }
-    .recipe-name {
-        font-size: 18px;
-    }
+	.recipe-info {
+		height: 30px;
+	}
+	.recipe-name {
+		font-size: 18px;
+	}
 }
 
 @media screen and (min-width: 1600px) {
-    .recipe-card {
-        height: 250px;
-    }
-    .info {
-        font-size: 18px;
-    }
-    .recipe-info {
-        height: 40px;
-    }
-    .recipe-name {
-        font-size: 20px;
-    }
+	.recipe-card {
+		height: 250px;
+	}
+	.info {
+		font-size: 18px;
+	}
+	.recipe-info {
+		height: 40px;
+	}
+	.recipe-name {
+		font-size: 20px;
+	}
 }

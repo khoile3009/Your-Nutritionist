@@ -21,6 +21,35 @@ const NewRecipe = (props) => {
 				</Form.Group>
 				<Row>
 					<Col>
+						<Form.Label>
+							<p className="bold">Number of serving</p>
+						</Form.Label>
+					</Col>
+					<Col>
+						<Form.Label>
+							<p className="bold">Prep Time (mins)</p>
+						</Form.Label>
+					</Col>
+					<Col>
+						<Form.Label>
+							<p className="bold">Cook Time (mins)</p>
+						</Form.Label>
+					</Col>
+				</Row>
+				<Row>
+					<Col>
+						<Form.Control type="number" placeholder="E.g. 1 person" name="number_person" onChange={props.handleChangeSameName} value={props.number_person} />
+					</Col>
+					<Col>
+						<Form.Control type="number" placeholder="E.g. 1" name="prep_time" onChange={props.handleChangeSameName} value={props.prep_time} />
+					</Col>
+					<Col>
+						<Form.Control type="number" placeholder="E.g. 1" name="cook_time" onChange={props.handleChangeSameName} value={props.cook_time} />
+					</Col>
+				</Row>
+				<br></br>
+				{/* <Row>
+					<Col>
 						<Form.Group>
 							<Form.Label>
 								<p className="bold">Number of serving</p>
@@ -44,13 +73,17 @@ const NewRecipe = (props) => {
 							<Form.Control type="number" placeholder="E.g. 1" name="cook_time" onChange={props.handleChangeSameName} value={props.cook_time} />
 						</Form.Group>
 					</Col>
+				</Row> */}
+				<Row>
+					<Form.Group>
+						<Form.Label>
+							<p className="bold">Description</p>
+						</Form.Label>
+					</Form.Group>
 				</Row>
-				<Form.Group>
-					<Form.Label>
-						<p className="bold">Description</p>
-					</Form.Label>
-					<Form.Control as="textarea" placeholder="Your description goes here" name="description" value={props.description} onChange={props.handleChangeSameName} rows="3" />
-				</Form.Group>
+				<Row>
+					<Form.Control style={{ padding: "1rem" }} as="textarea" placeholder="Your description goes here" name="description" value={props.description} onChange={props.handleChangeSameName} rows="2" />
+				</Row>
 
 				<hr></hr>
 

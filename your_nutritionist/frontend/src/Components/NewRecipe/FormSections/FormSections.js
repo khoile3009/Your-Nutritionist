@@ -15,6 +15,7 @@ const IngredientFormSection = (props) => {
 							props.handleChangeIngredientSectionName(props.section_index, event);
 						}}
 					></Form.Control>
+					<br></br>
 				</Col>
 				<Col xs="1">
 					<Button
@@ -70,6 +71,7 @@ const StepFormSection = (props) => {
 							props.handleChangeStepSectionName(props.section_index, event);
 						}}
 					></Form.Control>
+					<br></br>
 				</Col>
 				<Col xs="1">
 					<Button
@@ -159,7 +161,7 @@ const ImageForm = (props) => {
 				<option value={3}>Video Upload</option>
 			</Form.Control>
 			<Form.Control className="name-input" type="text" placeholder="Title" name="name" value={props.media.name} onChange={props.handleChangeMediaName} />
-			{props.media.type == 0 || props.media.type == 2 ? <Form.Control name="url" placeholder="URL" value={props.media.url} onChange={props.handleChangeMediaUrl} /> : <Form.File name="myImage" accept={props.media.type == 1 ? "image/x-png,image/gif,image/jpeg" : "video/mp4,video/m4v"} onChange={props.handleChangeMediaFile} label={<p style={{ overflowX: "hidden" }}>{props.media.label}</p>} custom />}
+			{props.media.type == 0 || props.media.type == 2 ? <Form.Control name="url" placeholder="URL" value={props.media.url} onChange={props.handleChangeMediaUrl} /> : <Form.File name="myImage" style={{ padding: "0" }} accept={props.media.type == 1 ? "image/x-png,image/gif,image/jpeg" : "video/mp4,video/m4v"} onChange={props.handleChangeMediaFile} label={<p style={{ overflowX: "hidden" }}>{props.media.label}</p>} custom />}
 
 			<Button variant="secondary" onClick={props.deleteMedia}>
 				X
