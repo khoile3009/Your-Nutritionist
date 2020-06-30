@@ -54,4 +54,4 @@ class RecipeAPI(generics.GenericAPIView):
             return JsonResponse({'status': 'No recipe'}, status=404)
         if(user_id != recipe.creator.id):
             return JsonResponse({'status': 'Not Allowed'}, status=405)
-        
+        edit_recipe(recipe)
