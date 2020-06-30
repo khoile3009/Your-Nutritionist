@@ -6,4 +6,4 @@ def get_user_from_id(user_id):
     try: 
         return User.objects.get(id=user_id)
     except User.DoesNotExist:
-        raise Http404('No User')
+        return None

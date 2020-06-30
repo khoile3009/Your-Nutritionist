@@ -13,6 +13,8 @@ def user_info_view(request, *args, **kwargs):
     if(request.method == 'GET'):
         user_id = kwargs['user_id']
         context = get_user_info(user_id)
+        if(not context):
+            return JsonResponse({'status': 'No user'}, status=404)
         return JsonResponse(context,safe=True)
 
 def user_recipes_view(request, *args, **kwargs):

@@ -17,6 +17,8 @@ class ActionAPI(generics.GenericAPIView):
     def get(self, *args, **kwargs):
         user_id = kwargs['user_id']
         user = get_user_from_id(user_id=user_id)
+        if(not user):
+            return JsonResponse({'status': 'No user'}, status=404)
         context = {'actions': []}
         action_instances = Action.objects.filter(user = user)
         for action_instance in action_instances:
