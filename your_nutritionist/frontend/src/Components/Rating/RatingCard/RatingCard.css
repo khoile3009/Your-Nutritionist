@@ -1,8 +1,15 @@
-.rating-card{
-    background-color: rgb(249, 249, 249);
-    padding: 1rem;
+.rating-card {
+	padding: 1rem;
+	margin: 1rem;
+	border: 1px solid rgb(228, 228, 228);
+	border-radius: 25px;
+	font-size: 14pt;
+}
+
+.rating-card a {
+	color: #0097a7;
 }
 
 #bold {
-    font-weight: bold;
+	font-weight: bold;
 }

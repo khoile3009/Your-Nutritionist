@@ -4,7 +4,7 @@ import NewRecipe from '../../Components/NewRecipe/NewRecipe';
 import axios from '../../axios-orders';
 import SigninRequired from '../SigninRequired/SigninRequired';
 import { connect } from 'react-redux';
-import {Container} from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
 // import {Route} from 'react-router-dom';
 class NewRecipeContainer extends Component {
@@ -28,7 +28,7 @@ class NewRecipeContainer extends Component {
         this.addStep = this.addStep.bind(this)
         this.handleChangeStepSectionName = this.handleChangeStepSectionName.bind(this)
         this.handleChangeSameName = this.handleChangeSameName.bind(this)
-        
+
         this.handleChangeStepDirection = this.handleChangeStepDirection.bind(this)
         this.handleChangeStepMediaId = this.handleChangeStepMediaId.bind(this)
         this.handleChangeStepTimestamp = this.handleChangeStepTimestamp.bind(this)
@@ -39,7 +39,7 @@ class NewRecipeContainer extends Component {
         this.handleChangeMediaType = this.handleChangeMediaType.bind(this)
         this.addMedia = this.addMedia.bind(this)
         this.deleteMedia = this.deleteMedia.bind(this)
-        
+
         this.state = {
             name: '',
             description: "",
@@ -71,14 +71,14 @@ class NewRecipeContainer extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         axios.get('api/recipe/unit')
-        .then(
-            (response) => {
-                this.setState({units: response.data.units})
+            .then(
+                (response) => {
+                    this.setState({ units: response.data.units })
 
-            }
-        )
+                }
+            )
     }
 
     handleChangeSameName = (event) => {
@@ -120,7 +120,7 @@ class NewRecipeContainer extends Component {
                         fileId: media.fileId
                     }
                 }
-                )
+            )
 
         }))
         console.log(JSON.stringify({
@@ -140,7 +140,7 @@ class NewRecipeContainer extends Component {
                         fileId: media.fileId
                     }
                 }
-                )
+            )
 
         }))
         data = this.add_images_to_form_data(data, this.state.files)
@@ -194,7 +194,7 @@ class NewRecipeContainer extends Component {
     handleChangeIngredient = (section_index, ingredient_index, event) => {
         let tmp = this.state.ingredient_sections
         tmp[section_index].ingredients[ingredient_index] = event.target.value
-        this.setState({ingredient_sections: tmp})
+        this.setState({ ingredient_sections: tmp })
     }
 
     deleteIngredientSection = (section_index) => {
@@ -288,21 +288,23 @@ class NewRecipeContainer extends Component {
 
     //Image handler 
     handleChangeMediaFile = (event, index) => {
-        console.log(this.state.files)
-        let medias = this.state.medias
-        let files = this.state.files
-        if(medias[index].fileId === -1){
-            files.push(event.target.files[0])
-            medias[index].fileId = files.length - 1       
+        if (event.target.files && event.target.files.length !== 0) {
+            let medias = this.state.medias
+            let files = this.state.files
+            if (medias[index].fileId === -1) {
+                files.push(event.target.files[0])
+                medias[index].fileId = files.length - 1
+            }
+            else {
+                files[medias[index].fileId] = event.target.files[0]
+            }
+            medias[index].label = event.target.files[0].name
+            this.setState({
+                files: files,
+                medias: medias
+            })
         }
-        else{
-            files[medias[index].fileId] = event.target.files[0]
-        }
-        medias[index].label = event.target.files[0].name
-        this.setState({ 
-            files: files,
-            medias: medias
-        })
+
     }
 
     handleChangeMediaUrl = (event, index) => {
@@ -320,14 +322,14 @@ class NewRecipeContainer extends Component {
             fileId: -1,
             label: 'Choose an image'
         }
-        
-        this.setState({medias:tmp})
+
+        this.setState({ medias: tmp })
     }
 
     handleChangeMediaName = (event, index) => {
         let tmp = this.state.medias
         tmp[index].name = event.target.value
-        this.setState({medias:tmp})
+        this.setState({ medias: tmp })
     }
 
 
@@ -347,11 +349,11 @@ class NewRecipeContainer extends Component {
     deleteMedia = (index) => {
         let medias = this.state.medias;
         let files = this.state.files;
-        if(medias[index].fileId !== -1){
+        if (medias[index].fileId !== -1) {
             files = this.removeElementAtIndex(files, medias[index].fileId)
         }
         medias = this.removeElementAtIndex(medias, index)
-        this.setState({ medias: medias, files: files }, ()=>{console.log(this.state)})
+        this.setState({ medias: medias, files: files }, () => { console.log(this.state) })
     }
 
 
@@ -369,7 +371,7 @@ class NewRecipeContainer extends Component {
                 deleteIngredient={this.deleteIngredient}
                 deleteIngredientSection={this.deleteIngredientSection}
                 handleChangeIngredientSectionName={this.handleChangeIngredientSectionName}
-                handleChangeIngredient = {this.handleChangeIngredient}
+                handleChangeIngredient={this.handleChangeIngredient}
 
                 addStepSection={this.addStepSection}
                 addStep={this.addStep}

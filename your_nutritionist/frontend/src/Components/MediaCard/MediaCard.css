@@ -3,60 +3,79 @@
     --media-card-width: 100%;
 }
 
+@media (min-width: 300px) {
+    :root {
+        --media-card-offset: 0px;
+        --media-card-width: 100vw;
+    }
+    .media-card {
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
 
 @media (min-width: 576px) {
-    :root{
+    :root {
         --media-card-offset: 0px;
         --media-card-width: 100%;
     }
 }
 
-
 @media (min-width: 768px) {
-    :root{
+    :root {
         --media-card-offset: 50px;
         --media-card-width: 80%;
     }
 }
 
-
 @media (min-width: 992px) {
-    :root{
+    :root {
         --media-card-offset: 100px;
         --media-card-width: 70%;
     }
 }
 
-
 @media (min-width: 1200px) {
-    :root{
+    :root {
         --media-card-offset: 150px;
         --media-card-width: 60%;
     }
 }
 
-
-.media-card{ 
-    left: calc(50% - min(var(--media-card-width), 1140px) / 2);
-    width: var(--media-card-width);
-    height: 40vh;
-    max-width: 100%;
-    background-color: black;
-    align-items: center;
+.media-card {
+    height: 80vh;
+    max-height: 100%;
+    background-color: rgb(185, 185, 185);
     position: absolute;
     transition: 0.5s;
     background-size: cover;
     box-shadow: 2px 2px gray;
+    width: 100%;
+    top: 3%;
+    left: 8%;
+    background-size: cover;
+    border-radius: 12px;
 }
 
-.left-card{
-    left: calc(50% - min(var(--media-card-width), 1140px) / 2 - var(--media-card-offset));
-    height: 35vh;
+.left-card {
+    position: absolute;
+    top: 5%;
+    left: calc(
+        60% - min(var(--media-card-width), 1140px) / 2 -
+            var(--media-card-offset)
+    );
+    height: 50vh;
 }
 
-.right-card{
-    left: calc(50% - min(var(--media-card-width), 1140px) / 2 + var(--media-card-offset));
-    height: 35vh;
+.right-card {
+    position: absolute;
+    top: 5%;
+    left: calc(
+        10% - min(var(--media-card-width), 1140px) / 2 +
+            var(--media-card-offset)
+    );
+    height: 50vh;
 }
 /* @media (min-width: 576px) {
     .media-card{
@@ -87,6 +106,3 @@
         width: var(--width-xl);
     }
  } */
-
-
-

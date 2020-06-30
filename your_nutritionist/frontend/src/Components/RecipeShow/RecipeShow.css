@@ -56,3 +56,13 @@ button {
     padding-top: 1rem;
 }
 
+.recipe {
+    padding: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border-radius: 25px;
+}
+
+.recipe hr {
+    margin-right: 1rem;
+}
