@@ -65,6 +65,15 @@
 	padding-left: 1rem;
 }
 
+
+/* edit this for me  */
+.url-button {
+	margin-left: 30px;
+	max-width: 300pt;
+	height: 15pt;
+	overflow: hidden;
+}
+
 .custom-file-label p {
 	padding-top: 3pt;
 	margin: 0;
