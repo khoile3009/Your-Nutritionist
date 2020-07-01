@@ -128,13 +128,13 @@
 }
 
 .color-nav input[type="text"]:focus::-webkit-input-placeholder {
-	color: #515151;
+	color: transparent;
 }
 .color-nav input[type="text"]:focus::-moz-placeholder {
-	color: #515151;
+	color: transparent;
 }
 .color-nav input[type="text"]:focus::-ms-input-placeholder {
-	color: #515151;
+	color: transparent;
 }
 .color-nav input[type="text"]::-webkit-input-placeholder {
 	color: #f2f2f2;
