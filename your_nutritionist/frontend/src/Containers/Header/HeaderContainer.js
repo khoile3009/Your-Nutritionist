@@ -4,7 +4,7 @@ import ModalContainer from '../Authentication/ModalContainer'
 import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
-
+import queryString from 'query-string'
 import {UserNav, AuthenticationNav} from '../../Components/Header/RightNav'
 
 class HeaderContainer extends Component {
@@ -16,6 +16,11 @@ class HeaderContainer extends Component {
         this.showRegisterModal = this.showRegisterModal.bind(this)
         this.showSigninModal = this.showSigninModal.bind(this)
         this.toCreateRecipe = this.toCreateRecipe.bind(this)
+        this.onChangeSearchBar = this.onChangeSearchBar.bind(this)
+        this.searchSubmit = this.searchSubmit.bind(this)
+        this.state = {
+            search_input : ''
+        }
         // this.state = {
         //     modalShow: false,
         //     modalType: 1
@@ -85,6 +90,16 @@ class HeaderContainer extends Component {
         event.preventDefault()
         this.props.history.push('/recipe/create')
     }
+
+    onChangeSearchBar = (event) => {
+        this.setState({search_input: event.target.value})
+    }
+
+    searchSubmit = (event) => {
+        event.preventDefault()
+        this.props.history.push({pathname: '/search', search: queryString.stringify({query: this.state.search_input, page: 1})})
+    }
+
     render() {
         return (
             <>
@@ -106,6 +121,9 @@ class HeaderContainer extends Component {
                             signout={() => {this.props.signout(this.props.token)}}
                         ></UserNav>
                     }
+                    search_input={this.state.search_input}
+                    onChangeSearchBar={this.onChangeSearchBar}
+                    searchSubmit={this.searchSubmit}
                     
 
                 ></Header>

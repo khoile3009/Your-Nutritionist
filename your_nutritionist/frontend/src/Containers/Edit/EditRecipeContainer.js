@@ -109,6 +109,8 @@ class EditRecipeContainer extends Component {
 
 	}
 
+
+
 	initState = (recipe, medias) => {
 		this.media_id_map = medias.map((media) => {
 			return media.mediaId;

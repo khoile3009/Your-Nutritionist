@@ -25,12 +25,16 @@ const Header = (props) => (
 				<Nav.Link onClick={props.toCreateRecipe} href="/recipe/create">
 					Create Recipe
 				</Nav.Link>
-				<div className="searchBar">
-					<input type="text" name="" placeholder="Search..."></input>
-					<div>
-						<div className="search"></div>
+				<form onSubmit={props.searchSubmit}>
+					<div className="searchBar">
+						<input type="text" name="" placeholder="Search..." value={props.search_input} onChange={props.onChangeSearchBar}></input>
+						<div>
+							<button className="search" onClick="search" type='submit'></button>
+						</div>
+
 					</div>
-				</div>
+				</form>
+
 			</Nav>
 			{props.rightNav}
 		</Navbar.Collapse>
