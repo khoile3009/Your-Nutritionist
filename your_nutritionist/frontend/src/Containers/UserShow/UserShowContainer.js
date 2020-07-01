@@ -135,9 +135,9 @@ class UserShowContainer extends Component {
 				<hr></hr>
 				<p className="subtitle">Recipes</p>
 				{this.state.user_recipes ? <RecipeList recipes={this.state.user_recipes} page={this.state.page} toPage={this.toPage}></RecipeList> : <h3 style={{ color: "#757575" }}>No recipes</h3>}
-				<hr></hr>
+				{/* <hr></hr>
 				<p className="subtitle">Actions</p>
-				{this.props.token ? this.state.user_actions ? <ActionList actions={this.state.user_actions}></ActionList> : <h1>No action recently</h1> : <h1>You need to sign in to see this content</h1>}
+				{this.props.token ? this.state.user_actions ? <ActionList actions={this.state.user_actions}></ActionList> : <h1>No action recently</h1> : <h1>You need to sign in to see this content</h1>} */}
 			</Container>
 		) : (
 			<NullPage></NullPage>

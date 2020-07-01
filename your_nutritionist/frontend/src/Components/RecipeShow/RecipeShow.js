@@ -19,6 +19,7 @@ const RecipeShow = (props) => {
 							margin: "1rem 0 1rem 0",
 							fontFamily: "Catamaran",
 							background: "teal",
+							float: "right",
 						}}
 					>
 						🖉 Edit Recipe
@@ -34,8 +35,7 @@ const RecipeShow = (props) => {
 			<Row>
 				<Col>
 					<p className="subtitle text-left">
-						{props.recipe.number_person} servings | Prep Time: {props.recipe.prep_time} minutes | Cook Time:{" "}
-						{props.recipe.cook_time} minutes
+						{props.recipe.number_person} servings | Prep Time: {props.recipe.prep_time} minutes | Cook Time: {props.recipe.cook_time} minutes
 					</p>
 				</Col>
 			</Row>
@@ -50,10 +50,7 @@ const RecipeShow = (props) => {
 					<IngredientSections ingredient_sections={props.recipe.ingredient_sections}></IngredientSections>
 				</Col>
 				<Col xs={8}>
-					<StepsSections
-						step_sections={props.recipe.step_sections}
-						goToSecondOnMedia={props.goToSecondOnMedia}
-					></StepsSections>
+					<StepsSections step_sections={props.recipe.step_sections} goToSecondOnMedia={props.goToSecondOnMedia}></StepsSections>
 				</Col>
 			</Row>
 		</>
