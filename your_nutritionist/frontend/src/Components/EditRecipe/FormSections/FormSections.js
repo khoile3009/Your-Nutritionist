@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, FormGroup, Col, Row, Button } from "react-bootstrap";
-import "./FormSections.css";
+import "../../NewRecipe/FormSections/FormSections.css";
 
 const IngredientFormSection = (props) => {
 	return (
@@ -137,8 +137,8 @@ const StepForm = (props) => {
 				<option value="-1">Choose video...</option>
 				{props.videoOptions
 					? props.videoOptions.map((videoOption) => {
-							return <option value={videoOption.index}>{videoOption.name}</option>;
-					  })
+						return <option value={videoOption.index}>{videoOption.name}</option>;
+					})
 					: null}
 			</Form.Control>
 			<Form.Control style={{ height: 38 }} type="text" placeholder="Step" name="step" value={props.step.direction} onChange={props.handleChangeStepDirection} as="textarea" rows="1" />
@@ -152,14 +152,37 @@ const StepForm = (props) => {
 const ImageForm = (props) => {
 	return (
 		<div className="flexbox">
-			<Form.Control style={{ fontSize: 10, height: 38 }} className="media-input" as="select" onChange={props.handleChangeMediaType} value={props.media.type}>
-				<option value={0}>Image URL</option>
-				<option value={1}>Image Upload</option>
-				<option value={2}>Youtube URL</option>
-				<option value={3}>Video Upload</option>
-			</Form.Control>
-			<Form.Control className="name-input" type="text" placeholder="Title" name="name" value={props.media.name} onChange={props.handleChangeMediaName} />
-			{props.media.type == 0 || props.media.type == 2 ? <Form.Control name="url" placeholder="URL" value={props.media.url} onChange={props.handleChangeMediaUrl} /> : <Form.File name="myImage" accept={props.media.type == 1 ? "image/x-png,image/gif,image/jpeg" : "video/mp4,video/m4v"} onChange={props.handleChangeMediaFile} label={<p style={{ overflowX: "hidden" }}>{props.media.label}</p>} custom />}
+			{props.media.editing
+				? <>
+					<Form.Control style={{ fontSize: 10, height: 38 }} className="media-input" as="select" onChange={props.handleChangeMediaType} value={props.media.type}>
+						<option value={0}>Image URL</option>
+						<option value={1}>Image Upload</option>
+						<option value={2}>Youtube URL</option>
+						<option value={3}>Video Upload</option>
+					</Form.Control>
+					<Form.Control className="name-input" type="text" placeholder="Title" name="name" value={props.media.name} onChange={props.handleChangeMediaName} />
+					{
+						props.media.type == 0 || props.media.type == 2
+							? <Form.Control name="url" placeholder="URL" value={props.media.url} onChange={props.handleChangeMediaUrl} />
+							: <Form.File name="myImage"
+								accept={
+									props.media.type == 1
+										? "image/x-png,image/gif,image/jpeg"
+										: "video/mp4,video/m4v"
+								}
+								onChange={props.handleChangeMediaFile}
+								label={<p style={{ overflowX: "hidden" }}>{props.media.label}</p>
+								}
+								custom />
+					}
+				</>
+				: <>
+					<p>{props.media.name}</p>
+					<a className='url-button' href={props.media.url} target="_blank">{props.media.url}</a>
+					<Button onClick={props.editMedia}>🖉edit</Button>
+				</>
+			}
+
 
 			<Button variant="secondary" onClick={props.deleteMedia}>
 				X

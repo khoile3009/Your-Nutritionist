@@ -39,7 +39,6 @@ def set_user_introduction(request, *args, **kwargs):
     if(request.method == 'POST'):
         user_id = kwargs['user_id']
         data = json.loads(request.body)
-        print(data)
         create_user_introduction(user_id, data['introduction'])
         return JsonResponse({'status': 'ok'}, safe=True)
 

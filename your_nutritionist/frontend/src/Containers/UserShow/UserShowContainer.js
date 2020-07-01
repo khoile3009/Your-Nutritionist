@@ -40,7 +40,7 @@ class UserShowContainer extends Component {
                 (response) => {
                     this.setState({ user_info: response.data })
                     this.getUserRecipes(page)
-                    this.getUserActions()
+                    // this.getUserActions()
                 }
             )
             .catch(
@@ -161,14 +161,14 @@ class UserShowContainer extends Component {
                 }
                 <hr></hr>
                 <p className='subtitle'>Actions</p>
-                {this.props.token
+                {/* {this.props.token
                     ? this.state.user_actions
                         ? <ActionList
                             actions={this.state.user_actions}
                         ></ActionList>
                         : <h1>No action recently</h1>
                     : <h1>You need to sign in to see this content</h1>
-                }
+                } */}
             </Container>
             : <NullPage></NullPage>
     }

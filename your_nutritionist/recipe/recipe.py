@@ -81,6 +81,7 @@ def get_media_from_recipe(recipe_id):
         if(media_instance.media_type in [0,2]):
             context['medias'].append(
                 {
+                    'name': media_instance.name,
                     'url': media_instance.url,
                     'mediaId': media_instance.id,
                     'type': media_instance.media_type
@@ -89,14 +90,25 @@ def get_media_from_recipe(recipe_id):
         elif(media_instance.media_type in [1,3]):
             context['medias'].append(
                 {
+                    'name': media_instance.name,
                     'url': GCLOUD.get_signed_url(media_instance.url),
                     'mediaId': media_instance.id,
                     'type': media_instance.media_type
                 }
             )
-    print(context)
     return context
-
+# ----------------------------------------------------------------------------------------
+# /get
+# ---------------------------------------------------------------------------------------
+def get_recipe(recipe_instance):
+    context = {}
+    context['name'] = recipe_instance.name
+    context['create_date'] = recipe_instance.created_at.date()
+    context['description'] = recipe_instance.description
+    context['number_person'] = recipe_instance.number_person 
+    context['prep_time'] = recipe_instance.prep_time
+    context['cook_time'] = recipe_instance.cook_time
+    
 # ----------------------------------------------------------------------------------------
 # /edit
 # ----------------------------------------------------------------------------------------
@@ -220,17 +232,14 @@ def get_recipes_from_user_id(user_id, block):
         recipes_block = recipes[block * 50: min(len(recipes), block * 50 + 50)]
     else:
         recipes_block = []
-    print(len(recipes_block))
     return get_recipes_content(recipes_block)
 
 def get_recipes_from_query(query, block):
-    print(block)
     recipe_ids = Search.search(query)
     if(block * 50 < len(recipe_ids)):
         recipe_ids_block = recipe_ids[block * 50: min(len(recipe_ids), block * 50 + 50)]
     else:
         recipe_ids_block = []
-    print(recipe_ids_block)
     recipes = Recipe.objects.filter(id__in=recipe_ids_block)
 
     return get_recipes_content(recipes)

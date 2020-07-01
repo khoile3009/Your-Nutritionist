@@ -1,58 +1,75 @@
-.amount-input{
-    width: 100px;
+.amount-input {
+	width: 100px;
 }
 
-.unit-input{
-    width: 100px;
+.unit-input {
+	width: 100px;
 }
 
-.timestamp-input{
-    width: 50px;
+.timestamp-input {
+	width: 50px;
 }
 
-.mediaId-input{
-    width: 150px;
+.mediaId-input {
+	width: 150px;
 }
 
-.media-input{
-    width: 100px;
+.media-input {
+	width: 100px;
 }
 
-.name-input{
-    width: 150px;
+.name-input {
+	width: 150px;
 }
 
 @media screen and (min-width: 920px) {
-    .amount-input{
-        width: 150px
-    }
-    
-    .unit-input{
-        width: 150px;
-    }
+	.amount-input {
+		width: 150px;
+	}
 
-    .timestamp-input{
-        width: 150px;
-    }
-    
-    .mediaId-input{
-        width: 200px;
-    }
-    
-    .media-input{
-        width: 150px;
-    }
-    
-    .name-input{
-        width: 200px;
-    }
+	.unit-input {
+		width: 150px;
+	}
+
+	.timestamp-input {
+		width: 150px;
+	}
+
+	.mediaId-input {
+		width: 200px;
+	}
+
+	.media-input {
+		width: 150px;
+	}
+
+	.name-input {
+		width: 200px;
+	}
 }
 
 ::placeholder {
-    font-weight: lighter;
-    color: rgb(248, 248, 248);
+	font-weight: lighter;
+	color: rgb(248, 248, 248);
 }
 
 .col-11 {
-    padding: 0;
+	padding: 0;
+}
+
+.flexbox .form-control {
+	margin-right: 12pt;
+}
+
+.col-1 {
+	padding-left: 1rem;
+}
+
+
+/* edit this for me  */
+.url-button {
+	margin-left: 30px;
+	max-width: 300pt;
+	height: 15pt;
+	overflow: hidden;
 }

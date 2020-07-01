@@ -14,7 +14,6 @@ def recipe_view(request,*args, **kwargs):
     if(request.method == 'GET'):
         recipe_id = kwargs['recipe_id']
         context = get_recipe_info(recipe_id=recipe_id)
-        print(context)
     # ingredient_sections = []
     # for section in sections:
         if(not context):
@@ -25,7 +24,6 @@ def recipe_view(request,*args, **kwargs):
 
 def get_recipes_views(request,*args, **kwargs):
     if(request.method == 'GET'):
-        print(request.GET)
         if(request.GET.get('user_id') != None):
             user_id = int(request.GET['user_id'])
             context = get_recipes_from_user_id(user_id, int(request.GET.get('block')))

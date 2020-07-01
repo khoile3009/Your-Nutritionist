@@ -102,7 +102,7 @@ class MediaShowContainer extends Component {
                 className='trigger-field' 
                 onClick={this.rotateMediaLeft}
                 >
-
+                &larr;
                 </div>
             </div>
             <div className='left-media-cover'
@@ -116,6 +116,7 @@ class MediaShowContainer extends Component {
                 className='trigger-field' 
                 onClick={this.rotateMediaRight} 
                 >
+                    &rarr;
                 </div>
             </div>
             <div className='media-container'>
