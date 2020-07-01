@@ -81,3 +81,12 @@ button.circle-button.center.btn {
 	font-weight: 700;
 	padding: none;
 }
+
+
+/* edit this for me  */
+.url-button {
+	margin-left: 30px;
+	max-width: 300pt;
+	height: 15pt;
+	overflow: hidden;
+}

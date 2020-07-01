@@ -8,6 +8,7 @@ import { Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import MediaShowContainer from "../MediaShow/MediaShowContainer";
 import NewRecipeContainer from "../NewRecipe/NewRecipeContainer";
+import NotAuthorizedPage from "../../Components/NotAuthorizedPage/NotAuthorizedPage";
 
 class EditRecipeContainer extends Component {
 	constructor(props) {
@@ -40,35 +41,121 @@ class EditRecipeContainer extends Component {
 		this.handleChangeMediaType = this.handleChangeMediaType.bind(this);
 		this.addMedia = this.addMedia.bind(this);
 		this.deleteMedia = this.deleteMedia.bind(this);
-
+		this.editMedia = this.editMedia.bind(this);
+		this.initState = this.initState.bind(this);
 		this.state = {
-			name: "",
-			description: "",
-			number_person: 0,
-			prep_time: 0,
-			cook_time: 0,
-			ingredient_sections: [
-				{
-					name: "",
-					ingredients: [""],
-				},
-			],
-			step_sections: [
-				{
-					name: "",
-					steps: [
-						{
-							timestamp: 0,
-							mediaId: -1,
-							direction: "",
-						},
-					],
-				},
-			],
-			medias: [],
-			files: [],
-			units: [],
+			// name: "",
+			// description: "",
+			// number_person: 0,
+			// prep_time: 0,
+			// cook_time: 0,
+			// ingredient_sections: [
+			// 	{
+			// 		name: "",
+			// 		ingredients: [""],
+			// 	},
+			// ],
+			// step_sections: [
+			// 	{
+			// 		name: "",
+			// 		steps: [
+			// 			{
+			// 				timestamp: 0,
+			// 				mediaId: -1,
+			// 				direction: "",
+			// 			},
+			// 		],
+			// 	},
+			// ],
+			// medias: [],
+			// files: [],
+			authorized: false
 		};
+	}
+
+
+
+	componentDidMount() {
+		let recipe = null
+		let medias = null
+		if (this.props.location.state && this.props.location.state.recipe) {
+			console.log(this.props.location.state)
+			recipe = this.props.location.state.recipe
+			if (recipe.creator_id === this.props.userId) {
+				medias = this.props.location.state.medias
+				if (medias) {
+					let params = this.props.match.params;
+					axios.get("api/recipe/" + params["recipe_id"] + "/media").then((response) => {
+						medias = response.data.medias;
+						this.initState(recipe, medias);
+					});
+				}
+			}
+		}
+		else {
+			console.log('else')
+			let params = this.props.match.params;
+			axios.get("api/recipe/" + params["recipe_id"] + "/info").then((response) => {
+				recipe = response.data
+				if (recipe.creator_id === this.props.userId) {
+					axios.get("api/recipe/" + params["recipe_id"] + "/media").then((response) => {
+						medias = response.data.medias;
+						this.initState(recipe, medias);
+					});
+				}
+			})
+		}
+
+
+	}
+
+	initState = (recipe, medias) => {
+		this.media_id_map = medias.map((media) => {
+			return media.mediaId;
+		})
+		console.log(medias)
+		console.log(this.media_id_map)
+
+		this.setState({
+			name: recipe.name,
+			description: recipe.description,
+			number_person: recipe.number_person,
+			prep_time: recipe.prep_time,
+			cook_time: recipe.cook_time,
+			ingredient_sections: recipe.ingredient_sections,
+			step_sections: recipe.step_sections.map(
+				(step_section) => {
+					return {
+						name: step_section.name,
+						steps: step_section.steps.map(
+							(step) => {
+								return {
+									timestamp: step.timestamp,
+									mediaId: this.media_id_map.indexOf(step.mediaId),
+									direction: step.direction
+								}
+							}
+						)
+					}
+				}
+			),
+			medias: medias.map(
+				(media) => {
+					return {
+						type: media.type,
+						name: media.name,
+						url: media.url,
+						mediaId: media.mediaId,
+						fileId: -1,
+						label: 'Choose an image',
+						editing: false
+					}
+				}
+			),
+			files: [],
+			authorized: true
+		}, () => { console.log(this.state) })
+
 	}
 
 	handleChangeSameName = (event) => {
@@ -79,8 +166,9 @@ class EditRecipeContainer extends Component {
 	submitForm = () => {
 		// console.log(this.state)
 		let data = this.recipe_data_from_form();
+		console.log(data)
 		axios
-			.post("api/recipe/create", data, {
+			.put("api/recipe/" + this.props.match.params['recipe_id'], data, {
 				headers: {
 					"Content-Type": "multipart/form-data",
 					Authorization: "Token " + this.props.token,
@@ -106,25 +194,7 @@ class EditRecipeContainer extends Component {
 				medias: this.state.medias.map((media) => {
 					return {
 						type: media.type,
-						name: media.name,
-						url: media.url,
-						fileId: media.fileId,
-					};
-				}),
-			})
-		);
-		console.log(
-			JSON.stringify({
-				name: this.state.name,
-				description: this.state.description,
-				number_person: parseInt(this.state.number_person),
-				prep_time: parseInt(this.state.prep_time),
-				cook_time: parseInt(this.state.cook_time),
-				ingredient_sections: this.state.ingredient_sections,
-				step_sections: this.state.step_sections,
-				medias: this.state.medias.map((media) => {
-					return {
-						type: media.type,
+						mediaId: media.mediaId,
 						name: media.name,
 						url: media.url,
 						fileId: media.fileId,
@@ -316,6 +386,7 @@ class EditRecipeContainer extends Component {
 			name: "",
 			url: "",
 			fileId: -1,
+			mediaId: -1,
 			label: "Choose an image",
 		});
 		this.setState({ medias: tmp });
@@ -333,12 +404,20 @@ class EditRecipeContainer extends Component {
 		});
 	};
 
+	editMedia = (index) => {
+		let medias = this.state.medias;
+		medias[index].editing = true
+		medias[index].mediaId = -1
+		this.setState({ medias: medias })
+	}
+
+
 	render() {
 		return (
 			<Container className="shadow custom-container" fluid="sm">
 				<SigninRequired
 					content={
-						<EditRecipe
+						this.state.authorized ? <EditRecipe
 							handleChangeSameName={this.handleChangeSameName}
 							submitForm={this.submitForm}
 							addIngredientSection={this.addIngredientSection}
@@ -370,7 +449,9 @@ class EditRecipeContainer extends Component {
 							handleChangeMediaUrl={this.handleChangeMediaUrl}
 							handleChangeMediaName={this.handleChangeMediaName}
 							handleChangeMediaType={this.handleChangeMediaType}
+							editMedia={this.editMedia}
 						></EditRecipe>
+							: <NotAuthorizedPage></NotAuthorizedPage>
 					}
 				></SigninRequired>
 			</Container>
@@ -385,4 +466,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, () => {})(withRouter(EditRecipeContainer));
+export default connect(mapStateToProps, () => { })(withRouter(EditRecipeContainer));

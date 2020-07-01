@@ -41,7 +41,7 @@ class Recipe(models.Model):
 
     description = models.TextField(default='')
     class Meta:
-        ordering = ['created_at']
+        ordering = ['-created_at']
 
     def __str__(self):
         return f'{self.name}'

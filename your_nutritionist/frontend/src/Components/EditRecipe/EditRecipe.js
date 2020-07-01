@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Form, FormGroup, Button, FormFile } from "react-bootstrap";
 import "../NewRecipe/NewRecipe.css";
-import { IngredientFormSection, StepFormSection, ImageForm } from "../NewRecipe/FormSections/FormSections";
+import { IngredientFormSection, StepFormSection, ImageForm } from "./FormSections/FormSections";
 import { Link } from "react-router-dom";
 
 const EditRecipe = (props) => {
@@ -110,6 +110,9 @@ const EditRecipe = (props) => {
 								}}
 								handleChangeMediaFile={(event) => {
 									props.handleChangeMediaFile(event, index);
+								}}
+								editMedia={()=>{
+									props.editMedia(index)
 								}}
 								media={media}
 							></ImageForm>

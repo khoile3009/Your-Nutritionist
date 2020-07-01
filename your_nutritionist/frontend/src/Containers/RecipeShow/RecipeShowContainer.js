@@ -19,7 +19,6 @@ class RecipeShowContainer extends Component {
 		this.getMedias = this.getMedias.bind(this);
 		this.goToSecondOnMedia = this.goToSecondOnMedia.bind(this);
 		this.countMedias = this.countMedias.bind(this);
-		this.toEditRecipe = this.toEditRecipe.bind(this);
 	}
 
 	componentDidMount() {
@@ -31,6 +30,7 @@ class RecipeShowContainer extends Component {
 			this.getRatings();
 			this.getMedias();
 		});
+		this.toEditRecipe = this.toEditRecipe.bind(this);
 	}
 
 	getRatings() {
@@ -62,12 +62,12 @@ class RecipeShowContainer extends Component {
 	};
 
 	toEditRecipe = () => {
-		this.props.history.push("/recipe/" + this.props.match.params["recipe_id"] + "/edit");
+		this.props.history.push({pathname: "/recipe/" + this.props.match.params["recipe_id"] + "/edit", state: {recipe: this.state.recipe, medias: this.state.medias}});
 	};
 
 	render() {
 		// console.log(this.props);
-
+		console.log(this.state.recipe)
 		return this.state.recipe ? (
 			<>
 				{this.state.medias ? (
@@ -81,7 +81,6 @@ class RecipeShowContainer extends Component {
 
 				<Container className="shadow custom-container recipe" fluid="sm">
 					<RecipeShow
-						i
 						recipe={this.state.recipe}
 						goToSecondOnMedia={this.goToSecondOnMedia}
 						is_creator={this.props.token ? this.state.recipe.creator_id == this.props.userId : false}
