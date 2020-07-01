@@ -58,11 +58,6 @@ class RecipeAPI(generics.GenericAPIView):
             return JsonResponse({'status': 'Not Allowed'}, status=405)
         edit_recipe(recipe, recipe_instance)
 
-<<<<<<< HEAD
-    def get(self, *args, **kwargs):
-        user_id = self.request.user
-        recipe = json.loads(self.request.POST['recipe'])
-=======
 class RecipeEditable(generics.GenericAPIView):
     permission_classes = [
         permissions.IsAuthenticated,
@@ -70,16 +65,10 @@ class RecipeEditable(generics.GenericAPIView):
 
     def get(self, *args, **kwargs):
         user_id = self.request.user
->>>>>>> backend
         recipe_id =  kwargs['recipe_id']
         recipe_instance = get_recipe_from_id(recipe_id)
         if(not recipe_instance):
             return JsonResponse({'status': 'No recipe'}, status=404)
-<<<<<<< HEAD
-        if(user_id != recipe_instance.creator.id):
-            return JsonResponse({'status': 'Not Allowed'}, status=405)
-=======
         if(user_id != recipe_instance.creator):
             return JsonResponse({'status': 'Not Allowed'}, status=405)    
         return JsonResponse({'status': 'ok'})
->>>>>>> backend
