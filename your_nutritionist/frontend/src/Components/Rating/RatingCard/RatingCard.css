@@ -21,12 +21,66 @@
 
 .rating-card .comment-user {
 	display: inline-block;
-	width: 400px;
-	text-align: justify;
+	width: 50%;
+	text-align: left;
 	position: absolute;
-	left: 10vw;
+	left: 13vw;
+	top: 0;
 }
 
 .rating-card .comment-user p {
 
+}
+
+button.upvote {
+	position: absolute;
+	right: 10pt;
+	top: 8pt;
+	height: 2rem;
+	width: 60pt;
+	padding: 0;
+	background: transparent;
+	color: rgb(0, 201, 117);
+	border: solid 1px rgb(0, 201, 117);	
+}
+
+button.upvote:hover {
+	background: rgb(0, 168, 132);
+	color: white;
+	border: none;
+}
+
+button.add-comment {
+	margin-top: 2rem;
+}
+
+@media (max-width: 1100px) {
+	.rating-card .comment-user {
+		left: 15vw;
+	}
+}
+
+@media (max-width: 700px) {
+	.rating-card .comment-profile {
+		height: 50px;
+		width: 50px;
+	}
+	.rating-card .comment-user {
+		max-width: 50%;
+		left: 18vw;
+	}
+}
+
+@media (max-width: 500px) {
+	.rating-card .comment-profile {
+		display: none;
+	}
+	.rating-card .comment-user {
+		max-width: 50%;
+	}
+	button.upvote {
+		font-size: 8pt;
+		height: 2rem;
+		width: 40pt;
+	}
 }
