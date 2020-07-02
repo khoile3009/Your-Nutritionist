@@ -58,7 +58,11 @@ class RecipeRatingContainer extends Component {
     }
 
     getIsRated = () => {
-        axios.get('/api/recipe/' + this.props.recipeId + '/israted/' + this.props.userId)
+        let headers = {
+            'Content-Type': 'application/json',
+            'Authorization': 'Token ' + this.props.token
+        }
+        axios.get('/api/recipe/' + this.props.recipeId + '/rate', {headers: headers})
         .then(
             (response) => {
                 if(response.data.rated){

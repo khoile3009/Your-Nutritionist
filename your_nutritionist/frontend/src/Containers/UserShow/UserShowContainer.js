@@ -39,7 +39,6 @@ class UserShowContainer extends Component {
 			.then((response) => {
 				this.setState({ user_info: response.data });
 				this.getUserRecipes(page);
-				this.getUserActions();
 			})
 			.catch((err) => {
 				console.log(err);
