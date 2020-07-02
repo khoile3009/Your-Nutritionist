@@ -6,7 +6,7 @@ import Popup from 'reactjs-popup'
 const RatingHeader = (props) => {
     return <div className='rating-header'>
         <div className='rate'>
-            <p className='subtitle'>Overall Rating: &nbsp;</p>
+            <p className='subtitle'>Comments: &nbsp;</p>
             <p className='subtitle'>{props.overallRatingScore}</p>
         </div>
         {props.canRate

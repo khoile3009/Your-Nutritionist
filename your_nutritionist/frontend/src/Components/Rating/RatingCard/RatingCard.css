@@ -1,15 +1,32 @@
 .rating-card {
-	padding: 1rem;
+	height: 16vh;
+	margin-bottom: 2rem;
+	border-radius: 16px;
+	display: block;
+	overflow-y: hidden;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.rating-card .comment-profile {
+	height: 80px;
+	width: 80px;
+	border: solid .5px rgba(128, 128, 128, 0.452);
 	margin: 1rem;
-	border: 1px solid rgb(228, 228, 228);
-	border-radius: 25px;
-	font-size: 14pt;
+	display: inline-block;
+	position: absolute;
+	left: 1vw;
+	background: grey;
 }
 
-.rating-card a {
-	color: #0097a7;
+.rating-card .comment-user {
+	display: inline-block;
+	width: 400px;
+	text-align: justify;
+	position: absolute;
+	left: 10vw;
 }
 
-#bold {
-	font-weight: bold;
+.rating-card .comment-user p {
+
 }

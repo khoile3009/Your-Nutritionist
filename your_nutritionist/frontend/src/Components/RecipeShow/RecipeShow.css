@@ -1,3 +1,7 @@
+body {
+	overflow-x: hidden;
+}
+
 .subtitle {
 	color: gray;
 	font-size: 15px;
@@ -8,6 +12,7 @@
 	font-weight: 400;
 	font-size: 30px;
 	padding-right: 10px;
+	text-transform: capitalize;
 }
 
 .section-name {
