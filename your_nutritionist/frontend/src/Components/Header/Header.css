@@ -180,4 +180,8 @@
 		margin-top: 1rem;
 		margin-bottom: 1rem;
 	}
+
+	.navbar-nav a.nav-link.active {
+		border: none;
+	}
 }
