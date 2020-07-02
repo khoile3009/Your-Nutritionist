@@ -87,7 +87,7 @@
 .searchBar {
 	display: flex;
 	/* border: solid 1px black; */
-
+	height: 4vh;
 	margin-left: 1rem;
 	border: solid 1px rgb(255, 255, 255);
 	border-radius: 18px;
@@ -128,13 +128,13 @@
 }
 
 .color-nav input[type="text"]:focus::-webkit-input-placeholder {
-	color: #515151;
+	color: transparent;
 }
 .color-nav input[type="text"]:focus::-moz-placeholder {
-	color: #515151;
+	color: transparent;
 }
 .color-nav input[type="text"]:focus::-ms-input-placeholder {
-	color: #515151;
+	color: transparent;
 }
 .color-nav input[type="text"]::-webkit-input-placeholder {
 	color: #f2f2f2;
@@ -146,7 +146,7 @@
 	color: #f2f2f2;
 }
 
-.search {
+.searchBar .search {
 	width: 60px;
 	height: 100%;
 	background: url("https://storage.googleapis.com/your-nutritionist-cdn/baseline_search_white_18dp.png");
@@ -156,7 +156,6 @@
 	z-index: 4;
 	display: inline-block;
 	border-radius: 0 16px 16px 0;
-	border-left: solid 3px rgb(255, 143, 186);
 }
 
 .search:hover {
@@ -164,7 +163,21 @@
 	cursor: pointer;
 	background-repeat: no-repeat;
 	background-position: center;
-	border-top: solid 3px rgb(255, 143, 186);
-	border-bottom: solid 3px rgb(255, 143, 186);
-	border-right: solid 3px rgb(255, 143, 186);
+}
+
+.searchBar button.search:focus {
+	border: none;
+	outline: none;
+}
+
+@media (max-width: 1000px) {
+	form {
+		padding: 0;
+		margin: 0;
+	}
+	.searchBar {
+		width: 30vw;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
 }
