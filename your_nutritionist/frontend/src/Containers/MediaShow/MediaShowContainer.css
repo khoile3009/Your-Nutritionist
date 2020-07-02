@@ -75,7 +75,7 @@
 	width: 5vw;
 	height: 100%;
 	border-radius: 5px;
-	font-size: calc(300% - var(--media-card-width));
+	font-size: 4vw;
 	text-align: center;
 	padding-top: 9vh;
 	line-height: 0;
