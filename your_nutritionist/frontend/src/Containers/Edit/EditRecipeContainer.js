@@ -204,6 +204,24 @@ class EditRecipeContainer extends Component {
 				}),
 			})
 		);
+		console.log(JSON.stringify({
+			name: this.state.name,
+			description: this.state.description,
+			number_person: parseInt(this.state.number_person),
+			prep_time: parseInt(this.state.prep_time),
+			cook_time: parseInt(this.state.cook_time),
+			ingredient_sections: this.state.ingredient_sections,
+			step_sections: this.state.step_sections,
+			medias: this.state.medias.map((media) => {
+				return {
+					type: media.type,
+					mediaId: media.mediaId,
+					name: media.name,
+					url: media.url,
+					fileId: media.fileId,
+				};
+			}),
+		}))
 		data = this.add_images_to_form_data(data, this.state.files);
 		return data;
 	};
@@ -231,23 +249,6 @@ class EditRecipeContainer extends Component {
 		this.setState({ ingredient_sections: tmp });
 	};
 
-	// handleChangeIngredientAmount = (section_index, ingredient_index, event) => {
-	//     let tmp = this.state.ingredient_sections
-	//     tmp[section_index].ingredients[ingredient_index].amount = parseInt(event.target.value)
-	//     this.setState({ ingredient_sections: tmp })
-	// }
-
-	// handleChangeIngredientUnit = (section_index, ingredient_index, event) => {
-	//     let tmp = this.state.ingredient_sections
-	//     tmp[section_index].ingredients[ingredient_index].unit = event.target.value
-	//     this.setState({ ingredient_sections: tmp })
-	// }
-
-	// handleChangeIngredientName = (section_index, ingredient_index, event) => {
-	//     let tmp = this.state.ingredient_sections
-	//     tmp[section_index].ingredients[ingredient_index].name = event.target.value
-	//     this.setState({ ingredient_sections: tmp })
-	// }
 	handleChangeIngredient = (section_index, ingredient_index, event) => {
 		let tmp = this.state.ingredient_sections;
 		tmp[section_index].ingredients[ingredient_index] = event.target.value;
@@ -369,7 +370,9 @@ class EditRecipeContainer extends Component {
 			name: tmp[index].name,
 			url: "",
 			fileId: -1,
+			mediaId: -1,
 			label: "Choose an image",
+			editing: true
 		};
 
 		this.setState({ medias: tmp });
@@ -390,6 +393,7 @@ class EditRecipeContainer extends Component {
 			fileId: -1,
 			mediaId: -1,
 			label: "Choose an image",
+			editing: true
 		});
 		this.setState({ medias: tmp });
 	};
