@@ -1,15 +1,17 @@
 from .models import Recipe, Section,  Step, Ingredient, Media, HashTag
-from django.contrib.auth.models import  User
+from django.contrib.auth.models import User
 from django.http import Http404
 from social.helpers import get_recipe_from_id
 from .hashtag import get_hashtag_from_description
-from .search import Search 
+from .search import Search
 from .files import GCLOUD
 from rest_framework.exceptions import NotFound
 # /<int:recipe_id>
+
+
 def get_recipe_info(recipe_id):
     context = {}
-    recipe=None
+    recipe = None
     try:
         recipe = Recipe.objects.get(id=recipe_id)
     except Recipe.DoesNotExist:
@@ -24,10 +26,10 @@ def get_recipe_info(recipe_id):
         context['creator_id'] = None
     context['create_date'] = recipe.created_at.date()
     context['description'] = recipe.description
-    context['number_person'] = recipe.number_person 
+    context['number_person'] = recipe.number_person
     context['prep_time'] = recipe.prep_time
     context['cook_time'] = recipe.cook_time
-   
+
     sections = Section.objects.filter(recipe=recipe_id)
 
     context['ingredient_sections'] = []
@@ -36,7 +38,7 @@ def get_recipe_info(recipe_id):
         section_id = ingredient_section.id
         context['ingredient_sections'].append({
             'name': ingredient_section.name,
-            'ingredients' : []
+            'ingredients': []
             })
         ingredients = Ingredient.objects.filter(section=section_id)
         for ingredient in ingredients:
@@ -47,7 +49,7 @@ def get_recipe_info(recipe_id):
     step_sections = sections.filter(part=1)
     for step_section in step_sections:
         section_id = step_section.id
-        context['step_sections'].append( {
+        context['step_sections'].append({
             'name': step_section.name,
             'steps': []
         })
@@ -74,11 +76,12 @@ def get_recipe_info(recipe_id):
 
     return context
 
+
 def get_media_from_recipe(recipe_id):
     media_instances = Media.objects.filter(recipe=recipe_id)
     context = {'medias': []}
     for media_instance in media_instances:
-        if(media_instance.media_type in [0,2]):
+        if(media_instance.media_type in [0, 2]):
             context['medias'].append(
                 {
                     'name': media_instance.name,
@@ -87,7 +90,7 @@ def get_media_from_recipe(recipe_id):
                     'type': media_instance.media_type
                 }
             )
-        elif(media_instance.media_type in [1,3]):
+        elif(media_instance.media_type in [1, 3]):
             context['medias'].append(
                 {
                     'name': media_instance.name,
@@ -97,30 +100,68 @@ def get_media_from_recipe(recipe_id):
                 }
             )
     return context
-# ----------------------------------------------------------------------------------------
-# /get
-# ---------------------------------------------------------------------------------------
-def get_recipe(recipe_instance):
-    context = {}
-    context['name'] = recipe_instance.name
-    context['create_date'] = recipe_instance.created_at.date()
-    context['description'] = recipe_instance.description
-    context['number_person'] = recipe_instance.number_person 
-    context['prep_time'] = recipe_instance.prep_time
-    context['cook_time'] = recipe_instance.cook_time
-    
+
+
+
 # ----------------------------------------------------------------------------------------
 # /edit
 # ----------------------------------------------------------------------------------------
-def edit_recipe(recipe, recipe_instance):
-    pass
+def edit_recipe(recipe, recipe_instance, urls):
+    recipe_instance.name = recipe['name']
+    recipe_instance.description = recipe['description']
+    recipe_instance.number_person = recipe['number_person']
+    recipe_instance.prep_time = recipe['prep_time']
+    recipe_instance.cook_time = recipe['cook_time']
+    recipe_instance.save()
+
+    sections = Section.objects.filter(recipe=recipe_instance.id)
+
+    media_instances = Media.objects.filter(recipe= recipe_instance.id)
+    media_id_map = edit_media_sections(recipe_instance, recipe['medias'], media_instances, urls)
+    
+    ingredient_section_instances = sections.filter(part=0)
+    edit_ingredient_sections(recipe_instance, ingredient_section_instances,recipe['ingredient_sections'])
+    steps_section_instances = sections.filter(part=1)
+    edit_step_section(recipe_instance, steps_section_instances, recipe['step_sections'], media_id_map )
+    return recipe_instance.id
 
 
+def edit_ingredient_sections(recipe_instance, ingredient_section_instances, ingredient_sections):
+    ingredient_section_instances.delete()
+    create_ingredient_section(recipe_instance, ingredient_sections)
+
+
+def edit_media_sections(recipe_instance, media_section, media_instances, urls):
+    media_id_map = []
+    for index in range(len(media_section)):
+        media = media_section[index]
+        media_instance = media_instances.filter(order=index)
+        if(not media.get('media_id')):
+            media_instance.delete()
+            if(media['fileId'] != -1):
+                media['url'] = urls[media['fileId']]
+            media_instance = Media.objects.create(
+                recipe = recipe_instance,
+                url = media['url'],
+                name = media['name'],
+                media_type = media['type'],
+                order = index
+            )
+
+        media_id_map.append(media_instance.id)
+    print()
+    media_instances.filter(order__in= list(range(len(media_section), media_instances.count()))).delete()
+    print(media_id_map)
+    return media_id_map
+
+def edit_step_section(recipe_instance, step_section_instances, step_sections, media_id_map):
+    step_section_instances.delete()
+    create_step_section(recipe_instance, step_sections, media_id_map)
 # ----------------------------------------------------------------------------------------
 # /create 
 # ----------------------------------------------------------------------------------------
 def create_recipe(recipe,creator_id, urls):
-    #Initialize Recipe
+    # Initialize Recipe
     creator = get_user_from_id(creator_id)
     recipe_instance = Recipe.objects.create(
         name = recipe['name'],
@@ -138,7 +179,7 @@ def create_recipe(recipe,creator_id, urls):
 
     recipe_id = recipe_instance.id
 
-    #Initialize ingredient_section
+    # Initialize ingredient_section
     media_id_map = create_media_section(recipe_instance, recipe['medias'], urls)
     create_ingredient_section(recipe_instance, recipe['ingredient_sections'])
     create_step_section(recipe_instance,recipe['step_sections'], media_id_map)
@@ -165,8 +206,7 @@ def create_media_section(recipe_instance, media_section, urls):
     for index in range(len(media_section)):
         media = media_section[index]
         if(media['fileId'] != -1):
-            media['url'] = urls[media['fileId']
-        ]
+            media['url'] = urls[media['fileId']]
         media_instance = Media.objects.create(
             recipe = recipe_instance,
             url = media['url'],
