@@ -45,6 +45,13 @@
 	text-transform: uppercase;
 	letter-spacing: 0.25px;
 	padding: 0.75rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.show.dropdown.nav-item {
+	margin-bottom: 1rem;
+	transition: 300ms all;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
@@ -111,18 +118,18 @@
 	border-radius: 16px;
 	border: none;
 	padding-left: 1rem;
-	padding-right: 1rem;
 	color: #ffffff;
 	padding-top: 2pt;
 	transition: 0.75s all;
 	caret-color: #ff5252;
 	background: #ffffff00;
+	max-width: 20%;
 }
 
 .color-nav input[type="text"]:focus {
 	border: none;
 	outline: none;
-
+	max-width: 100%;
 	transition: 0.5s all;
 	color: #ffffff;
 }
@@ -137,13 +144,13 @@
 	color: transparent;
 }
 .color-nav input[type="text"]::-webkit-input-placeholder {
-	color: #f2f2f2;
+	color: transparent;
 }
 .color-nav input[type="text"]::-moz-placeholder {
-	color: #f2f2f2;
+	color: transparent;
 }
 .color-nav input[type="text"]::-ms-input-placeholder {
-	color: #f2f2f2;
+	color: transparent;
 }
 
 .searchBar .search {
@@ -154,8 +161,19 @@
 	background-position: center;
 	position: relative;
 	z-index: 4;
-	display: inline-block;
+	display: flex;
 	border-radius: 0 16px 16px 0;
+	display: none;
+}
+
+.searchBar {
+	width: 20%;
+	background: url("https://storage.googleapis.com/your-nutritionist-cdn/baseline_search_white_18dp.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	border: none;
+	color: transparent;
+	margin-top: 1rem;
 }
 
 .search:hover {
@@ -163,6 +181,17 @@
 	cursor: pointer;
 	background-repeat: no-repeat;
 	background-position: center;
+	transition: 3s all;
+}
+
+.searchBar:focus-within {
+	width: 90%;
+	transition: 300ms all;
+}
+
+.searchBar:focus-within button.search {
+	display: inline-block;
+	transition: 2s all;
 }
 
 .searchBar button.search:focus {
@@ -175,10 +204,41 @@
 		padding: 0;
 		margin: 0;
 	}
+	
 	.searchBar {
-		width: 30vw;
-		margin-top: 1rem;
-		margin-bottom: 1rem;
+		display: flexbox;
+		background: url("https://storage.googleapis.com/your-nutritionist-cdn/baseline_search_white_18dp.png");
+		background-repeat: no-repeat;
+		background-position: center;
+		padding-right: 0;
+		width: 8vw;
+		margin: 1rem 0 1rem 1vw;
+		height: 3rem;
+	}
+
+	.searchBar:focus-within {
+		display: flexbox;
+		background: #008c9e;
+		width: 25vw;
+		margin-left: 1vw;
+		width: 50vw;
+	}
+
+	.color-nav input[type="text"] {
+		width: 0%;
+		max-width: 0%;
+	}
+	.color-nav input[type="text"]:focus {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.searchBar .search {
+		display: none;
+	}
+	.searchBar:focus-within .searchBar .search {
+		display: inline-block;
+		transition: 1s all;
 	}
 
 	.navbar-nav a.nav-link.active {

@@ -39,6 +39,10 @@ p {
 	font-size: 15px;
 }
 
+p.title.text-left {
+	display: inline-block;
+}
+
 button {
 	background: rgb(0, 194, 74);
 	border: none;
@@ -58,6 +62,7 @@ button {
 	width: 100%;
 	padding-bottom: 1rem;
 	padding-top: 1rem;
+	justify-content: space-between;
 }
 
 .recipe {
@@ -69,4 +74,21 @@ button {
 
 .recipe hr {
 	margin-right: 1rem;
+}
+
+
+button.upvote {
+	height: 2rem;
+	width: 60pt;
+	padding: 0;
+	background: transparent;
+	color: rgb(0, 201, 117);
+	border: solid 1px rgb(0, 201, 117);
+}
+
+@media (max-width: 800px) {
+	.shadow.custom-container.recipe.container-sm {
+		box-shadow: none !important;
+		border: 0 !important;
+	}
 }

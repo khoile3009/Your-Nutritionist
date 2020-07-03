@@ -9,8 +9,7 @@ const RecipeShow = (props) => {
 	return (
 		<>
 			<div className="title-wrapper">
-				<p className="title text-left">{props.recipe.name}</p>
-
+				<p className="title text-left">{props.recipe.name}<Button className="upvote">Upvote</Button></p>
 				{props.is_creator ? (
 					<Button
 						onClick={props.toEditRecipe}
@@ -45,6 +44,8 @@ const RecipeShow = (props) => {
 			<p className="text-left description">{props.recipe.description}</p>
 
 			<hr></hr>
+
+			
 			<Row>
 				<Col xs>
 					<IngredientSections ingredient_sections={props.recipe.ingredient_sections}></IngredientSections>

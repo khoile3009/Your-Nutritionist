@@ -1,16 +1,16 @@
 .rating-card {
-	height: 16vh;
+	height: 20vh;
 	margin-bottom: 2rem;
 	border-radius: 16px;
 	display: block;
 	overflow-y: hidden;
 	padding-top: 1rem;
-	padding-bottom: 1rem;
+	padding-bottom: 4rem;
 }
 
 .rating-card .comment-profile {
-	height: 80px;
-	width: 80px;
+	height: 100px;
+	width: 100px;
 	border: solid .5px rgba(128, 128, 128, 0.452);
 	margin: 1rem;
 	display: inline-block;
@@ -21,27 +21,25 @@
 
 .rating-card .comment-user {
 	display: inline-block;
-	width: 50%;
+	width: 60%;
 	text-align: left;
 	position: absolute;
 	left: 13vw;
 	top: 0;
 }
 
-.rating-card .comment-user p {
-
+.rating-card .comment-rating {
+	border: solid  1px grey;
+	width: 80px;
+	height: 2rem;
+	right: 5%;
+	position: absolute;
+	text-align: center;
+	font-size: 10pt;
 }
 
-button.upvote {
-	position: absolute;
-	right: 10pt;
-	top: 8pt;
-	height: 2rem;
-	width: 60pt;
-	padding: 0;
-	background: transparent;
-	color: rgb(0, 201, 117);
-	border: solid 1px rgb(0, 201, 117);	
+.rating-card .comment-user p {
+
 }
 
 button.upvote:hover {
@@ -66,8 +64,8 @@ button.add-comment {
 		width: 50px;
 	}
 	.rating-card .comment-user {
-		max-width: 50%;
-		left: 18vw;
+		width: 80%;
+		left: 8vw;
 	}
 }
 
@@ -76,11 +74,25 @@ button.add-comment {
 		display: none;
 	}
 	.rating-card .comment-user {
-		max-width: 50%;
+		width: 80%;
 	}
-	button.upvote {
-		font-size: 8pt;
-		height: 2rem;
-		width: 40pt;
-	}
+}
+
+.see-more-trigger {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+	height: 2rem;
+	background-image: linear-gradient(to bottom, transparent, rgb(255, 255, 255) 50%);
+	padding-top: 2rem;
+	color: rgb(126, 126, 126);
+	font-weight: 300;
+	font-size: 16pt;
+	padding-bottom: 2.5rem;
+}
+
+#see-more-active {
+
+	padding: .2rem;
 }

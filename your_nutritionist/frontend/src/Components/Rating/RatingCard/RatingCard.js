@@ -19,7 +19,18 @@ const RatingCard = (props) =>{
             {props.rating.comment}
             </p>
         </div>
-        <Button className="upvote">Upvote</Button>
+        <div className="comment-rating">
+            Placeholder
+        </div>
+        {/* <div className="see-more-trigger">
+            <span id="">See more bitches</p>
+        </div> */}
+        {props.rating.comment.length > 500
+                ? <div className="see-more-trigger">
+                        <span id="see-more-active">See more</span>
+                    </div>
+                    : null
+                }
     </div>
 }
 
