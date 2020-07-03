@@ -1,15 +1,86 @@
 .rating-card {
-	padding: 1rem;
+	height: 16vh;
+	margin-bottom: 2rem;
+	border-radius: 16px;
+	display: block;
+	overflow-y: hidden;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.rating-card .comment-profile {
+	height: 80px;
+	width: 80px;
+	border: solid .5px rgba(128, 128, 128, 0.452);
 	margin: 1rem;
-	border: 1px solid rgb(228, 228, 228);
-	border-radius: 25px;
-	font-size: 14pt;
+	display: inline-block;
+	position: absolute;
+	left: 1vw;
+	background: grey;
 }
 
-.rating-card a {
-	color: #0097a7;
+.rating-card .comment-user {
+	display: inline-block;
+	width: 50%;
+	text-align: left;
+	position: absolute;
+	left: 13vw;
+	top: 0;
 }
 
-#bold {
-	font-weight: bold;
+.rating-card .comment-user p {
+
+}
+
+button.upvote {
+	position: absolute;
+	right: 10pt;
+	top: 8pt;
+	height: 2rem;
+	width: 60pt;
+	padding: 0;
+	background: transparent;
+	color: rgb(0, 201, 117);
+	border: solid 1px rgb(0, 201, 117);	
+}
+
+button.upvote:hover {
+	background: rgb(0, 168, 132);
+	color: white;
+	border: none;
+}
+
+button.add-comment {
+	margin-top: 2rem;
+}
+
+@media (max-width: 1100px) {
+	.rating-card .comment-user {
+		left: 15vw;
+	}
+}
+
+@media (max-width: 700px) {
+	.rating-card .comment-profile {
+		height: 50px;
+		width: 50px;
+	}
+	.rating-card .comment-user {
+		max-width: 50%;
+		left: 18vw;
+	}
+}
+
+@media (max-width: 500px) {
+	.rating-card .comment-profile {
+		display: none;
+	}
+	.rating-card .comment-user {
+		max-width: 50%;
+	}
+	button.upvote {
+		font-size: 8pt;
+		height: 2rem;
+		width: 40pt;
+	}
 }

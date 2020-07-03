@@ -1,68 +1,72 @@
+body {
+	overflow-x: hidden;
+}
+
 .subtitle {
-    color: gray;
-    font-size: 15px;
+	color: gray;
+	font-size: 15px;
 }
 
 .title {
-    color: black;
-    font-weight: 700;
-    font-size: 30px;
-    padding-right: 10px;
+	color: #464646;
+	font-weight: 400;
+	font-size: 30px;
+	padding-right: 10px;
+	text-transform: capitalize;
 }
 
 .section-name {
-    margin-left: 5px;
-    font-weight: 700;
-    margin-bottom: 2px;
-    font-size: 20px;
+	margin-left: 5px;
+	font-weight: 700;
+	margin-bottom: 2px;
+	font-size: 20px;
 }
 
 .subsection-name {
-    margin-left: 20px;
-    font-weight: 700;
-    margin-bottom: 2px;
-    font-size: 15px;
+	margin-left: 20px;
+	font-weight: 700;
+	margin-bottom: 2px;
+	font-size: 15px;
 }
 
 .description {
-    margin-left: 5px;
+	margin-left: 5px;
 }
 
 p {
-    margin-top: 1rem;
-    margin-bottom: 2px;
-    font-size: 15px;
+	margin-top: 1rem;
+	margin-bottom: 2px;
+	font-size: 15px;
 }
 
 button {
-    background: rgb(0, 194, 74);
-    border: none;
-    margin: 2px 2px 2px 4px;
-    padding: 5px 8 8 5;
-    color: white;
-    font-weight: bold;
-    border-radius: 3px;
+	background: rgb(0, 194, 74);
+	border: none;
+	margin: 2px 2px 2px 4px;
+	padding: 5px 8 8 5;
+	color: white;
+	font-weight: bold;
+	border-radius: 3px;
 }
-
 
 /* .items{
     font-size: 5px;
 } */
 
-.title-wrapper{
-    display: block;
-    width: 100%;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
+.title-wrapper {
+	display: block;
+	width: 100%;
+	padding-bottom: 1rem;
+	padding-top: 1rem;
 }
 
 .recipe {
-    padding: 2rem;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    border-radius: 25px;
+	padding: 2rem;
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+	border-radius: 25px;
 }
 
 .recipe hr {
-    margin-right: 1rem;
+	margin-right: 1rem;
 }

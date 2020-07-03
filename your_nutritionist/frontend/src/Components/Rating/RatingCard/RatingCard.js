@@ -1,17 +1,25 @@
 import React from 'react';
 import './RatingCard.css'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { Container, Row, Col, Form, FormGroup, Button, FormFile } from "react-bootstrap";
 
 const RatingCard = (props) =>{
     return <div className='card rating-card'>
-        <p><span id="bold">Rating: &nbsp;</span> {props.rating.rating}</p>
-        {console.log(props.rating)}
-        <p><span id="bold">User: &nbsp;</span>
+        <div className="comment-profile">
+
+        </div>
+        <div className="comment-user">
+            <p>
+            {console.log(props.rating)}
             <Link to={'/user/'+props.rating.user_id}>
                 {props.rating.name}
-            </Link>
-        </p>
-        <p><span id="bold">Comment: &nbsp;</span> {props.rating.comment}</p>
+            </Link> said on 
+            </p>
+            <p>
+            {props.rating.comment}
+            </p>
+        </div>
+        <Button className="upvote">Upvote</Button>
     </div>
 }
 
