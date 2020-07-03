@@ -90,7 +90,7 @@ class Step(models.Model):
 
 class Media(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    url = models.CharField(max_length=300)
+    url = models.CharField(max_length=1000)
     name = models.CharField(max_length=200)
     media_type = models.IntegerField()
     order = models.IntegerField()

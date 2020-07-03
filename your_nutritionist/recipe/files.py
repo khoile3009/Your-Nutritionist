@@ -39,6 +39,7 @@ class GCLOUD:
         os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\Users\khoib\Projects\gcloud_privatekey.json'
         client = storage.Client()
         bucket = client.get_bucket('mediastorage-cookery')
+        print(public_path)
         blob = bucket.get_blob(public_path)
         return blob.generate_signed_url(datetime.now() + timedelta(1))
 
@@ -48,8 +49,11 @@ class GCLOUD:
             os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\Users\khoib\Projects\gcloud_privatekey.json'
             client = storage.Client()
             bucket = client.get_bucket('mediastorage-cookery')
-            blob = bucket.get_blob(instance.gcloud_url)
-            blob.delete()
+            blob = bucket.get_blob(instance.url)
+            print(instance.id)
+            print(instance.url)
+            if(blob):
+                blob.delete()
 
 
 

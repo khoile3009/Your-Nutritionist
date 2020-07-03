@@ -33,5 +33,9 @@ class Action(models.Model):
         ordering = ['-done_at']
 
 class Follow(models.Model):
-    target_user = models.ForeignKey(User, related_name='target_user', on_delete=models.CASCADE)
-    from_user = models.ForeignKey(User, related_name='from_user', on_delete=models.CASCADE)
+    target_user = models.ForeignKey(User, related_name='target_user_follow', on_delete=models.CASCADE)
+    from_user = models.ForeignKey(User, related_name='from_user_follow', on_delete=models.CASCADE)
+
+class Upvote(models.Model):
+    target_recipe = models.ForeignKey(Recipe, related_name='target_recipe_upvote', on_delete=models.CASCADE)
+    from_user = models.ForeignKey(User, related_name='from_user_upvote', on_delete=models.CASCADE)
