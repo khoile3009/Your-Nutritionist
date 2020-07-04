@@ -12,16 +12,19 @@ class GCLOUD:
         client = storage.Client()
         bucket = client.get_bucket('mediastorage-cookery')
         urls = []
+        bucket_paths = []
         i = 0
         for name,file in files.items():
             if(i not in media_ids_map):
                 urls.append(None)
             else:
-                file_name = GCLOUD.__viable_file_name(bucket, str(user_id) + '/' + file.name)
-                blob = bucket.blob(file_name)
+                gcloud_file_name = GCLOUD.__viable_file_name(bucket, str(user_id) + '/' + file.name)
+                blob = bucket.blob(gcloud_file_name)
                 blob.upload_from_file(file, content_type=file.content_type)
-                urls.append(file_name)
-        return urls
+                signed_url = blob.generate_signed_url(datetime.max)
+                urls.append(signed_url)
+                bucket_paths.append(gcloud_file_name)
+        return urls, bucket_paths
 
     @staticmethod
     def __viable_file_name(bucket, file_name):
@@ -34,14 +37,14 @@ class GCLOUD:
                 i+=1
         return splitted_file_name[0] + '(' + str(i) + ')' + splitted_file_name[1]
 
-    @staticmethod
-    def get_signed_url(public_path):
-        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\gcloud\gcloud_privatekey.json'
-        client = storage.Client()
-        bucket = client.get_bucket('mediastorage-cookery')
-        print(public_path)
-        blob = bucket.get_blob(public_path)
-        return blob.generate_signed_url(datetime.now() + timedelta(1))
+    # @staticmethod
+    # def get_signed_url(public_path):
+    #     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\gcloud\gcloud_privatekey.json'
+    #     client = storage.Client()
+    #     bucket = client.get_bucket('mediastorage-cookery')
+    #     print(public_path)
+    #     blob = bucket.get_blob(public_path)
+    #     return blob.generate_signed_url(datetime.now() + timedelta(1))
 
     @staticmethod
     def delete_media(sender, instance, **kwargs):
@@ -49,9 +52,7 @@ class GCLOUD:
             os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\gcloud\gcloud_privatekey.json'
             client = storage.Client()
             bucket = client.get_bucket('mediastorage-cookery')
-            blob = bucket.get_blob(instance.url)
-            print(instance.id)
-            print(instance.url)
+            blob = bucket.get_blob(instance.gcloud_bucket_url)
             if(blob):
                 blob.delete()
 

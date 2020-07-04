@@ -91,6 +91,7 @@ class Step(models.Model):
 class Media(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     url = models.CharField(max_length=1000)
+    gcloud_bucket_url = models.CharField(max_length=500, default='')
     name = models.CharField(max_length=200)
     media_type = models.IntegerField()
     order = models.IntegerField()

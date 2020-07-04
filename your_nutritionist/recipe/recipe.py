@@ -94,7 +94,7 @@ def get_media_from_recipe(recipe_id):
             context['medias'].append(
                 {
                     'name': media_instance.name,
-                    'url': GCLOUD.get_signed_url(media_instance.url),
+                    'url': media_instance.url,
                     'mediaId': media_instance.id,
                     'type': media_instance.media_type
                 }
@@ -106,7 +106,7 @@ def get_media_from_recipe(recipe_id):
 # ----------------------------------------------------------------------------------------
 # /edit
 # ----------------------------------------------------------------------------------------
-def edit_recipe(recipe, recipe_instance, urls):
+def edit_recipe(recipe, recipe_instance, urls, bucket_paths):
     recipe_instance.name = recipe['name']
     recipe_instance.description = recipe['description']
     recipe_instance.number_person = recipe['number_person']
@@ -117,7 +117,7 @@ def edit_recipe(recipe, recipe_instance, urls):
     sections = Section.objects.filter(recipe=recipe_instance.id)
 
     media_instances = Media.objects.filter(recipe= recipe_instance.id)
-    media_id_map = edit_media_sections(recipe_instance, recipe['medias'], media_instances, urls)
+    media_id_map = edit_media_sections(recipe_instance, recipe['medias'], media_instances, urls, bucket_paths)
     
     ingredient_section_instances = sections.filter(part=0)
     edit_ingredient_sections(recipe_instance, ingredient_section_instances,recipe['ingredient_sections'])
@@ -131,7 +131,7 @@ def edit_ingredient_sections(recipe_instance, ingredient_section_instances, ingr
     create_ingredient_section(recipe_instance, ingredient_sections)
 
 
-def edit_media_sections(recipe_instance, media_section, media_instances, urls):
+def edit_media_sections(recipe_instance, media_section, media_instances, urls, bucket_paths):
     media_id_map = []
     for index in range(len(media_section)):
         media = media_section[index]
@@ -140,11 +140,13 @@ def edit_media_sections(recipe_instance, media_section, media_instances, urls):
             media_instance.delete()
             if(media['fileId'] != -1):
                 media['url'] = urls[media['fileId']]
+                media['gcloud_bucket_url'] = bucket_paths[media['fileId']]
             media_instance = Media.objects.create(
                 recipe = recipe_instance,
                 url = media['url'],
                 name = media['name'],
                 media_type = media['type'],
+                gcloud_bucket_url = media['gcloud_bucket_url'],
                 order = index
             )
 
@@ -160,7 +162,7 @@ def edit_step_section(recipe_instance, step_section_instances, step_sections, me
 # ----------------------------------------------------------------------------------------
 # /create 
 # ----------------------------------------------------------------------------------------
-def create_recipe(recipe,creator_id, urls):
+def create_recipe(recipe,creator_id, urls, bucket_paths):
     # Initialize Recipe
     creator = get_user_from_id(creator_id)
     recipe_instance = Recipe.objects.create(
@@ -180,7 +182,7 @@ def create_recipe(recipe,creator_id, urls):
     recipe_id = recipe_instance.id
 
     # Initialize ingredient_section
-    media_id_map = create_media_section(recipe_instance, recipe['medias'], urls)
+    media_id_map = create_media_section(recipe_instance, recipe['medias'], urls, bucket_paths)
     create_ingredient_section(recipe_instance, recipe['ingredient_sections'])
     create_step_section(recipe_instance,recipe['step_sections'], media_id_map)
     
@@ -201,15 +203,17 @@ def get_user_from_id(user_id):
         user = None 
         return user
 
-def create_media_section(recipe_instance, media_section, urls):
+def create_media_section(recipe_instance, media_section, urls, bucket_paths):
     media_id_map = []
     for index in range(len(media_section)):
         media = media_section[index]
         if(media['fileId'] != -1):
             media['url'] = urls[media['fileId']]
+            media['gcloud_bucket_url'] = bucket_paths[media['fileId']]
         media_instance = Media.objects.create(
             recipe = recipe_instance,
             url = media['url'],
+            gcloud_bucket_url = media['gcloud_bucket_url'],
             name = media['name'],
             media_type = media['type'],
             order = index

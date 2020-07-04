@@ -22,7 +22,7 @@ class Action(models.Model):
         (1, 'rate'),
         (2, 'share'),
         (3, 'create'),
-        (4, 'favorite'),
+        (4, 'upvote'),
         (5, 'tried'),
 
     )
