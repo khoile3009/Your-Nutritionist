@@ -1,4 +1,5 @@
 from .models import Recipe, Section,  Step, Ingredient, Media, HashTag
+from social.models import Upvote
 from django.contrib.auth.models import User
 from django.http import Http404
 from social.helpers import get_recipe_from_id
@@ -141,6 +142,8 @@ def edit_media_sections(recipe_instance, media_section, media_instances, urls, b
             if(media['fileId'] != -1):
                 media['url'] = urls[media['fileId']]
                 media['gcloud_bucket_url'] = bucket_paths[media['fileId']]
+            else:
+                media['gcloud_bucket_url'] =''
             media_instance = Media.objects.create(
                 recipe = recipe_instance,
                 url = media['url'],
@@ -210,6 +213,8 @@ def create_media_section(recipe_instance, media_section, urls, bucket_paths):
         if(media['fileId'] != -1):
             media['url'] = urls[media['fileId']]
             media['gcloud_bucket_url'] = bucket_paths[media['fileId']]
+        else:
+            media['gcloud_bucket_url'] =''
         media_instance = Media.objects.create(
             recipe = recipe_instance,
             url = media['url'],
@@ -298,9 +303,11 @@ def get_recipes_content(recipes):
         recipe_info['cook_time'] = recipe.cook_time
         recipe_info['prep_time'] = recipe.prep_time
         recipe_info['recipe_id'] = recipe.id
-        recipe_info['likes'] = 10 # add this later
-        recipe_info['thumbnail'] = 'https://i.ibb.co/5GWjP9B/gettyimages-157588995-612x612.jpg'
+        recipe_info['likes'] = Upvote.objects.filter(target_recipe=recipe).count()
+        recipe_info['thumbnail'] = get_recipe_thumbnail(recipe.id)
         context['recipes'].append(recipe_info)
     return context
 
-    
+def get_recipe_thumbnail(recipe_id):
+    media = Media.objects.filter(recipe=recipe_id, media_type__in=[0,1]).first()
+    return media.url if media else ''
