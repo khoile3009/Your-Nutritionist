@@ -20,8 +20,8 @@ class RecipeCreateAPI(generics.GenericAPIView):
     def post(self, *args, **kwargs):
         recipe = json.loads(self.request.POST['recipe'])
         media_ids_map = [media['fileId'] if(media['type'] in [1,3]) else None for media in recipe["medias"]]
-        urls = GCLOUD.upload_and_return_url(self.request.user.id,self.request.FILES, media_ids_map)
-        recipe_id = create_recipe(recipe, self.request.user.id, urls)
+        urls, bucket_paths = GCLOUD.upload_and_return_url(self.request.user.id,self.request.FILES, media_ids_map)
+        recipe_id = create_recipe(recipe, self.request.user.id, urls, bucket_paths)
         Action.objects.create(
             user = self.request.user,
             action_type = 3,
@@ -51,13 +51,13 @@ class RecipeAPI(generics.GenericAPIView):
         recipe = json.loads(self.request.POST['recipe'])
         recipe_id =  kwargs['recipe_id']
         media_ids_map = [media['fileId'] if(media['type'] in [1,3]) else None for media in recipe["medias"]]
-        urls = GCLOUD.upload_and_return_url(self.request.user.id,self.request.FILES, media_ids_map)
+        urls, bucket_paths = GCLOUD.upload_and_return_url(self.request.user.id,self.request.FILES, media_ids_map)
         recipe_instance = get_recipe_from_id(recipe_id)
         if(not recipe_instance):
             return JsonResponse({'status': 'No recipe'}, status=404)
         if(user_id != recipe_instance.creator):
             return JsonResponse({'status': 'Not Allowed'}, status=405)
-        recipe_id = edit_recipe(recipe, recipe_instance, urls)
+        recipe_id = edit_recipe(recipe, recipe_instance, urls, bucket_paths)
         return JsonResponse({'recipe_id': recipe_id}, safe=True)
 class RecipeEditable(generics.GenericAPIView):
     permission_classes = [
