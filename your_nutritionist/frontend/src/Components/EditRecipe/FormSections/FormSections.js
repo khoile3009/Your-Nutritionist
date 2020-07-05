@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, FormGroup, Col, Row, Button } from "react-bootstrap";
 import "../../NewRecipe/FormSections/FormSections.css";
+import "./FormSections.css";
 
 const IngredientFormSection = (props) => {
 	return (
@@ -14,7 +15,7 @@ const IngredientFormSection = (props) => {
 						onChange={(event) => {
 							props.handleChangeIngredientSectionName(props.section_index, event);
 						}}
-					></Form.Control>
+					></Form.Control><br></br>
 				</Col>
 				<Col xs="1">
 					<Button
@@ -69,7 +70,7 @@ const StepFormSection = (props) => {
 						onChange={(event) => {
 							props.handleChangeStepSectionName(props.section_index, event);
 						}}
-					></Form.Control>
+					></Form.Control><br></br>
 				</Col>
 				<Col xs="1">
 					<Button
@@ -177,16 +178,17 @@ const ImageForm = (props) => {
 					}
 				</>
 				: <>
-					<p>{props.media.name}</p>
-					<a className='url-button' href={props.media.url} target="_blank">{props.media.url}</a>
-					<Button onClick={props.editMedia}>🖉edit</Button>
+					<Row className="image-video-list">
+						<Col className="media-name">{props.media.name}</Col>
+						<Col className="media-url"><a className='url-button' href={props.media.url} target="_blank">{props.media.url}</a></Col>
+						<Col className="media-edit-btn"><Button onClick={props.editMedia}>🖉 Edit</Button></Col>
+						<Col className="media-del-btn"><Button variant="secondary" onClick={props.deleteMedia}>X</Button></Col>
+					</Row>
 				</>
 			}
 
 
-			<Button variant="secondary" onClick={props.deleteMedia}>
-				X
-			</Button>
+			
 		</div>
 	);
 };

@@ -1,0 +1,23 @@
+.image-video-list {
+    border-bottom: solid 1px grey;    
+}
+
+.image-video-list .media-name.col {
+    width: 3vw;
+    padding-top: 1rem;
+}
+
+.image-video-list .media-url.col .url-button {
+    
+}
+
+.image-video-list .media-edit-btn.col {
+    padding-top: 1.5vh !important;
+    width: 3vw !important;
+    padding: 2vh 0 0 2vw;
+    display: inline-block;
+}
+.image-video-list .media-del-btn.col {
+    padding: 1.5vh 0 0 2vw;
+    width: 2rem !important;
+}
