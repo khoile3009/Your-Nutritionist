@@ -20,7 +20,7 @@ const RatingCard = (props) =>{
             </p>
         </div>
         <div className="comment-rating">
-            Placeholder
+            🍆🍆🍆🍆🍆
         </div>
         {/* <div className="see-more-trigger">
             <span id="">See more bitches</p>
