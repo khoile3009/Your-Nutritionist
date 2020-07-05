@@ -9,3 +9,17 @@
     animation: highlight 0.5s;
     animation-fill-mode: forwards;
 }
+
+.homepage {
+    margin: 2rem 4rem;
+    background: rgb(27, 27, 27);
+    color: rgb(240, 240, 240);
+    padding: 2rem;
+}
+
+.home-banner {
+    background: url("https://storage.googleapis.com/your-nutritionist-cdn/rushia-placeholder.jpg");
+    width: 100vw;
+    height: 50vh;
+    background-position: center;
+}

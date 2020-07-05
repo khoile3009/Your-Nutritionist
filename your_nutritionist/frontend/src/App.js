@@ -34,6 +34,19 @@ function App() {
 				/>
 				<Route path="/dev" component={DevPage} />
 			</Switch>
+			<div className="home-banner"></div>
+			<div className="homepage">
+				<h1>Local development server</h1>
+				<h3>Some theme values:</h3>
+				<ul>
+					<li>Primary brand color: <div style={{display:"inline-block", background:"#00acc1", width: "50px", height: "50px"}}></div> #00acc1</li>
+					<li>Dark primary: <div style={{display:"inline-block", background:"#0096a7", width: "50px", height: "50px"}}></div> #0096a7</li>
+					<li>Accent color: <div style={{display:"inline-block", background:"#ff5252", width: "50px", height: "50px"}}></div> #ff5252</li>
+					<li>Primary text: <div style={{display:"inline-block", background:"#0000", width: "50px", height: "50px"}}></div> #0000 (absolute black RGB)</li>
+					<li>Secondary text: <div style={{display:"inline-block", background:"#ffffff", width: "50px", height: "50px"}}></div> #ffffff</li>
+					<li>Button general: <div style={{display:"inline-block", background:"#303030", width: "50px", height: "50px"}}></div> #303030</li>
+				</ul>
+			</div>
 		</div>
 	);
 }
