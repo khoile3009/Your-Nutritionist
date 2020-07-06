@@ -8,6 +8,7 @@ import queryString from 'query-string';
 import axios from '../../axios-orders';
 import {withRouter} from 'react-router-dom'
 import { compose } from 'redux';
+import "./SearchPage.css";
 class SearchPage extends Component {
 
     constructor(props){
@@ -102,7 +103,9 @@ class SearchPage extends Component {
                 search={this.search}
                 
             ></RecipeSearchbox>
-            <Container >
+            <Container className="search-result-container">
+                <h2>Search results</h2>
+                <br></br>
                 {this.state.recipes
                 ? <RecipeList
                     recipes={this.state.recipes}
