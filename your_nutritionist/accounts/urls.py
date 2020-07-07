@@ -1,6 +1,7 @@
 from django.urls import path, include
 from .api import RegisterAPI, LoginAPI, UserAPI
 from knox import views as knox_views
+from .profile_pic import get_user_profile_picture, ProfilePicAPI
 from . import views
 
 urlpatterns = [
@@ -14,5 +15,8 @@ urlpatterns = [
   path('<int:user_id>/headline', views.set_user_headline),
   # path('<int:user_id>/headline/set', view.set_user_headline)
   path('<int:user_id>/introduction/set', views.set_user_introduction),
-  path('<int:user_id>/introduction', views.user_introduction_view)
+  path('<int:user_id>/introduction', views.user_introduction_view),
+
+  path('<int:user_id>/profilepic', get_user_profile_picture),
+  path('profilepic', ProfilePicAPI.as_view())
 ]

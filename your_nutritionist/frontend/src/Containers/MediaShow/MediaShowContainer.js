@@ -127,12 +127,15 @@ class MediaShowContainer extends Component {
                             ? 1
                             : 0
                             let classes='shadow media-card'
-                            if(this.state.topMedia - index === 1 || (this.state.topMedia === 0 && index === this.state.medias.length - 1)) {
-                                classes += ' left-card'
+                            if(this.state.topMedia !== index){
+                                if(this.state.topMedia - index === 1 || (this.state.topMedia === 0 && index === this.state.medias.length - 1)) {
+                                    classes += ' left-card'
+                                }
+                                else if(this.state.topMedia - index === -1 || (this.state.topMedia === this.state.medias.length - 1 && index === 0)) {
+                                    classes += ' right-card'
+                                }
                             }
-                            else if(this.state.topMedia - index === -1 || (this.state.topMedia === this.state.medias.length - 1 && index === 0)) {
-                                classes += ' right-card'
-                            }
+                            
                             switch (media.type) {
                                 case 0:
                                     return <ImageCard

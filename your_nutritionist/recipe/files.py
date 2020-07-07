@@ -5,6 +5,15 @@ from datetime import timedelta, datetime
 
 class GCLOUD:
 
+    @staticmethod
+    def delete_bucket_url(bucket_url):
+        print(bucket_url)
+        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\gcloud\gcloud_privatekey.json'
+        client = storage.Client()
+        bucket = client.get_bucket('mediastorage-cookery')
+        blob = bucket.get_blob(bucket_url)
+        if(blob):
+            blob.delete()
 
     @staticmethod
     def upload_and_return_url(user_id,files, media_ids_map):
@@ -17,6 +26,7 @@ class GCLOUD:
         for name,file in files.items():
             if(i not in media_ids_map):
                 urls.append(None)
+                bucket_paths.append(None)
             else:
                 gcloud_file_name = GCLOUD.__viable_file_name(bucket, str(user_id) + '/' + file.name)
                 blob = bucket.blob(gcloud_file_name)
@@ -24,6 +34,7 @@ class GCLOUD:
                 signed_url = blob.generate_signed_url(datetime.max)
                 urls.append(signed_url)
                 bucket_paths.append(gcloud_file_name)
+            i+= 1
         return urls, bucket_paths
 
     @staticmethod
@@ -49,12 +60,7 @@ class GCLOUD:
     @staticmethod
     def delete_media(sender, instance, **kwargs):
         if(instance.media_type in [1,3]):
-            os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\gcloud\gcloud_privatekey.json'
-            client = storage.Client()
-            bucket = client.get_bucket('mediastorage-cookery')
-            blob = bucket.get_blob(instance.gcloud_bucket_url)
-            if(blob):
-                blob.delete()
+            GCLOUD.delete_bucket_url(instance.gcloud_bucket_url)
 
 
 
