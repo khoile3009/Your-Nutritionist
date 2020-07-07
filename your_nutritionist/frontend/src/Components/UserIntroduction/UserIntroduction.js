@@ -5,7 +5,9 @@ import "./UserIntroduction.css"
 const UserIntroduction = (props) => {
 	return props.introduction !== "" ? (
 		<>
-			<p className="subtitle">Introduction</p><Button className="edit-intro-btn">🖉</Button>
+			<p className="subtitle">Introduction</p>
+			{console.log(props.isSelf)}
+			{props.isSelf ? (<Button onClick={props.showEditIntro} className="edit-intro-btn">🖉</Button>) : null}
 			<p className="headline">{props.introduction}</p>
 		</>
 	) : null;
