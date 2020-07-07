@@ -70,7 +70,7 @@ class RecipeShowContainer extends Component {
 		console.log(this.state.recipe)
 		return this.state.recipe ? (
 			<>
-				{this.state.medias ? (
+				{this.state.medias && this.state.medias.length != 0? (
 					<MediaShowContainer
 						medias={this.state.medias}
 						seek={this.state.seek}
