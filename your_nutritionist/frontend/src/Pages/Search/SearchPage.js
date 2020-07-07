@@ -6,7 +6,7 @@ import RecipeSearchbox from '../../Containers/RecipeSearchbox/RecipeSearchbox'
 import RecipeList from '../../Containers/RecipeList/RecipeList'
 import queryString from 'query-string';
 import axios from '../../axios-orders';
-import {withRouter} from 'react-router-dom'
+import { withRouter, useLocation } from 'react-router-dom'
 import { compose } from 'redux';
 import "./SearchPage.css";
 class SearchPage extends Component {
