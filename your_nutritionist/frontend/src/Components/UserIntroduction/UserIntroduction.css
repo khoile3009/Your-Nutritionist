@@ -1,0 +1,13 @@
+button.edit-intro-btn {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    text-align: center;
+    background-color: rgb(43, 43, 43);
+    border: none;
+}
+
+p.subtitle {
+    display: inline-block;
+}

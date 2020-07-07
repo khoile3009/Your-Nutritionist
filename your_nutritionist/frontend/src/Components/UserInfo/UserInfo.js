@@ -12,8 +12,8 @@ const UserInfo = (props) => {
                     <div className='user-info'>
                         <div>
                             <p className='title'>{props.user_info.name}</p>
-                            <p className='subtitle'>@{props.user_info.username} </p>
-                            <p className='headline'>{props.user_info.headline}</p>
+                            <p className='subtitle'>@{props.user_info.username}</p>
+                            <p className='headline'>{props.user_info.headline}</p><Button className="edit-headline-btn">🖉</Button>
                             {console.log(props.user_info)}
                             {!props.isSelf
                                 ?

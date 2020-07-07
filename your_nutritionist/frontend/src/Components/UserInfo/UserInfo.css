@@ -4,6 +4,7 @@
 	height: 150px;
 	min-width: 150px;
 	box-shadow: -4px 3px 6px 5px rgba(172, 172, 172, 0.6) !important;
+	margin-right: 1rem;
 }
 
 .title {
@@ -100,4 +101,14 @@
 	padding-left: 10px;
 	display: flex;
 	flex-direction: column-reverse;
+}
+
+button.edit-headline-btn {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    text-align: center;
+    background-color: rgb(43, 43, 43);
+    border: none;
 }
