@@ -9,7 +9,7 @@ import axios from "../../axios-orders";
 import { withRouter, useLocation } from "react-router-dom";
 import { compose } from "redux";
 import "./Homepage.css";
-import HomepageCardsSection from "../../Containers/HomepageCardsSection/HomepageCardsSection";
+import TrendingSection from "../../Containers/HomepageCardsSection/TrendingSection";
 
 class Homepage extends Component {
     constructor(props) {
@@ -30,8 +30,9 @@ class Homepage extends Component {
                     query={this.state.query}
                     search={this.search}
                 </RecipeSearchbox>
-
-                <HomepageCardsSection></HomepageCardsSection>
+                <div className="homepage-section-container">
+                    <TrendingSection></TrendingSection>
+                </div>
             </>
         );
     }
