@@ -8,8 +8,8 @@ import queryString from "query-string";
 import axios from "../../axios-orders";
 import { withRouter, useLocation } from "react-router-dom";
 import { compose } from "redux";
-import HomepageCard from "../../Components/HomepageCard/HomepageCard";
 import "./Homepage.css";
+import HomepageCardsSection from "../../Containers/HomepageCardsSection/HomepageCardsSection";
 
 class Homepage extends Component {
     constructor(props) {
@@ -31,13 +31,7 @@ class Homepage extends Component {
                     search={this.search}
                 </RecipeSearchbox>
 
-                <Container className="trending-recipes-container">
-                    {/* <TrendingRecipes></TrendingRecipes> */}
-                </Container>
-
-                <Container className="">
-                    {/* <WhatToDo></WhatToDo> */}
-                </Container>
+                <HomepageCardsSection></HomepageCardsSection>
             </>
         );
     }
