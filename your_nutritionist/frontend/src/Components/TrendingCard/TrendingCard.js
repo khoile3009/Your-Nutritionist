@@ -1,9 +1,10 @@
 import React from 'react';
+import "./TrendingCard.css"
 
 
-const HomePageCard = (props) => {
+const TrendingCard = (props) => {
     return <>
-        <div 
+        <div className="trending-card card clickable"
         style={{backgroundImage:"url('" + props.url + "')"}}
         onClick={props.goToRoute}>
             <p>{props.text}</p>
@@ -11,4 +12,4 @@ const HomePageCard = (props) => {
     </>
 }
 
-export default HomePageCard;
+export default TrendingCard;
