@@ -104,11 +104,12 @@
 }
 
 button.edit-headline-btn {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    text-align: center;
-    background-color: rgb(43, 43, 43);
-    border: none;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	text-align: center;
+	background-color: transparent;
+	color: rgb(53, 53, 53);
+	border: solid 1px rgb(39, 39, 39);
 }
