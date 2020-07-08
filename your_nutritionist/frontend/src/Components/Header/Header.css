@@ -94,7 +94,7 @@
 .searchBar {
 	display: flex;
 	/* border: solid 1px black; */
-	height: 4vh;
+	height: 40px;
 	margin-left: 1rem;
 	border: solid 1px rgb(255, 255, 255);
 	border-radius: 18px;
@@ -204,7 +204,7 @@
 		padding: 0;
 		margin: 0;
 	}
-	
+
 	.searchBar {
 		display: flexbox;
 		background: url("https://storage.googleapis.com/your-nutritionist-cdn/baseline_search_white_18dp.png");
