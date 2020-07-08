@@ -1,6 +1,5 @@
 import React from 'react'
 import { Row, Col, Button } from 'react-bootstrap'
-
 import './UserInfo.css'
 
 const UserInfo = (props) => {
@@ -12,8 +11,10 @@ const UserInfo = (props) => {
                     <div className='user-info'>
                         <div>
                             <p className='title'>{props.user_info.name}</p>
-                            <p className='subtitle'>@{props.user_info.username} </p>
+                            <p className='subtitle'>@{props.user_info.username}</p>
                             <p className='headline'>{props.user_info.headline}</p>
+                            {console.log(props.isSelf)}
+                            {props.isSelf ? (<Button onClick={props.showEditHeadline} className="edit-headline-btn">🖉</Button>) : null}
                             {console.log(props.user_info)}
                             {!props.isSelf
                                 ?
