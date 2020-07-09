@@ -9,6 +9,8 @@ import axios from '../../axios-orders';
 import { withRouter, useLocation } from 'react-router-dom'
 import { compose } from 'redux';
 import "./SearchPage.css";
+
+
 class SearchPage extends Component {
 
     constructor(props){
