@@ -35,9 +35,9 @@ const LoginForm = (props) => {
 					<a href="" onClick={props.showRegisterModal} style={{ paddingRight: "10px" }}>
 						Create an account
 					</a>
-					<a href="" onClick={props.showForgetPasswordModal}>
+					{/* <a href="" onClick={props.showForgetPasswordModal}>
 						Forgot Password
-					</a>
+					</a> */}
 					<Form.Group id="formGridCheckbox">
 						<Form.Check type="checkbox" name="save" label="Stay signed in" onClick={props.rememberUserHandler} />
 					</Form.Group>
@@ -139,9 +139,9 @@ const RegisterForm = (props) => {
 					<a href="" onClick={props.showSigninModal} style={{ paddingRight: "10px" }}>
 						Create an account
 					</a>
-					<a href="" onClick={props.showForgetPasswordModal}>
+					{/* <a href="" onClick={props.showForgetPasswordModal}>
 						Forgot Password
-					</a>
+					</a> */}
 					<Form.Group id="formGridCheckbox">
 						<Form.Check type="checkbox" label="Stay signed in" />
 					</Form.Group>

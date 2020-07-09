@@ -1,43 +1,47 @@
 :root {
-	--media-card-offset: 0px;
-	--media-card-width: 100%;
+    --media-card-offset: 0px;
+    --media-card-width: 100%;
 }
 
-@media (min-width: 200px) {
-	:root {
-		--media-card-offset: 0px;
-		--media-card-width: 50vw;
-	}
+@media (min-width: 300px) {
+    :root {
+        --media-card-offset: 0px;
+        --media-card-width: 100vw;
+    }
+    .media-card {
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 @media (min-width: 576px) {
-	:root {
-		--media-card-offset: 0px;
-		--media-card-width: 60%;
-	}
+    :root {
+        --media-card-offset: 0px;
+        --media-card-width: 100%;
+    }
 }
 
 @media (min-width: 768px) {
-	:root {
-		--media-card-offset: 100px;
-		--media-card-width: 100%;
-	}
+    :root {
+        --media-card-offset: 50px;
+        --media-card-width: 80%;
+    }
 }
 
 @media (min-width: 992px) {
-	:root {
-		--media-card-offset: 200px;
-		--media-card-width: 70%;
-	}
+    :root {
+        --media-card-offset: 100px;
+        --media-card-width: 70%;
+    }
 }
 
 @media (min-width: 1200px) {
-	:root {
-		--media-card-offset: 1700px;
-		--media-card-width: 70%;
-	}
+    :root {
+        --media-card-offset: 150px;
+        --media-card-width: 60%;
+    }
 }
-
 .media-container {
 	height: 40vh;
 	max-width: 80vw;
