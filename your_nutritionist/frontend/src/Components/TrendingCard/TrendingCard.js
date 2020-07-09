@@ -7,7 +7,7 @@ const TrendingCard = (props) => {
         <div className="trending-card card clickable"
         style={{backgroundImage:"url('" + props.url + "')"}}
         onClick={props.goToRoute}>
-            <p>{props.text}</p>
+            <div className="trending-txt">&#9656;{props.text}</div>
         </div>
     </>
 }
