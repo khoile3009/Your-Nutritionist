@@ -19,3 +19,12 @@
 	font-size: 32pt;
 	font-weight: bold;
 }
+
+@media (max-width: 500px) {
+	.trending-card {
+		height: 20vh;
+	}
+	.trending-txt {
+		padding: 0;
+	}
+}

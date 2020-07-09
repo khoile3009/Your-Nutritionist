@@ -112,4 +112,5 @@ button.edit-headline-btn {
 	background-color: transparent;
 	color: rgb(53, 53, 53);
 	border: solid 1px rgb(39, 39, 39);
+	border: none;
 }

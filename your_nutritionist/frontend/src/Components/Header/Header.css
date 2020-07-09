@@ -120,7 +120,7 @@
 	padding-left: 1rem;
 	color: #ffffff;
 	padding-top: 2pt;
-	transition: 0.75s all;
+	transition: .75s all;
 	caret-color: #ff5252;
 	background: #ffffff00;
 	max-width: 20%;
@@ -130,7 +130,7 @@
 	border: none;
 	outline: none;
 	max-width: 100%;
-	transition: 0.5s all;
+	transition: 0.4s all;
 	color: #ffffff;
 }
 
@@ -186,12 +186,12 @@
 
 .searchBar:focus-within {
 	width: 90%;
-	transition: 300ms all;
+	transition: 300ms all ease;
 }
 
 .searchBar:focus-within button.search {
 	display: inline-block;
-	transition: 2s all;
+	transition: 2s all ease;
 }
 
 .searchBar button.search:focus {
