@@ -25,10 +25,13 @@ class ProfilePicAPI(generics.GenericAPIView):
 
     def put(self, *args, **kwargs):
         profile_pic_url = self.request.POST.get('url')
-        if(profile_pic_url and profile_pic_url == ''):
+
+        if(not profile_pic_url or profile_pic_url == ''):
             if(len(self.request.FILES) > 0):
+                print(profile_pic_url)
                 media_id_map = [0]
                 urls, bucket_path = GCLOUD.upload_and_return_url(self.request.user.id, self.request.FILES, media_id_map)
+                print(urls)
                 try:
                     profile_pic_instance = UserProfilePic.objects.get(user=self.request.user)
                     if(profile_pic_instance.gcloud_bucket_url != ''):
@@ -42,7 +45,7 @@ class ProfilePicAPI(generics.GenericAPIView):
                         url = urls[0],
                         gcloud_bucket_url = bucket_path[0]
                     )
-                return JsonResponse({'status': 'ok'}, safe=True)
+                return JsonResponse({'url': urls[0]}, safe=True)
             else:
                 return JsonResponse({'status': 'No file_input'})
         else:
@@ -59,11 +62,11 @@ class ProfilePicAPI(generics.GenericAPIView):
                     url = profile_pic_url,
                     gcloud_bucket_url = ''
                 )
-            return JsonResponse({'status': 'ok'}, safe=True)
+            return JsonResponse({'url': profile_pic_url}, safe=True)
 
     def post(self, *args, **kwargs):
-        profile_pic_url = self.request.POST['url']
-        if(profile_pic_url == ''):
+        profile_pic_url = self.request.POST.get('url')
+        if(not profile_pic_url and profile_pic_url == ''):
             if(len(self.request.FILES) > 0):
                 media_id_map = [0]
                 urls, bucket_path = GCLOUD.upload_and_return_url(self.request.user.id, self.request.FILES, media_id_map)
@@ -76,7 +79,7 @@ class ProfilePicAPI(generics.GenericAPIView):
                         url = urls[0],
                         gcloud_bucket_url = bucket_path[0]
                     )
-                    return JsonResponse({'status': 'ok'}, safe=True)
+                    return JsonResponse({'url': urls[0]}, safe=True)
             else:
                 return JsonResponse({'status': 'No file_input'})
         else:
@@ -89,7 +92,7 @@ class ProfilePicAPI(generics.GenericAPIView):
                     url = profile_pic_url,
                     gcloud_bucket_url = ''
                 )
-                return JsonResponse({'status': 'ok'}, safe=True)
+                return JsonResponse({'url': profile_pic_url}, safe=True)
     
     def delete(self, *args, **kwargs):
         UserProfilePic.objects.filter(user = self.request.user).delete()

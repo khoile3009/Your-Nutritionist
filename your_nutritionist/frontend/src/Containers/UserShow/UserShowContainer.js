@@ -21,6 +21,7 @@ class UserShowContainer extends Component {
 		this.getUserRecipes = this.getUserRecipes.bind(this);
 		this.getUserActions = this.getUserActions.bind(this);
 		this.toPage = this.toPage.bind(this);
+		this.updateProfilePic = this.updateProfilePic.bind(this);
 	}
 
 	componentDidMount() {
@@ -37,6 +38,7 @@ class UserShowContainer extends Component {
 		axios
 			.get("api/user/" + this.props.match.params["user_id"] + "/info", { headers: headers })
 			.then((response) => {
+				console.log(response)
 				this.setState({ user_info: response.data });
 				this.getUserRecipes(page);
 			})
@@ -125,10 +127,13 @@ class UserShowContainer extends Component {
 		this.props.history.push({ pathname: "/user/" + this.props.match.params["user_id"], search: queryString.stringify({ page: page }) });
 	};
 
+	updateProfilePic = (url) =>{
+		this.setState({user_info: {...this.state.user_info, profilepic: url}})
+	}
 	render() {
 		return this.state.user_info ? (
 			<Container className="shadow custom-container">
-				<UserInfoContainer user_info={this.state.user_info} userId={parseInt(this.props.match.params["user_id"])}></UserInfoContainer>
+				<UserInfoContainer updateProfilePic={this.updateProfilePic} user_info={this.state.user_info} userId={parseInt(this.props.match.params["user_id"])}></UserInfoContainer>
 				<hr></hr>
 				<UserIntroductionContainer userId={parseInt(this.props.match.params["user_id"])}></UserIntroductionContainer>
 				<hr></hr>

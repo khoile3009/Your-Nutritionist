@@ -252,4 +252,5 @@ const InfoForm = (props) => {
 	);
 };
 
+
 export { LoginForm, RegisterForm, ForgotPasswordForm, SigninRequiredForm, InfoForm };

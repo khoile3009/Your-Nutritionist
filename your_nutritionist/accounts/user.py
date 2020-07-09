@@ -13,7 +13,10 @@ def get_user_info(user_id):
     context['user_id'] = user_id
     context['name'] = user_instance.get_full_name()
     context['headline'] = get_headline(user_id)
-
+    try:
+        context['profilepic'] = UserProfilePic.objects.get(user = user_instance).url
+    except:
+        context['profilepic'] = ''
     # context
     return context
     
