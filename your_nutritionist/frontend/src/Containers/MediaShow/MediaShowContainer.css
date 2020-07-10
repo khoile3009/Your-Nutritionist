@@ -1,92 +1,105 @@
-:root {
-    --media-card-offset: 0px;
-    --media-card-width: 100%;
-}
-
-@media (min-width: 300px) {
-    :root {
-        --media-card-offset: 0px;
-        --media-card-width: 100vw;
-    }
-    .media-card {
-        padding: 0;
-        margin-left: 0;
-        margin-right: 0;
-    }
-}
-
-@media (min-width: 576px) {
-    :root {
-        --media-card-offset: 0px;
-        --media-card-width: 100%;
-    }
-}
-
-@media (min-width: 768px) {
-    :root {
-        --media-card-offset: 50px;
-        --media-card-width: 80%;
-    }
-}
-
-@media (min-width: 992px) {
-    :root {
-        --media-card-offset: 100px;
-        --media-card-width: 70%;
-    }
-}
-
-@media (min-width: 1200px) {
-    :root {
-        --media-card-offset: 150px;
-        --media-card-width: 60%;
-    }
-}
 .media-container {
-	height: 40vh;
-	max-width: 80vw;
-	margin: 1rem;
-	position: relative;
-	padding: 15%;
+  margin-top: 2rem;
+  flex: 0 1 100%;
+  display: flex;
+  justify-content: center;
+  height: 30rem;
+  position: relative;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-left: 0;
+  padding-right: 0;
+  background: center;
+}
+.media-container .media-content {
+  flex: 0 0 55%;
+  height: 100%;
+  position: relative;
+  transition: 0.5s ease;
 }
 
 .left-field {
-	position: absolute;
-	z-index: 2;
-	margin-top: 20vh;
-	left: 0;
-	height: 20vh; /* Remember to use var with this */
+  left: 20px;
+  position: absolute;
 }
 
 .right-field {
-	position: absolute;
-	z-index: 2;
-	margin-top: 20vh;
-	right: 0;
-	height: 20vh;
-}
-
-.left-media-cover {
-	display: none;
-}
-
-.right-media-cover {
-	display: none;
+  right: 20px;
+  position: absolute;
 }
 
 .trigger-field {
-	background: rgba(85, 85, 85, 0.6);
-	width: 5vw;
-	height: 100%;
-	border-radius: 5px;
-	font-size: 4vw;
-	text-align: center;
-	padding-top: 9vh;
-	line-height: 0;
-	color: rgb(255, 255, 255);
+  text-align: center;
+  padding-top: 0.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-position: center;
+  margin: 0;
+}
+.trigger-field:hover {
+  background-color: rgba(128, 128, 128, 0.281);
+  cursor: pointer;
 }
 
-.trigger-field:hover {
-	background-color: #ff5252;
-	transition: 0.5s;
+.material-icons {
+  font-size: 2rem;
 }
+
+.left-media-cover {
+  height: 90%;
+  width: 20%;
+  position: absolute;
+  z-index: 4;
+  left: -120px;
+}
+
+.right-media-cover {
+  height: 90%;
+  width: 20%;
+  position: absolute;
+  z-index: 4;
+  right: -120px;
+}
+
+@media (max-width: 700px) {
+  .media-container .media-content {
+    width: 100%;
+    position: absolute;
+  }
+
+  .left-field {
+    top: 100%;
+  }
+
+  .right-field {
+    top: 100%;
+  }
+}
+@media (min-width: 1000px) {
+  :root {
+    --media-card-offset: 0px;
+    --media-card-width: 80%;
+  }
+
+  .left-card {
+    left: -20%;
+    top: 5%;
+    transition: 0.5s;
+    height: 80%;
+    width: 80%;
+    background-color: black;
+    transition: 0.5s ease;
+  }
+
+  .right-card {
+    right: -20%;
+    top: 5%;
+    transition: 0.5s all;
+    height: 80%;
+    width: 80%;
+    transition: 0.5s ease;
+  }
+}
+
+/*# sourceMappingURL=MediaShowContainer.css.map */

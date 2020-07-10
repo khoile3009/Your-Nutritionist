@@ -1,0 +1,20 @@
+// Style variables
+
+$card-height: 100%;
+$card-width: 100%;
+
+.media-card {
+	height: $card-height;
+	width: $card-width;
+	position: absolute;
+	transition: all 0.5s;
+	top: -5%;
+}
+
+.left-card {
+	z-index: 2;
+}
+
+.right-card {
+	z-index: 1;
+}
