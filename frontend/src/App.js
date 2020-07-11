@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch,Redirect } from 'react-router-dom';
 import NewRecipeContainer from './Containers/NewRecipe/NewRecipeContainer';
 import HeaderContainer from './Containers/Header/HeaderContainer';
 import RecipeShowContainer from './Containers/RecipeShow/RecipeShowContainer';
@@ -27,6 +27,7 @@ function App() {
 				<Route path="/search" render={(props) => <SearchPage key={queryString.parse(props.location.search).query} {...props} />} />
 				<Route path="/dev" component={DevPage} />
 				<Route path="/homepage" component={Homepage} />
+				<Route path="/"><Redirect to='homepage'/></Route>
 			</Switch>
 		</div>
 	);

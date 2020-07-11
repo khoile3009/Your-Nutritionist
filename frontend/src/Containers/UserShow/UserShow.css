@@ -1,7 +1,7 @@
 .profile-pic {
 	background-color: teal;
 	background-image: url("https://cdn.vox-cdn.com/thumbor/H9Ph7ayZO85_HSoCyy_zdbwQZNA=/0x523:2679x2532/1400x1400/filters:focal(0x523:2679x2532):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/48650407/GettyImages-460007618.0.jpg");
-	background-size: contain;
+	background-size: cover;
 	width: 150px;
 	height: 150px;
 	min-width: 150px;

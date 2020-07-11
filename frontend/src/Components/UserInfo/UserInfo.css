@@ -5,6 +5,9 @@
 	min-width: 150px;
 	box-shadow: -4px 3px 6px 5px rgba(172, 172, 172, 0.6) !important;
 	margin-right: 1rem;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 }
 
 .title {
