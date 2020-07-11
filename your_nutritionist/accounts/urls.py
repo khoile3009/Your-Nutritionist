@@ -3,6 +3,7 @@ from .api import RegisterAPI, LoginAPI, UserAPI
 from knox import views as knox_views
 from .profile_pic import get_user_profile_picture, ProfilePicAPI
 from . import views
+from .apis.user_info_api import UserHeadlineAPI, UserIntroductionAPI
 
 urlpatterns = [
   path('auth/', include('knox.urls')),
@@ -12,9 +13,9 @@ urlpatterns = [
   path('auth/signout', knox_views.LogoutView.as_view(), name='knox_logout'),
 
   path('<int:user_id>/info', views.user_info_view),
-  path('<int:user_id>/headline', views.set_user_headline),
+  path('headline', UserHeadlineAPI.as_view()),
   # path('<int:user_id>/headline/set', view.set_user_headline)
-  path('<int:user_id>/introduction/set', views.set_user_introduction),
+  path('introduction', UserIntroductionAPI.as_view()),
   path('<int:user_id>/introduction', views.user_introduction_view),
 
   path('<int:user_id>/profilepic', get_user_profile_picture),

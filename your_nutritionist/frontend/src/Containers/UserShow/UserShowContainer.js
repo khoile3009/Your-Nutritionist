@@ -22,6 +22,7 @@ class UserShowContainer extends Component {
 		this.getUserActions = this.getUserActions.bind(this);
 		this.toPage = this.toPage.bind(this);
 		this.updateProfilePic = this.updateProfilePic.bind(this);
+		this.updateHeadline = this.updateHeadline.bind(this)
 	}
 
 	componentDidMount() {
@@ -130,10 +131,14 @@ class UserShowContainer extends Component {
 	updateProfilePic = (url) =>{
 		this.setState({user_info: {...this.state.user_info, profilepic: url}})
 	}
+	updateHeadline = (headline) => {
+		this.setState({user_info: {...this.state.user_info, headline: headline}})
+	}
+
 	render() {
 		return this.state.user_info ? (
 			<Container className="shadow custom-container">
-				<UserInfoContainer updateProfilePic={this.updateProfilePic} user_info={this.state.user_info} userId={parseInt(this.props.match.params["user_id"])}></UserInfoContainer>
+				<UserInfoContainer updateHeadline={this.updateHeadline} updateProfilePic={this.updateProfilePic} user_info={this.state.user_info} userId={parseInt(this.props.match.params["user_id"])}></UserInfoContainer>
 				<hr></hr>
 				<UserIntroductionContainer userId={parseInt(this.props.match.params["user_id"])}></UserIntroductionContainer>
 				<hr></hr>

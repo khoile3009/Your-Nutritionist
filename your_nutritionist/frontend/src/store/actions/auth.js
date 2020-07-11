@@ -99,7 +99,7 @@ export const submitHeadline= (headline, user_id, token) => {
             'Content-Type': 'application/json',
             'Authorization': 'Token ' + token
         }
-        let url = 'api/user/' + user_id + '/headline';
+        let url = 'api/user/headline';
         axios.post(url, data, {headers: headers})
             .then(response => {
                 console.log(response)
@@ -119,7 +119,7 @@ export const submitIntroduction= (introduction, user_id, token) => {
             'Content-Type': 'application/json',
             'Authorization': 'Token ' + token
         }
-        let url = 'api/user/' + user_id + '/introduction/set';
+        let url = 'api/user/introduction';
         axios.post(url, data, {headers: headers})
             .then(response => {
                 console.log(response)

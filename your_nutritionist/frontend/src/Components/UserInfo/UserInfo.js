@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Button } from 'react-bootstrap'
+import { Row, Col, Button, Form } from 'react-bootstrap'
 import './UserInfo.css'
 
 const UserInfo = (props) => {
@@ -22,9 +22,21 @@ const UserInfo = (props) => {
                         <div>
                             <p className='title'>{props.user_info.name}</p>
                             <p className='subtitle'>@{props.user_info.username}</p>
-                            <p className='headline'>{props.user_info.headline}</p>
-                            {console.log(props.isSelf)}
-                            {props.logged_in && props.isSelf ? (<Button onClick={props.showEditHeadline} className="edit-headline-btn">🖉</Button>) : null}
+                            {
+                                props.headlineEdit.editing 
+                                ? <>
+                                <Form onSubmit={props.submitHeadline}>
+                                    <Form.Control value={props.headlineEdit.headline} onChange={props.editHeadlineChangeHandler}></Form.Control>
+                                    <Button type='submit'>Edit</Button>
+                                    <Button variant='secondary' onClick={props.stopHeadlineEdit}>Cancel</Button>
+                                </Form>
+                                </>
+                                :<>
+                                    <p className='headline'>{props.user_info.headline}</p>
+                                    {props.logged_in && props.isSelf ? (<Button onClick={props.startHeadlineEdit} className="edit-headline-btn">🖉</Button>) : null}
+                                </>
+                            }
+                            
                             {console.log(props.user_info)}
                             {(props.logged_in &&!props.isSelf)
                                 ?

@@ -14,11 +14,14 @@ class UserInfoContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user_info: this.props.user_info,
             following: false,
             modal: 0,
             url: '',
-            file: null
+            file: null,
+            headlineEdit: {
+                editing: false,
+                headline: this.props.user_info.headline
+            }
         }
         this.checkFollowing = this.checkFollowing.bind(this)
         this.follow = this.follow.bind(this)
@@ -30,6 +33,11 @@ class UserInfoContainer extends Component {
         this.urlChangeHandler = this.urlChangeHandler.bind(this)
         this.resetProfilePicInput = this.resetProfilePicInput.bind(this)
         this.fileChangeHandler = this.fileChangeHandler.bind(this)
+        this.editHeadlineChangeHandler = this.editHeadlineChangeHandler.bind(this)
+        this.startHeadlineEdit = this.startHeadlineEdit.bind(this)
+        this.stopHeadlineEdit = this.stopHeadlineEdit.bind(this)
+        this.submitHeadline = this.submitHeadline.bind(this)
+        this.submitProfilePic = this.submitProfilePic.bind(this)
     }
 
 
@@ -88,7 +96,6 @@ class UserInfoContainer extends Component {
                 }
             })
             .then((response) => {
-                console.log(response)
                 this.props.updateProfilePic(response.data.url)
                 this.hideModal()
             })
@@ -103,6 +110,31 @@ class UserInfoContainer extends Component {
         })
     }
 
+    editHeadlineChangeHandler = (event) => {
+        this.setState({headlineEdit: {...this.state.headlineEdit, headline: event.target.value}})
+    }
+
+    startHeadlineEdit = () => {
+        this.setState({headlineEdit: {editing: true, headline: this.props.user_info.headline}})
+    }
+
+    stopHeadlineEdit = () => {
+        this.setState({headlineEdit: {...this.state.headlineEdit, editing: false}})
+    }
+
+    submitHeadline = (event) => {
+        event.preventDefault()
+        let headers = {
+            'Content-Type': 'application/json',
+            'Authorization': 'Token ' + this.props.token
+        }
+        axios.put('api/user/headline', {headline: this.state.headlineEdit.headline}, {
+            headers: headers
+        }). then((response) => {
+            this.props.updateHeadline(response.data.headline)
+            this.stopHeadlineEdit()
+        })
+    }
     checkFollowing = () => {
         if (this.props.token) {
             let headers = {
@@ -227,7 +259,13 @@ class UserInfoContainer extends Component {
         }
         showProfileEditForm = {
                 this.showProfilePicForm
-            } /> 
+            }
+        headlineEdit = {this.state.headlineEdit}
+        editHeadlineChangeHandler = {this.editHeadlineChangeHandler}
+        startHeadlineEdit = {this.startHeadlineEdit}
+        stopHeadlineEdit = {this.stopHeadlineEdit}
+        submitHeadline = {this.submitHeadline}
+            /> 
         </>
         : null
     }
