@@ -24,12 +24,12 @@
 	width: 60%;
 	text-align: left;
 	position: absolute;
-	left: 9vw;
+	left: 20%;
 	top: 0;
 }
 
 .rating-card .comment-rating {
-	border: solid  1px grey;
+	border: solid 1px grey;
 	width: 8vw;
 	height: 2rem;
 	right: 5%;
@@ -39,7 +39,6 @@
 }
 
 .rating-card .comment-user p {
-
 }
 
 button.upvote:hover {
