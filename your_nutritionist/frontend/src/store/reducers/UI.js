@@ -26,6 +26,7 @@ const showInfoModal = (state, action) => {
     return updateObject( state, {showModal: true, modalType: 5})
 }
 
+
 const hideModal = (state, action) => {
     return updateObject( state, {showModal: false})
 }

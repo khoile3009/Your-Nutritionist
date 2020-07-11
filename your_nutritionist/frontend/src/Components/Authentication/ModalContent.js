@@ -137,7 +137,7 @@ const RegisterForm = (props) => {
 					</Form.Group>
 					<Form.Group controlId="formGroupPassword"></Form.Group>
 					<a href="" onClick={props.showSigninModal} style={{ paddingRight: "10px" }}>
-						Create an account
+						Already have an account
 					</a>
 					{/* <a href="" onClick={props.showForgetPasswordModal}>
 						Forgot Password
@@ -251,5 +251,6 @@ const InfoForm = (props) => {
 		</>
 	);
 };
+
 
 export { LoginForm, RegisterForm, ForgotPasswordForm, SigninRequiredForm, InfoForm };

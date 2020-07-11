@@ -2,7 +2,7 @@ from recipe.models import Recipe
 from django.contrib.auth.models import User
 from .models import UserHeadline, UserIntroduction, UserProfilePic
 from django.http import Http404
-
+from django.http import HttpResponse, JsonResponse
 def get_user_info(user_id):
     try:
         user_instance = User.objects.get(id=user_id)
@@ -13,7 +13,10 @@ def get_user_info(user_id):
     context['user_id'] = user_id
     context['name'] = user_instance.get_full_name()
     context['headline'] = get_headline(user_id)
-
+    try:
+        context['profilepic'] = UserProfilePic.objects.get(user = user_instance).url
+    except:
+        context['profilepic'] = ''
     # context
     return context
     
@@ -39,16 +42,50 @@ def get_introduction(user_id):
     except:
         return ''
     
-def create_user_headline(user_id, user_headline):
-    user_instance = User.objects.get(id = user_id)
-    UserHeadline.objects.create(
-        user = user_instance,
-        headline = user_headline
-    )
+def create_user_headline(user_instance, user_headline):
+    try:
+        UserHeadline.objects.get(user = user_instance)
+        return JsonResponse({'status': 'Already exist'}, status = 405)
+    except UserHeadline.DoesNotExist:
+        UserHeadline.objects.create(
+            user = user_instance,
+            headline = user_headline
+        )
+        return JsonResponse({'headline': user_headline}, safe=True)
 
-def create_user_introduction(user_id, user_introduction):
-    user_instance = User.objects.get(id = user_id)
-    UserIntroduction.objects.create(
-        user = user_instance,
-        introduction = user_introduction
-    )
+def edit_user_headline(user_instance, user_headline):
+    try:
+        userHeadline_instance = UserHeadline.objects.get(user = user_instance)
+        userHeadline_instance.headline = user_headline
+        userHeadline_instance.save()
+    except UserHeadline.DoesNotExist:
+        UserHeadline.objects.create(
+            user = user_instance,
+            headline = user_headline
+        ) 
+    return JsonResponse({'headline': user_headline}, safe=True)
+
+def create_user_introduction(user_instance, user_introduction):
+    try:
+        UserIntroduction.objects.get(user = user_instance)
+        return JsonResponse({'status': 'Already exist'}, status = 405)
+    except UserIntroduction.DoesNotExist:
+        UserIntroduction.objects.create(
+            user = user_instance,
+            introduction = user_introduction
+        )
+        return JsonResponse({'introduction': user_introduction}, safe=True)
+
+def edit_user_introduction(user_instance, user_introduction):
+    try:
+        userIntroduction_instance = UserIntroduction.objects.get(user = user_instance)
+        userIntroduction_instance.introduction = user_introduction
+        userIntroduction_instance.save()
+    except UserIntroduction.DoesNotExist:
+        UserIntroduction.objects.create(
+            user = user_instance,
+            introduction = user_introduction
+        ) 
+    return JsonResponse({'introduction': user_introduction}, safe=True)
+
+
