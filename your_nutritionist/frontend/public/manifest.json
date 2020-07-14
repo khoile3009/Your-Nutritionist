@@ -3,17 +3,17 @@
 	"name": "FaceCookery Mass Recipes",
 	"icons": [
 		{
-			"src": "favicon.ico",
+			"src": "https://di.phncdn.com/www-static/favicon.ico?cache=2020071401",
 			"sizes": "64x64 32x32 24x24 16x16",
 			"type": "image/x-icon"
 		},
 		{
-			"src": "logo192.png",
+			"src": "https://di.phncdn.com/www-static/favicon.ico?cache=2020071401",
 			"type": "image/png",
 			"sizes": "192x192"
 		},
 		{
-			"src": "logo512.png",
+			"src": "https://di.phncdn.com/www-static/favicon.ico?cache=2020071401",
 			"type": "image/png",
 			"sizes": "512x512"
 		}
