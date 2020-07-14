@@ -1,0 +1,16 @@
+span.stars, span.stars span {
+    display: block;
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/747/star-o-white.svg) 0 0 repeat-x;
+    width: 100pt; /* width of a star multiplied by 5 */
+    height: 20pt; /* the height of the star */
+    background-size: 20pt 20pt;
+  }
+  
+  span.stars span {
+    background-position: 0 0;
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/747/star.svg);
+  }
+
+  span.stars{
+    margin:0 auto;
+  }

@@ -130,8 +130,11 @@ class RecipeRatingContainer extends Component {
     }
 
     render() {
+        console.log(this.props)
         return <>
             <RatingHeader
+                totalRating={this.props.totalRating}
+                numberRatings={this.props.numberRatings}
                 toggleFormCard={this.toggleFormCard}
                 isRated = {this.state.your_rating.rated}
                 canRate = {this.canRate()}
