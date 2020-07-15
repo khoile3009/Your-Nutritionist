@@ -1,99 +1,59 @@
-.rating-card {
-	height: 20vh;
-	margin-bottom: 2rem;
-	border-radius: 16px;
-	display: block;
-	overflow-y: hidden;
-	padding-top: 1rem;
-	padding-bottom: 4rem;
+.rating-wrapper {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
-.rating-card .comment-profile {
-	height: 100px;
-	width: 100px;
-	border: solid .5px rgba(128, 128, 128, 0.452);
-	margin: 1rem;
-	display: inline-block;
-	position: absolute;
-	left: 1vw;
-	background: grey;
-	background-position: center;
-	background-size: cover;
+.card.rating-card {
+  margin: 1rem 0;
+  height: 250px;
+  width: 100%;
+}
+.card.rating-card .comment-profile-wrapper {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 0;
+}
+.card.rating-card .comment-profile-wrapper .comment-profile {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background: #bc002d;
+  margin: 2rem;
+}
+.card.rating-card .comment-content {
+  overflow: hidden;
+  height: 190px;
+}
+.card.rating-card .see-more-trigger {
+  position: absolute;
+  bottom: 0%;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  height: 3rem;
+  width: 100%;
+  text-align: center;
+  color: #7e7e7e;
+  background-image: linear-gradient(0deg, white 0%, rgba(255, 255, 255, 0.8351715686) 85%, rgba(255, 255, 255, 0) 100%);
+}
+.card.rating-card #see-more-active {
+  border: solid 1px grey;
+  padding: 0.3rem;
+}
+.card.rating-card .comment-rating {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 0;
+}
+@media (max-width: 800px) {
+  .card.rating-card .comment-rating {
+    display: none;
+  }
 }
 
-.rating-card .comment-user {
-	display: inline-block;
-	width: 60%;
-	text-align: left;
-	position: absolute;
-	left: 20%;
-	top: 0;
-}
-
-.rating-card .comment-rating {
-	border: solid 1px grey;
-	width: 8vw;
-	height: 2rem;
-	right: 5%;
-	position: absolute;
-	text-align: center;
-	font-size: 1rem;
-}
-
-.rating-card .comment-user p {
-}
-
-button.upvote:hover {
-	background: rgb(0, 168, 132);
-	color: white;
-	border: none;
-}
-
-button.add-comment {
-	margin-top: 2rem;
-}
-
-@media (max-width: 1100px) {
-	.rating-card .comment-user {
-		left: 15vw;
-	}
-}
-
-@media (max-width: 700px) {
-	.rating-card .comment-profile {
-		height: 50px;
-		width: 50px;
-	}
-	.rating-card .comment-user {
-		width: 80%;
-		left: 8vw;
-	}
-}
-
-@media (max-width: 500px) {
-	.rating-card .comment-profile {
-		display: none;
-	}
-	.rating-card .comment-user {
-		width: 80%;
-	}
-}
-
-.see-more-trigger {
-	position: absolute;
-	bottom: 0;
-	text-align: center;
-	width: 100%;
-	height: 2rem;
-	background-image: linear-gradient(to bottom, transparent, rgb(255, 255, 255) 50%);
-	padding-top: 2rem;
-	color: rgb(126, 126, 126);
-	font-weight: 300;
-	font-size: 16pt;
-	padding-bottom: 2.5rem;
-}
-
-#see-more-active {
-	border: solid .5px #acacac;
-	padding: .2rem;
-}
+/*# sourceMappingURL=RatingCard.css.map */

@@ -1,0 +1,21 @@
+#overall-rating {
+	text-align: right;
+	text-transform: lowercase;
+	font-weight: 500;
+}
+
+.star-rating-wrapper {
+	justify-content: center;
+	display: flex;
+}
+
+#rating-total {
+	padding: 0 1rem;
+	font-size: 20px;
+	font-weight: 200;
+}
+
+.add-comment-wrapper {
+	justify-content: right;
+	display: flex;
+}

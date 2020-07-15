@@ -1,19 +1,23 @@
-.rating-header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-}
-
 #overall-rating {
-    border: solid 1px grey;
-    width: 12vw;
-    height: 3vh;
-    margin-top: 1rem;
-    text-align: center;
+  text-align: right;
+  text-transform: lowercase;
+  font-weight: 500;
 }
 
-.rate{
-    display: flex;
-    flex-direction: row;
+.star-rating-wrapper {
+  justify-content: center;
+  display: flex;
 }
+
+#rating-total {
+  padding: 0 1rem;
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.add-comment-wrapper {
+  justify-content: right;
+  display: flex;
+}
+
+/*# sourceMappingURL=RatingHeader.css.map */

@@ -1,36 +1,39 @@
 import React from 'react';
-import './RatingCard.css'
+import './RatingCard.css';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Form, FormGroup, Button, FormFile } from "react-bootstrap";
-import StarRating from '../../StarRating/StarRating'
-const RatingCard = (props) =>{
-    console.log(props)
-    return <div className='card rating-card'>
-        <div className="comment-profile" style={{backgroundImage:"url('" + props.rating.profilepic + "')"}}>
-        </div>
-        <div className="comment-user">
-            <p>
-            <Link to={'/user/'+props.rating.user_id}>
-                {props.rating.name}
-            </Link> said on 
-            </p>
-            <p>
-            {props.rating.comment}
-            </p>
-        </div>
-        <div className="comment-rating">
-            <StarRating rating={props.rating.rating}></StarRating>
-        </div>
-        {/* <div className="see-more-trigger">
-            <span id="">See more bitches</p>
-        </div> */}
-        {props.rating.comment.length > 500
-                ? <div className="see-more-trigger">
-                        <span id="see-more-active">See more</span>
-                    </div>
-                    : null
-                }
-    </div>
-}
+import { Container, Row, Col, Form, FormGroup, Button, FormFile } from 'react-bootstrap';
+import StarRating from '../../StarRating/StarRating';
+const RatingCard = (props) => {
+	console.log(props);
+	return (
+		<div className="rating-wrapper">
+			<div className="card rating-card">
+				<Row>
+					<Col md="auto" className="comment-profile-wrapper">
+						<div className="comment-profile" style={{ backgroundImage: "url('" + props.rating.profilepic + "')" }} />
+					</Col>
 
-export default RatingCard
+					<Col xs={7} className="comment-content">
+						<p>
+							<Link to={'/user/' + props.rating.user_id}>{props.rating.name}</Link> said on
+						</p>
+						<p>{props.rating.comment}</p>
+					</Col>
+					<Col className="comment-rating">
+						<StarRating rating={props.rating.rating} />
+					</Col>
+					{/* <div className="see-more-trigger">
+                    <span id="">See more bitches</p>
+                </div> */}
+					{props.rating.comment.length > 400 ? (
+						<div className="see-more-trigger">
+							<span id="see-more-active">See more</span>
+						</div>
+					) : null}
+				</Row>
+			</div>
+		</div>
+	);
+};
+
+export default RatingCard;

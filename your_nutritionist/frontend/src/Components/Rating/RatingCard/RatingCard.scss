@@ -1,0 +1,66 @@
+$margin: 1rem;
+$comment-width: 250px;
+
+.rating-wrapper {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+}
+
+.card.rating-card {
+	margin: $margin 0;
+	height: 250px;
+	width: 100%;
+
+	.comment-profile-wrapper {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		display: flex;
+		padding: 0;
+
+		.comment-profile {
+			border-radius: 50%;
+			width: 80px;
+			height: 80px;
+			background: rgb(188, 0, 45);
+			margin: 2rem;
+		}
+	}
+
+	.comment-content {
+		overflow: hidden;
+		height: 190px;
+	}
+
+	.see-more-trigger {
+		//background: grey;
+		position: absolute;
+		bottom: 0%;
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+		height: 3rem;
+		width: 100%;
+		text-align: center;
+		color: #7e7e7e;
+		background-image: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.835171568627451) 85%, rgba(255, 255, 255, 0) 100%);
+	}
+	#see-more-active {
+		border: solid 1px grey;
+		padding: .3rem;
+	}
+
+	.comment-rating {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		display: flex;
+		padding: 0;
+	}
+	@media (max-width: 800px) {
+		.comment-rating {
+			display: none;
+		}
+	}
+}
