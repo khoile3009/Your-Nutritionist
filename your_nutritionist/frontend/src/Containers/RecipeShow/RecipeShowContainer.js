@@ -19,6 +19,9 @@ class RecipeShowContainer extends Component {
 		this.getMedias = this.getMedias.bind(this);
 		this.goToSecondOnMedia = this.goToSecondOnMedia.bind(this);
 		this.countMedias = this.countMedias.bind(this);
+		this.checkUpvote = this.checkUpvote.bind(this);
+		this.upvote = this.upvote.bind(this);
+		this.unUpvote = this.unUpvote.bind(this);
 	}
 
 	componentDidMount() {
@@ -29,6 +32,7 @@ class RecipeShowContainer extends Component {
 			this.setState({ recipe: response.data });
 			this.getRatings();
 			this.getMedias();
+			this.checkUpvote();
 		});
 		this.toEditRecipe = this.toEditRecipe.bind(this);
 	}
@@ -70,6 +74,74 @@ class RecipeShowContainer extends Component {
 		this.props.history.push({pathname: "/recipe/" + this.props.match.params["recipe_id"] + "/edit", state: {recipe: this.state.recipe, medias: this.state.medias}});
 	};
 
+	checkUpvote = () => {
+		if (this.props.token) {
+            let headers = {
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ' + this.props.token
+            }
+            axios.get('api/recipe/' + this.props.match.params["recipe_id"] + '/upvoted', {
+                    headers: headers
+                })
+                .then(
+                    (response) => {
+                        this.setState({
+                            upvoted: response.data.upvoted
+                        })
+
+                    }
+                )
+                .catch(
+                    (err) => {}
+                )
+        }
+
+	}
+
+	upvote = () => {
+		if (this.props.token) {
+            let data = null
+            let headers = {
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ' + this.props.token
+            }
+            let url = 'api/recipe/' + this.props.match.params["recipe_id"] + '/upvote';
+            axios.post(url, data, {
+                    headers: headers
+                })
+                .then(response => {
+                    console.log(response)
+                    this.setState({
+                        upvoted: true
+                    })
+                })
+                .catch(err => {
+                    console.log(err)
+				})
+			}
+	}
+	
+	unUpvote = () => {
+		let data = null
+        let headers = {
+            'Content-Type': 'application/json',
+            'Authorization': 'Token ' + this.props.token
+        }
+        let url = 'api/recipe/' + this.props.match.params["recipe_id"] + '/upvote';
+        axios.delete(url, {
+                headers: headers
+            })
+            .then(response => {
+                console.log(response)
+                this.setState({
+                    upvoted: false
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+	}
+
 	render() {
 		// console.log(this.props);
 		console.log(this.state.recipe)
@@ -88,7 +160,11 @@ class RecipeShowContainer extends Component {
 					<RecipeShow
 						recipe={this.state.recipe}
 						goToSecondOnMedia={this.goToSecondOnMedia}
+						logged_in={(this.props.token)}
 						is_creator={this.props.token ? this.state.recipe.creator_id == this.props.userId : false}
+						upvoted={this.state.upvoted}
+						upvote={this.upvote}
+						unUpvote={this.unUpvote}
 						toEditRecipe={this.toEditRecipe}
 					></RecipeShow>
 					<hr></hr>

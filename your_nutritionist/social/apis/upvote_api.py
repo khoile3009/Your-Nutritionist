@@ -76,8 +76,8 @@ class IsUpvotedAPI(generics.GenericAPIView):
                 target_recipe=target_recipe,
                 from_user=from_user
             ).exists()):
-                return JsonResponse({'following': True}, safe=True)
+                return JsonResponse({'upvoted': True}, safe=True)
             else:
-                return JsonResponse({'following': False}, safe=True)
+                return JsonResponse({'upvoted': False}, safe=True)
         else:
-            return JsonResponse({'following': False}, safe=True)
+            return JsonResponse({'upvoted': False}, safe=True)
