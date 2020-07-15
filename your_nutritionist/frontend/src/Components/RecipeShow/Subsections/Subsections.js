@@ -1,5 +1,5 @@
-import React from "react";
-import "../RecipeShow.css";
+import React from 'react';
+import '../RecipeShow.css';
 
 const IngredientSections = (props) => {
 	console.log(props);
@@ -9,7 +9,7 @@ const IngredientSections = (props) => {
 			{props.ingredient_sections.map((ingredient_section, index) => {
 				return (
 					<div>
-						<SubsectionName name={ingredient_section.name}></SubsectionName>
+						<SubsectionName name={ingredient_section.name} />
 						<ul>
 							{ingredient_section.ingredients.map((ingredient, index) => {
 								return (
@@ -33,7 +33,7 @@ const StepsSections = (props) => {
 			{props.step_sections.map((step_section, index) => {
 				return (
 					<div>
-						<SubsectionName name={step_section.name}></SubsectionName>
+						<SubsectionName name={step_section.name} />
 						<ol>
 							{step_section.steps.map((step, index) => {
 								return (
@@ -45,7 +45,7 @@ const StepsSections = (props) => {
 													props.goToSecondOnMedia(step.timestamp, step.mediaId);
 												}}
 											>
-												{"🔗"}
+												<i class="material-icons">link</i>
 											</button>
 										</p>
 									</li>
@@ -60,7 +60,7 @@ const StepsSections = (props) => {
 };
 
 const SubsectionName = (props) => {
-	return props.name !== "" ? <p className="subsection-name text-left">{props.name}</p> : null;
+	return props.name !== '' ? <p className="subsection-name text-left">{props.name}</p> : null;
 };
 
 export { IngredientSections };

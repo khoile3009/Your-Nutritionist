@@ -9,13 +9,15 @@ const RecipeShow = (props) => {
 	return (
 		<>
 			<div className="title-wrapper">
-				<p className="title text-left">{props.recipe.name}
-				{(props.logged_in && !props.is_creator)
+				<Row>
+					<Col md="auto" className="title text-left">{props.recipe.name}</Col>
+					<Col className="upvote-wrapper">{(props.logged_in && !props.is_creator)
 				?
-				props.upvoted ? <Button className="upvote" onClick={props.unUpvote}>Upvoted</Button> : <Button className="upvote"  onClick={props.upvote}>Upvote</Button>
+				props.upvoted ? <Button className="upvote" onClick={props.unUpvote}>Upvoted</Button> : <Button className="upvote"  onClick={props.upvote}><i class="material-icons">favorite</i></Button>
 				:null
-				}
-				</p>
+				}</Col>
+				</Row>
+				
 				{props.is_creator ? (
 					<Button
 						onClick={props.toEditRecipe}

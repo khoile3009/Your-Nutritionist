@@ -44,13 +44,17 @@ p.title.text-left {
 }
 
 button {
-	background: rgb(0, 194, 74);
+	background: transparent;
 	border: none;
-	margin: 2px 2px 2px 4px;
-	padding: 5px 8 8 5;
-	color: white;
-	font-weight: bold;
+	margin: 0;
+	color: rgb(59, 59, 59);
+	font-weight: normal;
+	font-size: 8pt;
 	border-radius: 3px;
+}
+
+button:hover {
+	color: rgb(0, 170, 57);
 }
 
 /* .items{
@@ -77,12 +81,21 @@ button {
 }
 
 button.upvote {
-	height: 2rem;
-	width: 60pt;
-	padding: 0;
+	height: 2.45rem;
 	background: transparent;
-	color: rgb(0, 201, 117);
-	border: solid 1px rgb(0, 201, 117);
+	color: rgb(78, 78, 78);
+	border: none;
+}
+
+button.upvote:hover {
+	color: rgb(201, 0, 44);
+	background: transparent;
+}
+
+.upvote-wrapper {
+	align-items: center;
+	display: flex;
+	left: 0;
 }
 
 @media (max-width: 800px) {
