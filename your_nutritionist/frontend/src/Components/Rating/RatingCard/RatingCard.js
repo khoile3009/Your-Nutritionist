@@ -6,12 +6,10 @@ import StarRating from '../../StarRating/StarRating'
 const RatingCard = (props) =>{
     console.log(props)
     return <div className='card rating-card'>
-        <div className="comment-profile">
-
+        <div className="comment-profile" style={{backgroundImage:"url('" + props.rating.profilepic + "')"}}>
         </div>
         <div className="comment-user">
             <p>
-            {console.log(props.rating)}
             <Link to={'/user/'+props.rating.user_id}>
                 {props.rating.name}
             </Link> said on 

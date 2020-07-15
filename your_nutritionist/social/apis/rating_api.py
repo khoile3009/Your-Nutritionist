@@ -11,6 +11,7 @@ from social.helpers import put_rating_into_range
 from accounts.helpers import get_user_from_id
 from django.db.models import Sum
 import json
+from accounts.models import UserProfilePic
 
 
 class RatingAPI(generics.GenericAPIView):
@@ -107,12 +108,20 @@ def get_all_rating(request, *args, **kwargs):
     rating_instances = Rating.objects.filter(
         recipe = recipe
     )
+    
     for rating_instance in rating_instances:
+        profilepic_url = ''
+        try:
+            profilepic_instance = UserProfilePic.objects.get(user=rating_instance.rater)
+            profilepic_url = profilepic_instance.url
+        except:
+            pass
         context['ratings'].append({
             'rating': rating_instance.rating,
             'comment': rating_instance.comment,
             'name': rating_instance.rater.get_full_name(),
-            'user_id': rating_instance.rater.id
+            'user_id': rating_instance.rater.id,
+            'profilepic': profilepic_url
         })
     return JsonResponse(context, safe=True)
 

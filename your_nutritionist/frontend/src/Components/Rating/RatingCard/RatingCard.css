@@ -17,6 +17,8 @@
 	position: absolute;
 	left: 1vw;
 	background: grey;
+	background-position: center;
+	background-size: cover;
 }
 
 .rating-card .comment-user {
