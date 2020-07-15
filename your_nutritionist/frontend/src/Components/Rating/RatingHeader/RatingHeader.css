@@ -1,6 +1,9 @@
 .rating-header {
   margin: 1rem 0;
 }
+.rating-header .add-comment-wrapper {
+  margin: 1rem 0;
+}
 
 #overall-rating {
   text-align: right;

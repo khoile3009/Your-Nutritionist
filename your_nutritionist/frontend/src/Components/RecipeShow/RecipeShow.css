@@ -39,8 +39,7 @@ p {
 	font-size: 15px;
 }
 
-p.title.text-left {
-	display: inline-block;
+.title.text-left {
 }
 
 button {
@@ -95,7 +94,7 @@ button.upvote:hover {
 .upvote-wrapper {
 	align-items: center;
 	display: flex;
-	left: 0;
+	padding: 0;
 }
 
 @media (max-width: 800px) {

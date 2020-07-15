@@ -13,11 +13,10 @@ const RatingCard = (props) => {
 						<div className="comment-profile" style={{ backgroundImage: "url('" + props.rating.profilepic + "')" }} />
 					</Col>
 
-					<Col xs={7} className="comment-content">
-						<p>
-							<Link to={'/user/' + props.rating.user_id}>{props.rating.name}</Link> said on
-						</p>
-						<p>{props.rating.comment}</p>
+					<Col xs="auto" md={7} className="comment-content">
+						<br />
+						<Link to={'/user/' + props.rating.user_id}>{props.rating.name}</Link> said on <br />
+						{props.rating.comment}
 					</Col>
 					<Col className="comment-rating">
 						<StarRating rating={props.rating.rating} />

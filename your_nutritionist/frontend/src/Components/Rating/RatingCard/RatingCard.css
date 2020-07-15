@@ -59,4 +59,21 @@
   }
 }
 
+@media (max-width: 800px) {
+  .custom-container {
+    padding: 0 1rem;
+  }
+
+  .card.rating-card {
+    width: 100%;
+    height: 200px;
+  }
+  .card.rating-card .comment-content {
+    width: 300px;
+  }
+  .card.rating-card .comment-profile {
+    display: none;
+  }
+}
+
 /*# sourceMappingURL=RatingCard.css.map */

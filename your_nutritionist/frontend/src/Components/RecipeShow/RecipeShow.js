@@ -11,7 +11,7 @@ const RecipeShow = (props) => {
 			<div className="title-wrapper">
 				<Row>
 					<Col md="auto" className="title text-left">{props.recipe.name}</Col>
-					<Col className="upvote-wrapper">{(props.logged_in && !props.is_creator)
+					<Col md="auto" className="upvote-wrapper">{(props.logged_in && !props.is_creator)
 				?
 				props.upvoted ? <Button className="upvote" onClick={props.unUpvote}><i class="material-icons" style={{color: "rgb(201, 0, 44)"}}>favorite</i></Button> : <Button className="upvote"  onClick={props.upvote}><i class="material-icons">favorite_border</i></Button>
 				:null

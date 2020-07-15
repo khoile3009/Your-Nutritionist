@@ -67,3 +67,19 @@ $comment-width: 250px;
 		}
 	}
 }
+
+@media (max-width: 800px) {
+	.custom-container {
+		padding: 0 1rem;
+	}
+	.card.rating-card {
+		width: 100%;
+		height: 200px;
+		.comment-content {
+			width: 300px;
+		}
+		.comment-profile {
+			display: none;
+		}
+	}
+}
