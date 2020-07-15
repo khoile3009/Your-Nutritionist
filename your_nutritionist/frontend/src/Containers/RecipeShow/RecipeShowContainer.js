@@ -37,8 +37,13 @@ class RecipeShowContainer extends Component {
 		let params = this.props.match.params;
 
 		axios.get("api/recipe/" + params["recipe_id"] + "/rate/all").then((response) => {
-			this.setState({ ratings: response.data.ratings });
+			let totalRating = 0;
+			response.data.ratings.map((rating) => {
+				totalRating += rating.rating
+			})
+			this.setState({ ratings: response.data.ratings, totalRating: totalRating, numberRatings: response.data.ratings.length });
 		});
+		
 	}
 
 	getMedias() {
@@ -88,6 +93,8 @@ class RecipeShowContainer extends Component {
 					></RecipeShow>
 					<hr></hr>
 					<RecipeRatingContainer
+						totalRating={this.state.totalRating}
+						numberRatings={this.state.numberRatings}
 						ratings={this.state.ratings}
 						recipeId={this.props.match.params["recipe_id"]}
 						getRatings={this.getRatings}

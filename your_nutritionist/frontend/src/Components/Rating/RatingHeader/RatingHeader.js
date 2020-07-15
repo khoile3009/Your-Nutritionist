@@ -3,13 +3,18 @@ import { Button } from 'react-bootstrap'
 import './RatingHeader.css';
 import RatingFormCard from '../RatingFormCard/RatingFormCard'
 import Popup from 'reactjs-popup'
+import StarRating from '../../StarRating/StarRating'
 const RatingHeader = (props) => {
+    console.log(props)
     return <div className='rating-header'>
         <div className='rate'>
             <p className='subtitle'>Comments and ratings: &nbsp;</p>
             <p className='subtitle'>{props.overallRatingScore}</p>   
         </div>
-        <div className="subtitle" id="overall-rating">🍆🍆🍆🍆🍆</div>
+        <div className="subtitle" id="overall-rating">
+            <span>{props.numberRatings + " ratings"}</span>
+            <StarRating rating={props.totalRating/props.numberRatings}/>
+        </div>
         {props.canRate
         ? <Button className="add-comment" onClick={props.toggleFormCard}>
             {props.isRated
