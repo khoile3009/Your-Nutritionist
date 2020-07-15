@@ -30,9 +30,11 @@ class RecipeShowContainer extends Component {
 
 		axios.get("api/recipe/" + params["recipe_id"] + "/info").then((response) => {
 			this.setState({ recipe: response.data });
-			this.getRatings();
+			
 			this.getMedias();
-			this.checkUpvote();
+			// Turn this back after migrating to gcloud
+			// this.getRatings();
+			// this.checkUpvote();
 		});
 		this.toEditRecipe = this.toEditRecipe.bind(this);
 	}
@@ -45,7 +47,11 @@ class RecipeShowContainer extends Component {
 			response.data.ratings.map((rating) => {
 				totalRating += rating.rating
 			})
-			this.setState({ ratings: response.data.ratings, totalRating: totalRating, numberRatings: response.data.ratings.length });
+			this.setState({ ratings: response.data.ratings, totalRating: totalRating, numberRatings: response.data.ratings.length },
+			 ()=> {
+				this.checkUpvote();
+			 }	
+			);
 		});
 		
 	}
@@ -53,7 +59,7 @@ class RecipeShowContainer extends Component {
 	getMedias() {
 		let params = this.props.match.params;
 		axios.get("api/recipe/" + params["recipe_id"] + "/media").then((response) => {
-			this.setState({ medias: response.data.medias });
+			this.setState({ medias: response.data.medias }, ()=> {this.getRatings()});
 		});
 	}
 
