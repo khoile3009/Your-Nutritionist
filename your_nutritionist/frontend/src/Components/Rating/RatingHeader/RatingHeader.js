@@ -11,7 +11,10 @@ const RatingHeader = (props) => {
             <p className='subtitle'>Comments and ratings: &nbsp;</p>
             <p className='subtitle'>{props.overallRatingScore}</p>   
         </div>
-        <div className="subtitle" id="overall-rating"><StarRating rating={props.totalRating/props.numberRatings}/></div>
+        <div className="subtitle" id="overall-rating">
+            <span>{props.numberRatings + " ratings"}</span>
+            <StarRating rating={props.totalRating/props.numberRatings}/>
+        </div>
         {props.canRate
         ? <Button className="add-comment" onClick={props.toggleFormCard}>
             {props.isRated
