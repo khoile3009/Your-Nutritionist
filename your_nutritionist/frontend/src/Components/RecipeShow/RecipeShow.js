@@ -9,7 +9,13 @@ const RecipeShow = (props) => {
 	return (
 		<>
 			<div className="title-wrapper">
-				<p className="title text-left">{props.recipe.name}<Button className="upvote">Upvote</Button></p>
+				<p className="title text-left">{props.recipe.name}
+				{(props.logged_in && !props.is_creator)
+				?
+				props.upvoted ? <Button className="upvote" onClick={props.unUpvote}>Upvoted</Button> : <Button className="upvote"  onClick={props.upvote}>Upvote</Button>
+				:null
+				}
+				</p>
 				{props.is_creator ? (
 					<Button
 						onClick={props.toEditRecipe}
