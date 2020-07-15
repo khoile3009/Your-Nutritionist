@@ -1,3 +1,7 @@
+.rating-header {
+	margin: 1rem 0;
+}
+
 #overall-rating {
 	text-align: right;
 	text-transform: lowercase;
@@ -18,4 +22,10 @@
 .add-comment-wrapper {
 	justify-content: right;
 	display: flex;
+}
+
+@media (max-width: 900px) {
+	#rating-total {
+		display: none;
+	}
 }

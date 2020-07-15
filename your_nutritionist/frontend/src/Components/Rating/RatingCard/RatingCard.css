@@ -23,6 +23,9 @@
   height: 80px;
   background: #bc002d;
   margin: 2rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .card.rating-card .comment-content {
   overflow: hidden;
