@@ -20,7 +20,7 @@ function App() {
 			<HeaderContainer />
 			<Switch>
 				<Route path="/recipe/create" component={NewRecipeContainer} />
-				<Route path="/recipe/:recipe_id/edit" component={EditRecipeContainer} />
+				<Route path="/recipe/:recipe_id/edit" render={(props) => <EditRecipeContainer key={props.match.params['user_id']} {...props} />} />
 				<Route path="/recipe/:recipe_id" component={RecipeShowContainer} />
 				<Route path="/user/:user_id" render={(props) => <UserShowContaner key={props.match.params['user_id']} {...props} />} />
 				<Route path="/feed" component={NewFeedPage} />

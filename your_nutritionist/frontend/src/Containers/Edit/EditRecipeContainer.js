@@ -76,12 +76,13 @@ class EditRecipeContainer extends Component {
 
 
 	componentDidMount() {
+		console.log('mount')
 		let recipe = null
 		let medias = null
 		if (this.props.location.state && this.props.location.state.recipe) {
-			console.log(this.props.location.state)
 			recipe = this.props.location.state.recipe
 			if (recipe.creator_id === this.props.userId) {
+				this.load = true;
 				medias = this.props.location.state.medias
 				if (medias) {
 					let params = this.props.match.params;
@@ -90,7 +91,11 @@ class EditRecipeContainer extends Component {
 						this.initState(recipe, medias);
 					});
 				}
+				else{
+					this.initState(recipe, medias);
+				}
 			}
+			
 		}
 		else {
 			console.log('else')
@@ -98,6 +103,7 @@ class EditRecipeContainer extends Component {
 			axios.get("api/recipe/" + params["recipe_id"] + "/info").then((response) => {
 				recipe = response.data
 				if (recipe.creator_id === this.props.userId) {
+					this.load = true
 					axios.get("api/recipe/" + params["recipe_id"] + "/media").then((response) => {
 						medias = response.data.medias;
 						this.initState(recipe, medias);
@@ -109,14 +115,47 @@ class EditRecipeContainer extends Component {
 
 	}
 
+	componentWillReceiveProps(props) {
+		if(!this.load){
+
+		console.log('will')
+		let recipe = null
+		let medias = null
+		if (props.location.state && props.location.state.recipe) {
+
+			recipe = props.location.state.recipe
+			if (recipe.creator_id === props.userId) {
+				medias = props.location.state.medias
+				if (medias) {
+					let params = props.match.params;
+					axios.get("api/recipe/" + params["recipe_id"] + "/media").then((response) => {
+						medias = response.data.medias;
+						this.initState(recipe, medias);
+					});
+				}
+			}
+		}
+		else {
+			let params = props.match.params;
+			axios.get("api/recipe/" + params["recipe_id"] + "/info").then((response) => {
+				recipe = response.data
+				if (recipe.creator_id === props.userId) {
+					axios.get("api/recipe/" + params["recipe_id"] + "/media").then((response) => {
+						medias = response.data.medias;
+						this.initState(recipe, medias);
+					});
+				}
+			})
+		}
+	}
+	}
+		
 
 
 	initState = (recipe, medias) => {
 		this.media_id_map = medias.map((media) => {
 			return media.mediaId;
 		})
-		console.log(medias)
-		console.log(this.media_id_map)
 
 		this.setState({
 			name: recipe.name,
