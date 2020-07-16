@@ -58,7 +58,7 @@ class UserIntroductionContainer extends Component {
 		introductionEdit={this.state.introductionEdit}
 		editIntroductionChangeHandler={this.editIntroductionChangeHandler}
 		startIntroductionEdit = {this.startIntroductionEdit}
-		stopIntroductioneEdit = {this.stopIntroductionEdit}
+		stopIntroductionEdit = {this.stopIntroductionEdit}
 		submitIntroduction = {this.submitIntroduction}
 		 />;
 	}
