@@ -63,16 +63,33 @@ button {
 		margin-right: 1rem;
 	}
 }
-button.upvote {
+button.upvote.btn.btn-primary {
 	height: 2.45rem;
 	background: transparent;
 	color: rgb(78, 78, 78);
 	border: none;
+	outline: none;
+	box-shadow: none !important;
+	&:active {
+		background: transparent;
+		border: transparent;
+		outline: none;
+		box-shadow: none;
+	}
+	&:focus {
+		background: transparent;
+		border: transparent;
+		outline: none;
+		box-shadow: none;
+	}
 	&:hover {
 		color: rgb(201, 0, 44);
 		background: transparent;
+		outline: none;
+		box-shadow: none;
 	}
 }
+
 button.edit-btn {
 	margin-left: 2rem;
 }

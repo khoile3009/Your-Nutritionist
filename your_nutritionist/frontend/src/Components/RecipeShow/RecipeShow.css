@@ -73,15 +73,31 @@ button:hover {
   margin-right: 1rem;
 }
 
-button.upvote {
+button.upvote.btn.btn-primary {
   height: 2.45rem;
   background: transparent;
   color: #4e4e4e;
   border: none;
+  outline: none;
+  box-shadow: none !important;
 }
-button.upvote:hover {
+button.upvote.btn.btn-primary:active {
+  background: transparent;
+  border: transparent;
+  outline: none;
+  box-shadow: none;
+}
+button.upvote.btn.btn-primary:focus {
+  background: transparent;
+  border: transparent;
+  outline: none;
+  box-shadow: none;
+}
+button.upvote.btn.btn-primary:hover {
   color: #c9002c;
   background: transparent;
+  outline: none;
+  box-shadow: none;
 }
 
 button.edit-btn {
