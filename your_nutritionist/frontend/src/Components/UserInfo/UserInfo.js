@@ -32,8 +32,9 @@ const UserInfo = (props) => {
                                 </Form>
                                 </>
                                 :<>
-                                    <p className='headline'>{props.user_info.headline}</p>
-                                    {props.logged_in && props.isSelf ? (<Button onClick={props.startHeadlineEdit} className="edit-headline-btn">🖉</Button>) : null}
+                                <Row className="headline-wrapper">
+                                    <Col className='headline'>{props.user_info.headline}{props.logged_in && props.isSelf ? (<Button onClick={props.startHeadlineEdit} className="edit-headline-btn">&nbsp;<i class="material-icons">edit</i></Button>) : null}</Col>
+                                </Row>
                                 </>
                             }
                             

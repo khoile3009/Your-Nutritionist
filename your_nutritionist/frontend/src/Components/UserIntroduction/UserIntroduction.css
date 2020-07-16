@@ -1,15 +1,22 @@
 button.edit-intro-btn {
-	display: inline-block;
-	width: 30px;
-	height: 30px;
-	padding: 0;
-	text-align: center;
-	background-color: transparent;
-	color: rgb(53, 53, 53);
-	border: solid 1px rgb(39, 39, 39);
-	border: none;
+  font-size: 12pt;
+  padding: 0;
+  background-color: transparent;
+  color: #353535;
+  border: solid 1px #272727;
+  border: none;
+}
+button.edit-intro-btn .material-icons {
+  font-size: 12pt;
+  padding: 0.2rem;
+}
+button.edit-intro-btn .material-icons:hover {
+  background: teal;
+  color: #dddddd;
+}
+button.edit-intro-btn:hover {
+  background: none;
+  border: none;
 }
 
-p.subtitle {
-	display: inline-block;
-}
+/*# sourceMappingURL=UserIntroduction.css.map */
