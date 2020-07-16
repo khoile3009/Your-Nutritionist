@@ -117,14 +117,14 @@ class RecipeShowContainer extends Component {
                 })
                 .then(response => {
                     console.log(response)
-                    this.setState({
-                        upvoted: true
-                    })
                 })
                 .catch(err => {
                     console.log(err)
 				})
 			}
+			this.setState({
+				upvoted: true
+			})
 	}
 	
 	unUpvote = () => {
@@ -145,7 +145,10 @@ class RecipeShowContainer extends Component {
             })
             .catch(err => {
                 console.log(err)
-            })
+			})
+			this.setState({
+				upvoted: false
+			})
 	}
 
 	render() {
