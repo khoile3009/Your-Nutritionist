@@ -17,9 +17,6 @@ body {
   padding-right: 10px;
   text-transform: capitalize;
 }
-.title #title {
-  padding-right: 2rem;
-}
 
 .section-name {
   margin-left: 5px;
@@ -87,6 +84,10 @@ button.upvote:hover {
   background: transparent;
 }
 
+button.edit-btn {
+  margin-left: 2rem;
+}
+
 .upvote-wrapper {
   align-items: center;
   display: flex;
@@ -97,6 +98,7 @@ button.upvote:hover {
   .shadow.custom-container.recipe.container-sm {
     box-shadow: none !important;
     border: 0 !important;
+    padding-bottom: 2rem;
   }
 }
 .edit-btn-wrapper {
