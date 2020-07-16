@@ -23,7 +23,7 @@ const RatingHeader = (props) => {
 				{props.canRate ? (
 					<Col md="auto" className="add-comment-wrapper">
 						<Button className="add-comment" onClick={props.toggleFormCard}>
-							{props.isRated ? 'Edit comment' : 'Add a new comment'}
+							{props.isRated ? 'Edit comment' : 'Add comment'}
 						</Button>
 					</Col>
 				) : null}
