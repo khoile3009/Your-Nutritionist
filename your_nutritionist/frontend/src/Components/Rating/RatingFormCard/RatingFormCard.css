@@ -1,3 +1,29 @@
-.rating-form{
-    width:300px;
+.rating-form {
+  width: 300px;
 }
+
+.rating-lbl {
+  padding: 1rem 0 0 1rem;
+  font-weight: bold;
+}
+
+.input-field {
+  margin: 0 1rem 0 1rem;
+}
+
+.rating-submit-btn {
+  width: 150px;
+  background: transparent;
+  color: #007bff;
+  margin: 1rem;
+  left: 45%;
+}
+.rating-content {
+  width: 95%;
+}
+
+.rating-score {
+  width: 100px;
+}
+
+/*# sourceMappingURL=RatingFormCard.css.map */
