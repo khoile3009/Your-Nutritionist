@@ -104,6 +104,7 @@ class RecipeRatingContainer extends Component {
                     }
                 )
         }
+        else{
         axios.post(
             url,
             data,
@@ -121,6 +122,7 @@ class RecipeRatingContainer extends Component {
                     this.toggleFormCard()
                 }
             )
+        }
     }
 
     
