@@ -25,12 +25,25 @@
 	padding-top: 15px;
 	display: flex;
 	flex-direction: row;
+	margin-bottom: 1rem;
 }
-.user-info {
-	padding-left: 10px;
+
+.user-info-wrapper {
+	align-items: center;
 	display: flex;
-	flex-direction: column-reverse;
+	.user-info {
+		padding-left: 10px;
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.edit-headline-wrapper {
+		height: auto;
+		textarea {
+			width: 250px;
+		}
+	}
 }
+
 .headline-wrapper {
 	.headline {
 		font-size: 16pt;

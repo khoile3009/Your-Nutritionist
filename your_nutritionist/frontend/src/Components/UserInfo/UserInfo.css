@@ -27,12 +27,23 @@
   padding-top: 15px;
   display: flex;
   flex-direction: row;
+  margin-bottom: 1rem;
 }
 
-.user-info {
+.user-info-wrapper {
+  align-items: center;
+  display: flex;
+}
+.user-info-wrapper .user-info {
   padding-left: 10px;
   display: flex;
   flex-direction: column-reverse;
+}
+.user-info-wrapper .edit-headline-wrapper {
+  height: auto;
+}
+.user-info-wrapper .edit-headline-wrapper textarea {
+  width: 250px;
 }
 
 .headline-wrapper .headline {

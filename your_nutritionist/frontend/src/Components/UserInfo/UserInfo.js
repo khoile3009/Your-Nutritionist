@@ -6,7 +6,7 @@ const UserInfo = (props) => {
     console.log(props)
     return <>
         <Row>
-            <Col>
+            <Col className="user-head-wrapper">
                 <div className='user-head'>
                     <div 
                         className='profile-pic shadow '
@@ -18,6 +18,9 @@ const UserInfo = (props) => {
                         :null
                         }   
                     </div>
+                </div>
+            </Col>
+                <Col className="user-info-wrapper">
                     <div className='user-info'>
                         <div>
                             <p className='title'>{props.user_info.name}</p>
@@ -25,11 +28,16 @@ const UserInfo = (props) => {
                             {
                                 props.headlineEdit.editing 
                                 ? <>
-                                <Form onSubmit={props.submitHeadline}>
-                                    <Form.Control value={props.headlineEdit.headline} onChange={props.editHeadlineChangeHandler}></Form.Control>
-                                    <Button type='submit'>Edit</Button>
-                                    <Button variant='secondary' onClick={props.stopHeadlineEdit}>Cancel</Button>
-                                </Form>
+                                <Row>
+                                    <Col xs="auto" md="auto" lg="auto" className="edit-headline-wrapper" >
+                                        <Form onSubmit={props.submitHeadline}>
+                                            <textarea value={props.headlineEdit.headline} onChange={props.editHeadlineChangeHandler}></textarea>
+                                            <br></br>
+                                            <Button type='submit'>Edit</Button>
+                                            <Button variant='secondary' onClick={props.stopHeadlineEdit}>Cancel</Button>
+                                        </Form>
+                                    </Col>
+                                </Row>
                                 </>
                                 :<>
                                 <Row className="headline-wrapper">
@@ -48,9 +56,7 @@ const UserInfo = (props) => {
                             }
                         </div>
                     </div>
-                </div>
             </Col>
-
         </Row >
         
 
