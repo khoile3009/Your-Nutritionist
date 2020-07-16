@@ -19,6 +19,7 @@
 }
 .card.rating-card .comment-profile-wrapper .comment-profile {
   border-radius: 50%;
+  box-shadow: 7px 6px 10px -6px rgba(91, 91, 91, 0.4);
   width: 80px;
   height: 80px;
   background: #bc002d;
