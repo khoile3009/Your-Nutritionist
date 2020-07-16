@@ -1,6 +1,6 @@
-import React from "react";
-import { Form, FormGroup, Col, Row, Button } from "react-bootstrap";
-import "./FormSections.css";
+import React from 'react';
+import { Form, FormGroup, Col, Row, Button } from 'react-bootstrap';
+import './FormSections.css';
 
 const IngredientFormSection = (props) => {
 	return (
@@ -14,8 +14,8 @@ const IngredientFormSection = (props) => {
 						onChange={(event) => {
 							props.handleChangeIngredientSectionName(props.section_index, event);
 						}}
-					></Form.Control>
-					<br></br>
+					/>
+					<br />
 				</Col>
 				<Col xs="1">
 					<Button
@@ -40,7 +40,7 @@ const IngredientFormSection = (props) => {
 							handleChangeIngredient={(event) => {
 								props.handleChangeIngredient(props.section_index, index, event);
 							}}
-						></IngredientForm>
+						/>
 					);
 				})}
 				<Button
@@ -50,8 +50,8 @@ const IngredientFormSection = (props) => {
 						props.addIngredient(props.section_index);
 					}}
 				>
-					{" "}
-					+{" "}
+					{' '}
+					+{' '}
 				</Button>
 			</div>
 		</FormGroup>
@@ -70,8 +70,8 @@ const StepFormSection = (props) => {
 						onChange={(event) => {
 							props.handleChangeStepSectionName(props.section_index, event);
 						}}
-					></Form.Control>
-					<br></br>
+					/>
+					<br />
 				</Col>
 				<Col xs="1">
 					<Button
@@ -102,7 +102,7 @@ const StepFormSection = (props) => {
 							}}
 							step={step}
 							videoOptions={props.videoOptions}
-						></StepForm>
+						/>
 					);
 				})}
 				<Button
@@ -112,8 +112,8 @@ const StepFormSection = (props) => {
 						props.addStep(props.section_index);
 					}}
 				>
-					{" "}
-					+{" "}
+					{' '}
+					+{' '}
 				</Button>
 			</div>
 		</FormGroup>
@@ -134,14 +134,14 @@ const IngredientForm = (props) => {
 const StepForm = (props) => {
 	return (
 		<div className="flexbox">
-			<Form.Control type="number" className="timestamp-input" placeholder="second" name="timestamp" value={props.step.timestamp} onChange={props.handleChangeStepTimestamp}></Form.Control>
+			<Form.Control type="number" className="timestamp-input" placeholder="second" name="timestamp" value={props.step.timestamp} onChange={props.handleChangeStepTimestamp} />
 			<Form.Control as="select" className="mediaId-input" value={props.step.mediaId} onChange={props.handleChangeStepMediaId}>
 				<option value="-1">Choose video...</option>
-				{props.videoOptions
-					? props.videoOptions.map((videoOption) => {
-							return <option value={videoOption.index}>{videoOption.name}</option>;
-					  })
-					: null}
+				{props.videoOptions ? (
+					props.videoOptions.map((videoOption) => {
+						return <option value={videoOption.index}>{videoOption.name}</option>;
+					})
+				) : null}
 			</Form.Control>
 			<Form.Control style={{ height: 38 }} type="text" placeholder="Step" name="step" value={props.step.direction} onChange={props.handleChangeStepDirection} as="textarea" rows="1" />
 			<Button variant="secondary" onClick={props.deleteStep}>
@@ -161,7 +161,18 @@ const ImageForm = (props) => {
 				<option value={3}>Video Upload</option>
 			</Form.Control>
 			<Form.Control className="name-input" type="text" placeholder="Title" name="name" value={props.media.name} onChange={props.handleChangeMediaName} />
-			{props.media.type == 0 || props.media.type == 2 ? <Form.Control name="url" placeholder="URL" value={props.media.url} onChange={props.handleChangeMediaUrl} /> : <Form.File name="myImage" style={{ padding: "0" }} accept={props.media.type == 1 ? "image/x-png,image/gif,image/jpeg" : "video/mp4,video/m4v"} onChange={props.handleChangeMediaFile} label={<p style={{ overflowX: "hidden" }}>{props.media.label}</p>} custom />}
+			{props.media.type == 0 || props.media.type == 2 ? (
+				<Form.Control name="url" placeholder="URL" value={props.media.url} onChange={props.handleChangeMediaUrl} />
+			) : (
+				<Form.File
+					name="myImage"
+					style={{ padding: '0' }}
+					accept={props.media.type == 1 ? 'image/x-png,image/gif,image/jpeg' : 'video/mp4,video/m4v'}
+					onChange={props.handleChangeMediaFile}
+					label={<p style={{ overflowX: 'hidden' }}>{props.media.label}</p>}
+					custom
+				/>
+			)}
 
 			<Button variant="secondary" onClick={props.deleteMedia}>
 				X
