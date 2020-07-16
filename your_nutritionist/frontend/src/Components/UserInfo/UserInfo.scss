@@ -56,6 +56,22 @@
 	}
 }
 
+.follow-btn {
+	background: none;
+	color: #007bff;
+	&:hover {
+	}
+}
+
+.following-btn {
+	border: none;
+	&:hover {
+		background: rgb(255, 41, 77);
+		border: none;
+		transition: 0.5s;
+	}
+}
+
 .editable {
 	width: 100%;
 	height: 100%;

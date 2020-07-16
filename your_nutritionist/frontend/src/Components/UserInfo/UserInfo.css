@@ -58,6 +58,19 @@
   color: #dddddd;
 }
 
+.follow-btn {
+  background: none;
+  color: #007bff;
+}
+.following-btn {
+  border: none;
+}
+.following-btn:hover {
+  background: #ff294d;
+  border: none;
+  transition: 0.5s;
+}
+
 .editable {
   width: 100%;
   height: 100%;

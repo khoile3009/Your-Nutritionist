@@ -42,8 +42,8 @@ const UserInfo = (props) => {
                             {(props.logged_in &&!props.isSelf)
                                 ?
                                 props.following == false
-                                    ? <Button onClick={props.follow}>Follow</Button>
-                                    : <Button onClick={props.unfollow}>Following</Button>
+                                    ? <Button className="follow-btn" onClick={props.follow}>Follow</Button>
+                                    : <Button className="following-btn" onClick={props.unfollow}>Following</Button>
                                 : null
                             }
                         </div>
