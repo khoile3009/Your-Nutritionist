@@ -179,9 +179,9 @@ const ImageForm = (props) => {
 				</>
 				: <>
 					<Row className="image-video-list">
-						<Col className="media-name">{props.media.name}</Col>
-						<Col className="media-url"><a className='url-button' href={props.media.url} target="_blank">{props.media.url}</a></Col>
-						<Col xs='auto' className="media-edit-btn"><Button onClick={props.editMedia}>🖉 Edit</Button><Button variant="secondary" onClick={props.deleteMedia}>X</Button></Col>
+						<Col xs={3} className="media-name">{props.media.name}</Col>
+						<Col xs={4} className="media-url"><a className='url-button' href={props.media.url} target="_blank">{props.media.url}</a></Col>
+						<Col xs="auto" md="auto" className="media-edit-btn"><Button onClick={props.editMedia}>🖉 Edit</Button><Button variant="secondary" onClick={props.deleteMedia}>X</Button></Col>
 					</Row>
 				</>
 			}

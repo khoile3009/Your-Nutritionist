@@ -66,10 +66,17 @@
 }
 
 /* edit this for me  */
+
+.media-url {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 300px;
+}
+
 .url-button {
 	margin-left: 30px;
 	max-width: 300pt;
-	height: 15pt;
+	height: 16pt;
 	overflow: hidden;
 }
 
