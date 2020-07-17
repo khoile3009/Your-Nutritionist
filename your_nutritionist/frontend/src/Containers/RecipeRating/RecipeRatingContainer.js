@@ -94,12 +94,7 @@ class RecipeRatingContainer extends Component {
                 .then(
                     (response) => {
                         this.props.getRatings()
-                        this.setState({
-                            your_rating: {
-                                rating: '',
-                                comment: ''
-                            }
-                        })
+                        
                         this.toggleFormCard()
                     }
                 )
@@ -115,8 +110,8 @@ class RecipeRatingContainer extends Component {
                     this.props.getRatings()
                     this.setState({
                         your_rating: {
-                            rating: '',
-                            comment: ''
+                            ...this.state.your_rating,
+                            rated: true
                         }
                     })
                     this.toggleFormCard()

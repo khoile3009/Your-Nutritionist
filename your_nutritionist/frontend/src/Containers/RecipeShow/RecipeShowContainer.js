@@ -39,7 +39,7 @@ class RecipeShowContainer extends Component {
 		this.toEditRecipe = this.toEditRecipe.bind(this);
 	}
 
-	getRatings() {
+	getRatings = () => {
 		let params = this.props.match.params;
 
 		axios.get("api/recipe/" + params["recipe_id"] + "/rate/all").then((response) => {
@@ -56,7 +56,7 @@ class RecipeShowContainer extends Component {
 		
 	}
 
-	getMedias() {
+	getMedias = () => {
 		let params = this.props.match.params;
 		axios.get("api/recipe/" + params["recipe_id"] + "/media").then((response) => {
 			this.setState({ medias: response.data.medias }, ()=> {this.getRatings()});
