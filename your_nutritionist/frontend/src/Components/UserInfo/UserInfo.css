@@ -42,6 +42,9 @@
 .user-info-wrapper .edit-headline-wrapper {
   height: auto;
 }
+.user-info-wrapper .edit-headline-wrapper button {
+  margin-right: 0.2rem;
+}
 .user-info-wrapper .edit-headline-wrapper textarea {
   width: 250px;
 }
