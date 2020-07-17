@@ -6,7 +6,7 @@ const UserInfo = (props) => {
     console.log(props)
     return <>
         <Row>
-            <Col className="user-head-wrapper">
+            <Col xs="auto" className="user-head-wrapper">
                 <div className='user-head'>
                     <div 
                         className='profile-pic shadow '
