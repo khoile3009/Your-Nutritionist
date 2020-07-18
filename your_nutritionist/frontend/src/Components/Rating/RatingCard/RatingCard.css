@@ -7,8 +7,12 @@
 
 .card.rating-card {
   margin: 1rem 0;
-  height: 250px;
+  min-height: 250px;
   width: 100%;
+}
+
+.compressed {
+  height: 250px;
 }
 .card.rating-card .comment-profile-wrapper {
   flex-direction: column;
@@ -30,8 +34,13 @@
 }
 .card.rating-card .comment-content {
   overflow: hidden;
+  min-height: 190px;
+}
+
+.card.rating-card .comment-compressed {
   height: 190px;
 }
+
 .card.rating-card .see-more-trigger {
   position: absolute;
   bottom: 0%;
@@ -42,6 +51,17 @@
   text-align: center;
   color: #7e7e7e;
   background-image: linear-gradient(0deg, white 0%, rgba(255, 255, 255, 0.8351715686) 85%, rgba(255, 255, 255, 0) 100%);
+}
+
+.card.rating-card .see-less-trigger {
+  bottom: 0%;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  height: 3rem;
+  width: 100%;
+  text-align: center;
+  color: #7e7e7e;
+  
 }
 .card.rating-card #see-more-active {
   border: solid 1px grey;

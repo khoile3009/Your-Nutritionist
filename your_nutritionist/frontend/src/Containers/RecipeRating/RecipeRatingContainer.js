@@ -26,11 +26,20 @@ class RecipeRatingContainer extends Component {
         this.submitRating = this.submitRating.bind(this)
         this.getIsRated = this.getIsRated.bind(this)
         this.canRate = this.canRate.bind(this)
+        this.expandRatingCardTrigger = this.expandRatingCardTrigger.bind(this)
+        
     }
 
     componentDidMount(){
         if(this.canRate()){
             this.getIsRated()
+        }
+        
+    }
+
+    componentWillReceiveProps(props){
+        if(props.ratings){
+            this.setState({cardExpands: props.ratings.map((rating)=>{return false})})
         }
         
     }
@@ -126,6 +135,12 @@ class RecipeRatingContainer extends Component {
         return (this.props.userId && this.props.creatorId != this.props.userId)
     }
 
+    expandRatingCardTrigger = (index) => {
+        let cardExpands = this.state.cardExpands
+        cardExpands[index] = !cardExpands[index];
+        this.setState({cardExpands: cardExpands})
+    }
+
     render() {
         console.log(this.props)
         return <>
@@ -149,7 +164,7 @@ class RecipeRatingContainer extends Component {
             {this.props.ratings
                 ? this.props.ratings.map(
                     (rating, index) => {
-                        return <RatingCard rating={rating}></RatingCard>
+                        return <RatingCard rating={rating} expandRatingCardTrigger={()=>{this.expandRatingCardTrigger(index)}} expand={this.state.cardExpands[index]}></RatingCard>
                     }
                 )
                 : <h1>No rating</h1>
