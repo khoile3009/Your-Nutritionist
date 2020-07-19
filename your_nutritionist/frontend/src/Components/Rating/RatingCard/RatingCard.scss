@@ -1,45 +1,40 @@
-$margin: 1rem;
-$comment-width: 250px;
-
+/*# sourceMappingURL=RatingCard.css.map */
 .rating-wrapper {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	display: flex;
 }
-
 .card.rating-card {
-	margin: $margin 0;
-	height: 250px;
+	margin: 1rem 0;
+	min-height: 250px;
 	width: 100%;
-
 	.comment-profile-wrapper {
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		display: flex;
 		padding: 0;
-
 		.comment-profile {
 			border-radius: 50%;
 			box-shadow: 7px 6px 10px -6px rgba(91, 91, 91, 0.4);
 			width: 80px;
 			height: 80px;
-			background: rgb(188, 0, 45);
+			background: #bc002d;
 			margin: 2rem;
 			background-size: cover;
 			background-position: center;
 			background-repeat: no-repeat;
 		}
 	}
-
 	.comment-content {
 		overflow: hidden;
+		min-height: 190px;
+	}
+	.comment-compressed {
 		height: 190px;
 	}
-
 	.see-more-trigger {
-		//background: grey;
 		position: absolute;
 		bottom: 0%;
 		padding-top: 3rem;
@@ -48,13 +43,21 @@ $comment-width: 250px;
 		width: 100%;
 		text-align: center;
 		color: #7e7e7e;
-		background-image: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.835171568627451) 85%, rgba(255, 255, 255, 0) 100%);
+		background-image: linear-gradient(0deg, white 0%, rgba(255, 255, 255, 0.8351715686) 85%, rgba(255, 255, 255, 0) 100%);
+	}
+	.see-less-trigger {
+		bottom: 0%;
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+		height: 3rem;
+		width: 100%;
+		text-align: center;
+		color: #7e7e7e;
 	}
 	#see-more-active {
-		border: solid 1px grey;
-		padding: .3rem;
+		padding: 0.3rem;
+		transition: 1s ease;
 	}
-
 	.comment-rating {
 		flex-direction: column;
 		align-items: center;
@@ -62,18 +65,15 @@ $comment-width: 250px;
 		display: flex;
 		padding: 0;
 	}
-	@media (max-width: 800px) {
+}
+.compressed {
+	height: 250px;
+}
+@media (max-width: 800px) {
+	.card.rating-card {
 		.comment-rating {
 			display: none;
 		}
-	}
-}
-
-@media (max-width: 800px) {
-	.custom-container {
-		padding: 0 1rem;
-	}
-	.card.rating-card {
 		width: 100%;
 		height: 200px;
 		.comment-content {
@@ -82,5 +82,8 @@ $comment-width: 250px;
 		.comment-profile {
 			display: none;
 		}
+	}
+	.custom-container {
+		padding: 0 1rem;
 	}
 }

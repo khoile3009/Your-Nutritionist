@@ -50,12 +50,12 @@ class Homepage extends Component {
     render() {
         return (
             <>
-                <RecipeSearchbox>
+                <RecipeSearchbox
                     setRecipes = {this.setRecipes}
                     setSearchQuery ={this.setSearchQuery}
                     query={this.state.query}
                     search={this.search}
-                </RecipeSearchbox>
+                />
                 <div className="homepage-section-container">
                     <TrendingSection></TrendingSection>
                 </div>
