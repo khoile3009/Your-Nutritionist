@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Row, Col} from 'react-bootstrap';
 import axios from '../../axios-orders'
-import ActionList from '../ActionList/ActionList'
+import ActionList from '../User/ActionList/ActionList'
 import { connect } from 'react-redux'
 import './NewFeedContainer.css'
 import $ from 'jquery';

@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import SigninRequired from '../../Containers/SigninRequired/SigninRequired';
-import NewFeedContainer from '../../Containers/NewFeed/NewFeedContainer';
-import RecipeSearchbox from '../../Containers/RecipeSearchbox/RecipeSearchbox';
-import RecipeList from '../../Containers/RecipeList/RecipeList';
+import RecipeSearchbox from '../../Containers/Recipe/RecipeSearchbox/RecipeSearchbox';
+import RecipeList from '../../Containers/Recipe/RecipeList/RecipeList';
 import queryString from 'query-string';
 import axios from '../../axios-orders';
-import { withRouter, useLocation } from 'react-router-dom';
-import { compose } from 'redux';
+import { withRouter} from 'react-router-dom';
 import './SearchPage.css';
 
 class SearchPage extends Component {

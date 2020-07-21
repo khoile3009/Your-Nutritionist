@@ -1,15 +1,9 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import SigninRequired from "../../Containers/SigninRequired/SigninRequired";
-import NewFeedContainer from "../../Containers/NewFeed/NewFeedContainer";
-import RecipeSearchbox from "../../Containers/RecipeSearchbox/RecipeSearchbox";
-
+import RecipeSearchbox from "../../Containers/Recipe/RecipeSearchbox/RecipeSearchbox";
 import queryString from "query-string";
-import axios from "../../axios-orders";
 import { withRouter, useLocation } from "react-router-dom";
-import { compose } from "redux";
 import "./Homepage.css";
-import TrendingSection from "../../Containers/HomepageCardsSection/TrendingSection";
+import TrendingSection from "../../Containers/Home/HomepageCardsSection/TrendingSection";
 
 class Homepage extends Component {
     constructor(props) {
