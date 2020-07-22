@@ -69,19 +69,26 @@
 .compressed {
 	height: 250px;
 }
-@media (max-width: 800px) {
+@media (max-width: 900px) {
 	.card.rating-card {
-		.comment-rating {
-			display: none;
-		}
 		width: 100%;
-		height: 200px;
+		height: 100%;
+		overflow: hidden;
+
+		.comment-rating {
+			display: flex;
+			padding-top: 2rem;
+			padding-bottom: 2rem;
+		}
 		.comment-content {
 			width: 300px;
 		}
 		.comment-profile {
-			display: none;
+			display: block;
 		}
+	}
+	.compressed {
+		height: 300px;
 	}
 	.custom-container {
 		padding: 0 1rem;

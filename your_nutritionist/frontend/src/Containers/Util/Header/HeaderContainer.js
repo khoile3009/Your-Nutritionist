@@ -124,8 +124,6 @@ class HeaderContainer extends Component {
                     search_input={this.state.search_input}
                     onChangeSearchBar={this.onChangeSearchBar}
                     searchSubmit={this.searchSubmit}
-                    
-
                 ></Header>
                 <ModalContainer
                     // show={this.state.modalShow}
