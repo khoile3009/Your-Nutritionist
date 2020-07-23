@@ -12,11 +12,13 @@ import DevPage from './Pages/Dev/DevPage';
 import Homepage from './Pages/Homepage/Homepage';
 import queryString from 'query-string';
 import EditRecipeContainer from './Containers/Recipe/EditRecipe/EditRecipeContainer';
+import SideBar from './Containers/SideBar/SideBarContainer.js';
 
 function App() {
 	return (
 		<div className="App">
 			<HeaderContainer />
+			<SideBar />
 			<Switch>
 				<Route path="/recipe/create" component={NewRecipeContainer} />
 				<Route path="/recipe/:recipe_id/edit" render={(props) => <EditRecipeContainer key={props.match.params['user_id']} {...props} />} />

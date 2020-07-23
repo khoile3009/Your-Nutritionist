@@ -1,50 +1,47 @@
 .newfeedcard-wrapper {
-    display: grid;
-    margin: 2rem auto;
-    padding: 1rem;
-    width: 50vw;
-    grid-template-columns: 1fr 4fr;
-    grid-template-areas:
-        "profile-pic username"
-        "nf-content nf-content"
-        "social-fn social-fn";
-    align-items: center;
-    border-radius: 18px;
-    color: rgb(99, 99, 99);
-    .profilepic-newfeed {
-        border-radius: 50%;
-        height: 80px;
-        width: 80px;
-        background-size: cover;
-        grid-area: profile-pic;
-        margin: 1rem;
-    }
-    .username-newfeed {
-        grid-area: username;
-        padding: 1rem;
-    }
-    .content-newfeed-wrapper {
-        grid-area: nf-content;
-        padding: 0 1rem 1rem 1rem;
-    }
-    .social-fn-wrapper {
-        grid-area: social-fn;
-        padding: 1rem;
-        text-align: left;
-        .social-fn {
-            vertical-align: middle;
-            line-height: 1rem;
-            padding: 0 1rem 0 0;
-            display: inline-flex;
-            .material-icons {
-                font-size: 12pt;
-            }
-        }
-    }
+	display: grid;
+	margin: 2rem auto;
+	padding: 1rem;
+	width: 50vw;
+	grid-template-columns: .1fr 6fr;
+	grid-template-areas: "profile-pic username" "nf-content nf-content" "social-fn social-fn";
+	align-items: center;
+	border-radius: 18px;
+	color: rgb(99, 99, 99);
+	.profilepic-newfeed {
+		border-radius: 50%;
+		height: 80px;
+		width: 80px;
+		background-size: cover;
+		grid-area: profile-pic;
+		margin: 1rem;
+	}
+	.username-newfeed {
+		grid-area: username;
+		padding: 1rem;
+	}
+	.content-newfeed-wrapper {
+		grid-area: nf-content;
+		padding: 0 1rem 1rem 1rem;
+	}
+	.social-fn-wrapper {
+		grid-area: social-fn;
+		padding: 1rem;
+		text-align: right;
+		.social-fn {
+			vertical-align: middle;
+			line-height: 1rem;
+			padding: 0 1rem 0 0;
+			display: inline-flex;
+			.material-icons {
+				font-size: 12pt;
+			}
+		}
+	}
 }
 
 @media (max-width: 634px) {
-    .newfeedcard-wrapper {
-        width: 80%;
-    }
+	.newfeedcard-wrapper {
+		width: 80%;
+	}
 }
