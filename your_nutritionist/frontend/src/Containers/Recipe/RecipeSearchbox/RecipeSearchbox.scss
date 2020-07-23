@@ -1,0 +1,86 @@
+.search-page-wrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.searchbox-container {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-position: 20%;
+    margin-bottom: 20px;
+}
+.searchbox {
+    width: 50vw;
+}
+.search-button {
+    background: #00bcd4
+        url("https://storage.googleapis.com/your-nutritionist-cdn/baseline_search_white_18dp.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 5vw;
+    height: 64px;
+    padding: 0;
+    margin: 0;
+    border-radius: 50px;
+    border: none;
+    &:hover {
+        background: #0097a7
+            url("https://storage.googleapis.com/your-nutritionist-cdn/baseline_search_white_18dp.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 64px;
+    }
+}
+.search-result-container {
+    .recipe-card {
+        height: 320px;
+    }
+    padding: 2rem;
+    border-radius: 0px;
+    box-shadow: 4px 2px 6px 2px rgba(204, 204, 204, 0.67);
+    width: 90vw;
+    margin-bottom: 10%;
+    h2 {
+        font-weight: 300;
+        padding-left: 2rem;
+    }
+}
+.search-txt {
+    height: 64px;
+    border-radius: 50px;
+    font-size: 20px;
+    padding: 5px 20px;
+}
+.search-txt.form-control {
+    input[type="text"] {
+        &:focus {
+            outline: none !important;
+        }
+    }
+}
+@media (max-width: 1000px) {
+    .search-result-container {
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        h2 {
+            padding: 0;
+            text-align: center;
+        }
+    }
+    .searchbox {
+        width: 100%;
+    }
+    .search-button {
+        border-radius: 0;
+        width: 60px;
+    }
+    .search-txt {
+        border-radius: 0;
+    }
+}

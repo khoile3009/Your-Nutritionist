@@ -4,7 +4,7 @@ import { Link, NavLink, Route } from "react-router-bootstrap";
 import "./Header.scss";
 
 const Header = (props) => (
-    <>
+    <div className="nav-wrapper">
         <div className="header-background"></div>
         <Navbar className="color-nav" collapseOnSelect expand="lg">
             {/* "Link" in brand component since just redirect is needed */}
@@ -55,7 +55,7 @@ const Header = (props) => (
                 {props.rightNav}
             </Navbar.Collapse>
         </Navbar>
-    </>
+    </div>
 );
 
 export default Header;
