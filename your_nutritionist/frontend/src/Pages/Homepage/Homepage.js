@@ -4,6 +4,8 @@ import queryString from "query-string";
 import { withRouter, useLocation } from "react-router-dom";
 import "./Homepage.css";
 import TrendingSection from "../../Containers/Home/HomepageCardsSection/TrendingSection";
+import SideBarContainer from "../../Containers/SideBar/SideBarContainer.js";
+import NewFeedList from "../../Containers/NewFeed/NewFeedList/NewFeedList";
 
 class Homepage extends Component {
     constructor(props) {
@@ -43,17 +45,18 @@ class Homepage extends Component {
 
     render() {
         return (
-            <>
-                <RecipeSearchbox
-                    setRecipes = {this.setRecipes}
-                    setSearchQuery ={this.setSearchQuery}
-                    query={this.state.query}
-                    search={this.search}
-                />
-                <div className="homepage-section-container">
-                    <TrendingSection></TrendingSection>
-                </div>
-            </>
+          <>
+            <RecipeSearchbox
+              setRecipes={this.setRecipes}
+              setSearchQuery={this.setSearchQuery}
+              query={this.state.query}
+              search={this.search}
+            />
+            <div className="overall-layout">
+              <SideBarContainer />
+              <NewFeedList />
+            </div>
+          </>
         );
     }
 }

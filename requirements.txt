@@ -29,14 +29,14 @@ parso==0.7.0
 pickleshare==0.7.5
 prompt-toolkit==3.0.5
 protobuf==3.12.2
-psycopg2==2.8.5
+# psycopg2==2.8.5
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.20
 Pygments==2.6.1
 python-dateutil==2.8.1
 pytz==2019.3
-pywin32==227
+# pywin32==227
 pyzmq==19.0.0
 requests==2.24.0
 rsa==4.6

@@ -5,13 +5,14 @@ import { Button } from "react-bootstrap";
 const SideBar = (props) => {
     console.log(props);
     return (
-        <div className="side-bar-wrapper">
+        <div className="side-bar-wrapper card">
             <h3>What are you up to?</h3>
-            <div className="side-bar-create-recipe">
-                <div className="create-recipe-btn">Create a recipe</div>
+
+            <div className="side-bar-create">
+                <div className="create-recipe-btn" onClick={props.toCreateRecipe}>Create a recipe</div>
             </div>
-            <div className="side-bar-create-post">
-                <div className="create-post-btn">Create a post</div>
+            <div className="side-bar-create">
+                <div className="create-post-btn" onClick={props.toCreatePost}>Create a post</div>
             </div>
         </div>
     );

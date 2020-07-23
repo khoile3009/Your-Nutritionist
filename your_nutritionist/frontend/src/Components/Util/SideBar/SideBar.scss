@@ -1,4 +1,34 @@
 .side-bar-wrapper {
-    height: 300px;
+    height: auto;
     width: 20vw;
+    position: fixed;
+    left: 2rem;
+    top: calc(7rem + 20vh);
+    border-radius: 18px;
+    // border: solid 1px rgba(173, 173, 173, 0.322);
+    padding: 1rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    h3 {
+        font-size: 16pt;
+    }
+    .side-bar-create {
+        margin: 1rem 0;
+        border: solid 1px rgb(56, 209, 176);
+        border-radius: 18px;
+        width: 150px;
+        text-align: center;
+        &:hover {
+            color: white;
+            background: rgb(56, 209, 176);
+            cursor: pointer;
+        }
+    }    
+}
+
+@media (max-width: 700px) {
+    .side-bar-wrapper {
+        display: none;
+    }
 }

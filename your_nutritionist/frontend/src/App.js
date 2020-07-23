@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 import { Route, Switch, Redirect } from "react-router-dom";
 import NewRecipeContainer from "./Containers/Recipe/NewRecipe/NewRecipeContainer";
 import HeaderContainer from "./Containers/Util/Header/HeaderContainer";
@@ -12,16 +12,12 @@ import DevPage from "./Pages/Dev/DevPage";
 import Homepage from "./Pages/Homepage/Homepage";
 import queryString from "query-string";
 import EditRecipeContainer from "./Containers/Recipe/EditRecipe/EditRecipeContainer";
-import SideBarContainer from "./Containers/SideBar/SideBarContainer.js";
+
 
 function App() {
     return (
         <div className="App">
             <HeaderContainer />
-            <div className="overall-layout">
-                <SideBarContainer />
-                <NewFeedList />
-            </div>
 
             <Switch>
                 <Route path="/recipe/create" component={NewRecipeContainer} />

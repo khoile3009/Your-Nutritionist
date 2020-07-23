@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@600&display=swap");
+
+/* SCSS HEX */
+$text-light: #333333;
+$text-dark: #fafafa;
+$accent-color: #ffa630ff;
+$tea-green: #d7e8baff;
+$main-color-light: #4da1a9ff;
+$main-color: rgba(0, 0, 0, 0.356);
+$buttons: rgb(34, 190, 112);
+
+/* SCSS HSL */
+$yellow-orange: hsla(34, 100%, 59%, 1);
+$tea-green: hsla(82, 50%, 82%, 1);
+$cadet-blue: hsla(185, 37%, 48%, 1);
+$y-in-mn-blue: hsla(212, 44%, 32%, 1);
+$old-mauve: hsla(338, 55%, 25%, 1);
+
+/* SCSS RGB */
+$yellow-orange: rgba(255, 166, 48, 1);
+$tea-green: rgba(215, 232, 186, 1);
+$cadet-blue: rgba(77, 161, 169, 1);
+$y-in-mn-blue: rgba(46, 80, 119, 1);
+$old-mauve: rgba(97, 28, 53, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
+$gradient-right: linear-gradient(90deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
+$gradient-bottom: linear-gradient(180deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
+$gradient-left: linear-gradient(270deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
+$gradient-top-right: linear-gradient(45deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
+$gradient-bottom-right: linear-gradient(135deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
+$gradient-top-left: linear-gradient(225deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
+$gradient-bottom-left: linear-gradient(315deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
+$gradient-radial: radial-gradient(#ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
