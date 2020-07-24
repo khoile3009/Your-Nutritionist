@@ -63,24 +63,3 @@
         }
     }
 }
-@media (max-width: 1000px) {
-    .search-result-container {
-        width: 100%;
-        box-shadow: none;
-        border-radius: 0;
-        h2 {
-            padding: 0;
-            text-align: center;
-        }
-    }
-    .searchbox {
-        width: 100%;
-    }
-    .search-button {
-        border-radius: 0;
-        width: 60px;
-    }
-    .search-txt {
-        border-radius: 0;
-    }
-}

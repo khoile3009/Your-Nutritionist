@@ -2,15 +2,23 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import NewFeedMedia from "./NewFeedMedia.js";
 import "./NewFeedCard.scss";
-import { ImageCard, VideoCard } from "../../Components/Recipe/MediaCard/MediaCard";
+import {
+    ImageCard,
+    VideoCard,
+} from "../../Components/Recipe/MediaCard/MediaCard";
 
 const NewFeedCard = (props) => {
     console.log(props);
     return (
         <div className="card newfeedcard-wrapper container">
-            <div className="profilepic-newfeed" style={{ backgroundImage: "url('" + props.post.profilepic + "')" }} />
+            <div
+                className="profilepic-newfeed"
+                style={{
+                    backgroundImage: "url('" + props.post.profilepic + "')",
+                }}
+            />
             <div className="username-newfeed">
-                <a onClick={props.to_creator}>{props.post.username}</a>
+                <a onClick={props.toCreator}>{props.post.username}</a>
             </div>
             <div className="content-newfeed-wrapper">
                 <div className="text-content-newfeed">{props.post.content}</div>
@@ -32,7 +40,10 @@ const NewFeedCard = (props) => {
                     {props.post.comments}
                 </div>
                 <div className="social-fn">
-                    <i className="material-icons" style={{ color: "rgb(255, 174, 0)" }}>
+                    <i
+                        className="material-icons"
+                        style={{ color: "rgb(255, 174, 0)" }}
+                    >
                         share
                     </i>
                 </div>
