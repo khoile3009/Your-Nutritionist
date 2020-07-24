@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import pre_delete
-from recipe.files import GCLOUD
+from utils.files import GCLOUD
 # Create your models here.
 
 class UserHeadline(models.Model):

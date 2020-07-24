@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from .models import UserProfilePic
 from rest_framework import generics, permissions
-from recipe.files import GCLOUD
+from utils.files import GCLOUD
 from django.http import JsonResponse
 
 def get_user_profile_picture(request, *args, **kwargs):

@@ -33,7 +33,7 @@ class ActionAPI(generics.GenericAPIView):
                 'type' : action_instance.action_type,
                 'target_id': action_instance.target_id,
                 'target_name': target_name_image['name'],
-                'image_url': target_name_image['image_url']
+                'image_url': target_name_image['image_url']   
             })
         return JsonResponse(context, safe=True)
 

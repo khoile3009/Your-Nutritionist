@@ -153,7 +153,7 @@ class RecipeShowContainer extends Component {
 
 	render() {
 		// console.log(this.props);
-		console.log(this.state.recipe)
+		console.log(this.props)
 		return this.state.recipe ? (
 			<>
 				{this.state.medias && this.state.medias.length != 0? (
