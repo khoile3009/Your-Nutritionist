@@ -1,0 +1,14 @@
+.sidebar-container {
+	position: fixed;
+	left: 2rem;
+	top: 9rem;
+	height: auto;
+	width: 20vw;
+	display: grid;
+}
+
+@media (max-width: 800px) {
+	.sidebar-container {
+		display: none;
+	}
+}
