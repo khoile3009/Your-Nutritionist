@@ -6,7 +6,7 @@ import json
 from post.models import Post, PostMedia
 from utils.files import GCLOUD
 from .post import *
-
+from social.models import Follow
 
 class PostCreateAPI(generics.GenericAPIView):
     permission_classes = [
@@ -68,12 +68,45 @@ class PostQueryAPI(generics.GenericAPIView):
     ]
     
     def get(self, *args, **kwargs):
+        print(self.request.GET)
+        before_id = None
+        if(self.request.GET.get('before_id')):
+            before_id = int(self.request.GET.get('before_id'))
+        print(before_id)
         if(self.request.GET.get('type') == 'user'):
+        
+            if(self.request.GET.get('user_id')):
+                context = {'posts': []}
+
+                post_instances = Post.objects.filter(
+                    creator__id=int(self.request.GET.get('user_id')),
+                    id__lt = before_id
+                ).order_by('-created_at') if (before_id and before_id != -1
+                ) else Post.objects.filter(
+                    creator__id=int(self.request.GET.get('user_id')),
+                ).order_by('-created_at')
+
+                for post_instance in post_instances:
+                    context['posts'].append(get_post_info(post_instance))
+
+                return JsonResponse(context, safe=True)
+            else:
+                return JsonResponse({'status':'No user id provided'}, status=422)
+        elif(self.request.GET.get('type') == 'feed'):
             if(not self.request.user.is_anonymous):
                 context = {'posts': []}
-                post_instances = Post.objects.filter(user=self.request.user)
+                following_instance = Follow.objects.filter(from_user=self.request.user)
+                following_user_ids = following_instance.values_list('target_user__id',flat=True)
+                post_instances = Post.objects.filter(
+                    creator__id__in=following_user_ids, 
+                    id__lt = before_id
+                ) if (before_id and before_id != -1
+                ) else Post.objects.filter(
+                    creator__id__in=following_user_ids
+                )
+                print(post_instances)
                 for post_instance in post_instances:
                     context['posts'].append(get_post_info(post_instance))
                 return JsonResponse(context, safe=True)
             else:
-                return JsonResponse({'status':'Not authorized'}, status=405)
+                return JsonResponse({'status':'Not authorized'}, status=405)                
