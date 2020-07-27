@@ -94,6 +94,8 @@ class SearchPage extends Component {
 				<SideBarContainer />
 				<RecipeSearchbox setRecipes={this.setRecipes} setSearchQuery={this.setSearchQuery} query={this.state.query} search={this.search} />
 				{this.state.recipes ? <RecipeList recipes={this.state.recipes} page={this.state.page} toPage={this.toPage} /> : null}
+				<br />
+				<br />
 			</div>
 		);
 	}
