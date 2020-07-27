@@ -37,8 +37,7 @@ class SideBarContainer extends Component {
 				recipe_name: 'gà rán kfc',
 				recipe_favorites: 69,
 				recipe_ratings: 5,
-				recipe_creation_date: '2020年07月24日',
-				trending_rank: 1
+				recipe_creation_date: '2020年07月24日'
 			},
 			{
 				recipe_id: 2,
@@ -47,8 +46,7 @@ class SideBarContainer extends Component {
 				recipe_name: 'really gà rán kfc',
 				recipe_favorites: 420,
 				recipe_ratings: 4,
-				recipe_creation_date: '2020年07月24日',
-				trending_rank: 2
+				recipe_creation_date: '2020年07月24日'
 			},
 			{
 				recipe_id: 3,
@@ -57,8 +55,7 @@ class SideBarContainer extends Component {
 				recipe_name: 'not gà rán kfc',
 				recipe_favorites: 247,
 				recipe_ratings: 3,
-				recipe_creation_date: '2020年07月24日',
-				trending_rank: 3
+				recipe_creation_date: '2020年07月24日'
 			},
 			{
 				recipe_id: 4,
@@ -66,8 +63,7 @@ class SideBarContainer extends Component {
 				recipe_name: 'is not gà rán kfc',
 				recipe_favorites: 247,
 				recipe_ratings: 3,
-				recipe_creation_date: '2020年07月24日',
-				trending_rank: 4
+				recipe_creation_date: '2020年07月24日'
 			},
 			{
 				recipe_id: 53,
@@ -75,8 +71,7 @@ class SideBarContainer extends Component {
 				recipe_name: 'xor gà rán kfc',
 				recipe_favorites: 247,
 				recipe_ratings: 3,
-				recipe_creation_date: '2020年07月24日',
-				trending_rank: 5
+				recipe_creation_date: '2020年07月24日'
 			}
 		];
 		return (
@@ -92,8 +87,9 @@ class SideBarContainer extends Component {
 				{fakeTrendingRecipes.map((recipe, index) => {
 					return (
 						<TrendingCard
+							rank={index + 1}
 							recipe={recipe}
-							toTrendingRecipe={(recipe_id) => {
+							toTrendingRecipe={() => {
 								this.toTrendingRecipe(recipe.recipe_id);
 							}}
 						/>

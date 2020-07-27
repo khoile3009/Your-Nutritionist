@@ -13,7 +13,7 @@ $padding: 0.5rem;
 
 	.trending-banner-wrapper {
 		grid-area: recipe-banner;
-		background: teal;
+		// background: teal;
 		height: 100%;
 		text-align: center;
 		align-items: center;
@@ -21,9 +21,10 @@ $padding: 0.5rem;
 		border-radius: 18px 0 0 18px;
 		display: flex;
 		vertical-align: middle;
-		color: white;
+		// color: white;
 		font-weight: 700;
 	}
+
 	.trending-recipe {
 		grid-area: recipe-name;
 		padding-left: $padding;
