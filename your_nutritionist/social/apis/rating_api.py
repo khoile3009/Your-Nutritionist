@@ -48,7 +48,7 @@ class RatingAPI(generics.GenericAPIView):
             return JsonResponse({'status': 'No recipe'}, status=404)
         try:
             rating = Rating.objects.get(recipe=recipe, rater=rater)
-            return JsonResponse({'rated':True, 'rating': rating.rating, 'comment': rating.comment})
+            return JsonResponse({'rated':True, 'rating': rating.rating, 'comment': rating.comment, 'rate_at':rating.rate_at})
         except Rating.DoesNotExist:
             return JsonResponse({'rated': False})
             
@@ -120,6 +120,7 @@ def get_all_rating(request, *args, **kwargs):
             'rating': rating_instance.rating,
             'comment': rating_instance.comment,
             'name': rating_instance.rater.get_full_name(),
+            'rate_at': str(rating_instance.rate_at.day) + '/' + str(rating_instance.rate_at.month) + '/' + str(rating_instance.rate_at.year),
             'user_id': rating_instance.rater.id,
             'profilepic': profilepic_url
         })
