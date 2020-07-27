@@ -4,10 +4,15 @@ import { Row, Col } from 'react-bootstrap';
 
 const TrendingCard = (props) => {
 	console.log(props);
+	let rank_color = [ '#ff9d00', '#bd48e8', '#4199e0', '#29e67b', '#e3e3e3' ];
+	let ranktxt_color = [ '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#000000' ];
 	return (
-		<div className="trending-card-wrapper card clickable">
-			<div className="trending-banner-wrapper">
-				<div className="trending-banner" />1
+		<div className="trending-card-wrapper card clickable" onClick={props.toTrendingRecipe}>
+			<div style={{ background: rank_color[props.rank - 1] }} className="trending-banner-wrapper">
+				{console.log(ranktxt_color)}
+				<div style={{ color: ranktxt_color[props.rank - 1] }} className="trending-banner">
+					{props.rank}
+				</div>
 			</div>
 			<div className="trending-recipe">{props.recipe.recipe_name}</div>
 			<div className="trending-username">
