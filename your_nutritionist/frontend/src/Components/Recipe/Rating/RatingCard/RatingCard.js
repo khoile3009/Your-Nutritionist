@@ -15,7 +15,7 @@ const RatingCard = (props) => {
 
 					<Col xs="auto" md={7} className={props.expand ? 'comment-content' : 'comment-content comment-compressed'}>
 						<br />
-						<Link to={'/user/' + props.rating.user_id}>{props.rating.name}</Link> said on <br />
+						<Link to={'/user/' + props.rating.user_id}>{props.rating.name}</Link> said on {props.rating.rate_on} <br />
 						{props.rating.comment}
 					</Col>
 					<Col className="comment-rating">
