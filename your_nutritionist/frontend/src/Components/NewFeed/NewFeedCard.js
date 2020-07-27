@@ -22,7 +22,9 @@ const NewFeedCard = (props) => {
 			</div>
 			<div className="content-newfeed-wrapper">
 				<div className="text-content-newfeed">{props.post.content}</div>
-				<div className="media-newfeed" />
+			</div>
+			<div className="newfeed-media-wrapper">
+				<div className="newfeed-media" />
 			</div>
 			<div className="social-fn-wrapper">
 				<div className="social-fn">

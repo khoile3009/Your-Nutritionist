@@ -10,6 +10,7 @@ $padding: 0.5rem;
 	grid-template-rows: 1fr 2fr 3fr;
 	align-items: center;
 	grid-template-areas: "recipe-banner recipe-name" "recipe-banner recipe-username" "recipe-banner recipe-stats";
+	font-size: 11pt;
 
 	.trending-banner-wrapper {
 		grid-area: recipe-banner;

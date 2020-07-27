@@ -1,35 +1,34 @@
-import React from "react";
-import "./RecipeCard.css";
-import { Row, Col } from "react-bootstrap";
+import React from 'react';
+import './RecipeCard.scss';
+import { Row, Col } from 'react-bootstrap';
 
 const RecipeCard = (props) => {
-    return (
-        <div
-            className="recipe-card card clickable"
-            style={{ backgroundImage: "url('" + props.thumbnail + "')" }}
-            onClick={props.toRecipePage}
-        >
-            <div className="recipe-info">
-                <Row>
-                    <Col className="info-container">
-                        <p className="info">
-                            {props.number_person}{" "}
-                            {props.number_person <= 1
-                                ? " person"
-                                : " serving(s)"}
-                        </p>
-                    </Col>
-                    <Col className="info-container">
-                        <p className="info">{props.cook_time + " mins"}</p>
-                    </Col>
-                    <Col className="info-container">
-                        <p className="info">{props.likes + " upvotes"}</p>
-                    </Col>
-                </Row>
-            </div>
-            <p className="recipe-name">{props.name}</p>
-        </div>
-    );
+	return (
+		<div className="recipe-card-wrapper">
+			<div className="recipe-card card clickable" onClick={props.toRecipePage}>
+				<div className="recipe-image" style={props.thumbnail == '' ? { backgroundImage: "url('https://storage.googleapis.com/your-nutritionist-cdn/header-bg.jpg')" } : { backgroundImage: "url('" + props.thumbnail + "')" }} />
+				<div className="recipe-name">{props.name}</div>
+				<div className="recipe-info">
+					<div className="recipe-servings">
+						<p className="info">
+							<i className="material-icons">face</i>&nbsp;
+							{props.number_person} {props.number_person <= 1 ? ' person' : ' serving(s)'}
+						</p>
+					</div>
+					<div className="recipe-cooktime">
+						<p className="info">
+							<i className="material-icons">watch_later</i> {props.cook_time + ' mins'}
+						</p>
+					</div>
+					<div className="recipe-favorites">
+						<p className="info">
+							<i class="material-icons">favorite</i>&nbsp;{props.likes + ' favorites'}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default RecipeCard;

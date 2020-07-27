@@ -3,8 +3,9 @@ import RecipeSearchbox from '../../Containers/Recipe/RecipeSearchbox/RecipeSearc
 import RecipeList from '../../Containers/Recipe/RecipeList/RecipeList';
 import queryString from 'query-string';
 import axios from '../../axios-orders';
-import { withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './SearchPage.css';
+import SideBarContainer from '../../Containers/SideBar/SideBarContainer';
 
 class SearchPage extends Component {
 	constructor(props) {
@@ -62,7 +63,8 @@ class SearchPage extends Component {
 						page: next_page
 					});
 				});
-		} else {
+		}
+		else {
 			this.setState({
 				page: next_page
 			});
@@ -89,12 +91,9 @@ class SearchPage extends Component {
 	render() {
 		return (
 			<div className="search-page-wrapper">
+				<SideBarContainer />
 				<RecipeSearchbox setRecipes={this.setRecipes} setSearchQuery={this.setSearchQuery} query={this.state.query} search={this.search} />
-				<div className="search-result-container">
-					<h2>Search results</h2>
-					<br />
-					{this.state.recipes ? <RecipeList recipes={this.state.recipes} page={this.state.page} toPage={this.toPage} /> : null}
-				</div>
+				{this.state.recipes ? <RecipeList recipes={this.state.recipes} page={this.state.page} toPage={this.toPage} /> : null}
 			</div>
 		);
 	}

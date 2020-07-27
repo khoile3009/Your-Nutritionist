@@ -1,13 +1,14 @@
 .newfeedcard-wrapper {
 	display: grid;
-	margin: 2rem auto;
+	margin: 0 auto 2rem auto;
 	padding: 1rem;
 	width: 50vw;
 	grid-template-columns: .1fr 6fr;
-	grid-template-areas: "profile-pic username" "nf-content nf-content" "social-fn social-fn";
+	grid-template-areas: "profile-pic username" "nf-content nf-content" "nf-media nf-media" "social-fn social-fn";
 	align-items: center;
 	border-radius: 18px;
 	color: rgb(99, 99, 99);
+
 	.profilepic-newfeed {
 		border-radius: 50%;
 		height: 80px;
@@ -37,6 +38,21 @@
 			.material-icons {
 				font-size: 12pt;
 			}
+		}
+	}
+	.newfeed-media-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		grid-area: nf-media;
+		height: 30vh;
+		width: 100%;
+		.newfeed-media {
+			height: 100%;
+			width: 80%;
+			background-image: url('https://storage.googleapis.com/your-nutritionist-cdn/header-bg.jpg');
+			background-position: center;
+			background-size: cover;
 		}
 	}
 }

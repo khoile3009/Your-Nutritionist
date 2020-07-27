@@ -39,7 +39,7 @@ class RecipeList extends Component {
 				for (var col_index = 0; col_index < num_col; col_index++) {
 					let recipe = recipes[row_index * 2 + col_index];
 					recipes_row.push(
-						<Col md={6}>
+
 							<RecipeCard
 								thumbnail={recipe.thumbnail}
 								name={recipe.name}
@@ -51,17 +51,17 @@ class RecipeList extends Component {
 									this.toRecipePage(recipe.recipe_id);
 								}}
 							></RecipeCard>
-						</Col>
+
 					);
 				}
 				if (num_col === 1) {
 					recipes_row.push(
-						<Col>
+
 							<div className="filler"></div>
-						</Col>
+
 					);
 				}
-				recipe_cards.push(<Row className="recipe-row">{recipes_row}</Row>);
+				recipe_cards.push(<div className="recipe-row">{recipes_row}</div>);
 			}
 			if (this.props.page) {
 				console.log(this.props.page);
