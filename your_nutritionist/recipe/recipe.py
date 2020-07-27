@@ -5,7 +5,7 @@ from django.http import Http404
 from social.helpers import get_recipe_from_id
 from .hashtag import get_hashtag_from_description
 from .search import Search
-from .files import GCLOUD
+from utils.files import GCLOUD
 from rest_framework.exceptions import NotFound
 # /<int:recipe_id>
 
@@ -82,17 +82,7 @@ def get_media_from_recipe(recipe_id):
     media_instances = Media.objects.filter(recipe=recipe_id)
     context = {'medias': []}
     for media_instance in media_instances:
-        if(media_instance.media_type in [0, 2]):
-            context['medias'].append(
-                {
-                    'name': media_instance.name,
-                    'url': media_instance.url,
-                    'mediaId': media_instance.id,
-                    'type': media_instance.media_type
-                }
-            )
-        elif(media_instance.media_type in [1, 3]):
-            context['medias'].append(
+        context['medias'].append(
                 {
                     'name': media_instance.name,
                     'url': media_instance.url,
@@ -186,7 +176,7 @@ def create_recipe(recipe,creator_id, urls, bucket_paths):
 
     # Initialize ingredient_section
     media_id_map = create_media_section(recipe_instance, recipe['medias'], urls, bucket_paths)
-    create_ingredient_section(recipe_instance, recipe['ingredient_sections'])
+    create_ingredient_section(recipe_instance, recipe['ingredient_ections'])
     create_step_section(recipe_instance,recipe['step_sections'], media_id_map)
     
     return recipe_id
