@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import generics, permissions
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.contrib.auth.models import User
 from social.models import Follow, Action
 from accounts.helpers import get_user_from_id
@@ -11,7 +11,7 @@ import json
 
 class FollowAPI(generics.GenericAPIView):
     permission_classes = [
-        permissions.IsAuthenticated,
+        permissions.IsAuthenticatedOrReadOnly,
     ]
 
     # serializer_classes = FollowSerializer
@@ -43,7 +43,7 @@ class FollowAPI(generics.GenericAPIView):
         from_id = self.request.user.id
         target_user = get_user_from_id(user_id=target_id)
         if(not target_user):
-            return JsonResponse({'status': 'No recipe'}, status=404)
+            return JsonResponse({'status': 'No user'}, status=404)
         from_user = self.request.user
         if(target_id != from_id):
             Follow.objects.filter(
@@ -79,7 +79,7 @@ class FollowAPI(generics.GenericAPIView):
 
 class FollowingAPI(generics.GenericAPIView):
     permission_classes = [
-        permissions.IsAuthenticated,
+        permissions.IsAuthenticatedOrReadOnly,
     ]
 
     def get(self, *args, **kwargs):

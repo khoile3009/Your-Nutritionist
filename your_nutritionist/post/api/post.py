@@ -1,7 +1,9 @@
 from accounts.helpers import get_profile_pic
 from ..models import PostMedia
 from utils.files import GCLOUD
-def get_post_info(post_instance):
+from social.apis.like_api import get_number_of_like
+from social.models import Like
+def get_post_info(post_instance,user):
     post_info = {}
     post_info['profilepic'] = get_profile_pic(post_instance.creator.id)
     post_info['user_id'] = post_instance.creator.id
@@ -9,7 +11,16 @@ def get_post_info(post_instance):
     post_info['fullname'] = post_instance.creator.get_full_name()
     post_info['content'] = post_instance.content
     post_info['created_at'] = post_instance.created_at.date()
-
+    post_info['post_id'] = post_instance.id
+    if(user.is_anonymous):
+        post_info['liked'] = False
+    else:
+        try:
+            Like.objects.get(target_post = post_instance, from_user = user)
+            post_info['liked'] = True
+        except Like.DoesNotExist:
+            post_info['liked'] = False
+    post_info['num_like'] = get_number_of_like(post_instance)
     media_instances = PostMedia.objects.filter(post=post_instance)
     post_info['medias'] = []
     for media_instance in media_instances:

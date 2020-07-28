@@ -22,7 +22,7 @@ class PostAPI(generics.GenericAPIView):
     def get(self, *args, **kwargs):
         try:
             post = Post.objects.get(id=kwargs['post_id']) 
-            post_info = get_post_info(post)
+            post_info = get_post_info(post, self.request.user)
             print(post_info)
             return JsonResponse(post_info, safe=True)
         except Post.DoesNotExist:
@@ -87,7 +87,7 @@ class PostQueryAPI(generics.GenericAPIView):
                 ).order_by('-created_at')
 
                 for post_instance in post_instances:
-                    context['posts'].append(get_post_info(post_instance))
+                    context['posts'].append(get_post_info(post_instance), self.request.user)
 
                 return JsonResponse(context, safe=True)
             else:
@@ -106,7 +106,7 @@ class PostQueryAPI(generics.GenericAPIView):
                 )
                 print(post_instances)
                 for post_instance in post_instances:
-                    context['posts'].append(get_post_info(post_instance))
+                    context['posts'].append(get_post_info(post_instance),self.request.user)
                 return JsonResponse(context, safe=True)
             else:
                 return JsonResponse({'status':'Not authorized'}, status=405)                
