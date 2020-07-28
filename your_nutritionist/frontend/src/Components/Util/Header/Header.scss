@@ -39,4 +39,22 @@
 	#basic-nav-dropdown {
 		font-weight: 700;
 	}
+	.navbar-toggler {
+		background: url('https://storage.googleapis.com/your-nutritionist-cdn/baseline_menu_white_18dp.png');
+		background-position: center;
+		background-repeat: no-repeat;
+		border: solid 1px white;
+	}
+}
+
+@media (max-width: 1000px) {
+	.nav-wrapper {
+		height: auto;
+		.header-background {
+			height: 166px;
+		}
+		.color-nav {
+			height: auto;
+		}
+	}
 }

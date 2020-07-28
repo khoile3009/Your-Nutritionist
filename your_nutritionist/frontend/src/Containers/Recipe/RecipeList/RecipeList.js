@@ -74,14 +74,16 @@ class RecipeList extends Component {
 				}
 				for (let i = page_min; i <= page_max; i++) {
 					page_navigators.push(
-						<Button
-							onClick={() => {
-								this.props.toPage(i);
-							}}
-							variant={this.props.page === i ? "secondary" : "light"}
-						>
-							{i}
-						</Button>
+						<div className="page-num-wrapper">
+							<Button
+								onClick={() => {
+									this.props.toPage(i);
+								}}
+								variant={this.props.page === i ? "secondary" : "light"}
+							>
+								{i}
+							</Button>
+						</div>
 					);
 				}
 			}
