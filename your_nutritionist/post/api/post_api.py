@@ -87,7 +87,7 @@ class PostQueryAPI(generics.GenericAPIView):
                 ).order_by('-created_at')
 
                 for post_instance in post_instances:
-                    context['posts'].append(get_post_info(post_instance), self.request.user)
+                    context['posts'].append(get_post_info(post_instance,self.request.user))
 
                 return JsonResponse(context, safe=True)
             else:
@@ -106,7 +106,7 @@ class PostQueryAPI(generics.GenericAPIView):
                 )
                 print(post_instances)
                 for post_instance in post_instances:
-                    context['posts'].append(get_post_info(post_instance),self.request.user)
+                    context['posts'].append(get_post_info(post_instance,self.request.user))
                 return JsonResponse(context, safe=True)
             else:
                 return JsonResponse({'status':'Not authorized'}, status=405)                
