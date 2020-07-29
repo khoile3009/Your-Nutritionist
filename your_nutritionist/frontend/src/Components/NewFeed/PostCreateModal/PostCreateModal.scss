@@ -1,0 +1,12 @@
+.cancel-post-btn.btn.btn-primary {
+    background: rgb(219, 25, 25);
+    &:hover {
+        background: rgb(189, 13, 13);
+    }
+    width: 100%;
+}
+
+.create-post-btn.btn.btn-primary {
+    width: 100%;
+}
+
