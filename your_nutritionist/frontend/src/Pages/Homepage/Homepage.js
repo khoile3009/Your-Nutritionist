@@ -50,7 +50,8 @@ class Homepage extends Component {
         (response) => {
           let posts = this.state.posts
           posts.push.apply(posts, response.data.posts)
-          this.setState({ posts: posts, last_id: response.data.posts[response.data.posts.length - 1].post_id })
+          // this.setState({ posts: posts, last_id: response.data.posts[response.data.posts.length - 1].post_id })
+          this.setState({ posts: posts})
         }
       )
     }
