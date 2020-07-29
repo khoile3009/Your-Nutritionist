@@ -6,6 +6,7 @@ import PostCreateModal from '../../Components/NewFeed/PostCreateModal/PostCreate
 import './SideBarContainer.scss';
 import axios from '../../axios-orders';
 import Axios from 'axios';
+import SigninRequired from '../Util/SigninRequired/SigninRequired';
 
 class SideBarContainer extends Component {
 	constructor(props) {
@@ -109,8 +110,9 @@ class SideBarContainer extends Component {
     }
 
 	// Submit 
-	submitForm = () => {
+	submitForm = (event) => {
 		// console.log(this.state)
+		event.preventDefault()
 		let data = this.dataFromNewPostForm()
 		axios.post('api/post/create', data, {
 			headers: {
@@ -197,7 +199,8 @@ class SideBarContainer extends Component {
 		];
 		return (
 			<div className="sidebar-container">
-				<PostCreateModal 
+				<SigninRequired content={
+					<PostCreateModal 
 					modal={this.state.modal} 
 					hideModal={this.hideModal} 
 					urlChangeHandler={this.urlChangeHandler}
@@ -211,7 +214,8 @@ class SideBarContainer extends Component {
 					medias={this.state.medias}
 					deleteMedia={this.deleteMedia}
         			addMedia={this.addMedia}
-				></PostCreateModal>
+				></PostCreateModal>}>
+				</SigninRequired>
 					
 				<SideBar
 					toCreateRecipe={(event) => {
