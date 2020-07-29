@@ -7,7 +7,7 @@ from post.models import Post, PostMedia
 from utils.files import GCLOUD
 from .post import *
 from social.models import Follow
-
+import json
 class PostCreateAPI(generics.GenericAPIView):
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly,

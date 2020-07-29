@@ -1,8 +1,11 @@
 from accounts.helpers import get_profile_pic
-from ..models import PostMedia
+from ..models import PostMedia, Post
 from utils.files import GCLOUD
 from social.apis.like_api import get_number_of_like
+from social.apis.comment_api import get_number_of_comment_post
 from social.models import Like
+from django.http import HttpResponse, JsonResponse
+import json
 def get_post_info(post_instance,user):
     post_info = {}
     post_info['profilepic'] = get_profile_pic(post_instance.creator.id)
@@ -21,6 +24,7 @@ def get_post_info(post_instance,user):
         except Like.DoesNotExist:
             post_info['liked'] = False
     post_info['num_like'] = get_number_of_like(post_instance)
+    post_info['num_comment'] = get_number_of_comment_post(post_instance)
     media_instances = PostMedia.objects.filter(post=post_instance)
     post_info['medias'] = []
     for media_instance in media_instances:
@@ -55,7 +59,7 @@ def create_post_from_post_info(post_data, files, user):
                 media_type = media['type'],
                 order = index
             )  
-        return JsonResponse({'status':'ok'}, safe=True)
+        return JsonResponse(get_post_info(post_instance, user), safe=True)
     else:
         return JsonResponse({'status':'Post data missing'},status=422)
 

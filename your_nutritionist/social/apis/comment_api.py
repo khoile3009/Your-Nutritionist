@@ -165,3 +165,6 @@ def get_comment_info(comment_instance):
     comment_info['commented_at'] = comment_instance.commented_at
     comment_info['user_id'] = comment_instance.commenter.id
     return comment_info
+
+def get_number_of_comment_post(post_instance):
+    return Comment.objects.filter(target_id=post_instance.id, target_type=0).count()
