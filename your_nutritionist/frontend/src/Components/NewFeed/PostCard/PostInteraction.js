@@ -23,20 +23,7 @@ const PostInteraction = (props) => {
 					</i>
 				</div>
 			</div>
-			<div className="social-fn">
-				<i className="material-icons" style={{ color: '#4BC8AE' }}>
-					comment
-				</i>
-				&nbsp;
-				{props.num_comment}
-			</div>
-			<div className="social-fn">
-				<i className="material-icons" style={{ color: 'rgb(255, 174, 0)' }}>
-					share
-				</i>
-			</div>
-		</div>
-	);
+
 };
 
 export default PostInteraction;
