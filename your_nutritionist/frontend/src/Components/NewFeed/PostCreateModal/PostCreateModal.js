@@ -48,6 +48,7 @@ const PostCreateModal = (props) => {
 							Post
 						</Button></Col>
 						</Row>
+						
 					<br></br>
 				</Form>
 			</Modal>
