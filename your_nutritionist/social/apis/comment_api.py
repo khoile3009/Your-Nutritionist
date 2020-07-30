@@ -36,11 +36,27 @@ class CommentAPI(generics.GenericAPIView):
         
     def get(self, *args, **kwargs):
         post_id = kwargs['post_id']
+        if(self.request.GET.get('limit')):
+            limit = int(self.request.GET.get('limit'))
+        else:
+            limit = 5
+
+        if(self.request.GET.get('before_id')):
+            before_id = int(self.request.GET.get('before_id'))
+        else: 
+            before_id = -1
+        
+
         comment_instances = Comment.objects.filter(
             target_type = 0,
-            target_id = post_id
+            target_id = post_id,
+            id__lt = before_id
+        ) if (before_id and before_id != -1
+        ) else Comment.objects.filter(
+            target_type = 0,
+            target_id = post_id,
         )
-        comment_infos = [get_comment_info(comment_instance) for comment_instance in comment_instances]
+        comment_infos = [get_comment_info(comment_instance) for comment_instance in comment_instances[:limit]]
         return JsonResponse({'comments': comment_infos}, safe=True)
 
 class CommentInfoAPI(generics.GenericAPIView):
