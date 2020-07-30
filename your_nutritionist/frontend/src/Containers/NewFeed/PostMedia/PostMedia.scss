@@ -1,0 +1,21 @@
+.newfeed-media-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: nf-media;
+    height: 30vh;
+    width: 100%;
+    .newfeed-media {
+        height: 100%;
+        width: 80%;
+        // background-image: url('https://storage.googleapis.com/your-nutritionist-cdn/header-bg.jpg');
+        background-color: grey;
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+.post-media-wrapper{
+    height: 100%;
+    width: 100%;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { PostContent, PostInteraction, PostMedia, PostProfilePic, PostUsername } from '../../../Components/NewFeed/PostCard/index';
+import { PostContent, PostInteraction,  PostProfilePic, PostUsername } from '../../../Components/NewFeed/PostCard/index';
+import PostMediaContainer from '../PostMedia/PostMediaContainer'
 import { withRouter } from 'react-router-dom';
 import axios from '../../../axios-orders';
 import CommentSection from '../CommentSection/CommentSection'
@@ -9,7 +10,6 @@ class PostCardContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentMedia: 0,
             comments: [],
             showComments: false,
             last_id: -1,
@@ -115,7 +115,9 @@ class PostCardContainer extends Component {
                 content={this.state.post.content}
             />
             {this.state.post.medias && this.state.post.medias.length != 0
-                ? <PostMedia />
+                ? <PostMediaContainer
+                    medias={this.state.post.medias}
+                />
                 : null
             }
 
