@@ -42,21 +42,14 @@ $randInt: random(255);
 			}
 		}
 	}
-	.newfeed-media-wrapper {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		grid-area: nf-media;
-		height: 30vh;
-		width: 100%;
-		.newfeed-media {
-			height: 100%;
-			width: 80%;
-			background-image: url('https://storage.googleapis.com/your-nutritionist-cdn/header-bg.jpg');
-			background-position: center;
-			background-size: cover;
-		}
-	}
+	
+}
+
+
+
+.post-media-content{
+	height: 100%;
+	width: 100%;
 }
 
 @media (max-width: 634px) {
