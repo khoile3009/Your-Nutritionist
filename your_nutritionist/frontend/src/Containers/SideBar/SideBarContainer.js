@@ -5,7 +5,7 @@ import TrendingCard from '../../Components/Home/TrendingCard/TrendingCard';
 import PostCreateModal from '../../Components/NewFeed/PostCreateModal/PostCreateModal';
 import './SideBarContainer.scss';
 import axios from '../../axios-orders';
-import Axios from 'axios';
+import { connect } from 'react-redux';
 
 class SideBarContainer extends Component {
 	constructor(props) {
@@ -14,7 +14,7 @@ class SideBarContainer extends Component {
 			modal: 0,
 			url: '',
 			file: null,
-			post_content: ''
+			content: ''
 		};
 		this.showCreatePostModal = this.showCreatePostModal.bind(this);
 		this.resetCreatePostInput = this.resetCreatePostInput.bind(this);
@@ -27,6 +27,7 @@ class SideBarContainer extends Component {
 		this.dataFromNewPostForm = this.dataFromNewPostForm.bind(this)
 		this.addMedia = this.addMedia.bind(this)
 		this.deleteMedia = this.deleteMedia.bind(this)
+		this.contentChangeHandler = this.contentChangeHandler.bind(this)
 	}
 
 	toCreateRecipe = (event) => {
@@ -48,7 +49,7 @@ class SideBarContainer extends Component {
 			url: '',
 			file: null,
 			file_title: '',
-			post_content: ''
+			content: ''
 		});
 	};
 
@@ -81,6 +82,10 @@ class SideBarContainer extends Component {
 		}
 	};
 
+	contentChangeHandler = (event) => {
+		this.setState({ content: event.target.value })
+	}
+
 	toTrendingRecipe = (recipe_id) => {
 		this.props.history.push('/recipe/' + recipe_id);
 	};
@@ -109,8 +114,9 @@ class SideBarContainer extends Component {
     }
 
 	// Submit 
-	submitForm = () => {
+	submitForm = (event) => {
 		// console.log(this.state)
+		event.preventDefault();
 		let data = this.dataFromNewPostForm()
 		axios.post('api/post/create', data, {
 			headers: {
@@ -118,36 +124,32 @@ class SideBarContainer extends Component {
 				'Authorization': 'Token ' + this.props.token
 			}
 		})
-			.then((response) => {
-				this.props.history.push('/post/' + response.data.post_id)
+			.then(() => {
+				this.props.history.push('/homepage')
+				this.hideModal()
 			})
 	}
 
 	dataFromNewPostForm = () => {
 		let data = new FormData();
-		data.append('post', JSON.stringify({
-			post_content: this.post_content,
-			medias: this.state.medias.map(
-				(media) => {
-					return {
-						type: media.type,
-						name: media.name,
-						url: media.url,
-						fileId: media.fileId
-					}
-				}
-			)
+		console.log(JSON.stringify({
+			content: this.state.content,
+			medias: []
 		}))
-		data = this.add_images_to_form_data(data, this.state.files)
+		data.append('post', JSON.stringify({
+			content: this.state.content,
+			medias: []
+		}))
+		// data = this.add_images_to_form_data(data, this.state.files)
         return data
 	};
 
-	add_images_to_form_data(data, images) {
-        for (var image_index = 0; image_index < images.length; image_index++) {
-            data.append('image_' + image_index, images[image_index])
-        }
-        return data
-    }
+	// add_images_to_form_data(data, images) {
+    //     for (var image_index = 0; image_index < images.length; image_index++) {
+    //         data.append('image_' + image_index, images[image_index])
+    //     }
+    //     return data
+    // }
 
 	render() {
 		let fakeTrendingRecipes = [
@@ -197,7 +199,9 @@ class SideBarContainer extends Component {
 		];
 		return (
 			<div className="sidebar-container">
-				<PostCreateModal 
+				<PostCreateModal
+					contentChangeHandler={this.contentChangeHandler}
+					content={this.state.content} 
 					modal={this.state.modal} 
 					hideModal={this.hideModal} 
 					urlChangeHandler={this.urlChangeHandler}
@@ -235,4 +239,11 @@ class SideBarContainer extends Component {
 	}
 }
 
-export default withRouter(SideBarContainer);
+const mapStateToProps = state => {
+    return {
+        token: state.auth.token,
+        userId: state.auth.userId
+    }
+}
+
+export default connect(mapStateToProps, () => { })(withRouter(SideBarContainer));
