@@ -27,4 +27,4 @@ urlpatterns = [
 
     path('post/<int:post_id>/like', LikeAPI.as_view())
     # path('recipe/<int:recipe_id>/israted/<int:user_id>',get_rated)
-] 
+]   
