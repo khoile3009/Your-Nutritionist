@@ -204,7 +204,7 @@ class UserInfoContainer extends Component {
 
     render() {
         return this.props.user_info ?
-            < >
+            <>
             <ProfilePicModal
         modal = {
             this.state.modal
