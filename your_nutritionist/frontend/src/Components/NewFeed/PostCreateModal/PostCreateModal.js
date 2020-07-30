@@ -1,6 +1,7 @@
 import React from 'react';
 import './PostCreateModal.scss';
 import { Modal, Form, Button, Row, Col } from 'react-bootstrap';
+import SigninRequired from '../../../Containers/Util/SigninRequired/SigninRequired';
 
 const PostCreateModal = (props) => {
 	return (
@@ -9,10 +10,10 @@ const PostCreateModal = (props) => {
 				<Modal.Header>
 					<Modal.Title>Create new post</Modal.Title>
 				</Modal.Header>
-				<Form onSubmit={props.submitNewPost}>
+				<Form onSubmit={props.submitForm}>
 					<Modal.Body>
 						<Form.Group controlId="NewPostContent">
-							<Form.Control style={{ fontSize: '12pt' }} as="textarea" rows="4" placeholder="Say what you wanna say..." />
+							<Form.Control onChange={props.contentChangeHandler} value={props.content} style={{ fontSize: '12pt' }} as="textarea" rows="4" placeholder="Say what you wanna say..." />
 						</Form.Group>
 						{props.modal === 1 ? (
 							<Form.Group controlId="NewPostMedia">
@@ -48,7 +49,7 @@ const PostCreateModal = (props) => {
 							Post
 						</Button></Col>
 						</Row>
-						
+
 					<br></br>
 				</Form>
 			</Modal>
