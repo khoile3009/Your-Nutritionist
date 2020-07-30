@@ -3,6 +3,8 @@ import { PostContent, PostInteraction, PostMedia, PostProfilePic, PostUsername }
 import { withRouter } from 'react-router-dom';
 import axios from '../../../axios-orders';
 import CommentSection from '../CommentSection/CommentSection'
+import {connect} from 'react-redux';
+
 class PostCardContainer extends Component {
     constructor(props) {
         super(props)
@@ -41,11 +43,34 @@ class PostCardContainer extends Component {
     }
 
     toggleLike = () => {
+        if(this.props.token){
+        if(this.state.post.liked){
+            axios.delete('api/post/' + this.state.post.post_id + '/like', {headers: {
+                'Content-Type': "multipart/form-data",
+                'Authorization': 'Token ' + this.props.token
+            }}).then(
+                (response) => {
+                    console.log(response.data)
+                }
+            )
+        }
+        else{
+            axios.post('api/post/' + this.state.post.post_id + '/like', null, {headers: {
+                'Content-Type': "multipart/form-data",
+                'Authorization': 'Token ' + this.props.token
+            }}).then(
+                (response) => {
+                    console.log(response.data)
+                }
+            )
+        }
         this.setState({post: {
             ...this.state.post,
-            num_like: this.state.post.num_like + this.state.post.liked ? -1 : 1,
+            num_like: this.state.post.liked ? this.state.post.num_like - 1 : this.state.post.num_like + 1,
             liked: !this.state.post.liked
-        }})
+        }});
+        
+    }
     }
 
     toggleCommentSection = () => {
@@ -104,4 +129,13 @@ class PostCardContainer extends Component {
         </div>
     }
 }
-export default withRouter(PostCardContainer);
+
+
+const mapStateToProps = state => {
+    return {
+        token: state.auth.token,
+        userId: state.auth.userId
+    }
+}
+
+export default connect(mapStateToProps,()=>{})(withRouter(PostCardContainer));
