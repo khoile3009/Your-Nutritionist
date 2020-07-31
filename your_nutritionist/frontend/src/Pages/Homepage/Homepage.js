@@ -5,8 +5,10 @@ import { withRouter } from "react-router-dom";
 import "./Homepage.css";
 import SideBarContainer from "../../Containers/SideBar/SideBarContainer.js";
 import PostCardList from "../../Containers/NewFeed/PostCardList/PostCardList";
+import RightBarContainer from "../../Containers/RightBar/RightBarContainer"
 import { connect } from 'react-redux';
 import axios from '../../axios-orders';
+
 
 class Homepage extends Component {
   constructor(props) {
@@ -95,6 +97,7 @@ class Homepage extends Component {
         <div className="overall-layout">
           <SideBarContainer />
           <PostCardList posts={this.state.posts} />
+          <RightBarContainer></RightBarContainer>
         </div>
       </>
     );

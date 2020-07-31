@@ -1,0 +1,16 @@
+.right-bar-wrapper {
+    top: 9rem;
+    right: 2rem;
+    height: auto;
+    position: fixed;
+    width: 20vw;
+    .adverts-wrapper {
+        margin: 0 0 1rem 0;
+        border-radius: 18px;
+        padding: .5rem;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+    }
+}
