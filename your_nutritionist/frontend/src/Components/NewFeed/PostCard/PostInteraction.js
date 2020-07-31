@@ -7,7 +7,7 @@ const PostInteraction = (props) => {
 					<div >
 						{props.liked 
 						? <i className="material-icons" style={{ color: '#E97272' }}>favorite</i>
-						:<i class="material-icons" style={{ color: '#E97272' }}>favorite_border</i>
+						:<i className="material-icons" style={{ color: '#E97272' }}>favorite_border</i>
 						}
 					
 					</div>

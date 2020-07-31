@@ -18,7 +18,8 @@ class Homepage extends Component {
       search_query: '',
       page: 1,
       posts: [],
-      last_id: -1
+      last_id: -1,
+      none_left: false
     };
     this.setRecipes = this.setRecipes.bind(this)
     this.setSearchQuery = this.setSearchQuery.bind(this)
@@ -45,15 +46,16 @@ class Homepage extends Component {
           params: {
             before_id: this.state.last_id,
             type: 'feed',
-            limit: 10,
+            limit: 5,
           }
         }
       ).then(
         (response) => {
           let posts = this.state.posts
           posts.push.apply(posts, response.data.posts)
-          // this.setState({ posts: posts, last_id: response.data.posts[response.data.posts.length - 1].post_id })
-          this.setState({ posts: posts})
+          console.log( response.data.posts[response.data.posts.length - 1].post_id)
+          this.setState({ posts: posts, last_id: response.data.posts[response.data.posts.length - 1].post_id })
+          // this.setState({ posts: posts})
         }
       )
     }

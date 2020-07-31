@@ -68,7 +68,10 @@ class PostQueryAPI(generics.GenericAPIView):
     ]
     
     def get(self, *args, **kwargs):
-        print(self.request.GET)
+        if(self.request.GET.get('limit')):
+            limit = int(self.request.GET.get('limit'))
+        else:
+            limit = 5
         before_id = None
         if(self.request.GET.get('before_id')):
             before_id = int(self.request.GET.get('before_id'))
@@ -85,10 +88,7 @@ class PostQueryAPI(generics.GenericAPIView):
                 ) else Post.objects.filter(
                     creator__id=int(self.request.GET.get('user_id')),
                 ).order_by('-created_at')
-
-                for post_instance in post_instances:
-                    context['posts'].append(get_post_info(post_instance,self.request.user))
-
+                context['posts'] = [get_post_info(post_instance,self.request.user) for post_instance in post_instances[:limit]]
                 return JsonResponse(context, safe=True)
             else:
                 return JsonResponse({'status':'No user id provided'}, status=422)
@@ -104,8 +104,7 @@ class PostQueryAPI(generics.GenericAPIView):
                 ) else Post.objects.filter(
                     creator__id__in=following_user_ids
                 )
-                print(post_instances)
-                for post_instance in post_instances:
+                for post_instance in post_instances[:limit]:
                     context['posts'].append(get_post_info(post_instance,self.request.user))
                 return JsonResponse(context, safe=True)
             else:
