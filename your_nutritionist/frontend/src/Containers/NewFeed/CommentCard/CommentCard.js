@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
-import './CommentCard.css'
+import './CommentCard.scss'
+import {Row, Col} from 'react-bootstrap'
+
 class CommentCard extends Component {
     
     // - sample data --------------------
@@ -14,7 +16,19 @@ class CommentCard extends Component {
     render() {
         return <div className='comment-box'>
             <hr></hr>
-            {this.props.comment.content}
+            {console.log(this.props.comment)}
+            <Row>
+                <Col style={{margin: "0", padding: "0"}} xs="auto">
+                    <div className="comment-profilepic" style={{backgroundImage: "url('" + this.props.comment.profilepic + "')"}}></div>
+                </Col>    
+                <Col>
+                        <div className="comment-fullname"><span id="cmt-to-userpage" onClick={this.props.toUserPage}>{this.props.comment.fullname}</span>&nbsp;<span id="cmt-username">@{this.props.comment.username}</span>&nbsp;at&nbsp;<span id="cmt-time">{this.props.comment.commented_at.slice(0,10)}</span></div>
+                </Col>           
+            </Row>
+
+            <Row>
+                <div className="comment-content"><p>{this.props.comment.content}</p></div>
+            </Row> 
         </div>
     }
 }

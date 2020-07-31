@@ -6,7 +6,7 @@ $randInt: random(255);
 	padding: 1rem;
 	width: 50vw;
 	grid-template-columns: .1fr 6fr;
-	grid-template-areas: "profile-pic username" "nf-content nf-content" "nf-media nf-media" "social-fn social-fn";
+	grid-template-areas: "profile-pic username" "nf-content nf-content" "nf-media nf-media" "social-fn social-fn" "cmt-form cmt-form" "cmt-list cmt-list";
 	align-items: center;
 	border-radius: 18px;
 	color: rgb(99, 99, 99);
@@ -39,8 +39,19 @@ $randInt: random(255);
 			display: inline-flex;
 			.material-icons {
 				font-size: 12pt;
+				&:hover {
+					cursor: pointer;
+				}
 			}
 		}
+	}
+	.comment-form {
+		grid-area: cmt-form;
+		padding: 1rem;
+
+	}
+	.comment-box {
+		grid-area: cmt-box;
 	}
 	
 }

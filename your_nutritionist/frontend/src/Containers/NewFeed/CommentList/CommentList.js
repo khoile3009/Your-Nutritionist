@@ -1,10 +1,13 @@
 import React,{Component} from 'react'
 import CommentCard from '../CommentCard/CommentCard'
-import './CommentList.css'
+import './CommentList.scss'
 class CommentList extends Component{
     constructor(props){
         super(props);
+    }
 
+    toUserPage = (event) => {
+        event.preventDefault()
     }
 
     render(){

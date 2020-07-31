@@ -19,7 +19,7 @@ class CommentForm extends Component{
         return <div className='comment-form'>
             <Form onSubmit={(event)=>{this.props.submitComment(event,this.state.comment)}}>
                 <InputGroup>          
-                    <FormControl as='textarea' rows='2' name='comment' value={this.state.comment} onChange={this.onChangeHandler}/>
+                    <FormControl placeholder='Write a comment...' as='textarea' rows='2' name='comment' value={this.state.comment} onChange={this.onChangeHandler}/>
                     <InputGroup.Append>
                         <Button type='submit' variant='primary'>Submit</Button>
                     </InputGroup.Append>
