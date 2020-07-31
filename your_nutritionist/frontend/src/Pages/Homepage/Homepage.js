@@ -98,7 +98,7 @@ class Homepage extends Component {
         />
         <div className="overall-layout">
           <SideBarContainer />
-          <PostCardList posts={this.state.posts} />
+          <PostCardList posts={this.state.posts} loadPosts={this.loadPosts} />
           <RightBarContainer></RightBarContainer>
         </div>
       </>
