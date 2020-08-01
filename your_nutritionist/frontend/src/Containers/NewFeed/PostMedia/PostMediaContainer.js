@@ -30,13 +30,11 @@ class PostMediaContainer extends Component{
     render(){
         return (
             <div className="newfeed-media-wrapper">
-                <Row className='post-media-wrapper'>
-                    <Col xs={1}><Button onClick={this.toLeft}>Left</Button></Col>
-                    <Col xs={10}>
-                        <PostMedia media={this.state.medias[this.state.topMedia]}/>
-                    </Col>
-                    <Col xs={1}><Button onClick={this.toRight}>Right</Button></Col>
-                </Row>
+                <div className='post-media-left post-media-nav'><Button onClick={this.toLeft}><span className="material-icons">navigate_before</span></Button></div>
+                <div className='post-media-wrapper'>
+                    <PostMedia media={this.state.medias[this.state.topMedia]}/>
+                </div>
+                <div className='post-media-right post-media-nav'><Button onClick={this.toRight}><span className="material-icons">navigate_next</span></Button></div>
                 {/* <div className="newfeed-media" /> */}
             </div>
         )
