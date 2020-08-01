@@ -8,7 +8,7 @@ import { Container } from "react-bootstrap";
 import UserInfoContainer from "../UserInfo/UserInfoContainer";
 import RecipeList from "../../Recipe/RecipeList/RecipeList";
 import UserIntroductionContainer from "../UserIntroduction/UserIntroductionContainer";
-import "./UserShow.css";
+import "./UserShow.scss";
 import { connect } from "react-redux";
 import queryString from "query-string";
 class UserShowContainer extends Component {
@@ -136,11 +136,11 @@ class UserShowContainer extends Component {
 
 	render() {
 		return this.state.user_info ? (
-			<Container className="shadow custom-container">
+			<Container className="user-wrapper">
 				<UserInfoContainer updateHeadline={this.updateHeadline} updateProfilePic={this.updateProfilePic} user_info={this.state.user_info} userId={parseInt(this.props.match.params["user_id"])}></UserInfoContainer>
-				<hr></hr>
+
 				<UserIntroductionContainer userId={parseInt(this.props.match.params["user_id"])}></UserIntroductionContainer>
-				<hr></hr>
+
 				<p className="subtitle">Recipes</p>
 				{this.state.user_recipes ? <RecipeList recipes={this.state.user_recipes} page={this.state.page} toPage={this.toPage}></RecipeList> : <h3 style={{ color: "#757575" }}>No recipes</h3>}
 				{/* <hr></hr>

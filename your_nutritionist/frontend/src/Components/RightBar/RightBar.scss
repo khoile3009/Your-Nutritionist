@@ -14,3 +14,17 @@
         height: 300px;
     }
 }
+
+@media (max-width: 800px) {
+    .right-bar-wrapper {
+        display: block;
+        position: sticky;
+        height: auto;
+        width: 50vw;
+        left: 25vw;
+        padding-bottom: 2rem;
+    }
+    .adverts-wrapper {
+        height: 200px;
+    }
+}
