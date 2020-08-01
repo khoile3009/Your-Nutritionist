@@ -9,12 +9,34 @@ button.edit-intro-btn {
 		font-size: 12pt;
 		padding: 0.2rem;
 		&:hover {
-			background: teal;
-			color: rgb(221, 221, 221);
+			background: rgb(0, 136, 247);
+			color: rgb(255, 255, 255);
+			border-radius: 50%;
 		}
 	}
 	&:hover {
 		background: none;
 		border: none;
+	}
+}
+
+.submit-edit-btn {
+	background: rgb(34, 111, 255);
+	width: 100px;
+	color: white;
+	height: 40px;
+	&:hover {
+		background: rgb(21, 85, 202);
+	}
+}
+.cancel-edit-btn {
+	background: rgb(255, 66, 66);
+	width: 100px;
+	color: white;
+	height: 40px;
+	outline: none;
+	border: none;
+	&:hover {
+		background: rgb(209, 41, 41);
 	}
 }

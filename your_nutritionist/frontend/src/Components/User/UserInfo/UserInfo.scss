@@ -46,7 +46,7 @@
 			.title {
 				font-size: 32pt;
 				font-weight: bold;
-				font-family: 'Helvetica'
+				font-family: "Helvetica";
 			}
 			.subtitle {
 				font-size: 16pt;
@@ -60,11 +60,11 @@
 		.edit-headline-wrapper {
 			width: 100%;
 			textarea {
-				margin: .5rem 0;
+				margin: 0.5rem 0;
 				width: 100%;
 				padding: 0.5rem;
 			}
-			.edit-intro-btn {
+			.submit-edit-btn {
 				background: rgb(34, 111, 255);
 				width: 100px;
 				color: white;
@@ -73,7 +73,7 @@
 					background: rgb(21, 85, 202);
 				}
 			}
-			.edit-intro-cancel-btn {
+			.cancel-edit-btn {
 				background: rgb(255, 66, 66);
 				width: 100px;
 				color: white;

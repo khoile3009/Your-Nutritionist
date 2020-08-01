@@ -12,23 +12,26 @@ import "./UserShow.scss";
 import { connect } from "react-redux";
 import queryString from "query-string";
 import PostCardList from "../../NewFeed/PostCardList/PostCardList";
+import RightBarContainer from "../../RightBar/RightBarContainer";
+import SideBarContainer from "../../SideBar/SideBarContainer";
+
 class UserShowContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			page: 1,
 			tab_active: false,
-			tab: 'recipe',
+			tab: "recipe",
 			posts: [],
-			last_id: -1
+			last_id: -1,
 		};
 		this.getUserRecipes = this.getUserRecipes.bind(this);
 		this.getUserActions = this.getUserActions.bind(this);
 		this.toPage = this.toPage.bind(this);
 		this.updateProfilePic = this.updateProfilePic.bind(this);
 		this.updateHeadline = this.updateHeadline.bind(this);
-		this.loadPosts = this.loadPosts.bind(this)
-		this.switchTab = this.switchTab.bind(this)
+		this.loadPosts = this.loadPosts.bind(this);
+		this.switchTab = this.switchTab.bind(this);
 	}
 
 	componentDidMount() {
@@ -45,11 +48,10 @@ class UserShowContainer extends Component {
 		axios
 			.get("api/user/" + this.props.match.params["user_id"] + "/info", { headers: headers })
 			.then((response) => {
-				console.log(response)
+				console.log(response);
 				this.setState({ user_info: response.data });
 				this.getUserRecipes(page);
 				this.loadPosts();
-
 			})
 			.catch((err) => {
 				console.log(err);
@@ -75,33 +77,30 @@ class UserShowContainer extends Component {
 
 	loadPosts = () => {
 		if (this.props.token) {
-		  let headers = {
-			'Content-Type': 'application/json',
-			'Authorization': 'Token ' + this.props.token
-		  }
-	
-		  axios.get(
-			'api/post',
-			{
-			  headers: headers,
-			  params: {
-				before_id: this.state.last_id,
-				type: 'user',
-				user_id: this.props.match.params["user_id"],
-				limit: 5,
-			  }
-			}
-		  ).then(
-			(response) => {
-			  let posts = this.state.posts
-			  posts.push.apply(posts, response.data.posts)
-			  console.log( response.data.posts[response.data.posts.length - 1].post_id)
-			  this.setState({ posts: posts, last_id: response.data.posts[response.data.posts.length - 1].post_id })
-			  // this.setState({ posts: posts})
-			}
-		  )
+			let headers = {
+				"Content-Type": "application/json",
+				Authorization: "Token " + this.props.token,
+			};
+
+			axios
+				.get("api/post", {
+					headers: headers,
+					params: {
+						before_id: this.state.last_id,
+						type: "user",
+						user_id: this.props.match.params["user_id"],
+						limit: 5,
+					},
+				})
+				.then((response) => {
+					let posts = this.state.posts;
+					posts.push.apply(posts, response.data.posts);
+					console.log(response.data.posts[response.data.posts.length - 1].post_id);
+					this.setState({ posts: posts, last_id: response.data.posts[response.data.posts.length - 1].post_id });
+					// this.setState({ posts: posts})
+				});
 		}
-	  }
+	};
 	// componentWillReceiveProps(){
 
 	//     this.setState({
@@ -150,7 +149,7 @@ class UserShowContainer extends Component {
 			});
 	};
 
-	getUserPost
+	getUserPost;
 
 	getUserActions = () => {
 		let headers = {
@@ -166,48 +165,76 @@ class UserShowContainer extends Component {
 		this.props.history.push({ pathname: "/user/" + this.props.match.params["user_id"], search: queryString.stringify({ page: page }) });
 	};
 
-	updateProfilePic = (url) =>{
-		this.setState({user_info: {...this.state.user_info, profilepic: url}})
-	}
+	updateProfilePic = (url) => {
+		this.setState({ user_info: { ...this.state.user_info, profilepic: url } });
+	};
 	updateHeadline = (headline) => {
-		this.setState({user_info: {...this.state.user_info, headline: headline}})
-	}
+		this.setState({ user_info: { ...this.state.user_info, headline: headline } });
+	};
 
 	switchTab = (tab) => {
-		this.setState({tab: tab})
-	}
+		this.setState({ tab: tab });
+	};
 
 	render() {
-		let content = null
-		console.log(this.state.tab)
-		switch(this.state.tab){
+		let content = null;
+		console.log(this.state.tab);
+		switch (this.state.tab) {
 			case "recipe":
-				content = this.state.user_recipes ? <RecipeList recipes={this.state.user_recipes} page={this.state.page} toPage={this.toPage}></RecipeList> : <h3 style={{ color: "#757575" }}>No recipes</h3>
+				content = this.state.user_recipes ? <RecipeList recipes={this.state.user_recipes} page={this.state.page} toPage={this.toPage}></RecipeList> : <h3 style={{ color: "#757575" }}>No recipes</h3>;
 				break;
 			case "post":
-				content = this.state.posts.length != 0 ? <PostCardList posts={this.state.posts} loadPosts={this.loadPosts}/> :  <h3 style={{ color: "#757575" }}>No posts</h3>
+				content =
+					this.state.posts.length != 0 ? (
+						<>
+							<br></br>
+							<PostCardList posts={this.state.posts} loadPosts={this.loadPosts} />
+						</>
+					) : (
+						<div className="no-content">
+							<h3 style={{ color: "#757575" }}>No posts</h3>
+						</div>
+					);
 				break;
 			default:
-				content = this.state.user_recipes ? <RecipeList recipes={this.state.user_recipes} page={this.state.page} toPage={this.toPage}></RecipeList> : <h3 style={{ color: "#757575" }}>No recipes</h3>
+				content = this.state.user_recipes ? (
+					<RecipeList recipes={this.state.user_recipes} page={this.state.page} toPage={this.toPage}></RecipeList>
+				) : (
+					<div className="no-content">
+						<h3 style={{ color: "#757575" }}>No recipes</h3>
+					</div>
+				);
 				break;
-		}		
+		}
 		return this.state.user_info ? (
 			<Container className="user-wrapper">
+				<SideBarContainer></SideBarContainer>
+				<RightBarContainer></RightBarContainer>
 				<UserInfoContainer updateHeadline={this.updateHeadline} updateProfilePic={this.updateProfilePic} user_info={this.state.user_info} userId={parseInt(this.props.match.params["user_id"])}></UserInfoContainer>
 
 				<UserIntroductionContainer userId={parseInt(this.props.match.params["user_id"])}></UserIntroductionContainer>
 				<br></br>
 				<hr />
 				<div className="user-content-wrapper">
-					<span className={this.state.tab == 'recipe'?"subtitle content-nav content-nav-active" : "subtitle content-nav"} onClick={()=>{this.switchTab('recipe')}}>Recipes</span>
-					<span className={this.state.tab == 'post'?"subtitle content-nav content-nav-active" : "subtitle content-nav"} onClick={()=>{this.switchTab('post')}}>Posts</span>
+					<span
+						className={this.state.tab == "recipe" ? "subtitle content-nav content-nav-active" : "subtitle content-nav"}
+						onClick={() => {
+							this.switchTab("recipe");
+						}}
+					>
+						Recipes
+					</span>
+					<span
+						className={this.state.tab == "post" ? "subtitle content-nav content-nav-active" : "subtitle content-nav"}
+						onClick={() => {
+							this.switchTab("post");
+						}}
+					>
+						Posts
+					</span>
 				</div>
-				<div className="recipe-list-wrapper">
-					{content}
-				</div>
-				<div>
-
-				</div>
+				<div className="recipe-list-wrapper">{content}</div>
+				<div></div>
 				{/* <hr></hr>
 				<p className="subtitle">Actions</p>
 				{this.props.token ? this.state.user_actions ? <ActionList actions={this.state.user_actions}></ActionList> : <h1>No action recently</h1> : <h1>You need to sign in to see this content</h1>} */}
