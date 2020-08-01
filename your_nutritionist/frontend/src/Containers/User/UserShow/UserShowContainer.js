@@ -11,18 +11,24 @@ import UserIntroductionContainer from "../UserIntroduction/UserIntroductionConta
 import "./UserShow.scss";
 import { connect } from "react-redux";
 import queryString from "query-string";
+import PostCardList from "../../NewFeed/PostCardList/PostCardList";
 class UserShowContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			page: 1,
 			tab_active: false,
+			tab: 'recipe',
+			posts: [],
+			last_id: -1
 		};
 		this.getUserRecipes = this.getUserRecipes.bind(this);
 		this.getUserActions = this.getUserActions.bind(this);
 		this.toPage = this.toPage.bind(this);
 		this.updateProfilePic = this.updateProfilePic.bind(this);
-		this.updateHeadline = this.updateHeadline.bind(this)
+		this.updateHeadline = this.updateHeadline.bind(this);
+		this.loadPosts = this.loadPosts.bind(this)
+		this.switchTab = this.switchTab.bind(this)
 	}
 
 	componentDidMount() {
@@ -42,6 +48,8 @@ class UserShowContainer extends Component {
 				console.log(response)
 				this.setState({ user_info: response.data });
 				this.getUserRecipes(page);
+				this.loadPosts();
+
 			})
 			.catch((err) => {
 				console.log(err);
@@ -65,6 +73,35 @@ class UserShowContainer extends Component {
 		}
 	}
 
+	loadPosts = () => {
+		if (this.props.token) {
+		  let headers = {
+			'Content-Type': 'application/json',
+			'Authorization': 'Token ' + this.props.token
+		  }
+	
+		  axios.get(
+			'api/post',
+			{
+			  headers: headers,
+			  params: {
+				before_id: this.state.last_id,
+				type: 'user',
+				user_id: this.props.match.params["user_id"],
+				limit: 5,
+			  }
+			}
+		  ).then(
+			(response) => {
+			  let posts = this.state.posts
+			  posts.push.apply(posts, response.data.posts)
+			  console.log( response.data.posts[response.data.posts.length - 1].post_id)
+			  this.setState({ posts: posts, last_id: response.data.posts[response.data.posts.length - 1].post_id })
+			  // this.setState({ posts: posts})
+			}
+		  )
+		}
+	  }
 	// componentWillReceiveProps(){
 
 	//     this.setState({
@@ -92,7 +129,6 @@ class UserShowContainer extends Component {
 	// }
 
 	getUserRecipes = (page) => {
-		console.log("get " + page);
 		axios
 			.get("api/recipe", {
 				params: {
@@ -113,6 +149,8 @@ class UserShowContainer extends Component {
 				);
 			});
 	};
+
+	getUserPost
 
 	getUserActions = () => {
 		let headers = {
@@ -135,7 +173,24 @@ class UserShowContainer extends Component {
 		this.setState({user_info: {...this.state.user_info, headline: headline}})
 	}
 
+	switchTab = (tab) => {
+		this.setState({tab: tab})
+	}
+
 	render() {
+		let content = null
+		console.log(this.state.tab)
+		switch(this.state.tab){
+			case "recipe":
+				content = this.state.user_recipes ? <RecipeList recipes={this.state.user_recipes} page={this.state.page} toPage={this.toPage}></RecipeList> : <h3 style={{ color: "#757575" }}>No recipes</h3>
+				break;
+			case "post":
+				content = this.state.posts.length != 0 ? <PostCardList posts={this.state.posts} loadPosts={this.loadPosts}/> :  <h3 style={{ color: "#757575" }}>No posts</h3>
+				break;
+			default:
+				content = this.state.user_recipes ? <RecipeList recipes={this.state.user_recipes} page={this.state.page} toPage={this.toPage}></RecipeList> : <h3 style={{ color: "#757575" }}>No recipes</h3>
+				break;
+		}		
 		return this.state.user_info ? (
 			<Container className="user-wrapper">
 				<UserInfoContainer updateHeadline={this.updateHeadline} updateProfilePic={this.updateProfilePic} user_info={this.state.user_info} userId={parseInt(this.props.match.params["user_id"])}></UserInfoContainer>
@@ -144,11 +199,14 @@ class UserShowContainer extends Component {
 				<br></br>
 				<hr />
 				<div className="user-content-wrapper">
-					<span className="subtitle content-nav content-nav-active">Recipes</span>
-					<span className="subtitle content-nav">Posts</span>
+					<span className={this.state.tab == 'recipe'?"subtitle content-nav content-nav-active" : "subtitle content-nav"} onClick={()=>{this.switchTab('recipe')}}>Recipes</span>
+					<span className={this.state.tab == 'post'?"subtitle content-nav content-nav-active" : "subtitle content-nav"} onClick={()=>{this.switchTab('post')}}>Posts</span>
 				</div>
 				<div className="recipe-list-wrapper">
-					{this.state.user_recipes ? <RecipeList recipes={this.state.user_recipes} page={this.state.page} toPage={this.toPage}></RecipeList> : <h3 style={{ color: "#757575" }}>No recipes</h3>}
+					{content}
+				</div>
+				<div>
+
 				</div>
 				{/* <hr></hr>
 				<p className="subtitle">Actions</p>
