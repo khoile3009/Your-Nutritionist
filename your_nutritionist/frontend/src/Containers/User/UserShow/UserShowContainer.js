@@ -16,6 +16,7 @@ class UserShowContainer extends Component {
 		super(props);
 		this.state = {
 			page: 1,
+			tab_active: false,
 		};
 		this.getUserRecipes = this.getUserRecipes.bind(this);
 		this.getUserActions = this.getUserActions.bind(this);
@@ -140,9 +141,15 @@ class UserShowContainer extends Component {
 				<UserInfoContainer updateHeadline={this.updateHeadline} updateProfilePic={this.updateProfilePic} user_info={this.state.user_info} userId={parseInt(this.props.match.params["user_id"])}></UserInfoContainer>
 
 				<UserIntroductionContainer userId={parseInt(this.props.match.params["user_id"])}></UserIntroductionContainer>
-
-				<p className="subtitle">Recipes</p>
-				{this.state.user_recipes ? <RecipeList recipes={this.state.user_recipes} page={this.state.page} toPage={this.toPage}></RecipeList> : <h3 style={{ color: "#757575" }}>No recipes</h3>}
+				<br></br>
+				<hr />
+				<div className="user-content-wrapper">
+					<span className="subtitle content-nav content-nav-active">Recipes</span>
+					<span className="subtitle content-nav">Posts</span>
+				</div>
+				<div className="recipe-list-wrapper">
+					{this.state.user_recipes ? <RecipeList recipes={this.state.user_recipes} page={this.state.page} toPage={this.toPage}></RecipeList> : <h3 style={{ color: "#757575" }}>No recipes</h3>}
+				</div>
 				{/* <hr></hr>
 				<p className="subtitle">Actions</p>
 				{this.props.token ? this.state.user_actions ? <ActionList actions={this.state.user_actions}></ActionList> : <h1>No action recently</h1> : <h1>You need to sign in to see this content</h1>} */}
