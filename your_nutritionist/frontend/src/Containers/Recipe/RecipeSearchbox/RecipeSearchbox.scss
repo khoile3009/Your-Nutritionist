@@ -61,3 +61,12 @@
 		}
 	}
 }
+
+@media (max-width: 800px) {
+	.searchbox {
+		width: 80vw;
+	}
+	.search-button {
+		width: 10vw;
+	}
+}
