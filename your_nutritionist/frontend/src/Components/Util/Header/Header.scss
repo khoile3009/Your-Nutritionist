@@ -19,6 +19,15 @@
 		}
 	}
 
+	.logo {
+		margin: 0;
+		padding: 0;
+		box-shadow: 3px 2px 8px 2px rgba(0, 0, 0, 0.5);
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
 	.searchBar {
 		display: none;
 	}
@@ -40,7 +49,7 @@
 		font-weight: 700;
 	}
 	.navbar-toggler {
-		background: url('https://storage.googleapis.com/your-nutritionist-cdn/baseline_menu_white_18dp.png');
+		background: url("https://storage.googleapis.com/your-nutritionist-cdn/baseline_menu_white_18dp.png");
 		background-position: center;
 		background-repeat: no-repeat;
 		border: solid 1px white;

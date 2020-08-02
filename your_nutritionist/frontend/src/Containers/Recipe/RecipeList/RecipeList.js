@@ -3,7 +3,7 @@ import { Row, Col, Button } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
 import RecipeCard from "../../../Components/Recipe/RecipeCard/RecipeCard";
-import "./RecipeList.css";
+import "./RecipeList.scss";
 
 class RecipeList extends Component {
 	constructor(props) {
