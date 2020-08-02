@@ -8,13 +8,17 @@
 		z-index: 2;
 		.content-nav {
 			font-size: 16pt;
-			margin: 0 0 0 0;
+			margin: 0 1rem 0 0;
 			border: solid 1px transparent;
 			height: 3.5rem;
 			width: 7rem;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			&:hover {
+				cursor: pointer;
+				border-bottom: solid 2px rgb(255, 170, 184);	
+			}
 		}
 		.content-nav-active {
 			border-bottom: solid 2px rgb(252, 121, 143);
