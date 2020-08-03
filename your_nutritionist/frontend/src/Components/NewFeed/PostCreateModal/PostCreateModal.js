@@ -6,7 +6,7 @@ import SigninRequired from "../../../Containers/Util/SigninRequired/SigninRequir
 const PostCreateModal = (props) => {
 	return (
 		<div className="post-create-wrapper">
-			<Modal size="lg" show={props.modal == true} onHide={props.hideModal} aria-labelledby="contained-modal-title-vcetner" centered>
+			<Modal size="lg" show={props.modal} onHide={props.hideModal} aria-labelledby="contained-modal-title-vcetner" centered>
 				<Modal.Header>
 					<Modal.Title>Create new post</Modal.Title>
 				</Modal.Header>

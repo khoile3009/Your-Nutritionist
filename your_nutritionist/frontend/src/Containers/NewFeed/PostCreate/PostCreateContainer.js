@@ -1,6 +1,6 @@
 import PostCreateModal from "../../../Components/NewFeed/PostCreateModal/PostCreateModal";
 import React, { Component } from "react";
-import axios from "axios";
+import axios from "../../../axios-orders"
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
@@ -14,19 +14,25 @@ class PostCreateContainer extends Component {
 		};
 		this.urlChangeHandler = this.urlChangeHandler.bind(this);
 		this.fileChangeHandler = this.fileChangeHandler.bind(this);
-		this.hideModal = this.hideModal.bind(this);
 		this.submitForm = this.submitForm.bind(this);
 		this.dataFromNewPostForm = this.dataFromNewPostForm.bind(this);
 		this.contentChangeHandler = this.contentChangeHandler.bind(this);
+		this.resetAndHideModal = this.resetAndHideModal.bind(this);
+		this.resetData = this.resetData.bind(this)
 	}
 
-	hideModal = () => {
-		this.setState({
-			modal: 0,
-			uploading: false,
-		});
+	resetAndHideModal = () => {
+		this.resetData()
+		this.props.hideModal()
 	};
 
+	resetData = () => {
+		this.setState({
+			url: "",
+			file: null,
+			content: "",
+		})
+	}
 	urlChangeHandler = (event) => {
 		this.setState({
 			url: event.target.value,
@@ -60,7 +66,11 @@ class PostCreateContainer extends Component {
 			})
 			.then(() => {
 				this.props.history.push("/homepage");
-				this.hideModal();
+				this.resetData();
+				this.props.hideModal();
+			})
+			.catch((error) => {
+				console.log(error)
 			});
 	};
 
@@ -88,7 +98,7 @@ class PostCreateContainer extends Component {
 			<PostCreateModal
 				contentChangeHandler={this.contentChangeHandler}
 				content={this.state.content}
-				hideModal={this.props.hideModal}
+				hideModal={this.resetAndHideModal}
 				urlChangeHandler={this.urlChangeHandler}
 				fileChangeHandler={this.fileChangeHandler}
 				file={this.fileChangeHandler}
@@ -113,4 +123,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, () => {})(withRouter(PostCreateContainer));
+export default connect(mapStateToProps, () => { })(withRouter(PostCreateContainer));

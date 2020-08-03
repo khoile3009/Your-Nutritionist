@@ -4,14 +4,13 @@ import { withRouter } from "react-router-dom";
 import TrendingCard from "../../Components/Home/TrendingCard/TrendingCard";
 import PostCreateContainer from "../../Containers/NewFeed/PostCreate/PostCreateContainer";
 import "./SideBarContainer.scss";
-import axios from "../../axios-orders";
-import { connect } from "react-redux";
+
 
 class SideBarContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			modal: 0,
+			modal: false,
 		};
 		this.showCreatePostModal = this.showCreatePostModal.bind(this);
 		this.hideModal = this.hideModal.bind(this);
@@ -47,14 +46,13 @@ class SideBarContainer extends Component {
 
 	hideModal = () => {
 		this.setState({
-			modal: 0,
+			modal: false,
 		});
 	};
 
 	showCreatePostModal = () => {
-		this.resetCreatePostInput();
 		this.setState({
-			modal: 1,
+			modal: true,
 		});
 	};
 
@@ -165,4 +163,4 @@ class SideBarContainer extends Component {
 	}
 }
 
-export default SideBarContainer;
+export default withRouter(SideBarContainer);
