@@ -160,7 +160,7 @@ class ModalContainer extends Component {
     }
 
     nameNotBlankValidate = () => {
-        return (this.state.auth.first_name.lenght !== 0 || this.state.auth.last_name.length !== 0)
+        return (this.state.auth.first_name.length !== 0 || this.state.auth.last_name.length !== 0)
     }
 
     resetPasswords = () => {
