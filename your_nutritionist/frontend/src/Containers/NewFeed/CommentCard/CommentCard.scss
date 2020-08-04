@@ -1,29 +1,45 @@
-.comment-box{
-    .comment-profilepic {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-size: cover;
-        background-position: center;
-    }
-    .comment-fullname {
-        #cmt-to-userpage {
-            &:hover {
-                color: rgb(28, 79, 173);
-                text-decoration: underline;
-                cursor: pointer;
-            }
-        }
-        #cmt-username {
+.comment-box {
+	.cmt-content-wrapper {
+		border-radius: 16pt;
+		margin: 0 0.5rem;
+		padding: 0.5rem 1rem 1rem;
+		background: rgba(236, 236, 236, 0.404);
+	}
+	.comment-profilepic {
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background-size: cover;
+		background-position: center;
+	}
+	.comment-fullname {
+		#cmt-to-userpage {
+			color: rgb(68, 118, 212);
+			&:hover {
+				color: rgb(28, 79, 173);
+				text-decoration: underline;
+				cursor: pointer;
+			}
+		}
+		#cmt-username {
+		}
+		#cmt-time {
+			font-size: 10pt;
+			color: rgba(128, 128, 128, 0.733);
+		}
+	}
+	.comment-content {
+		align-items: center;
+		display: block;
+		font-size: 10pt;
+	}
+}
 
-        }
-        #cmt-time {
-            
-        }
-    }
-    .comment-content {
-        align-items: center;
-        display: flex;
-    }
-    
+@media (max-width: 800px) {
+	.comment-box {
+		.comment-profilepic {
+			width: 40px;
+			height: 40px;
+		}
+	}
 }
