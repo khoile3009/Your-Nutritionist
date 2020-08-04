@@ -22,6 +22,7 @@
 		width: 150px;
 		background-size: cover;
 		background-position: center;
+		background-color: rgb(random(255), random(255), random(255));
 		border-radius: 50%;
 		grid-area: "profile-pic";
 		.editable {
