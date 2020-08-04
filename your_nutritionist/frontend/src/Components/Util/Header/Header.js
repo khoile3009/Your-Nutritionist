@@ -8,7 +8,13 @@ const Header = (props) => (
 		<div className="header-background" />
 		<Navbar className="color-nav" collapseOnSelect expand="lg">
 			{/* "Link" in brand component since just redirect is needed */}
-			<Navbar.Brand className="logo" onClick={props.toHomePage} as={Link} to="/homepage" id="brand-color">
+			<Navbar.Brand
+				className="logo"
+				onClick={props.toHomePage}
+				as={Link}
+				to="/homepage"
+				id="brand-color"
+			>
 				<img
 					src={"https://storage.googleapis.com/your-nutritionist-cdn/recipe-repo.png"}
 					style={{
@@ -16,24 +22,37 @@ const Header = (props) => (
 					}}
 				/>
 			</Navbar.Brand>
-			<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-			<Navbar.Collapse id="responsive-navbar-nav">
-				<Nav className="mr-auto">
-					{/* "NavLink" here since "active" class styling is needed */}
-					<Nav.Link style={{ display: "none" }} onClick={props.toCreateRecipe} href="/recipe/create">
-						Create Recipe
-					</Nav.Link>
-					<form onSubmit={props.searchSubmit}>
-						<div className="searchBar">
-							<input type="text" name="" placeholder="Search..." value={props.search_input} onChange={props.onChangeSearchBar} />
-							<div>
-								<button className="search" onClick="search" type="submit" />
+			<div className="usernav-wrapper">{props.rightNav}</div>
+			<div className="responsive-navbar-wrapper">
+				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+				<Navbar.Collapse id="responsive-navbar-nav">
+					<Nav className="mr-auto">
+						{/* "NavLink" here since "active" class styling is needed */}
+						<Nav.Link
+							style={{ display: "none" }}
+							onClick={props.toCreateRecipe}
+							href="/recipe/create"
+						>
+							Create Recipe
+						</Nav.Link>
+						<form onSubmit={props.searchSubmit}>
+							<div className="searchBar">
+								<input
+									type="text"
+									name=""
+									placeholder="Search..."
+									value={props.search_input}
+									onChange={props.onChangeSearchBar}
+								/>
+								<div>
+									<button className="search" onClick="search" type="submit" />
+								</div>
 							</div>
-						</div>
-					</form>
-				</Nav>
-				{props.rightNav}
-			</Navbar.Collapse>
+						</form>
+					</Nav>
+					{props.rightNav}
+				</Navbar.Collapse>
+			</div>
 		</Navbar>
 	</div>
 );

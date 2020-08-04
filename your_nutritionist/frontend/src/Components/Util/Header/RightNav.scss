@@ -5,3 +5,10 @@
 .navbar-light .navbar-nav .show > .nav-link {
 	color: white;
 }
+
+@media (max-width: 800px) {
+	.rightnav-wrapper {
+		display: inline-block;
+		position: relative;
+	}
+}
