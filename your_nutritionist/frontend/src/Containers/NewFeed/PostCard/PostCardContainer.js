@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { PostContent, PostInteraction, PostProfilePic, PostUsername } from "../../../Components/NewFeed/PostCard/index";
+import {
+	PostContent,
+	PostInteraction,
+	PostProfilePic,
+	PostUsername,
+} from "../../../Components/NewFeed/PostCard/index";
 import PostMediaContainer from "../PostMedia/PostMediaContainer";
 import { withRouter } from "react-router-dom";
 import axios from "../../../axios-orders";
@@ -29,7 +34,9 @@ class PostCardContainer extends Component {
 
 	loadComment = () => {
 		axios
-			.get("api/post/" + this.state.post.post_id + "/comment", { params: { before_id: this.state.last_id } })
+			.get("api/post/" + this.state.post.post_id + "/comment", {
+				params: { before_id: this.state.last_id },
+			})
 			.then((response) => {
 				let comments = this.state.comments;
 				console.log(response);
@@ -69,7 +76,9 @@ class PostCardContainer extends Component {
 			this.setState({
 				post: {
 					...this.state.post,
-					num_like: this.state.post.liked ? this.state.post.num_like - 1 : this.state.post.num_like + 1,
+					num_like: this.state.post.liked
+						? this.state.post.num_like - 1
+						: this.state.post.num_like + 1,
 					liked: !this.state.post.liked,
 				},
 			});
@@ -81,7 +90,9 @@ class PostCardContainer extends Component {
 			this.setState({ comments: [], showComments: false });
 		} else {
 			axios
-				.get("api/post/" + this.state.post.post_id + "/comment", { params: { before_id: -1 } })
+				.get("api/post/" + this.state.post.post_id + "/comment", {
+					params: { before_id: -1 },
+				})
 				.then((response) => {
 					let comments = this.state.comments;
 					console.log(response);
@@ -97,13 +108,34 @@ class PostCardContainer extends Component {
 	render() {
 		return (
 			<div className="card newfeedcard-wrapper container">
-				<PostProfilePic profilepic={this.state.post.profilepic} toCreator={this.toCreator} />
-				<PostUsername username={this.state.post.username} toCreator={this.toCreator} />
+				<PostProfilePic
+					profilepic={this.state.post.profilepic}
+					toCreator={this.toCreator}
+				/>
+				<PostUsername
+					fullname={this.state.post.fullname}
+					username={this.state.post.username}
+					toCreator={this.toCreator}
+				/>
 				<PostContent content={this.state.post.content} />
-				{this.state.post.medias && this.state.post.medias.length != 0 ? <PostMediaContainer medias={this.state.post.medias} /> : null}
+				{this.state.post.medias && this.state.post.medias.length != 0 ? (
+					<PostMediaContainer medias={this.state.post.medias} />
+				) : null}
 
-				<PostInteraction liked={this.state.post.liked} num_like={this.state.post.num_like} num_comment={this.state.post.num_comment} loadComment={this.loadComment} toggleLike={this.toggleLike} toggleCommentSection={this.toggleCommentSection} />
-				{this.state.showComments ? <CommentSection comments={this.state.comments} post_id={this.state.post.post_id} /> : null}
+				<PostInteraction
+					liked={this.state.post.liked}
+					num_like={this.state.post.num_like}
+					num_comment={this.state.post.num_comment}
+					loadComment={this.loadComment}
+					toggleLike={this.toggleLike}
+					toggleCommentSection={this.toggleCommentSection}
+				/>
+				{this.state.showComments ? (
+					<CommentSection
+						comments={this.state.comments}
+						post_id={this.state.post.post_id}
+					/>
+				) : null}
 			</div>
 		);
 	}

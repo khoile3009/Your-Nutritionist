@@ -5,7 +5,7 @@ const PostUsername = (props) => {
 	return (
 		<div className="username-newfeed">
 			<a href="#" onClick={props.toCreator}>
-				{props.username}
+				{props.fullname}
 				{console.log(props)}
 			</a>
 		</div>
