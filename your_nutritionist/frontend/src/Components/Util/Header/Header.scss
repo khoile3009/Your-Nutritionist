@@ -47,6 +47,7 @@
 	height: 100px;
 
 	#basic-nav-dropdown {
+		text-align: right;
 		font-weight: 700;
 		color: white;
 		&:hover {
@@ -64,7 +65,7 @@
 	}
 	.responsive-navbar-wrapper {
 		position: absolute;
-		right: 20px;
+		right: 10vw;
 	}
 	.dropdown-toggle.nav-link {
 		color: white;

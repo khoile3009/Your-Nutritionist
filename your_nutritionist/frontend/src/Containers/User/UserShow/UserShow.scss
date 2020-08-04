@@ -1,6 +1,7 @@
 .user-wrapper {
 	width: 50vw;
 	margin-bottom: 2rem;
+
 	.user-content-wrapper {
 		display: flex;
 		margin-bottom: 0;
@@ -33,4 +34,10 @@
 
 .no-content {
 	padding: 1rem;
+}
+
+@media (max-width: 800px) {
+	.user-wrapper {
+		width: 100vw;
+	}
 }

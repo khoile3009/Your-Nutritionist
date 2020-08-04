@@ -64,7 +64,10 @@ class UserShowContainer extends Component {
 		let next_params = queryString.parse(props.location.search);
 		let next_page = parseInt(next_params.page);
 		if (!isNaN(next_page)) {
-			if (Math.floor((next_page - 1) / this.num_preload) !== Math.floor((this.state.page - 1) / this.num_preload)) {
+			if (
+				Math.floor((next_page - 1) / this.num_preload) !==
+				Math.floor((this.state.page - 1) / this.num_preload)
+			) {
 				console.log(next_page);
 				this.getUserRecipes(next_page);
 			} else {
@@ -96,7 +99,10 @@ class UserShowContainer extends Component {
 					let posts = this.state.posts;
 					posts.push.apply(posts, response.data.posts);
 					console.log(response.data.posts[response.data.posts.length - 1].post_id);
-					this.setState({ posts: posts, last_id: response.data.posts[response.data.posts.length - 1].post_id });
+					this.setState({
+						posts: posts,
+						last_id: response.data.posts[response.data.posts.length - 1].post_id,
+					});
 					// this.setState({ posts: posts})
 				});
 		}
@@ -156,13 +162,18 @@ class UserShowContainer extends Component {
 			"Content-Type": "application/json",
 			Authorization: "Token " + this.props.token,
 		};
-		axios.get("api/user/" + this.props.match.params["user_id"] + "/action", { headers: headers }).then((response) => {
-			this.setState({ user_actions: response.data.actions });
-		});
+		axios
+			.get("api/user/" + this.props.match.params["user_id"] + "/action", { headers: headers })
+			.then((response) => {
+				this.setState({ user_actions: response.data.actions });
+			});
 	};
 
 	toPage = (page) => {
-		this.props.history.push({ pathname: "/user/" + this.props.match.params["user_id"], search: queryString.stringify({ page: page }) });
+		this.props.history.push({
+			pathname: "/user/" + this.props.match.params["user_id"],
+			search: queryString.stringify({ page: page }),
+		});
 	};
 
 	updateProfilePic = (url) => {
@@ -181,7 +192,15 @@ class UserShowContainer extends Component {
 		console.log(this.state.tab);
 		switch (this.state.tab) {
 			case "recipe":
-				content = this.state.user_recipes ? <RecipeList recipes={this.state.user_recipes} page={this.state.page} toPage={this.toPage}></RecipeList> : <h3 style={{ color: "#757575" }}>No recipes</h3>;
+				content = this.state.user_recipes ? (
+					<RecipeList
+						recipes={this.state.user_recipes}
+						page={this.state.page}
+						toPage={this.toPage}
+					></RecipeList>
+				) : (
+					<h3 style={{ color: "#757575" }}>No recipes</h3>
+				);
 				break;
 			case "post":
 				content =
@@ -198,7 +217,11 @@ class UserShowContainer extends Component {
 				break;
 			default:
 				content = this.state.user_recipes ? (
-					<RecipeList recipes={this.state.user_recipes} page={this.state.page} toPage={this.toPage}></RecipeList>
+					<RecipeList
+						recipes={this.state.user_recipes}
+						page={this.state.page}
+						toPage={this.toPage}
+					></RecipeList>
 				) : (
 					<div className="no-content">
 						<h3 style={{ color: "#757575" }}>No recipes</h3>
@@ -208,16 +231,25 @@ class UserShowContainer extends Component {
 		}
 		return this.state.user_info ? (
 			<Container className="user-wrapper">
-				<SideBarContainer></SideBarContainer>
-				<RightBarContainer></RightBarContainer>
-				<UserInfoContainer updateHeadline={this.updateHeadline} updateProfilePic={this.updateProfilePic} user_info={this.state.user_info} userId={parseInt(this.props.match.params["user_id"])}></UserInfoContainer>
+				<UserInfoContainer
+					updateHeadline={this.updateHeadline}
+					updateProfilePic={this.updateProfilePic}
+					user_info={this.state.user_info}
+					userId={parseInt(this.props.match.params["user_id"])}
+				></UserInfoContainer>
 
-				<UserIntroductionContainer userId={parseInt(this.props.match.params["user_id"])}></UserIntroductionContainer>
+				<UserIntroductionContainer
+					userId={parseInt(this.props.match.params["user_id"])}
+				></UserIntroductionContainer>
 				<br></br>
 				<hr />
 				<div className="user-content-wrapper">
 					<span
-						className={this.state.tab == "recipe" ? "subtitle content-nav content-nav-active" : "subtitle content-nav"}
+						className={
+							this.state.tab == "recipe"
+								? "subtitle content-nav content-nav-active"
+								: "subtitle content-nav"
+						}
 						onClick={() => {
 							this.switchTab("recipe");
 						}}
@@ -225,7 +257,11 @@ class UserShowContainer extends Component {
 						Recipes
 					</span>
 					<span
-						className={this.state.tab == "post" ? "subtitle content-nav content-nav-active" : "subtitle content-nav"}
+						className={
+							this.state.tab == "post"
+								? "subtitle content-nav content-nav-active"
+								: "subtitle content-nav"
+						}
 						onClick={() => {
 							this.switchTab("post");
 						}}
