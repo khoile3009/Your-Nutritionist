@@ -54,3 +54,9 @@ $padding: 0.5rem;
 		}
 	}
 }
+
+@media (max-width: 800px) {
+	.trending-card-wrapper {
+		display: none;
+	}
+}
