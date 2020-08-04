@@ -15,7 +15,8 @@
 		width: 10vw;
 		text-align: center;
 		font-size: 12pt;
-		height: 2rem;
+		height: auto;
+		padding: 0.5rem;
 		&:hover {
 			color: white;
 			background: rgb(56, 209, 176);
@@ -24,12 +25,14 @@
 	}
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
 	.side-bar-wrapper {
 		position: relative;
 		display: flex;
+		justify-content: center;
+		width: 50vw;
 		.side-bar-create {
-			width: 80vw;
+			width: 200px;
 		}
 	}
 }

@@ -5,7 +5,6 @@ import TrendingCard from "../../Components/Home/TrendingCard/TrendingCard";
 import PostCreateContainer from "../../Containers/NewFeed/PostCreate/PostCreateContainer";
 import "./SideBarContainer.scss";
 
-
 class SideBarContainer extends Component {
 	constructor(props) {
 		super(props);
@@ -140,13 +139,17 @@ class SideBarContainer extends Component {
 		];
 		return (
 			<div className="sidebar-container">
-				<PostCreateContainer modal={this.state.modal} hideModal={this.hideModal}></PostCreateContainer>
+				<PostCreateContainer
+					modal={this.state.modal}
+					hideModal={this.hideModal}
+				></PostCreateContainer>
 				<SideBar
 					toCreateRecipe={(event) => {
 						this.toCreateRecipe(event);
 					}}
 					showCreatePostModal={this.showCreatePostModal}
 				/>
+				<h3 id="trending-title">Trending</h3>
 				{fakeTrendingRecipes.map((recipe, index) => {
 					return (
 						<TrendingCard
