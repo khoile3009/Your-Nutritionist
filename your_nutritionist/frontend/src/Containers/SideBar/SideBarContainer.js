@@ -171,9 +171,9 @@ class SideBarContainer extends Component {
 				{console.log(this.props)}
 				{console.log(this.state)}
 				<SideBar
-					toCreateRecipe={(event) => {
-						this.toCreateRecipe(event);
-					}}
+					toCreateRecipe={
+						this.props.token === null ? this.props.showSigninModal : this.toCreateRecipe
+					}
 					showCreatePostModal={
 						this.props.token === null
 							? this.props.showSigninModal
