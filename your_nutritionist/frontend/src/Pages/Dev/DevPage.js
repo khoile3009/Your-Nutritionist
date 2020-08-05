@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import {Container} from 'react-bootstrap'
-import { Player } from 'video-react';
 import "../../../node_modules/video-react/dist/video-react.css";
-import Popup from 'reactjs-popup'
-import ReactPlayer from 'react-player'
-import './DevPage.css'
 import {Container} from 'react-bootstrap';
 import MediaUploadContainer from '../../Containers/Util/MediaUpload/MediaUploadContainer';
 
