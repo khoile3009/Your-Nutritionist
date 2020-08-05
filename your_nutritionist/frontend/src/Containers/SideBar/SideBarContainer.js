@@ -3,7 +3,10 @@ import SideBar from "../../Components/Util/SideBar/SideBar";
 import { withRouter } from "react-router-dom";
 import TrendingCard from "../../Components/Home/TrendingCard/TrendingCard";
 import PostCreateContainer from "../../Containers/NewFeed/PostCreate/PostCreateContainer";
+import * as actions from "../../store/actions/index";
 import "./SideBarContainer.scss";
+import { connect } from "react-redux";
+import ModalContainer from "../Util/Authentication/ModalContainer";
 
 class SideBarContainer extends Component {
 	constructor(props) {
@@ -18,7 +21,29 @@ class SideBarContainer extends Component {
 		this.toTrendingRecipe = this.toTrendingRecipe.bind(this);
 		this.addMedia = this.addMedia.bind(this);
 		this.deleteMedia = this.deleteMedia.bind(this);
+		this.showSigninModal = this.showSigninModal.bind(this);
+		this.showRegisterModal = this.showRegisterModal.bind(this);
 	}
+
+	// Authentication
+
+	componentDidMount() {
+		if (this.props.token) this.props.retrieveUserFromToken(this.props.token);
+	}
+
+	getTokenFromLocalStorage = () => {
+		return localStorage.getItem("TOKEN");
+	};
+
+	showSigninModal = (event) => {
+		event.preventDefault();
+		this.props.showSigninModal();
+	};
+
+	showRegisterModal = (event) => {
+		event.preventDefault();
+		this.props.showRegisterModal();
+	};
 
 	toCreateRecipe = (event) => {
 		event.preventDefault();
@@ -143,11 +168,17 @@ class SideBarContainer extends Component {
 					modal={this.state.modal}
 					hideModal={this.hideModal}
 				></PostCreateContainer>
+				{console.log(this.props)}
+				{console.log(this.state)}
 				<SideBar
 					toCreateRecipe={(event) => {
 						this.toCreateRecipe(event);
 					}}
-					showCreatePostModal={this.showCreatePostModal}
+					showCreatePostModal={
+						this.props.token === null
+							? this.props.showSigninModal
+							: this.showCreatePostModal
+					}
 				/>
 				<h3 id="trending-title">Trending</h3>
 				{fakeTrendingRecipes.map((recipe, index) => {
@@ -161,9 +192,24 @@ class SideBarContainer extends Component {
 						/>
 					);
 				})}
+				<ModalContainer></ModalContainer>
 			</div>
 		);
 	}
 }
 
-export default withRouter(SideBarContainer);
+const mapStateToProps = (state) => {
+	return {
+		token: state.auth.token,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		showSigninModal: () => dispatch(actions.showSigninModal()),
+		showRegisterModal: () => dispatch(actions.showRegisterModal()),
+		retrieveUserFromToken: (token) => dispatch(actions.retrieveUserFromToken(token)),
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SideBarContainer));
