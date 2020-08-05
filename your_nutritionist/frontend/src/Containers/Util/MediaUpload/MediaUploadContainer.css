@@ -1,18 +1,9 @@
-.file-input{
-    display: none;
-}
-.input-click-div{
-    height: 400px;
-    width: 100%;
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/9e/Plus_symbol.svg"); 
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 20px;
-    border: 1px solid gray;
+.file-input-field{
+    border: 1px solid;
+    border-radius: 2px;
 }
 
-.media-upload-container{
-    width: 100%;
-    padding: 1em;
+.file-preview{
+    height: 400px;
+    width: 400px;
 }

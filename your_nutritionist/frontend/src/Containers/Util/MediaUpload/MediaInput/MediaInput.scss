@@ -1,0 +1,27 @@
+.media-input-wrapper{
+    margin: 10px 10px;
+}
+
+.media-input-field{
+    width: 80%;
+    margin: 20px 20px;
+    // border: 1px gray solid;
+    box-shadow: 2px 2px gray;
+    border-radius: 5px;
+}
+
+.image-preview-big{
+    margin: 20px 20px;
+    width: 400px;
+    height: 400px;
+    background-color: gray;
+     // Some background indicate the path is wrong
+}
+
+.video-preview-big{
+    margin: 20px 20px;
+    width: 400px;
+    height: 400px;
+    background-color: black;
+    // Some background indicate the path is wrong
+}
