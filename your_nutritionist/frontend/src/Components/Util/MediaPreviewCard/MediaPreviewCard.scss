@@ -1,22 +1,26 @@
-.media-preview-card{
-    width: 100px;
-    height: 100px;
-    border-radius: 5px;
-    background-color: gray; //Something that feels like the image is wrong
-    margin: 10px 10px;
-    background-position: center;
-    background-size: cover;
+.media-preview-card {
+	display: flex;
+	flex-direction: row;
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+	// background-color: rgb(236, 236, 236); //Something that feels like the image is wrong
+	border: solid 1px rgb(235, 235, 235);
+	margin: 5px 5px;
+	background-position: center;
+	padding: 1rem;
+	background-size: 100px auto;
+	background-repeat: no-repeat;
 }
 
-.media-preview-card-current{
-    box-shadow: 2px 2px orange;
+.media-preview-card-current {
+	box-shadow: 2px 2px orange;
 }
 
-.media-add{
-    width: 100px;
-    height: 100px;
-    border-radius: 5px;
-    background-color: white;//Something that feels like this is a add button
-    margin: 10px 10px;
+.media-add {
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+	background-color: white; //Something that feels like this is a add button
+	margin: 10px 10px;
 }
-

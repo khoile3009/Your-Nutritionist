@@ -1,27 +1,60 @@
-.media-input-wrapper{
-    margin: 10px 10px;
+.media-input-wrapper {
+	margin: 10px 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	.media-input-field {
+		color: transparent;
+		display: block;
+	}
+	.media-input-field::-webkit-file-upload-button {
+		visibility: hidden;
+	}
+	.media-input-field::before {
+		content: "Select media files";
+		color: rgb(255, 255, 255);
+		display: inline-block;
+		background: rgb(62, 149, 189);
+		border: 1px solid #999;
+		border-radius: 3px;
+		padding: 5px 8px;
+		outline: none;
+		white-space: nowrap;
+		-webkit-user-select: none;
+		cursor: pointer;
+		font-size: 10pt;
+	}
+	.media-input-field:hover::before {
+		border-color: rgba(255, 255, 255, 0);
+		background: rgb(36, 130, 173);
+	}
+	.media-input-field:active {
+		outline: 0;
+	}
+	.media-input-field:active::before {
+		background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+	}
+
+	body {
+		padding: 20px;
+	}
 }
 
-.media-input-field{
-    width: 80%;
-    margin: 20px 20px;
-    // border: 1px gray solid;
-    box-shadow: 2px 2px gray;
-    border-radius: 5px;
+.image-preview-big {
+	margin: 20px 20px;
+	width: 200px;
+	height: 200px;
+	background-size: 200px auto;
+	background-color: rgb(235, 235, 235);
+	background-repeat: no-repeat;
+	// Some background indicate the path is wrong
 }
 
-.image-preview-big{
-    margin: 20px 20px;
-    width: 400px;
-    height: 400px;
-    background-color: gray;
-     // Some background indicate the path is wrong
-}
-
-.video-preview-big{
-    margin: 20px 20px;
-    width: 400px;
-    height: 400px;
-    background-color: black;
-    // Some background indicate the path is wrong
+.video-preview-big {
+	margin: 20px 20px;
+	width: 400px;
+	height: 400px;
+	background-color: black;
+	// Some background indicate the path is wrong
 }

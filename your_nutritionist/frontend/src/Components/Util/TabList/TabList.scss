@@ -1,20 +1,20 @@
 .tab-list-wrapper {
-    display: flex;
-    margin-bottom: 0;
-    position: relative;
-    z-index: 2;
-    .tab-nav {
-        font-size: 16pt;
-        margin: 0 0 0 0;
-        border: solid 1px transparent;
-        height: 3.5rem;
-        width: 7rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .tab-nav-active {
-        border-bottom: solid 2px rgb(252, 121, 143);
-        transition: 1s all;
-    }
+	display: flex;
+	margin-bottom: 0;
+	position: relative;
+	z-index: 2;
+	.tab-nav {
+		font-size: 12pt;
+		margin: 0 1rem 0 0;
+		border: solid 1px transparent;
+		height: 3.5rem;
+		width: 6rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.tab-nav-active {
+		border-bottom: solid 2px rgb(252, 121, 143);
+		transition: 1s all;
+	}
 }
