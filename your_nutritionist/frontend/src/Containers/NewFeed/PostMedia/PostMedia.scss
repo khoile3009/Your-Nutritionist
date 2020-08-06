@@ -1,50 +1,50 @@
 .newfeed-media-wrapper {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    grid-area: nf-media;
-    height: 30vh;
-    width: 100%;
-    grid-template-columns: 1fr 18fr 1fr;
-    grid-template-areas: "post-med-l post-med-wrap post-med-r";
-    .newfeed-media {
-        height: 100%;
-        width: 80%;
-        // background-image: url('https://storage.googleapis.com/your-nutritionist-cdn/header-bg.jpg');
-        background-color: grey;
-        background-position: center;
-        background-size: cover;
-    }
-    .post-media-wrapper {
-        grid-area: post-med-wrap;
-        width: 100%;
-        height: 100%;
-        padding: 0.5rem;
-    }
-    .post-media-nav {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-        button.btn-primary {
-            background: transparent;
-            color: rgb(0, 115, 209);
-            vertical-align: middle;
-            line-height: 1rem;
-            display: inline-flex;
-            &:hover {
-                background: rgb(0, 115, 209);
-                color: white;
-            }
-        }
-        .material-icons {
-            font-size: 18pt;
-        }
-    }
-    .post-media-left {
-        grid-area: post-med-l;
-    }
-    .post-media-right {
-        grid-area: post-med-r;
-    }
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	grid-area: nf-media;
+	height: auto;
+	width: 100%;
+	grid-template-columns: 1fr 18fr 1fr;
+	grid-template-areas: "post-med-l post-med-wrap post-med-r";
+	.newfeed-media {
+		height: 100%;
+		width: 80%;
+		// background-image: url('https://storage.googleapis.com/your-nutritionist-cdn/header-bg.jpg');
+		background-color: grey;
+		background-position: center;
+		background-size: contain;
+	}
+	.post-media-wrapper {
+		grid-area: post-med-wrap;
+		width: auto;
+		height: 40vh;
+		padding: 0.5rem;
+	}
+	.post-media-nav {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		button.btn-primary {
+			background: transparent;
+			color: rgb(0, 115, 209);
+			vertical-align: middle;
+			line-height: 1rem;
+			display: inline-flex;
+			&:hover {
+				background: rgb(0, 115, 209);
+				color: white;
+			}
+		}
+		.material-icons {
+			font-size: 18pt;
+		}
+	}
+	.post-media-left {
+		grid-area: post-med-l;
+	}
+	.post-media-right {
+		grid-area: post-med-r;
+	}
 }
