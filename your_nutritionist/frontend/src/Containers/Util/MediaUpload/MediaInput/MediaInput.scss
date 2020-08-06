@@ -1,12 +1,10 @@
 .media-input-wrapper {
 	margin: 10px 10px;
-	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
 	.media-input-field {
 		color: transparent;
-		display: block;
 	}
 	.media-input-field::-webkit-file-upload-button {
 		visibility: hidden;

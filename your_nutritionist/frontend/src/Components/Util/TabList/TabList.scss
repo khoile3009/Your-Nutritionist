@@ -1,5 +1,7 @@
 .tab-list-wrapper {
 	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 	margin-bottom: 0;
 	position: relative;
 	z-index: 2;
