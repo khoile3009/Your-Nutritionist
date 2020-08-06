@@ -12,10 +12,12 @@
 }
 
 .image-preview-big {
-	height: 200px;
-	width: auto;
-	background-size: cover;
+	height: 300px;
+	width: 300px;
+	background-size: contain;
 	background-position: center;
+	display: flex;
+	flex-direction: row;
 }
 
 .media-preview-list-wrapper {

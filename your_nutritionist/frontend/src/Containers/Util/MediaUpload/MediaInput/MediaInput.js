@@ -12,23 +12,14 @@ class MediaInput extends Component {
 		};
 	}
 
-<<<<<<< Updated upstream
-    componentDidMount() {
-        console.log(this.props)
-        this.setState({
-            media: this.props.media,
-            url: '',
-            file: this.props.file
-        })
-=======
-	componentWillReceiveProps(props) {
+	componentDidMount() {
+		console.log(this.props);
 		this.setState({
-			media: props.media,
+			media: this.props.media,
 			url: "",
-			file: props.file,
+			file: this.props.file,
 		});
 	}
->>>>>>> Stashed changes
 
 	submitFile = (event, type) => {
 		var getImagePath = URL.createObjectURL(event.target.files[0]);
