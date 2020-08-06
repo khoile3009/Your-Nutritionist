@@ -1,6 +1,7 @@
 .user-wrapper {
 	width: 50vw;
 	margin-bottom: 2rem;
+
 	.user-content-wrapper {
 		display: flex;
 		margin-bottom: 0;
@@ -8,17 +9,21 @@
 		z-index: 2;
 		.content-nav {
 			font-size: 16pt;
-			margin: 0 0 0 0;
-			border: solid 1px transparent;
+			margin: 0 1rem 0 0;
+			border-bottom: solid 1px transparent;
 			height: 3.5rem;
 			width: 7rem;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			&:hover {
+				cursor: pointer;
+				border-bottom: solid 2px rgb(255, 170, 184);
+				transition: 0.5s all;
+			}
 		}
 		.content-nav-active {
 			border-bottom: solid 2px rgb(252, 121, 143);
-			transition: 1s all;
 		}
 	}
 	.recipe-list-wrapper {
@@ -29,4 +34,10 @@
 
 .no-content {
 	padding: 1rem;
+}
+
+@media (max-width: 800px) {
+	.user-wrapper {
+		width: 100vw;
+	}
 }

@@ -5,10 +5,24 @@
 	height: auto;
 	width: 20vw;
 	display: grid;
+	#trending-title {
+		display: none;
+	}
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
 	.sidebar-container {
-		display: none;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		top: 0;
+		left: 0;
+		margin-bottom: 2rem;
+		width: auto;
+		#trending-title {
+			margin: 1rem 0;
+			color: grey;
+		}
 	}
 }

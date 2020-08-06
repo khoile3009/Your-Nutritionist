@@ -1,6 +1,6 @@
-import React from 'react';
-import { Nav, NavDropdown } from 'react-bootstrap';
-import './RightNav.scss';
+import React from "react";
+import { Nav, NavDropdown } from "react-bootstrap";
+import "./RightNav.scss";
 
 const AuthenticationNav = (props) => {
 	return (
@@ -13,8 +13,13 @@ const AuthenticationNav = (props) => {
 
 const UserNav = (props) => {
 	return (
-		<Nav>
-			<NavDropdown className="nav-dropdown" title={'Welcome back, ' + props.username + '!'} id="basic-nav-dropdown" alignRight>
+		<Nav className="rightnav-wrapper">
+			<NavDropdown
+				className="nav-dropdown"
+				title={"Welcome back, " + props.username + "!"}
+				id="basic-nav-dropdown"
+				alignRight
+			>
 				<NavDropdown.Item onClick={props.toUserPage}>Profile</NavDropdown.Item>
 				<NavDropdown.Divider />
 				<NavDropdown.Item onClick={props.signout}>Sign out</NavDropdown.Item>

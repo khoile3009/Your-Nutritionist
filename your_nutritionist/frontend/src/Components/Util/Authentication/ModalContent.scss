@@ -1,0 +1,53 @@
+.register-form-wrapper,
+.signin-form-wrapper {
+	.register-header {
+		background: rgb(20, 76, 128);
+		color: white;
+	}
+	.col-auto {
+		padding: 0;
+		margin: 0;
+	}
+	input,
+	textarea {
+		background: transparent;
+		border-bottom: solid 1.5px #eeeeee;
+		&:focus {
+			box-shadow: none;
+			border-bottom: solid 2px #006cc5;
+			outline: none !important;
+		}
+	}
+	.register-btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 50px;
+		height: 50px;
+		padding: 0;
+		border-radius: 50%;
+		.material-icons {
+			font-size: 16pt;
+		}
+	}
+	.register-cancel {
+		background: rgb(255, 41, 41);
+		border: 0;
+		&:hover {
+			background: rgb(214, 34, 34);
+		}
+	}
+	.register-submit {
+		&:hover {
+			background: rgb(0, 76, 216);
+		}
+	}
+	.signin-header {
+		color: white;
+		background: rgb(20, 76, 128);
+	}
+}
+
+.error {
+	color: red;
+}

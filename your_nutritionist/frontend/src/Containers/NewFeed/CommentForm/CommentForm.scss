@@ -1,0 +1,25 @@
+$comment-btn-color: rgb(0, 170, 85);
+
+.comment-input {
+	border-radius: 16pt;
+	padding: 1rem;
+	border-bottom: none !important;
+	background-color: rgba(236, 236, 236, 0.404);
+}
+
+.comment-submit-btn-wrapper {
+	margin: 0.5rem auto auto auto;
+	.comment-submit-btn {
+		border: solid 1px $comment-btn-color;
+		background: white;
+		color: $comment-btn-color;
+		display: flex;
+		float: right;
+		border-radius: 16pt;
+		&:hover {
+			border: solid 1px transparent;
+			color: white;
+			background: $comment-btn-color;
+		}
+	}
+}
