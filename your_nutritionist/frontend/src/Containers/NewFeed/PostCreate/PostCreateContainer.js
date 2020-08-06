@@ -9,7 +9,8 @@ class PostCreateContainer extends Component {
 		super(props);
 		this.state = {
 			url: "",
-			file: null,
+			files: [],
+			medias:[],
 			content: "",
 		};
 		this.urlChangeHandler = this.urlChangeHandler.bind(this);
@@ -19,6 +20,7 @@ class PostCreateContainer extends Component {
 		this.contentChangeHandler = this.contentChangeHandler.bind(this);
 		this.resetAndHideModal = this.resetAndHideModal.bind(this);
 		this.resetData = this.resetData.bind(this)
+		this.setMedia = this.setMedia.bind(this)
 	}
 
 	resetAndHideModal = () => {
@@ -31,6 +33,7 @@ class PostCreateContainer extends Component {
 			url: "",
 			file: null,
 			content: "",
+			uploading: false
 		})
 	}
 	urlChangeHandler = (event) => {
@@ -52,11 +55,17 @@ class PostCreateContainer extends Component {
 		this.setState({ content: event.target.value });
 	};
 
+	setMedia = (medias, files) =>{
+		this.setState({medias: medias, files: files})
+	}
+
+
 	// Submit
 	submitForm = (event) => {
 		// console.log(this.state)
 		event.preventDefault();
 		let data = this.dataFromNewPostForm();
+		this.setState({uploading: true})
 		axios
 			.post("api/post/create", data, {
 				headers: {
@@ -86,13 +95,19 @@ class PostCreateContainer extends Component {
 			"post",
 			JSON.stringify({
 				content: this.state.content,
-				medias: [],
+				medias: this.state.medias,
 			})
 		);
-		// data = this.add_images_to_form_data(data, this.state.files)
+		data = this.addMediaToFormData(data, this.state.files);
 		return data;
 	};
 
+	addMediaToFormData = (data, files) => {
+		for (var media_index = 0; media_index < files.length; media_index++) {
+            data.append('media_' + media_index, files[media_index])
+        }
+        return data
+	}
 	render() {
 		return (
 			<PostCreateModal
@@ -111,6 +126,7 @@ class PostCreateContainer extends Component {
 				deleteMedia={this.deleteMedia}
 				addMedia={this.addMedia}
 				modal={this.props.modal}
+				setMedia={this.setMedia}
 			></PostCreateModal>
 		);
 	}

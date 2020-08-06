@@ -12,11 +12,12 @@ class MediaInput extends Component {
         }
     }
 
-    componentWillReceiveProps(props) {
+    componentDidMount() {
+        console.log(this.props)
         this.setState({
-            media: props.media,
+            media: this.props.media,
             url: '',
-            file: props.file
+            file: this.props.file
         })
 
     }

@@ -100,6 +100,7 @@ class MediaUploadContainer extends Component {
                 switchTab={this.switchTab}
             />
             <MediaInput
+                key={this.state.current}
                 current={this.state.current}
                 addMedia={this.addMedia}
                 media={this.getCurrentMedia()}
