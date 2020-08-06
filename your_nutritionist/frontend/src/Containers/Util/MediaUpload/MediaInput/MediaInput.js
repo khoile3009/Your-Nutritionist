@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./MediaInput.scss";
-import { Button } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 import ReactPlayer from "react-player";
 class MediaInput extends Component {
 	constructor(props) {
@@ -150,9 +150,21 @@ const MediaPreviewBig = (props) => {
 					<ReactPlayer url={props.media.url} height="100%" width="100%" controls={true} />
 				</div>
 			)}
-
-			<Button onClick={props.addMedia}>Confirm</Button>
-			<Button onClick={props.goBackToChooseFile}>Cancel</Button>
+			<Row className="media-input-btn-wrapper">
+				<Col>
+					<Button
+						className="register-btn register-cancel"
+						onClick={props.goBackToChooseFile}
+					>
+						<span class="material-icons">close</span>
+					</Button>
+				</Col>
+				<Col>
+					<Button className="register-btn register-submit" onClick={props.addMedia}>
+						<span class="material-icons">check</span>
+					</Button>
+				</Col>
+			</Row>
 		</>
 	);
 };

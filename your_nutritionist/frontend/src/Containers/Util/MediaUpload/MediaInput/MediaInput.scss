@@ -1,4 +1,37 @@
 .media-input-wrapper {
+	.media-input-btn-wrapper {
+		.col {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.register-btn {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 50px;
+			height: 50px;
+			padding: 0;
+			border-radius: 50%;
+			.material-icons {
+				font-size: 16pt;
+			}
+		}
+		.register-cancel {
+			background: rgb(255, 41, 41);
+			border: 0;
+			&:hover {
+				background: rgb(214, 34, 34);
+			}
+		}
+		.register-submit {
+			&:hover {
+				background: rgb(0, 76, 216);
+			}
+		}
+	}
+
 	margin: 10px 10px;
 	justify-content: center;
 	align-items: center;
@@ -46,6 +79,9 @@
 	background-size: contain;
 	background-color: rgb(235, 235, 235);
 	background-repeat: no-repeat;
+	border: solid 1px rgba(128, 128, 128, 0.171);
+	border-radius: 12px;
+	box-shadow: 4px 2px 6px 2px rgba(204, 204, 204, 0.67);
 	// Some background indicate the path is wrong
 }
 
