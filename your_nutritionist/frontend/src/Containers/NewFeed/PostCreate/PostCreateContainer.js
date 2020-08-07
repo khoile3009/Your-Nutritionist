@@ -55,18 +55,12 @@ class PostCreateContainer extends Component {
 		});
 	};
 
-	fileChangeHandler = (event) => {
-		if (event.target.files && event.target.files.length !== 0) {
-			this.setState({
-				file: event.target.files[0],
-				file_title: event.target.files[0].name,
-			});
-		}
-	};
+    // Modal
 
-	contentChangeHandler = (event) => {
-		this.setState({ content: event.target.value });
-	};
+    resetAndHideModal = () => {
+        this.resetData();
+        this.props.hideModal();
+    };
 
 	setMedia = (medias, files) => {
 		this.setState({ medias: medias, files: files });
@@ -173,10 +167,10 @@ class PostCreateContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-	return {
-		token: state.auth.token,
-		userId: state.auth.userId,
-	};
+    return {
+        token: state.auth.token,
+        userId: state.auth.userId,
+    };
 };
 
 export default connect(mapStateToProps, () => {})(withRouter(PostCreateContainer));

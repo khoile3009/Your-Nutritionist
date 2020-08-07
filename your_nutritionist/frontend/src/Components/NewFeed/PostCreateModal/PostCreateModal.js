@@ -39,24 +39,24 @@ const PostCreateModal = (props) => {
 					</Modal.Body>
 					<hr></hr>
 
-					<Row>
-						<Col>
-							<Button onClick={props.hideModal} className="cancel-post-btn">
-								Cancel
-							</Button>
-						</Col>
-						<Col>
-							<Button type="submit" className="create-post-btn">
-								Post
-							</Button>
-						</Col>
-					</Row>
+                    <Row>
+                        <Col>
+                            <Button onClick={props.hideModal} className="cancel-post-btn">
+                                Cancel
+                            </Button>
+                        </Col>
+                        <Col>
+                            <Button type="submit" className="create-post-btn">
+                                Post
+                            </Button>
+                        </Col>
+                    </Row>
 
-					<br></br>
-				</Form>
-			</Modal>
-		</div>
-	);
+                    <br></br>
+                </Form>
+            </Modal>
+        </div>
+    );
 };
 
 export default PostCreateModal;
