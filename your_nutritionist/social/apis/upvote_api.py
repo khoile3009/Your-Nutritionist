@@ -1,9 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse, Http404
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import generics, permissions
-from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from social.models import Follow, Action, Upvote
 from accounts.helpers import get_user_from_id

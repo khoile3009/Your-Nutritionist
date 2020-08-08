@@ -31,10 +31,11 @@ class RecipeShowContainer extends Component {
 		axios.get("api/recipe/" + params["recipe_id"] + "/info").then((response) => {
 			this.setState({ recipe: response.data });
 			
-			this.getMedias();
+			// this.getMedias();
 			// Turn this back after migrating to gcloud
 			// this.getRatings();
 			// this.checkUpvote();
+			this.increaseVisit();
 		});
 		this.toEditRecipe = this.toEditRecipe.bind(this);
 	}
@@ -54,6 +55,14 @@ class RecipeShowContainer extends Component {
 			);
 		});
 		
+	}
+
+	increaseVisit = () => {
+		axios.put(
+			'api/recipe/' + this.props.match.params["recipe_id"] + '/visit'
+		).then(
+			()=>{this.getMedias()}
+		)
 	}
 
 	getMedias = () => {
@@ -98,7 +107,7 @@ class RecipeShowContainer extends Component {
                     }
                 )
                 .catch(
-                    (err) => {}
+                    (err) => {this.incraseVisit();}
                 )
         }
 

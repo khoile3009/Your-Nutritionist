@@ -55,9 +55,18 @@ class Comment(models.Model):
     class Meta:
         ordering = ['-commented_at']
 
+class DailyVisit(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    visit_date = models.DateField(auto_now_add=True)
+    num_visit = models.IntegerField(default=0);
 
-
+    def __str__(self):
+        return f'{self.recipe} {self.visit_date} {self.num_visit}'
 
 class Like(models.Model):
     target_post = models.ForeignKey(Post, related_name='target_post_like', on_delete=models.CASCADE)
     from_user = models.ForeignKey(User, related_name='from_user_like', on_delete=models.CASCADE)
+
+class Trending(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    num_visit = models.IntegerField()
