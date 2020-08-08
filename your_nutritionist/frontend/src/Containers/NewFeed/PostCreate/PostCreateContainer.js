@@ -1,6 +1,6 @@
 import PostCreateModal from "../../../Components/NewFeed/PostCreateModal/PostCreateModal";
 import React, { Component } from "react";
-import axios from "../../../axios-orders"
+import axios from "../../../axios-orders";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
@@ -10,8 +10,11 @@ class PostCreateContainer extends Component {
 		this.state = {
 			url: "",
 			files: [],
-			medias:[],
+			medias: [],
 			content: "",
+			chk: {
+				postContentChk: null,
+			},
 		};
 		this.urlChangeHandler = this.urlChangeHandler.bind(this);
 		this.fileChangeHandler = this.fileChangeHandler.bind(this);
@@ -19,13 +22,23 @@ class PostCreateContainer extends Component {
 		this.dataFromNewPostForm = this.dataFromNewPostForm.bind(this);
 		this.contentChangeHandler = this.contentChangeHandler.bind(this);
 		this.resetAndHideModal = this.resetAndHideModal.bind(this);
-		this.resetData = this.resetData.bind(this)
-		this.setMedia = this.setMedia.bind(this)
+		this.resetData = this.resetData.bind(this);
+		this.setMedia = this.setMedia.bind(this);
+
+		// Input validation:
+		this.postContentValidate = this.postContentValidate.bind(this);
 	}
 
+	// Input validation functions:
+	postContentValidate = () => {
+		return this.state.content !== "";
+	};
+
+	// Modal
+
 	resetAndHideModal = () => {
-		this.resetData()
-		this.props.hideModal()
+		this.resetData();
+		this.props.hideModal();
 	};
 
 	resetData = () => {
@@ -33,9 +46,30 @@ class PostCreateContainer extends Component {
 			url: "",
 			file: null,
 			content: "",
-			uploading: false
-		})
-	}
+			uploading: false,
+		});
+	};
+	urlChangeHandler = (event) => {
+		this.setState({
+			url: event.target.value,
+		});
+	};
+
+	// Modal
+
+	resetAndHideModal = () => {
+		this.resetData();
+		this.props.hideModal();
+	};
+
+	resetData = () => {
+		this.setState({
+			url: "",
+			file: null,
+			content: "",
+			uploading: false,
+		});
+	};
 	urlChangeHandler = (event) => {
 		this.setState({
 			url: event.target.value,
@@ -55,17 +89,15 @@ class PostCreateContainer extends Component {
 		this.setState({ content: event.target.value });
 	};
 
-	setMedia = (medias, files) =>{
-		this.setState({medias: medias, files: files})
-	}
-
+	setMedia = (medias, files) => {
+		this.setState({ medias: medias, files: files });
+	};
 
 	// Submit
-	submitForm = (event) => {
+	submitForm = () => {
 		// console.log(this.state)
-		event.preventDefault();
 		let data = this.dataFromNewPostForm();
-		this.setState({uploading: true})
+		this.setState({ uploading: true });
 		axios
 			.post("api/post/create", data, {
 				headers: {
@@ -79,8 +111,35 @@ class PostCreateContainer extends Component {
 				this.props.hideModal();
 			})
 			.catch((error) => {
-				console.log(error)
+				console.log(error);
 			});
+	};
+
+	SubmitFormHandler = (event) => {
+		event.preventDefault();
+		console.log(this.submitForm);
+		this.updateErrorStateWithCallback(this.submitForm);
+	};
+
+	updateErrorStateWithCallback = (callback) => {
+		this.setState(
+			{
+				chk: {
+					postContentChk: this.postContentValidate(),
+				},
+			},
+			() => {
+				console.log(this.state.chk.postContentChk);
+
+				if (this.isErrorFree()) {
+					callback();
+				}
+			}
+		);
+	};
+
+	isErrorFree = () => {
+		return this.state.chk.postContentChk;
 	};
 
 	dataFromNewPostForm = () => {
@@ -104,10 +163,10 @@ class PostCreateContainer extends Component {
 
 	addMediaToFormData = (data, files) => {
 		for (var media_index = 0; media_index < files.length; media_index++) {
-            data.append('media_' + media_index, files[media_index])
-        }
-        return data
-	}
+			data.append("media_" + media_index, files[media_index]);
+		}
+		return data;
+	};
 	render() {
 		return (
 			<PostCreateModal
@@ -121,12 +180,14 @@ class PostCreateContainer extends Component {
 				file_title={this.state.file_title}
 				uploading={this.state.uploading}
 				changeNewPostFormType={this.changeNewPostFormType}
-				submitForm={this.submitForm}
+				submitForm={this.SubmitFormHandler}
 				medias={this.state.medias}
 				deleteMedia={this.deleteMedia}
 				addMedia={this.addMedia}
 				modal={this.props.modal}
 				setMedia={this.setMedia}
+				error={this.props.error}
+				chk={this.state.chk}
 			></PostCreateModal>
 		);
 	}
@@ -139,4 +200,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, () => { })(withRouter(PostCreateContainer));
+export default connect(mapStateToProps, () => {})(withRouter(PostCreateContainer));
