@@ -126,6 +126,7 @@ def edit_media_sections(recipe_instance, media_section, media_instances, urls, b
     media_id_map = []
     for index in range(len(media_section)):
         media = media_section[index]
+        print(media)
         media_instance = media_instances.filter(order=index)
         if(not media.get('media_id')):
             media_instance.delete()
