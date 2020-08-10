@@ -14,6 +14,11 @@ const RatingFormCard = (props) => {
 					value={props.your_rating.rating}
 					onChange={props.handleRatingChange}
 				/>
+				{props.chk.commentRatingChk === false ? (
+					<Form.Text style={{ padding: "1rem" }} className="error">
+						Rating cannot be blank.
+					</Form.Text>
+				) : null}
 				<Form.Label className="rating-lbl">Comment</Form.Label>
 				<Form.Control
 					className="rating-content input-field"

@@ -87,6 +87,21 @@ class RecipeRatingContainer extends Component {
 			});
 	};
 
+	resetRating = () => {
+		this.setState({
+			showForm: false,
+			your_rating: {
+				rated: false,
+				rating: "",
+				comment: "",
+			},
+			chk: {
+				commentContentChk: null,
+				commentRatingChk: null,
+			},
+		});
+	};
+
 	submitRating = () => {
 		// event.preventDefault();
 		let headers = {
@@ -113,6 +128,7 @@ class RecipeRatingContainer extends Component {
 						rated: true,
 					},
 				});
+				this.resetRating();
 				this.toggleFormCard();
 			});
 		}
@@ -130,11 +146,12 @@ class RecipeRatingContainer extends Component {
 
 	// Input validation functions
 
-	updateErrorWithCallback = (callback) => {
+	updateErrorStateWithCallback = (callback) => {
 		this.setState(
 			{
 				chk: {
 					commentContentChk: this.validateCommentContent(),
+					commentRatingChk: this.validateCommentRating(),
 				},
 			},
 			() => {
@@ -146,7 +163,7 @@ class RecipeRatingContainer extends Component {
 	};
 
 	isErrorFree = () => {
-		return this.state.chk.commentContentChk;
+		return this.state.chk.commentContentChk && this.state.chk.commentRatingChk;
 	};
 
 	validateCommentContent = () => {
@@ -154,12 +171,12 @@ class RecipeRatingContainer extends Component {
 	};
 
 	validateCommentRating = () => {
-		return null;
+		return this.state.your_rating.rating !== "" && this.state.your_rating.rating >= 0;
 	};
 
 	submitRatingHandler = (event) => {
 		event.preventDefault();
-		this.updateErrorWithCallback(this.submitRating);
+		this.updateErrorStateWithCallback(this.submitRating);
 	};
 
 	render() {
