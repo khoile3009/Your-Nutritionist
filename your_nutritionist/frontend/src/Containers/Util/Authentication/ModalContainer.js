@@ -9,6 +9,7 @@ import {
 } from "../../../Components/Util/Authentication/ModalContent";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
+import { withRouter } from "react-router-dom";
 
 class ModalContainer extends Component {
 	constructor(props) {
@@ -69,6 +70,10 @@ class ModalContainer extends Component {
 		this.showSigninModal = this.showSigninModal.bind(this);
 		this.showRegisterModal = this.showRegisterModal.bind(this);
 	}
+
+	goToHomeAfterSignIn = () => {
+		this.props.history.push("/homepage");
+	};
 
 	CodeToModal = (modalCode) => {
 		switch (this.props.modalType) {
@@ -317,6 +322,7 @@ class ModalContainer extends Component {
 			this.state.auth.remember
 		);
 		this.resetPasswords();
+		this.goToHomeAfterSignIn();
 	};
 
 	submitInfoHandler = (event) => {
@@ -393,4 +399,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ModalContainer));
