@@ -93,7 +93,7 @@ class PostCreateContainer extends Component {
 		this.setState({ medias: medias, files: files });
 	};
 
-	// Submit
+	// Submit and input validations
 	submitForm = () => {
 		// console.log(this.state)
 		let data = this.dataFromNewPostForm();
@@ -117,7 +117,7 @@ class PostCreateContainer extends Component {
 
 	SubmitFormHandler = (event) => {
 		event.preventDefault();
-		console.log(this.submitForm);
+		// console.log(this.submitForm);
 		this.updateErrorStateWithCallback(this.submitForm);
 	};
 
