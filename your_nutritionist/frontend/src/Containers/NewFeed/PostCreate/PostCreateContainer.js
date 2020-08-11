@@ -117,7 +117,7 @@ class PostCreateContainer extends Component {
 
 	SubmitFormHandler = (event) => {
 		event.preventDefault();
-		console.log(this.submitForm);
+		// console.log(this.submitForm);
 		this.updateErrorStateWithCallback(this.submitForm);
 	};
 
