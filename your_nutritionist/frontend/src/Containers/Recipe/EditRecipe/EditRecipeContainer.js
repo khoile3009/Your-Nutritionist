@@ -74,7 +74,6 @@ class EditRecipeContainer extends Component {
 
 
 	componentDidMount() {
-		console.log('mount')
 		let recipe = null
 		let medias = null
 		if (this.props.location.state && this.props.location.state.recipe) {
@@ -96,7 +95,6 @@ class EditRecipeContainer extends Component {
 			
 		}
 		else {
-			console.log('else')
 			let params = this.props.match.params;
 			axios.get("api/recipe/" + params["recipe_id"] + "/info").then((response) => {
 				recipe = response.data
@@ -115,8 +113,6 @@ class EditRecipeContainer extends Component {
 
 	componentWillReceiveProps(props) {
 		if(!this.load){
-
-		console.log('will')
 		let recipe = null
 		let medias = null
 		if (props.location.state && props.location.state.recipe) {
@@ -205,9 +201,7 @@ class EditRecipeContainer extends Component {
 	submitForm = () => {
 		// console.log(this.state)
 		let data = this.recipe_data_from_form();
-		console.log(data)
-		axios
-			.put("api/recipe/" + this.props.match.params['recipe_id'], data, {
+		axios.put("api/recipe/" + this.props.match.params['recipe_id'], data, {
 				headers: {
 					"Content-Type": "multipart/form-data",
 					Authorization: "Token " + this.props.token,
@@ -220,6 +214,7 @@ class EditRecipeContainer extends Component {
 
 	recipe_data_from_form = () => {
 		let data = new FormData();
+		console.log(this.state.medias)
 		data.append(
 			"recipe",
 			JSON.stringify({
@@ -241,24 +236,6 @@ class EditRecipeContainer extends Component {
 				}),
 			})
 		);
-		console.log(JSON.stringify({
-			name: this.state.name,
-			description: this.state.description,
-			number_person: parseInt(this.state.number_person),
-			prep_time: parseInt(this.state.prep_time),
-			cook_time: parseInt(this.state.cook_time),
-			ingredient_sections: this.state.ingredient_sections,
-			step_sections: this.state.step_sections,
-			medias: this.state.medias.map((media) => {
-				return {
-					type: media.type,
-					mediaId: media.mediaId,
-					name: media.name,
-					url: media.url,
-					fileId: media.fileId,
-				};
-			}),
-		}))
 		data = this.add_images_to_form_data(data, this.state.files);
 		return data;
 	};
@@ -443,7 +420,6 @@ class EditRecipeContainer extends Component {
 		}
 		medias = this.removeElementAtIndex(medias, index);
 		this.setState({ medias: medias, files: files }, () => {
-			console.log(this.state);
 		});
 	};
 
@@ -456,6 +432,7 @@ class EditRecipeContainer extends Component {
 
 
 	render() {
+		console.log(this.state)
 		return (
 			<Container className="shadow custom-container" fluid="sm">
 				<SigninRequired

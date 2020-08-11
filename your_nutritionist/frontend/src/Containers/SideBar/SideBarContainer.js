@@ -179,8 +179,6 @@ class SideBarContainer extends Component {
 					modal={this.state.modal}
 					hideModal={this.hideModal}
 				></PostCreateContainer>
-				{console.log(this.props)}
-				{console.log(this.state)}
 				<SideBar
 					toCreateRecipe={
 						this.props.token === null ? this.props.showSigninModal : this.toCreateRecipe

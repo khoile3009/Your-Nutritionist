@@ -125,10 +125,11 @@ def edit_ingredient_sections(recipe_instance, ingredient_section_instances, ingr
 def edit_media_sections(recipe_instance, media_section, media_instances, urls, bucket_paths):
     media_id_map = []
     for index in range(len(media_section)):
+        print(index)
         media = media_section[index]
         print(media)
         media_instance = media_instances.filter(order=index)
-        if(not media.get('media_id')):
+        if(not media.get('mediaId')):
             media_instance.delete()
             if(media['fileId'] != -1):
                 media['url'] = urls[media['fileId']]

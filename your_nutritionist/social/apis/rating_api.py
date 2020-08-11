@@ -147,7 +147,7 @@ def get_number_rating(recipe_id):
             recipe = recipe
         )
         number_ratings = rating_instances.count()
-        total_ratings = rating_instances.aggregate(Sum('rating'))['rating__sum'] if (number_ratings==0) else 0
+        total_ratings = rating_instances.aggregate(Sum('rating'))['rating__sum'] if (number_ratings!=0) else 0
         return total_ratings, number_ratings
     else:
         return 0,0
