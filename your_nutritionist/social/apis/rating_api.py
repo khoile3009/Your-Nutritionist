@@ -140,6 +140,18 @@ def get_total_rating(request, *args, **kwargs):
     }
     return JsonResponse(context, safe=True)
 
+def get_number_rating(recipe_id):
+    recipe = get_recipe_from_id(recipe_id)
+    if(recipe):
+        rating_instances = Rating.objects.filter(
+            recipe = recipe
+        )
+        number_ratings = rating_instances.count()
+        total_ratings = rating_instances.aggregate(Sum('rating'))['rating__sum'] if (number_ratings==0) else 0
+        return total_ratings, number_ratings
+    else:
+        return 0,0
+
 
 # def get_rated(request, *args, **kwargs):
 #     if(request.method == 'GET'):

@@ -8,6 +8,7 @@ from social.models import Follow, Action, Upvote
 from accounts.helpers import get_user_from_id
 from recipe.helpers import get_recipe_from_id
 import json
+from recipe.models import Recipe
 
 
 class UpvoteAPI(generics.GenericAPIView):
@@ -80,3 +81,11 @@ class IsUpvotedAPI(generics.GenericAPIView):
                 return JsonResponse({'upvoted': False}, safe=True)
         else:
             return JsonResponse({'upvoted': False}, safe=True)
+
+
+def get_number_upvote(recipe_id):
+    try:
+        recipe_instance = Recipe.objects.get(id = recipe_id)
+        return Upvote.objects.filter(target_recipe=recipe_instance).count()
+    except Recipe.DoesNotExist:
+        return 0

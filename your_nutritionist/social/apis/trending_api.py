@@ -4,6 +4,8 @@ from datetime import timedelta, date
 from django.db.models import Sum
 from django.http import JsonResponse
 from recipe.models import Recipe
+from .upvote_api import get_number_upvote
+from .rating_api import get_number_rating
 class UpdateTrendingAPI(generics.GenericAPIView):
     permission_classes = [
         permissions.IsAdminUser,
@@ -13,7 +15,36 @@ class UpdateTrendingAPI(generics.GenericAPIView):
         updateTrending()
         return JsonResponse({'status': 'ok'})
 
+class TrendingAPI(generics.GenericAPIView):
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly
+    ]
 
+    def get(self, *args, **kwargs):
+        num = self.request.GET.get('num')
+        if(num):
+            num = int(num)
+        else:
+            num = 100
+        trending_instances = RecipeTrending.objects.filter(id__lte=num)
+        context = {'recipes': []}
+        for trending_instance in trending_instances:
+            total_ratings, number_ratings = get_number_rating(trending_instance.recipe.id)
+            number_upvotes = get_number_upvote(trending_instance.recipe.id)
+            context['recipes'].append(
+                {
+                    'recipe_id': trending_instance.recipe.id,
+                    'creator_id': trending_instance.recipe.creator.id,
+                    'creator_name': trending_instance.recipe.creator.get_full_name(),
+                    'recipe_name' : trending_instance.recipe.name,
+                    'number_upvotes' : number_upvotes,
+                    'number_ratings' : number_ratings,
+                    'total_ratings' : total_ratings,
+                    'created_date' : trending_instance.recipe.created_at.date(),
+                    'number_visits' : trending_instance.num_visit
+                }
+            )
+        return JsonResponse(context, safe=True)
 
 def updateTrending():
     last_week_date = date.today() - timedelta(days=7)
@@ -30,7 +61,6 @@ def updateTrending():
                 ,defaults={'recipe': recipe_instance, 'num_visit':recipe_visitor['num_visit__sum']}
             )
         except Recipe.DoesNotExist:
-            pass
-
+            RecipeTrending.objects.filter(id=index + 1).delete()
     
     
