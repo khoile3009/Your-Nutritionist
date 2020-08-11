@@ -7,13 +7,13 @@ import * as actions from "../../store/actions/index";
 import "./SideBarContainer.scss";
 import { connect } from "react-redux";
 import ModalContainer from "../Util/Authentication/ModalContainer";
-import axios from '../../axios-orders';
+import axios from "../../axios-orders";
 class SideBarContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			modal: false,
-			trendingRecipes: []
+			trendingRecipes: [],
 		};
 		this.showCreatePostModal = this.showCreatePostModal.bind(this);
 		this.hideModal = this.hideModal.bind(this);
@@ -25,12 +25,13 @@ class SideBarContainer extends Component {
 		this.showSigninModal = this.showSigninModal.bind(this);
 		this.showRegisterModal = this.showRegisterModal.bind(this);
 		this.fetchTrendingRecipes = this.fetchTrendingRecipes.bind(this);
+		this.toTrendingCreator = this.toTrendingCreator.bind(this);
 	}
 
 	// Authentication
 
 	componentDidMount() {
-		this.fetchTrendingRecipes()
+		this.fetchTrendingRecipes();
 		if (this.props.token) this.props.retrieveUserFromToken(this.props.token);
 	}
 
@@ -83,6 +84,14 @@ class SideBarContainer extends Component {
 		});
 	};
 
+	toTrendingCreator = (event, creator_id) => {
+		// console.log(event + " " + creator_id);
+		event.preventDefault();
+		event.stopPropagation();
+		// console.log(creator_id);
+		this.props.history.push("/user/" + creator_id);
+	};
+
 	toTrendingRecipe = (recipe_id) => {
 		this.props.history.push("/recipe/" + recipe_id);
 	};
@@ -113,12 +122,10 @@ class SideBarContainer extends Component {
 	};
 
 	fetchTrendingRecipes = () => {
-		axios.get('api/recipe/trending').then(
-			(response) => {
-				this.setState({trendingRecipes: response.data.recipes})
-			}
-		)
-	}
+		axios.get("api/recipe/trending").then((response) => {
+			this.setState({ trendingRecipes: response.data.recipes });
+		});
+	};
 
 	// add_images_to_form_data(data, images) {
 	//     for (var image_index = 0; image_index < images.length; image_index++) {
@@ -195,6 +202,9 @@ class SideBarContainer extends Component {
 						<TrendingCard
 							rank={index + 1}
 							recipe={recipe}
+							toTrendingCreator={(event) => {
+								this.toTrendingCreator(event, recipe.creator_id);
+							}}
 							toTrendingRecipe={() => {
 								this.toTrendingRecipe(recipe.recipe_id);
 							}}
