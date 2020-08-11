@@ -2,6 +2,18 @@ import React from 'react';
 import './TrendingCard.scss';
 import { Row, Col } from 'react-bootstrap';
 
+// New props.recipe
+// {
+//             "recipe_id": 20,
+//             "creator_id": 1,
+//             "creator_name": "Khoi Le",
+//             "recipe_name": "",
+//             "number_upvotes": 0,
+//             "number_ratings": 0,
+//             "total_ratings": null,
+//             "created_date": "2020-06-25",
+//             "number_visits": 18
+//         }
 const TrendingCard = (props) => {
 	let rank_color = [ '#ff9d00', '#bd48e8', '#4199e0', '#29e67b', '#e3e3e3' ];
 	let ranktxt_color = [ '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#000000' ];

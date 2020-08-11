@@ -7,12 +7,13 @@ import * as actions from "../../store/actions/index";
 import "./SideBarContainer.scss";
 import { connect } from "react-redux";
 import ModalContainer from "../Util/Authentication/ModalContainer";
-
+import axios from '../../axios-orders';
 class SideBarContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			modal: false,
+			trendingRecipes: []
 		};
 		this.showCreatePostModal = this.showCreatePostModal.bind(this);
 		this.hideModal = this.hideModal.bind(this);
@@ -23,11 +24,13 @@ class SideBarContainer extends Component {
 		this.deleteMedia = this.deleteMedia.bind(this);
 		this.showSigninModal = this.showSigninModal.bind(this);
 		this.showRegisterModal = this.showRegisterModal.bind(this);
+		this.fetchTrendingRecipes = this.fetchTrendingRecipes.bind(this);
 	}
 
 	// Authentication
 
 	componentDidMount() {
+		this.fetchTrendingRecipes()
 		if (this.props.token) this.props.retrieveUserFromToken(this.props.token);
 	}
 
@@ -109,6 +112,14 @@ class SideBarContainer extends Component {
 		});
 	};
 
+	fetchTrendingRecipes = () => {
+		axios.get('api/recipe/trending').then(
+			(response) => {
+				this.setState({trendingRecipes: response.data.recipes})
+			}
+		)
+	}
+
 	// add_images_to_form_data(data, images) {
 	//     for (var image_index = 0; image_index < images.length; image_index++) {
 	//         data.append('image_' + image_index, images[image_index])
@@ -181,7 +192,7 @@ class SideBarContainer extends Component {
 					}
 				/>
 				<h3 id="trending-title">Trending</h3>
-				{fakeTrendingRecipes.map((recipe, index) => {
+				{this.state.trendingRecipes.map((recipe, index) => {
 					return (
 						<TrendingCard
 							rank={index + 1}
