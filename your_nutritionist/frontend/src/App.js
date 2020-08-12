@@ -7,14 +7,14 @@ import NewRecipeContainer from "./Containers/Recipe/NewRecipe/NewRecipeContainer
 import HeaderContainer from "./Containers/Util/Header/HeaderContainer";
 import RecipeShowContainer from "./Containers/Recipe/RecipeShow/RecipeShowContainer";
 import UserShowContaner from "./Containers/User/UserShow/UserShowContainer";
-
+import DarkModeToggleContainer from "./Containers/Util/DarkModeToggle/DarkModeToggleContainer";
 import SearchPage from "./Pages/Search/SearchPage";
 import DevPage from "./Pages/Dev/DevPage";
 import Homepage from "./Pages/Homepage/Homepage";
 import queryString from "query-string";
 import EditRecipeContainer from "./Containers/Recipe/EditRecipe/EditRecipeContainer";
 
-function App() {
+function App(props) {
 	return (
 		<div className="App">
 			<HeaderContainer />

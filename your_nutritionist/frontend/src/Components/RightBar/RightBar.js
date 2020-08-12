@@ -5,11 +5,6 @@ import DarkModeToggleContainer from "../../Containers/Util/DarkModeToggle/DarkMo
 const RightBar = (props) => {
 	return (
 		<div className="right-bar-wrapper">
-			<DarkModeToggleContainer></DarkModeToggleContainer>
-			{document.documentElement.setAttribute(
-				"data-theme",
-				props.darkmode === false ? "light" : "dark"
-			)}
 			<div className="adverts-wrapper card clickable">
 				<h1>Ask for ads and you shall receive.</h1>
 			</div>

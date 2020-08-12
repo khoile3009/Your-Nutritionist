@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DarkModeToggle from "../../../Components/Util/DarkModeToggle/DarkModeToggle";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
 class DarkModeToggleContainer extends Component {
 	constructor(props) {
@@ -12,10 +12,18 @@ class DarkModeToggleContainer extends Component {
 	}
 
 	modeChangeHandler = () => {
-		this.setState({
-			// ...this.state,
-			darkmode: !this.state.darkmode,
-		});
+		this.setState(
+			{
+				// ...this.state,
+				darkmode: !this.state.darkmode,
+			},
+			() => {
+				document.documentElement.setAttribute(
+					"data-theme",
+					this.state.darkmode === false ? "light" : "dark"
+				);
+			}
+		);
 	};
 
 	render() {

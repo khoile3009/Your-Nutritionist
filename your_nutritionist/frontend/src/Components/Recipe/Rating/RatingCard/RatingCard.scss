@@ -1,97 +1,115 @@
 /*# sourceMappingURL=RatingCard.css.map */
 .rating-wrapper {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	display: flex;
 }
 .card.rating-card {
-    margin: 1rem 0;
-    min-height: 250px;
-    width: 100%;
-    .comment-profile-wrapper {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        padding: 0;
-        .comment-profile {
-            border-radius: 50%;
-            box-shadow: 7px 6px 10px -6px rgba(91, 91, 91, 0.4);
-            width: 80px;
-            height: 80px;
-            background: #bc002d;
-            margin: 2rem;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-    }
-    .comment-content {
-        overflow: hidden;
-        min-height: 190px;
-    }
-    .comment-compressed {
-        height: 190px;
-    }
-    .see-more-trigger {
-        position: absolute;
-        bottom: 0%;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        height: 3rem;
-        width: 100%;
-        text-align: center;
-        color: #7e7e7e;
-        background-image: linear-gradient(0deg, white 0%, rgba(255, 255, 255, 0.8351715686) 85%, rgba(255, 255, 255, 0) 100%);
-    }
-    .see-less-trigger {
-        bottom: 0%;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        height: 3rem;
-        width: 100%;
-        text-align: center;
-        color: #7e7e7e;
-    }
-    #see-more-active {
-        padding: 0.3rem;
-        transition: 1s ease;
-    }
-    .comment-rating {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        padding: 0;
-    }
+	margin: 1rem 0;
+	min-height: 250px;
+	width: 100%;
+	.comment-profile-wrapper {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		display: flex;
+		padding: 0;
+		.comment-profile {
+			border-radius: 50%;
+			box-shadow: 7px 6px 10px -6px rgba(91, 91, 91, 0.4);
+			width: 80px;
+			height: 80px;
+			background: #bc002d;
+			margin: 2rem;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+	}
+	.comment-content {
+		overflow: hidden;
+		min-height: 190px;
+	}
+	.comment-compressed {
+		height: 190px;
+	}
+	.see-more-trigger {
+		position: absolute;
+		bottom: 0%;
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+		height: 3rem;
+		width: 100%;
+		text-align: center;
+		color: #7e7e7e;
+		background-image: linear-gradient(
+			0deg,
+			white 0%,
+			rgba(255, 255, 255, 0.8351715686) 85%,
+			rgba(255, 255, 255, 0) 100%
+		);
+	}
+	.see-less-trigger {
+		bottom: 0%;
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+		height: 3rem;
+		width: 100%;
+		text-align: center;
+		color: #7e7e7e;
+	}
+	#see-more-active {
+		padding: 0.3rem;
+		transition: 1s ease;
+	}
+	.comment-rating {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		display: flex;
+		padding: 0;
+	}
 }
 .compressed {
-    height: 250px;
+	height: 250px;
 }
 @media (max-width: 900px) {
-    .card.rating-card {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
+	.card.rating-card {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
 
-        .comment-rating {
-            display: flex;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-        .comment-content {
-            width: 300px;
-        }
-        .comment-profile {
-            display: block;
-        }
-    }
-    .compressed {
-        height: 300px;
-    }
-    .custom-container {
-        padding: 0 1rem 3rem auto;
-        margin-bottom: 0;
-    }
+		.comment-rating {
+			display: flex;
+			padding-top: 2rem;
+			padding-bottom: 2rem;
+		}
+		.comment-content {
+			width: 300px;
+		}
+		.comment-profile {
+			display: block;
+		}
+	}
+	.compressed {
+		height: 300px;
+	}
+	.custom-container {
+		padding: 0 1rem 3rem auto;
+		margin-bottom: 0;
+	}
+}
+
+html[data-theme="dark"] {
+	.card.rating-card {
+		.see-more-trigger {
+			background-image: linear-gradient(
+				0deg,
+				rgb(26, 26, 26) 0%,
+				rgba(53, 53, 53, 0.835) 85%,
+				rgba(44, 44, 44, 0) 100%
+			);
+		}
+	}
 }
