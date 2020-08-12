@@ -83,10 +83,17 @@ html[data-theme="dark"] {
 		}
 	}
 
+	.user-info-wrapper {
+		background: transparent;
+		.title {
+			color: white;
+		}
+	}
+
 	.card,
 	.custom-container {
 		background: rgb(43, 43, 43) !important;
-		color: rgb(235, 235, 235) !important;
+		color: rgb(231, 231, 231) !important;
 		box-shadow: 1px 1px 12px 1px rgba(0, 0, 0, 0.103) !important;
 		a,
 		.link {
