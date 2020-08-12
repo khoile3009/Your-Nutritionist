@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import ScrollMemory from 'react-router-scroll-memory';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
@@ -33,6 +33,7 @@ const history = createBrowserHistory();
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter history={history}>
+      <ScrollMemory/>
       <App />
     </BrowserRouter>
   </Provider>

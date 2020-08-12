@@ -6,11 +6,12 @@ from social.helpers import get_recipe_from_id
 from .hashtag import get_hashtag_from_description
 from .search import Search
 from utils.files import GCLOUD
+from social.apis.upvote_api import get_is_upvoted
 from rest_framework.exceptions import NotFound
 # /<int:recipe_id>
 
 
-def get_recipe_info(recipe_id):
+def get_recipe_info(recipe_id,user_instance):
     context = {}
     recipe = None
     try:
@@ -31,6 +32,7 @@ def get_recipe_info(recipe_id):
     context['prep_time'] = recipe.prep_time
     context['cook_time'] = recipe.cook_time
 
+    context['upvoted'] = get_is_upvoted(recipe,user_instance)
     sections = Section.objects.filter(recipe=recipe_id)
 
     context['ingredient_sections'] = []
@@ -127,10 +129,9 @@ def edit_media_sections(recipe_instance, media_section, media_instances, urls, b
     for index in range(len(media_section)):
         print(index)
         media = media_section[index]
-        print(media)
-        media_instance = media_instances.filter(order=index)
-        if(not media.get('mediaId')):
-            media_instance.delete()
+        media_id = -1
+        if(media.get('mediaId') == -1):
+            media_instances.filter(order=index).delete()
             if(media['fileId'] != -1):
                 media['url'] = urls[media['fileId']]
                 media['gcloud_bucket_url'] = bucket_paths[media['fileId']]
@@ -144,8 +145,10 @@ def edit_media_sections(recipe_instance, media_section, media_instances, urls, b
                 gcloud_bucket_url = media['gcloud_bucket_url'],
                 order = index
             )
-
-        media_id_map.append(media_instance.id)
+            media_id = media_instance.id
+        else:
+            media_id = media.get('mediaId')
+        media_id_map.append(media_id)
     print()
     media_instances.filter(order__in= list(range(len(media_section), media_instances.count()))).delete()
     print(media_id_map)

@@ -19,15 +19,15 @@ class UpvoteAPI(generics.GenericAPIView):
     def post(self, *args, **kwargs):
         recipe_id = kwargs['recipe_id']
         from_id = self.request.user.id
-        target_recipe = get_recipe_from_id(from_id)
+        target_recipe = get_recipe_from_id(recipe_id)
         from_user = self.request.user
         if(not target_recipe):
             return JsonResponse({'status': 'No recipe'}, status=404)
         if(target_recipe.creator.id != from_id):
-            Upvote.objects.get_or_create(
+            print(Upvote.objects.get_or_create(
                 target_recipe=target_recipe,
                 from_user=from_user
-            )
+            ))
             Action.objects.get_or_create(
                 user=from_user,
                 action_type=4,
@@ -71,17 +71,7 @@ class IsUpvotedAPI(generics.GenericAPIView):
         from_user = self.request.user
         if(not target_recipe):
             return JsonResponse({'status': 'No recipe'}, status=404)
-        if(target_recipe.creator.id != from_id):
-            if(Upvote.objects.filter(
-                target_recipe=target_recipe,
-                from_user=from_user
-            ).exists()):
-                return JsonResponse({'upvoted': True}, safe=True)
-            else:
-                return JsonResponse({'upvoted': False}, safe=True)
-        else:
-            return JsonResponse({'upvoted': False}, safe=True)
-
+        return JsonResponse({'upvoted': get_is_upvoted(target_recipe, self.request.user)},safe=True)
 
 def get_number_upvote(recipe_id):
     try:
@@ -89,3 +79,19 @@ def get_number_upvote(recipe_id):
         return Upvote.objects.filter(target_recipe=recipe_instance).count()
     except Recipe.DoesNotExist:
         return 0
+
+def get_is_upvoted(recipe_instance, user_instance):
+    if(user_instance.is_anonymous):
+        return False
+    if(not recipe_instance):
+        return False
+    if(recipe_instance.creator.id != user_instance.id):
+        if(Upvote.objects.filter(
+            target_recipe=recipe_instance,
+            from_user=user_instance
+        ).exists()):
+            return True
+        else:
+            return False
+    else:
+        return False
