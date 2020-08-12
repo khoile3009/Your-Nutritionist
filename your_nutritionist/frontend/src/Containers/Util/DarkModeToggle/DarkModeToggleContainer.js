@@ -16,12 +16,6 @@ class DarkModeToggleContainer extends Component {
 			// ...this.state,
 			darkmode: !this.state.darkmode,
 		});
-		{
-			document.documentElement.setAttribute(
-				"data-theme",
-				this.state.darkmode === false ? "light" : "dark"
-			);
-		}
 	};
 
 	render() {
