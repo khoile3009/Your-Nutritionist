@@ -7,7 +7,7 @@ $randInt: random(255);
 	padding: 1rem;
 	width: 50vw;
 	grid-template-columns: 0.1fr 6fr;
-	grid-template-areas: "profile-pic username" "nf-content nf-content" "nf-media nf-media" "social-fn social-fn" "cmt-form cmt-form" "cmt-list cmt-list";
+	grid-template-areas: "profile-pic username" ". nf-content" "nf-media nf-media" "social-fn social-fn" "cmt-form cmt-form" "cmt-list cmt-list";
 	align-items: center;
 	border-radius: 18px;
 	color: rgb(99, 99, 99);
@@ -27,7 +27,8 @@ $randInt: random(255);
 	}
 	.content-newfeed-wrapper {
 		grid-area: nf-content;
-		padding: 0 1rem 1rem 1rem;
+		margin-bottom: 2rem;
+		padding-right: 15%;
 	}
 	.social-fn-wrapper {
 		grid-area: social-fn;
