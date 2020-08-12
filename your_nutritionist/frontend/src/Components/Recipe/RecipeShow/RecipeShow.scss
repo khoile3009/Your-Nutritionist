@@ -110,3 +110,13 @@ button.edit-btn {
 	display: flex;
 	padding: 0;
 }
+
+html[data-theme="dark"] {
+	.title-wrapper {
+		.title.text-left {
+			#title {
+				color: white;
+			}
+		}
+	}
+}

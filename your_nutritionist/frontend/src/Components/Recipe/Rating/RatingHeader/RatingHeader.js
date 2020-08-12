@@ -1,7 +1,7 @@
-import React from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
-import './RatingHeader.css';
-import StarRating from '../../../Util/StarRating/StarRating';
+import React from "react";
+import { Button, Col, Row } from "react-bootstrap";
+import "./RatingHeader.css";
+import StarRating from "../../../Util/StarRating/StarRating";
 const RatingHeader = (props) => {
 	console.log(props);
 	return (
@@ -14,14 +14,14 @@ const RatingHeader = (props) => {
 					<span>{props.numberRatings + ' ratings in total'}</span>
 				</Col> */}
 				<Col xs={6} className="star-rating-wrapper">
-					<span id="rating-total">{props.numberRatings + ' ratings in total '}</span>
+					<span id="rating-total">{props.numberRatings + " ratings in total "}</span>
 					{/* <p className="subtitle">{props.overallRatingScore}</p> */}
 					<StarRating rating={props.totalRating / props.numberRatings} />
 				</Col>
 				{props.canRate ? (
 					<Col md="auto" className="add-comment-wrapper">
 						<Button className="add-comment" onClick={props.toggleFormCard}>
-							{props.isRated ? 'Edit comment' : 'Add comment'}
+							{props.isRated ? "Edit comment" : "Add comment"}
 						</Button>
 					</Col>
 				) : null}

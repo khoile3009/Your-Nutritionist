@@ -7,7 +7,7 @@ $randInt: random(255);
 	padding: 1rem;
 	width: 50vw;
 	grid-template-columns: 0.1fr 6fr;
-	grid-template-areas: "profile-pic username" "nf-content nf-content" "nf-media nf-media" "social-fn social-fn" "cmt-form cmt-form" "cmt-list cmt-list";
+	grid-template-areas: "profile-pic username" ". nf-content" "nf-media nf-media" "social-fn social-fn" "cmt-form cmt-form" "cmt-list cmt-list";
 	align-items: center;
 	border-radius: 18px;
 	color: rgb(99, 99, 99);
@@ -27,7 +27,8 @@ $randInt: random(255);
 	}
 	.content-newfeed-wrapper {
 		grid-area: nf-content;
-		padding: 0 1rem 1rem 1rem;
+		padding: 0;
+		padding-right: 10%;
 	}
 	.social-fn-wrapper {
 		grid-area: social-fn;
@@ -63,6 +64,7 @@ $randInt: random(255);
 @media (max-width: 1000px) {
 	.newfeedcard-wrapper {
 		width: 100%;
+		border-radius: 0;
 		.profilepic-newfeed {
 			border-radius: 50%;
 			height: 60px;
