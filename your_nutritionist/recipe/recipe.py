@@ -6,11 +6,12 @@ from social.helpers import get_recipe_from_id
 from .hashtag import get_hashtag_from_description
 from .search import Search
 from utils.files import GCLOUD
+from social.apis.upvote_api import get_is_upvoted
 from rest_framework.exceptions import NotFound
 # /<int:recipe_id>
 
 
-def get_recipe_info(recipe_id):
+def get_recipe_info(recipe_id,user_instance):
     context = {}
     recipe = None
     try:
@@ -31,6 +32,7 @@ def get_recipe_info(recipe_id):
     context['prep_time'] = recipe.prep_time
     context['cook_time'] = recipe.cook_time
 
+    context['upvoted'] = get_is_upvoted(recipe,user_instance)
     sections = Section.objects.filter(recipe=recipe_id)
 
     context['ingredient_sections'] = []

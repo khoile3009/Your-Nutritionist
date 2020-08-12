@@ -15,7 +15,7 @@ const RecipeShow = (props) => {
                     </Col>
                     <Col md="auto" className="upvote-wrapper">
                         {props.logged_in && !props.is_creator ? (
-                            props.upvoted ? (
+                            props.recipe.upvoted ? (
                                 <Button className="upvote" onClick={props.unUpvote}>
                                     <i class="material-icons" style={{ color: "rgb(201, 0, 44)" }}>
                                         favorite

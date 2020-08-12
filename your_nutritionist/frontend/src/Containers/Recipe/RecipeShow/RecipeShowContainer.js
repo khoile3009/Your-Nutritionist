@@ -19,7 +19,6 @@ class RecipeShowContainer extends Component {
 		this.getMedias = this.getMedias.bind(this);
 		this.goToSecondOnMedia = this.goToSecondOnMedia.bind(this);
 		this.countMedias = this.countMedias.bind(this);
-		this.checkUpvote = this.checkUpvote.bind(this);
 		this.upvote = this.upvote.bind(this);
 		this.unUpvote = this.unUpvote.bind(this);
 	}
@@ -27,14 +26,18 @@ class RecipeShowContainer extends Component {
 	componentDidMount() {
 		this.mediaContainer = React.createRef();
 		let params = this.props.match.params;
-
-		axios.get("api/recipe/" + params["recipe_id"] + "/info").then((response) => {
+		let headers = {
+			'Content-Type': 'application/json',
+			'Authorization': this.props.token? 'Token ' + this.props.token: ''
+		}
+		axios.get("api/recipe/" + params["recipe_id"],
+		{headers:headers}
+		).then((response) => {
 			this.setState({ recipe: response.data });
 			
 			// this.getMedias();
 			// Turn this back after migrating to gcloud
 			// this.getRatings();
-			// this.checkUpvote();
 			this.increaseVisit();
 		});
 		this.toEditRecipe = this.toEditRecipe.bind(this);
@@ -48,10 +51,7 @@ class RecipeShowContainer extends Component {
 			response.data.ratings.map((rating) => {
 				totalRating += rating.rating
 			})
-			this.setState({ ratings: response.data.ratings, totalRating: totalRating, numberRatings: response.data.ratings.length },
-			 ()=> {
-				this.checkUpvote();
-			 }	
+			this.setState({ ratings: response.data.ratings, totalRating: totalRating, numberRatings: response.data.ratings.length }
 			);
 		});
 		
@@ -89,30 +89,6 @@ class RecipeShowContainer extends Component {
 		this.props.history.push({pathname: "/recipe/" + this.props.match.params["recipe_id"] + "/edit", state: {recipe: this.state.recipe, medias: this.state.medias}});
 	};
 
-	checkUpvote = () => {
-		if (this.props.token) {
-            let headers = {
-                'Content-Type': 'application/json',
-                'Authorization': 'Token ' + this.props.token
-            }
-            axios.get('api/recipe/' + this.props.match.params["recipe_id"] + '/upvoted', {
-                    headers: headers
-                })
-                .then(
-                    (response) => {
-                        this.setState({
-                            upvoted: response.data.upvoted
-                        })
-
-                    }
-                )
-                .catch(
-                    (err) => {this.incraseVisit();}
-                )
-        }
-
-	}
-
 	upvote = () => {
 		if (this.props.token) {
             let data = null
@@ -132,7 +108,7 @@ class RecipeShowContainer extends Component {
 				})
 			}
 			this.setState({
-				upvoted: true
+				recipe: {...this.state.recipe, upvoted: true}
 			})
 	}
 	
@@ -156,7 +132,7 @@ class RecipeShowContainer extends Component {
                 console.log(err)
 			})
 			this.setState({
-				upvoted: false
+				recipe: {...this.state.recipe, upvoted: false}
 			})
 	}
 

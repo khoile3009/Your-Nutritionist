@@ -6,7 +6,7 @@ from rest_framework import generics, permissions
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from social.models import Action
-from .recipe import create_recipe, edit_recipe
+from .recipe import create_recipe, edit_recipe,get_recipe_info
 import json
 from utils.files import GCLOUD
 from .models import Recipe
@@ -32,7 +32,7 @@ class RecipeCreateAPI(generics.GenericAPIView):
 
 class RecipeAPI(generics.GenericAPIView):
     permission_classes = [
-        permissions.IsAuthenticated,
+        permissions.IsAuthenticatedOrReadOnly,
     ]
 
     def delete(self, *args, **kwargs):
@@ -59,6 +59,15 @@ class RecipeAPI(generics.GenericAPIView):
         urls, bucket_paths = GCLOUD.upload_and_return_url(self.request.user.id,self.request.FILES, media_ids_map)
         recipe_id = edit_recipe(recipe, recipe_instance, urls, bucket_paths)
         return JsonResponse({'recipe_id': recipe_id}, safe=True)
+
+    def get(self, *args, **kwargs):
+        recipe_id = kwargs['recipe_id']
+        context = get_recipe_info(recipe_id,self.request.user)
+    # ingredient_sections = []
+    # for section in sections:
+        if(not context):
+            return JsonResponse({'status': 'No recipe'}, status=404)
+        return JsonResponse(context, safe=True)
 class RecipeEditable(generics.GenericAPIView):
     permission_classes = [
         permissions.IsAuthenticated,
@@ -73,3 +82,6 @@ class RecipeEditable(generics.GenericAPIView):
         if(user_id != recipe_instance.creator):
             return JsonResponse({'status': 'Not Allowed'}, status=405)    
         return JsonResponse({'status': 'ok'})
+
+class RecipeInfoAPI(generics.GenericAPIView):
+    permission_classes = {}
