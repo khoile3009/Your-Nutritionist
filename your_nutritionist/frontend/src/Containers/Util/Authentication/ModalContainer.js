@@ -71,6 +71,9 @@ class ModalContainer extends Component {
 		this.showRegisterModal = this.showRegisterModal.bind(this);
 	}
 
+	goToHomeAfterSignIn = () => {
+		this.props.history.push("/homepage");
+	};
 
 	CodeToModal = (modalCode) => {
 		switch (this.props.modalType) {
@@ -319,13 +322,9 @@ class ModalContainer extends Component {
 			this.state.auth.remember
 		);
 		this.resetPasswords();
-		this.refreshAfterSignIn();
+		this.goToHomeAfterSignIn();
 	};
 
-	refreshAfterSignIn = () => {
-		this.props.history.push('/temp');
-		this.props.history.goBack();
-	}
 	submitInfoHandler = (event) => {
 		event.preventDefault();
 		this.props.submitHeadline(

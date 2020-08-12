@@ -97,15 +97,12 @@ class UserShowContainer extends Component {
 				})
 				.then((response) => {
 					let posts = this.state.posts;
-					if (response.data.posts && response.data.posts.length != 0) {
-						posts.push.apply(posts, response.data.posts);
-						console.log(response.data.posts[response.data.posts.length - 1].post_id);
-						this.setState({
-							posts: posts,
-							last_id: response.data.posts[response.data.posts.length - 1].post_id,
-						});
-					}
-
+					posts.push.apply(posts, response.data.posts);
+					console.log(response.data.posts[response.data.posts.length - 1].post_id);
+					this.setState({
+						posts: posts,
+						last_id: response.data.posts[response.data.posts.length - 1].post_id,
+					});
 					// this.setState({ posts: posts})
 				});
 		}
@@ -202,8 +199,8 @@ class UserShowContainer extends Component {
 						toPage={this.toPage}
 					></RecipeList>
 				) : (
-						<h3 style={{ color: "#757575" }}>No recipes</h3>
-					);
+					<h3 style={{ color: "#757575" }}>No recipes</h3>
+				);
 				break;
 			case "post":
 				content =
@@ -213,10 +210,10 @@ class UserShowContainer extends Component {
 							<PostCardList posts={this.state.posts} loadPosts={this.loadPosts} />
 						</>
 					) : (
-							<div className="no-content">
-								<h3 style={{ color: "#757575" }}>No posts</h3>
-							</div>
-						);
+						<div className="no-content">
+							<h3 style={{ color: "#757575" }}>No posts</h3>
+						</div>
+					);
 				break;
 			default:
 				content = this.state.user_recipes ? (
@@ -226,10 +223,10 @@ class UserShowContainer extends Component {
 						toPage={this.toPage}
 					></RecipeList>
 				) : (
-						<div className="no-content">
-							<h3 style={{ color: "#757575" }}>No recipes</h3>
-						</div>
-					);
+					<div className="no-content">
+						<h3 style={{ color: "#757575" }}>No recipes</h3>
+					</div>
+				);
 				break;
 		}
 		return this.state.user_info ? (
@@ -279,8 +276,8 @@ class UserShowContainer extends Component {
 				{this.props.token ? this.state.user_actions ? <ActionList actions={this.state.user_actions}></ActionList> : <h1>No action recently</h1> : <h1>You need to sign in to see this content</h1>} */}
 			</Container>
 		) : (
-				<NullPage></NullPage>
-			);
+			<NullPage></NullPage>
+		);
 	}
 }
 
@@ -291,4 +288,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, () => { })(withRouter(UserShowContainer));
+export default connect(mapStateToProps, () => {})(withRouter(UserShowContainer));

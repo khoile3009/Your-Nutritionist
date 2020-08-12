@@ -52,11 +52,9 @@ class Homepage extends Component {
       ).then(
         (response) => {
           let posts = this.state.posts
-          if(response.data.posts && response.data.posts.length != 0){
-            posts.push.apply(posts, response.data.posts)
-            this.setState({ posts: posts, last_id: response.data.posts[response.data.posts.length - 1].post_id })
-          }
-        
+          posts.push.apply(posts, response.data.posts)
+          console.log( response.data.posts[response.data.posts.length - 1].post_id)
+          this.setState({ posts: posts, last_id: response.data.posts[response.data.posts.length - 1].post_id })
           // this.setState({ posts: posts})
         }
       )

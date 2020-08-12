@@ -52,8 +52,7 @@ const RecipeCard = (props) => {
 					</div>
 					<div className="recipe-favorites">
 						<p className="info">
-							<i class="material-icons">favorite</i>&nbsp;
-							{props.likes + " favorites"}
+							<i class="material-icons">favorite</i>&nbsp;{props.likes + " favorites"}
 						</p>
 					</div>
 				</div>
