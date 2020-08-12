@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import DarkModeToggle from "../../../Components/Util/DarkModeToggle/DarkModeToggle";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 
+import * as actions from "../../../store/actions/index";
 class DarkModeToggleContainer extends Component {
 	constructor(props) {
 		super(props);
@@ -11,6 +12,13 @@ class DarkModeToggleContainer extends Component {
 		this.modeChangeHandler = this.modeChangeHandler.bind(this);
 	}
 
+	// componentDidMount(){
+	// 	let darkmode = localStorage.getItem('DARKMODE')
+	// 	if(darkmode != null){
+	// 		this.setState({darkmode: darkmode})
+	// 	}
+	// }
+
 	modeChangeHandler = () => {
 		this.setState(
 			{
@@ -18,6 +26,7 @@ class DarkModeToggleContainer extends Component {
 				darkmode: !this.state.darkmode,
 			},
 			() => {
+				localStorage.setItem('DARKMODE', this.state.darkmode)
 				document.documentElement.setAttribute(
 					"data-theme",
 					this.state.darkmode === false ? "light" : "dark"
@@ -27,11 +36,11 @@ class DarkModeToggleContainer extends Component {
 	};
 
 	render() {
-		console.log(this.state.darkmode);
+		console.log(this.props.toggleDarkMode)
 		return (
 			<DarkModeToggle
-				modeChangeHandler={this.modeChangeHandler}
-				darkmode={this.state.darkmode}
+				modeChangeHandler={this.props.toggleDarkMode}
+				darkmode={this.props.darkmode}
 			></DarkModeToggle>
 		);
 	}
@@ -42,5 +51,15 @@ class DarkModeToggleContainer extends Component {
 // 		darkmode: state.darkmode,
 // 	};
 // };
+const mapStateToProps = (state) => {
+    return {
+        darkmode: state.UI.darkmode,
+    };
+};
 
-export default DarkModeToggleContainer;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		toggleDarkMode: () => {dispatch(actions.toggleDarkMode())}
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(DarkModeToggleContainer);

@@ -13,10 +13,6 @@ const DarkModeToggle = (props) => {
 					name="dark-mode-switch"
 					inputProps={{ "aria-label": "dark mode switch" }}
 				/>
-				{document.documentElement.setAttribute(
-					"data-theme",
-					props.darkmode === false ? "light" : "dark"
-				)}
 			</div>
 		</>
 	);

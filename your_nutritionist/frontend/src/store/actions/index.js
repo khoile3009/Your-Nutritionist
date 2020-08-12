@@ -14,6 +14,7 @@ export {
     showSigninRequiredModal,
     showInfoModal,
     hideModal,
+    toggleDarkMode,
 } from './UI'
 
 export {

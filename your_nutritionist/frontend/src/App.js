@@ -13,10 +13,11 @@ import DevPage from "./Pages/Dev/DevPage";
 import Homepage from "./Pages/Homepage/Homepage";
 import queryString from "query-string";
 import EditRecipeContainer from "./Containers/Recipe/EditRecipe/EditRecipeContainer";
-
+import DarkMode from "./Containers/Util/DarkMode/DarkMode";
 function App(props) {
 	return (
 		<div className="App">
+			<DarkMode/>
 			<HeaderContainer />
 			<Switch>
 				<Route path="/recipe/create" component={NewRecipeContainer} />
