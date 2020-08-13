@@ -27,8 +27,8 @@ $randInt: random(255);
 	}
 	.content-newfeed-wrapper {
 		grid-area: nf-content;
-		margin-bottom: 2rem;
-		padding-right: 15%;
+		padding: 0;
+		padding-right: 10%;
 	}
 	.social-fn-wrapper {
 		grid-area: social-fn;
@@ -64,6 +64,7 @@ $randInt: random(255);
 @media (max-width: 1000px) {
 	.newfeedcard-wrapper {
 		width: 100%;
+		border-radius: 0;
 		.profilepic-newfeed {
 			border-radius: 50%;
 			height: 60px;

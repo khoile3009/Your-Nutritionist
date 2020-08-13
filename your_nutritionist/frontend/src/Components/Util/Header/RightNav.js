@@ -1,6 +1,7 @@
 import React from "react";
 import { Nav, NavDropdown } from "react-bootstrap";
 import "./RightNav.scss";
+import DarkModeToggleContainer from "../../../Containers/Util/DarkModeToggle/DarkModeToggleContainer";
 
 const AuthenticationNav = (props) => {
 	return (
@@ -23,6 +24,10 @@ const UserNav = (props) => {
 				<NavDropdown.Item onClick={props.toUserPage}>Profile</NavDropdown.Item>
 				<NavDropdown.Divider />
 				<NavDropdown.Item onClick={props.signout}>Sign out</NavDropdown.Item>
+				<NavDropdown.Divider />
+				<div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+					<DarkModeToggleContainer></DarkModeToggleContainer>
+				</div>
 			</NavDropdown>
 		</Nav>
 	);

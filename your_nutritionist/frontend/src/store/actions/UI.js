@@ -41,3 +41,13 @@ export const hideModal = () => {
         }())
     }
 }
+
+export const toggleDarkMode = () => {
+    return dispatch => {
+        dispatch(function(){
+            return {
+                type: actionTypes.TOGGLE_DARKMODE
+            }
+        }())
+    }
+}

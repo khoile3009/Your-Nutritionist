@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from .models import UserHeadline, UserIntroduction, UserProfilePic
 from django.http import Http404
 from django.http import HttpResponse, JsonResponse
-def get_user_info(user_id):
+from social.apis.follow_api import is_following
+def get_user_info(user_id,from_user):
     try:
         user_instance = User.objects.get(id=user_id)
     except User.DoesNotExist:
@@ -13,6 +14,10 @@ def get_user_info(user_id):
     context['user_id'] = user_id
     context['name'] = user_instance.get_full_name()
     context['headline'] = get_headline(user_id)
+    if(from_user.is_anonymous):
+        context['following'] = False
+    else:
+        context['following'] = is_following(user_instance, from_user)
     try:
         context['profilepic'] = UserProfilePic.objects.get(user = user_instance).url
     except:

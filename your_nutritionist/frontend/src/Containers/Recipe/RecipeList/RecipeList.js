@@ -24,8 +24,6 @@ class RecipeList extends Component {
 
 	render() {
 		console.log(this.state.recipes);
-		console.log(this.props);
-		console.log(this.state);
 		let recipe_cards = [];
 		let page_navigators = [];
 		if (this.state.recipes.length !== 0) {
@@ -33,10 +31,7 @@ class RecipeList extends Component {
 			let recipes = [];
 
 			if (section * 10 < this.state.recipes.length) {
-				recipes = this.state.recipes.slice(
-					section * 10,
-					Math.min(this.state.recipes.length, section * 10 + 10)
-				);
+				recipes = this.state.recipes.slice(section * 10, Math.min(this.state.recipes.length, section * 10 + 10));
 			}
 			for (var row_index = 0; row_index < Math.round(recipes.length); row_index++) {
 				let recipes_row = [];
@@ -44,21 +39,27 @@ class RecipeList extends Component {
 				for (var col_index = 0; col_index < num_col; col_index++) {
 					let recipe = recipes[row_index * 2 + col_index];
 					recipes_row.push(
-						<RecipeCard
-							thumbnail={recipe.thumbnail}
-							name={recipe.name}
-							recipe_id={recipe.recipe_id}
-							number_person={recipe.number_person}
-							cook_time={recipe.cook_time}
-							likes={recipe.likes}
-							toRecipePage={() => {
-								this.toRecipePage(recipe.recipe_id);
-							}}
-						></RecipeCard>
+
+							<RecipeCard
+								thumbnail={recipe.thumbnail}
+								name={recipe.name}
+								recipe_id={recipe.recipe_id}
+								number_person={recipe.number_person}
+								cook_time={recipe.cook_time}
+								likes={recipe.likes}
+								toRecipePage={() => {
+									this.toRecipePage(recipe.recipe_id);
+								}}
+							></RecipeCard>
+
 					);
 				}
 				if (num_col === 1) {
-					recipes_row.push(<div className="filler"></div>);
+					recipes_row.push(
+
+							<div className="filler"></div>
+
+					);
 				}
 				recipe_cards.push(<div className="recipe-row">{recipes_row}</div>);
 			}
@@ -69,13 +70,7 @@ class RecipeList extends Component {
 				let page_max = this.props.page + 2;
 				console.log(page_max);
 				if (this.state.recipes.length < 50) {
-					page_max = Math.max(
-						Math.min(
-							this.props.page + 2,
-							page_block_start + Math.ceil(this.state.recipes.length / 10)
-						),
-						this.props.page
-					);
+					page_max = Math.max(Math.min(this.props.page + 2, page_block_start + Math.ceil(this.state.recipes.length / 10)), this.props.page);
 				}
 				for (let i = page_min; i <= page_max; i++) {
 					page_navigators.push(

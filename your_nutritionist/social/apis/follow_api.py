@@ -110,14 +110,16 @@ class IsFollowingAPI(generics.GenericAPIView):
         if(not target_user):
             return JsonResponse({'status': 'No user'}, status=404)
         from_user = self.request.user
-        if(target_id != from_user.id):
-            if(Follow.objects.filter(
-                    target_user = target_user,
-                    from_user = from_user
-                ).exists()):
-                return JsonResponse({'following': True}, safe=True)
-            else:
-                return JsonResponse({'following': False}, safe=True)
-        else:
-            return JsonResponse({'following': False}, safe=True)
+        return JsonResponse({'following': is_following(target_user, from_user)})
 
+def is_following(target_user, from_user):
+    if(target_user.id != from_user.id):
+        if(Follow.objects.filter(
+            target_user=target_user,
+            from_user=from_user
+        ).exists()):
+            return True
+        else:
+            return False
+    else: 
+        return False
