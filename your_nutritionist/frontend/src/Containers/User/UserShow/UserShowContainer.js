@@ -97,12 +97,15 @@ class UserShowContainer extends Component {
 				})
 				.then((response) => {
 					let posts = this.state.posts;
-					posts.push.apply(posts, response.data.posts);
-					console.log(response.data.posts[response.data.posts.length - 1].post_id);
-					this.setState({
-						posts: posts,
-						last_id: response.data.posts[response.data.posts.length - 1].post_id,
-					});
+					if(response.data.posts && response.data.posts.length != 0){
+						posts.push.apply(posts, response.data.posts);
+						console.log(response.data.posts[response.data.posts.length - 1].post_id);
+						this.setState({
+							posts: posts,
+							last_id: response.data.posts[response.data.posts.length - 1].post_id,
+						});
+					}
+					
 					// this.setState({ posts: posts})
 				});
 		}
