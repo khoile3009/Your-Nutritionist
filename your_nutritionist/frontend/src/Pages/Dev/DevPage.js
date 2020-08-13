@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../../node_modules/video-react/dist/video-react.css";
 import { Container } from "react-bootstrap";
 import MediaUploadContainer from "../../Containers/Util/MediaUpload/MediaUploadContainer";
-import "../../_global-theme.scss";
+import "./DevPage.scss";
 
 class DevPage extends Component {
 	constructor(props) {
@@ -19,6 +19,7 @@ class DevPage extends Component {
 		return (
 			<>
 				<div className="dev-wrapper">
+					<div className="dev-card card container clickable">
 					<h1 className="primary-txt">Heading 1</h1>
 					<p className="secondary-txt">
 						涙流すことすら無いまま 過ごした⽇々の痕⼀つも残さずに さよならだ
@@ -41,6 +42,8 @@ class DevPage extends Component {
 						なんて、思ってしまうよ 「おかえり」 届かず零れた⾔葉に 笑った 少し冷えた朝だ
 						https://lyricstranslate.com/en/tabun-probably.html
 					</p>
+					</div>
+					
 				</div>
 				{/* <Container>
 					<MediaUploadContainer setMedia={this.setMedia} />

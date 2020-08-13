@@ -1,0 +1,11 @@
+@import "../../global-theme";
+
+.dev-card {
+	background: $background;
+	.primary-txt {
+		color: $primary-txt-dark;
+	}
+	.secondary-txt {
+		color: $secondary-txt-dark;
+	}
+}
