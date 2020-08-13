@@ -12,7 +12,10 @@ class UserInfoAPI(generics.GenericAPIView):
     ]
     def get(self, *args, **kwargs):
         user_id = kwargs['user_id']
-        return JsonResponse({},safe=True)
+        context = get_user_info(user_id, self.request.user)
+        if(not context):
+            return JsonResponse({'status': 'No user'}, status=404)
+        return JsonResponse(context,safe=True)
 
 class UserHeadlineAPI(generics.GenericAPIView):
     permission_classes = [
