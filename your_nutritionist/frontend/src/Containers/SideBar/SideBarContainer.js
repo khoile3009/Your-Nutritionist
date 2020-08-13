@@ -122,7 +122,7 @@ class SideBarContainer extends Component {
 	};
 
 	fetchTrendingRecipes = () => {
-		axios.get("api/recipe/trending").then((response) => {
+		axios.get("api/recipe/trending", {params:{num: 5}}).then((response) => {
 			this.setState({ trendingRecipes: response.data.recipes });
 		});
 	};

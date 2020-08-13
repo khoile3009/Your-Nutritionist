@@ -9,6 +9,7 @@ class UserInfoContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            user_info: this.props.user_info,
             following: false,
             modal: 0,
             url: '',
@@ -167,14 +168,12 @@ class UserInfoContainer extends Component {
                 })
                 .then(response => {
                     console.log(response)
-                    this.setState({
-                        following: true
-                    })
+                    
                 })
                 .catch(err => {
                     console.log(err)
                 })
-
+            this.props.updateFollowing(true)
         } else {
             this.props.showSigninRequiredModal()
         }
@@ -192,14 +191,12 @@ class UserInfoContainer extends Component {
             })
             .then(response => {
                 console.log(response)
-                this.setState({
-                    following: false
-                })
+                
             })
             .catch(err => {
                 console.log(err)
             })
-
+        this.props.updateFollowing(false)
     }
 
     render() {
