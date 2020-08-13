@@ -186,6 +186,10 @@ class UserShowContainer extends Component {
 		this.setState({ user_info: { ...this.state.user_info, headline: headline } });
 	};
 
+	updateFollowing = (following) => {
+		this.setState({ user_info: { ...this.state.user_info, following: following}})
+	}
+
 	switchTab = (tab) => {
 		this.setState({ tab: tab });
 	};
@@ -235,6 +239,7 @@ class UserShowContainer extends Component {
 		return this.state.user_info ? (
 			<Container className="user-wrapper">
 				<UserInfoContainer
+					updateFollowing={this.updateFollowing}
 					updateHeadline={this.updateHeadline}
 					updateProfilePic={this.updateProfilePic}
 					user_info={this.state.user_info}

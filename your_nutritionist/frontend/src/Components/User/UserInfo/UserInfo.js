@@ -52,7 +52,7 @@ const UserInfo = (props) => {
 
 						{console.log(props.user_info)}
 						{props.logged_in && !props.isSelf ? (
-							props.following == false ? (
+							props.user_info.following == false ? (
 								<Button className="follow-btn" onClick={props.follow}>
 									Follow
 								</Button>
