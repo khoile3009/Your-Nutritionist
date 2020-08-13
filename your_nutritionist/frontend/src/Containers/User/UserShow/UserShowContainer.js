@@ -37,7 +37,7 @@ class UserShowContainer extends Component {
 	componentDidMount() {
 		let headers = {
 			"Content-Type": "application/json",
-			Authorization: "Token " + this.props.token,
+			Authorization: this.props.token? "Token " + this.props.token: '',
 		};
 		let page = 1;
 		if (this.props.location.search) {
