@@ -1,11 +1,177 @@
 @import "../../global-theme";
 
 .dev-card {
-	background: $background;
-	.primary-txt {
-		color: $primary-txt-dark;
+	display: flex;
+	flex-direction: column;
+
+	padding: 1rem;
+	border-radius: $card-border-radius;
+
+	.dev-social {
+		margin: 1rem 0;
+		> * {
+			vertical-align: middle;
+			line-height: 1rem;
+			display: inline-flex;
+			float: right;
+			padding: 0.5rem;
+		}
+		.material-icons {
+			font-size: 12pt;
+		}
+		.dev-social-upvotes {
+			color: $social-upvotes;
+		}
+		.dev-social-cmt {
+			color: $social-comments;
+		}
+		.dev-social-share-favorite {
+			color: $social-share-favorite;
+		}
+		.dev-social-views {
+			color: $social-views;
+		}
 	}
-	.secondary-txt {
-		color: $secondary-txt-dark;
+
+	.dev-link-wrapper {
+		a {
+			font-weight: bold;
+			color: $link;
+			&:hover {
+				color: $link-hover;
+			}
+		}
+	}
+	.dev-btn-wrapper {
+		.custom-btn {
+			float: right;
+			width: 120px;
+			margin: 0.5rem;
+		}
+	}
+}
+
+html[data-theme="light"] {
+	.dev-card {
+		background: $background;
+
+		border-radius: $card-border-radius;
+		&:hover {
+			// box-shadow: $clickable-box-shadow-dark;
+		}
+		.dev-social {
+			> * {
+				color: $secondary-txt;
+			}
+		}
+		.dev-post-date {
+			color: $tertiary-txt;
+		}
+		.primary-txt {
+			color: $primary-txt;
+		}
+		.secondary-txt {
+			color: $secondary-txt;
+		}
+		.dev-link-wrapper {
+			a {
+				font-weight: bold;
+				color: $link;
+				&:hover {
+					color: $link-hover;
+				}
+			}
+		}
+		.dev-btn-wrapper {
+			.dev-secondary-btn {
+				background: transparent;
+				border: solid 1px $btn-secondary;
+				color: $btn-secondary;
+				&:hover {
+					background: $btn-secondary;
+					color: $background;
+				}
+			}
+			.dev-primary-btn {
+				background: transparent;
+				border: solid 1px $btn-primary;
+				color: $btn-primary;
+				&:hover {
+					background: $btn-primary;
+					color: $background;
+				}
+			}
+			.dev-cancel-btn {
+				background: transparent;
+				border: solid 1px $btn-cancel;
+				color: $btn-cancel;
+				&:hover {
+					background: $btn-cancel;
+					color: $background;
+				}
+			}
+		}
+	}
+}
+
+html[data-theme="dark"] {
+	.dev-card {
+		background: $background-dark;
+
+		border-radius: $card-border-radius;
+		&:hover {
+			box-shadow: $clickable-box-shadow-dark;
+		}
+		.dev-social {
+			> * {
+				color: $secondary-txt-dark;
+			}
+		}
+		.dev-post-date {
+			color: $tertiary-txt-dark;
+		}
+		.primary-txt {
+			color: $primary-txt-dark;
+		}
+		.secondary-txt {
+			color: $secondary-txt-dark;
+		}
+		.dev-link-wrapper {
+			a {
+				color: $link;
+				&:hover {
+					color: $link-hover;
+				}
+			}
+		}
+		.dev-btn-wrapper {
+			.dev-secondary-btn {
+				background: transparent;
+				border: solid 1px $btn-secondary;
+				color: $btn-secondary;
+				&:hover {
+					background: $btn-secondary;
+					color: $background-dark;
+				}
+			}
+			.dev-primary-btn {
+				background: transparent;
+				border: solid 1px $btn-primary;
+				color: $btn-primary;
+				&:hover {
+					background: $btn-primary;
+					color: $background-dark;
+				}
+			}
+			.dev-cancel-btn {
+				background: transparent;
+				border: solid 1px $btn-cancel;
+				color: $btn-cancel;
+				&:hover {
+					background: $btn-cancel;
+					color: $background-dark;
+				}
+			}
+		}
 	}
 }

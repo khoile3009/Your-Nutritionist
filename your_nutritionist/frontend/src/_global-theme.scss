@@ -13,12 +13,41 @@ $accent-teal: #38d1b0;
 $accent-teal-lighter: #69d4bd;
 $accent-teal-darker: #26be9d;
 
+$btn-cancel: $accent-red-darker;
+$btn-edit: #0088f7;
+$btn-primary: $accent-teal;
+$btn-secondary: rgb(168, 168, 168);
+
+$error: rgb(255, 50, 50);
+
+$link: rgb(0, 140, 255);
+$link-hover: rgb(19, 125, 211);
+
+$trending-first: rgb(255, 157, 0);
+$trending-second: rgb(189, 72, 232);
+$trending-third: rgb(65, 153, 224);
+$trending-fourth: rgb(41, 230, 123);
+
+$social-views: rgb(3, 144, 252);
+$social-upvotes: rgb(233, 114, 114);
+$social-share-favorite: rgb(255, 174, 0);
+$social-comments: rgb(75, 200, 174);
+
+// Global style
+$card-border-radius: 18px;
+
 // Light theme color palette
 $background: white;
 $primary-txt: rgb(12, 12, 12);
 $secondary-txt: rgb(64, 64, 64);
+$tertiary-txt: rgb(128, 128, 128);
 
 // Dark theme color palette
-$background-dark: rgb(12, 12, 12);
+$background-dark: #2b2b2b;
+$backdrop-dark: rgb(29, 29, 29);
+
 $primary-txt-dark: white;
-$secondary-txt-dark: rgb(200,200,200);
+$secondary-txt-dark: rgb(200, 200, 200);
+$tertiary-txt-dark: rgb(153, 153, 153);
+
+$clickable-box-shadow-dark: 0px 0px 0px 1px $accent-teal-lighter;
