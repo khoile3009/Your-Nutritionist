@@ -38,7 +38,7 @@ export const logout = () => {
     };
 };
 
-export const signin = (username, password, remember) => {
+export const signin = (username, password, remember, callback) => {
     return dispatch => {
         dispatch(authStart())
         const authData = {
@@ -52,6 +52,7 @@ export const signin = (username, password, remember) => {
                 if(remember === true) {
                     localStorage.setItem('TOKEN', response.data.token);
                 }
+                callback()
                 dispatch(authSuccess(response.data.token, response.data.user.id, response.data.user.username));
                 dispatch(hideModal());
             })
@@ -90,7 +91,7 @@ export const register = (username, email, password, first_name, last_name, remem
 }
 
 
-export const submitHeadline= (headline, user_id, token) => {
+export const submitHeadline= (headline, user_id, token, callback) => {
     return dispatch => {
         const data = {
             headline : headline,
@@ -110,7 +111,7 @@ export const submitHeadline= (headline, user_id, token) => {
     }
 }
 
-export const submitIntroduction= (introduction, user_id, token) => {
+export const submitIntroduction= (introduction, user_id, token, callback) => {
     return dispatch => {
         const data = {
             introduction: introduction,
@@ -122,6 +123,7 @@ export const submitIntroduction= (introduction, user_id, token) => {
         let url = 'api/user/introduction';
         axios.post(url, data, {headers: headers})
             .then(response => {
+                callback()
                 console.log(response)
             })
             .catch(err => {

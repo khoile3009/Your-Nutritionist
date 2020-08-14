@@ -306,7 +306,6 @@ class ModalContainer extends Component {
 				this.state.auth.remember
 			);
 			this.resetPasswords();
-			this.refresh();
 		}
 	};
 
@@ -321,10 +320,10 @@ class ModalContainer extends Component {
 		this.props.signin(
 			this.state.auth.username,
 			this.state.auth.password,
-			this.state.auth.remember
+			this.state.auth.remember,
+			this.refresh
 		);
 		this.resetPasswords();
-		this.refresh()
 	};
 
 	submitInfoHandler = (event) => {
@@ -337,7 +336,8 @@ class ModalContainer extends Component {
 		this.props.submitIntroduction(
 			this.state.user_info.introduction,
 			this.props.userId,
-			this.props.token
+			this.props.token,
+			this.refresh
 		);
 		this.props.hideModal();
 	};
@@ -385,8 +385,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		signin: (username, password, remember) =>
-			dispatch(actions.signin(username, password, remember)),
+		signin: (username, password, remember, callback) =>
+			dispatch(actions.signin(username, password, remember,callback)),
 		register: (username, email, password, first_name, last_name, remember) =>
 			dispatch(actions.register(username, email, password, first_name, last_name, remember)),
 		showRegisterModal: (event) => dispatch(actions.showRegisterModal(event)),
@@ -394,10 +394,10 @@ const mapDispatchToProps = (dispatch) => {
 		showForgetPasswordModal: (event) => dispatch(actions.showForgetPasswordModal(event)),
 		showInfoModal: (event) => dispatch(actions.showInfoModal()),
 		hideModal: () => dispatch(actions.hideModal()),
-		submitHeadline: (headline, user_id, token) =>
-			dispatch(actions.submitHeadline(headline, user_id, token)),
-		submitIntroduction: (introduction, user_id, token) =>
-			dispatch(actions.submitIntroduction(introduction, user_id, token)),
+		submitHeadline: (headline, user_id, token, callback) =>
+			dispatch(actions.submitHeadline(headline, user_id, token, callback)),
+		submitIntroduction: (introduction, user_id, token, callback) =>
+			dispatch(actions.submitIntroduction(introduction, user_id, token, callback)),
 	};
 };
 
