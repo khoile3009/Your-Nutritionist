@@ -305,7 +305,7 @@ class ModalContainer extends Component {
 				this.state.auth.last_name,
 				this.state.auth.remember
 			);
-			this.resetPasswords();
+			this.resetState();
 		}
 	};
 
