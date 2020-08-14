@@ -1,5 +1,8 @@
+@import "../../../global-theme";
+
 .register-form-wrapper,
 .signin-form-wrapper {
+	color: $secondary-txt;
 	.register-header {
 		background: rgb(20, 76, 128);
 		color: white;
