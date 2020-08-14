@@ -3,122 +3,83 @@
 	border-radius: 5px;
 	padding: 0.5rem;
 }
-
 .circle-button {
 	border-radius: 50%;
 }
-
 .center {
 	margin: 5px auto;
 	display: block;
 }
-
 .full-width {
 	width: 100%;
 	padding: 0;
 }
-
 .no-padding-left {
 	padding-left: 0;
 }
-
 .no-padding-right {
 	padding-right: 0;
 }
-
 .flexbox {
 	display: flex;
 }
-
 .bold {
 	font-weight: 700;
 	font-size: 14pt;
 }
-
 .create-recipe-title {
 	font-size: 24pt;
 	padding: 1rem;
 	font-weight: bold;
 	color: #ff5252;
 }
-
 .col-2 {
 	text-align: center;
 	margin: auto;
 	padding: 0;
+	p {
+		margin: 0;
+	}
 }
-
-.col-2 p {
-	margin: 0;
-}
-
 .col-1 {
 	padding: 0;
 	margin: 0px;
+	button {
+		padding: 6px 12px;
+		margin: 0;
+	}
 }
-
-.col-1 button {
-	padding: 6px 12px;
-	margin: 0;
+.col-11 {
+	&::placeholder {
+		text-align: center;
+	}
 }
-
-.col-11 ::placeholder {
-	text-align: center;
-}
-
 .col {
 	padding-left: 8pt;
 }
-
 .row {
 	margin: 0 0 0 0;
 }
-
 .createRecipeBtn {
-	background: none;
-	color: #0097a7;
-	border: solid 1px #0097a7;
 	text-transform: uppercase;
 	padding: none;
 	text-align: center;
 	width: 200px;
 	margin: 1rem 0 1rem 0;
 }
-
-.createRecipeBtn:hover {
-	background: #0097a7;
-	color: #ffffff;
-	border: solid 1px #0097a7;
-	text-transform: uppercase;
-	padding: none;
-	text-align: center;
-}
-
 .cancelRecipeBtn {
-	background: none;
-	color: #303030;
-	border: solid 1px #303030;
 	text-transform: uppercase;
 	padding: none;
 	text-align: center;
 	width: 200px;
 }
-
-.cancelRecipeBtn:hover {
-	background: #303030;
-	color: white;
-	border: solid 1px #303030;
-	text-transform: uppercase;
-	padding: none;
-	text-align: center;
-}
-
 .form-control {
 	background: rgb(241, 241, 241);
 	border-radius: 0;
 	border: none;
 }
-
-.submitCancelBtn .target {
-	padding-left: 10.5%;
+.submitCancelBtn {
+	.target {
+		padding-left: 10.5%;
+	}
 }

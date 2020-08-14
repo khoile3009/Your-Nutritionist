@@ -7,7 +7,7 @@
 
 // Global palette
 $accent-red: rgb(250, 114, 132);
-$accent-red-lighter: rgb(255, 153, 167);
+$accent-red-lighter: rgb(255, 191, 200);
 $accent-red-darker: rgb(255, 90, 112);
 $accent-teal: #38d1b0;
 $accent-teal-lighter: #69d4bd;
@@ -17,10 +17,12 @@ $btn-cancel: $accent-red-darker;
 $btn-edit: #0088f7;
 $btn-primary: $accent-teal;
 $btn-secondary: rgb(168, 168, 168);
+$btn-circ: $btn-edit;
+$btn-circ-hover: #0072cf;
 
 $error: rgb(255, 50, 50);
 
-$link: rgb(0, 140, 255);
+$link: rgb(0, 174, 255);
 $link-hover: rgb(19, 125, 211);
 
 $trending-first: rgb(255, 157, 0);
@@ -41,13 +43,17 @@ $background: white;
 $primary-txt: rgb(12, 12, 12);
 $secondary-txt: rgb(64, 64, 64);
 $tertiary-txt: rgb(128, 128, 128);
+$box-shadow: 3px 2px 8px 2px rgba(221, 221, 221, 0.527);
 
 // Dark theme color palette
 $background-dark: #2b2b2b;
 $backdrop-dark: rgb(29, 29, 29);
+$box-shadow-dark: 1px 1px 12px 1px rgba(0, 0, 0, 0.356);
 
 $primary-txt-dark: white;
 $secondary-txt-dark: rgb(200, 200, 200);
 $tertiary-txt-dark: rgb(153, 153, 153);
+
+$linear-gradient-see-more: linear-gradient(0deg, #2b2b2b 0%, #2b2b2bf8 85%, #2b2b2be7 100%);
 
 $clickable-box-shadow-dark: 0px 0px 0px 1px $accent-teal-lighter;

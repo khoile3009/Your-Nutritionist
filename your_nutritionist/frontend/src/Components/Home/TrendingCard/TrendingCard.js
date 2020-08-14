@@ -36,41 +36,35 @@ const TrendingCard = (props) => {
 				on {props.recipe.created_date}
 			</div>
 			<div className="trending-stats social-fn-wrapper">
-				{props.recipe.number_visits === 0 ? null : (
-					<div className="social-fn">
-						<i className="material-icons" style={{ color: "#0390fc" }}>
-							visibility
-						</i>
-						&nbsp;
-						{props.recipe.number_visits.toString().length < 3
-							? "0".repeat(3 - props.recipe.number_visits.toString().length) +
-							  props.recipe.number_visits
-							: props.recipe.number_visits}
-					</div>
-				)}
+				<div className="social-fn">
+					<i className="material-icons" style={{ color: "#0390fc" }}>
+						visibility
+					</i>
+					&nbsp;
+					{props.recipe.number_visits.toString().length < 3
+						? "0".repeat(3 - props.recipe.number_visits.toString().length) +
+						  props.recipe.number_visits
+						: props.recipe.number_visits}
+				</div>
 
-				{props.recipe.number_upvotes === 0 ? null : (
-					<div className="social-fn">
-						<i className="material-icons" style={{ color: "#E97272" }}>
-							favorite
-						</i>
-						&nbsp;
-						{props.recipe.number_upvotes.toString().length < 3
-							? "0".repeat(3 - props.recipe.number_upvotes.toString().length) +
-							  props.recipe.number_upvotes
-							: props.recipe.number_upvotes}
-					</div>
-				)}
+				<div className="social-fn">
+					<i className="material-icons" style={{ color: "#E97272" }}>
+						favorite
+					</i>
+					&nbsp;
+					{props.recipe.number_upvotes.toString().length < 3
+						? "0".repeat(3 - props.recipe.number_upvotes.toString().length) +
+						  props.recipe.number_upvotes
+						: props.recipe.number_upvotes}
+				</div>
 
-				{props.recipe.number_ratings === 0 ? null : (
-					<div className="social-fn">
-						<i className="material-icons" style={{ color: "rgb(255, 174, 0)" }}>
-							grade
-						</i>
-						&nbsp;
-						{props.recipe.number_ratings}
-					</div>
-				)}
+				<div className="social-fn">
+					<i className="material-icons" style={{ color: "rgb(255, 174, 0)" }}>
+						grade
+					</i>
+					&nbsp;
+					{props.recipe.number_ratings}
+				</div>
 			</div>
 		</div>
 	);

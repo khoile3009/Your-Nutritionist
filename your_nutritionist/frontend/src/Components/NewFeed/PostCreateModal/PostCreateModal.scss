@@ -1,12 +1,23 @@
+@import "../../../global-theme";
+
 .cancel-post-btn.btn.btn-primary {
-    background: rgb(219, 25, 25);
-    &:hover {
-        background: rgb(189, 13, 13);
-    }
-    width: 100%;
+	background: transparent;
+	border: solid 1px $btn-cancel;
+	color: $btn-cancel;
+	&:hover {
+		color: $background;
+		background: $btn-cancel;
+	}
+	width: 100%;
 }
 
 .create-post-btn.btn.btn-primary {
-    width: 100%;
+	background: transparent;
+	border: solid 1px $btn-primary;
+	color: $btn-primary;
+	width: 100%;
+	&:hover {
+		color: $background;
+		background: $btn-primary;
+	}
 }
-

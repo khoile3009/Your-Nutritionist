@@ -1,6 +1,6 @@
 import React from "react";
-import { Row, Col, Form,  Button} from "react-bootstrap";
-import "../NewRecipe/NewRecipe.css";
+import { Row, Col, Form, Button } from "react-bootstrap";
+import "../NewRecipe/NewRecipe.scss";
 import { IngredientFormSection, StepFormSection, ImageForm } from "./FormSections/FormSections";
 
 const EditRecipe = (props) => {
@@ -17,7 +17,13 @@ const EditRecipe = (props) => {
 					<Form.Label>
 						<p className="bold">Recipe Name</p>
 					</Form.Label>
-					<Form.Control type="text" placeholder="Recipe Name" name="name" onChange={props.handleChangeSameName} value={props.name} />
+					<Form.Control
+						type="text"
+						placeholder="Recipe Name"
+						name="name"
+						onChange={props.handleChangeSameName}
+						value={props.name}
+					/>
 				</Form.Group>
 				<Row>
 					<Col>
@@ -25,7 +31,13 @@ const EditRecipe = (props) => {
 							<Form.Label>
 								<p className="bold">Number of serving</p>
 							</Form.Label>
-							<Form.Control type="number" placeholder="E.g. 1 person" name="number_person" onChange={props.handleChangeSameName} value={props.number_person} />
+							<Form.Control
+								type="number"
+								placeholder="E.g. 1 person"
+								name="number_person"
+								onChange={props.handleChangeSameName}
+								value={props.number_person}
+							/>
 						</Form.Group>
 					</Col>
 					<Col>
@@ -33,7 +45,13 @@ const EditRecipe = (props) => {
 							<Form.Label>
 								<p className="bold">Prep Time (mins)</p>
 							</Form.Label>
-							<Form.Control type="number" placeholder="E.g. 1" name="prep_time" onChange={props.handleChangeSameName} value={props.prep_time} />
+							<Form.Control
+								type="number"
+								placeholder="E.g. 1"
+								name="prep_time"
+								onChange={props.handleChangeSameName}
+								value={props.prep_time}
+							/>
 						</Form.Group>
 					</Col>
 					<Col>
@@ -41,7 +59,13 @@ const EditRecipe = (props) => {
 							<Form.Label>
 								<p className="bold">Cook Time (mins)</p>
 							</Form.Label>
-							<Form.Control type="number" placeholder="E.g. 1" name="cook_time" onChange={props.handleChangeSameName} value={props.cook_time} />
+							<Form.Control
+								type="number"
+								placeholder="E.g. 1"
+								name="cook_time"
+								onChange={props.handleChangeSameName}
+								value={props.cook_time}
+							/>
 						</Form.Group>
 					</Col>
 				</Row>
@@ -49,7 +73,14 @@ const EditRecipe = (props) => {
 					<Form.Label>
 						<p className="bold">Description</p>
 					</Form.Label>
-					<Form.Control as="textarea" placeholder="Your description goes here" name="description" value={props.description} onChange={props.handleChangeSameName} rows="3" />
+					<Form.Control
+						as="textarea"
+						placeholder="Your description goes here"
+						name="description"
+						value={props.description}
+						onChange={props.handleChangeSameName}
+						rows="3"
+					/>
 				</Form.Group>
 
 				<hr></hr>
@@ -87,7 +118,11 @@ const EditRecipe = (props) => {
 						);
 					})}
 				</Form.Group>
-				<Button variant="outline-dark" className="circle-button center" onClick={props.addMedia}>
+				<Button
+					variant="outline-dark"
+					className="circle-button center"
+					onClick={props.addMedia}
+				>
 					{" "}
 					+{" "}
 				</Button>
@@ -98,7 +133,20 @@ const EditRecipe = (props) => {
 					<p className="bold">Ingredients</p>
 				</Form.Label>
 				{props.ingredient_sections.map((ingredient_section, index) => {
-					return <IngredientFormSection units={props.units} addIngredient={props.addIngredient} section_index={index} ingredient_section={ingredient_section} handleChangeIngredient={props.handleChangeIngredient} deleteIngredient={props.deleteIngredient} deleteIngredientSection={props.deleteIngredientSection} handleChangeIngredientSectionName={props.handleChangeIngredientSectionName}></IngredientFormSection>;
+					return (
+						<IngredientFormSection
+							units={props.units}
+							addIngredient={props.addIngredient}
+							section_index={index}
+							ingredient_section={ingredient_section}
+							handleChangeIngredient={props.handleChangeIngredient}
+							deleteIngredient={props.deleteIngredient}
+							deleteIngredientSection={props.deleteIngredientSection}
+							handleChangeIngredientSectionName={
+								props.handleChangeIngredientSectionName
+							}
+						></IngredientFormSection>
+					);
 				})}
 				<Button variant="light" className=" center" onClick={props.addIngredientSection}>
 					{" "}
