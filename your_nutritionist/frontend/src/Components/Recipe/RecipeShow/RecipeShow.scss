@@ -1,9 +1,7 @@
 /* .items{
     font-size: 5px;
 } */
-body {
-	overflow-x: hidden;
-}
+
 .subtitle {
 	color: gray;
 	font-size: 15px;
@@ -55,6 +53,7 @@ button {
 	justify-content: space-between;
 }
 .recipe {
+	width: 50vw;
 	padding: 2rem;
 	margin-top: 3rem;
 	margin-bottom: 3rem;

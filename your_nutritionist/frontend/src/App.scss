@@ -18,6 +18,8 @@
 body {
 	background: $background;
 	color: $primary-txt;
+
+	overflow-x: hidden;
 }
 
 a {
