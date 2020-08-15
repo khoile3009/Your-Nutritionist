@@ -1,37 +1,60 @@
 @import url("https://fonts.googleapis.com/css?family=Lobster");
-
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@600&display=swap");
 
-/* SCSS HEX */
-$text-light: #333333;
-$text-dark: #fafafa;
-$accent-color: #ffa630ff;
-$tea-green: #d7e8baff;
-$main-color-light: #4da1a9ff;
-$main-color: rgba(0, 0, 0, 0.356);
-$buttons: rgb(34, 190, 112);
+@import "~material-design-icons/iconfont/material-icons.css";
 
-/* SCSS HSL */
-$yellow-orange: hsla(34, 100%, 59%, 1);
-$tea-green: hsla(82, 50%, 82%, 1);
-$cadet-blue: hsla(185, 37%, 48%, 1);
-$y-in-mn-blue: hsla(212, 44%, 32%, 1);
-$old-mauve: hsla(338, 55%, 25%, 1);
+// Global palette
+$accent-red: rgb(250, 114, 132);
+$accent-red-lighter: rgb(255, 191, 200);
+$accent-red-darker: rgb(255, 90, 112);
+$accent-teal: #38d1b0;
+$accent-teal-lighter: #69d4bd;
+$accent-teal-darker: #26be9d;
 
-/* SCSS RGB */
-$yellow-orange: rgba(255, 166, 48, 1);
-$tea-green: rgba(215, 232, 186, 1);
-$cadet-blue: rgba(77, 161, 169, 1);
-$y-in-mn-blue: rgba(46, 80, 119, 1);
-$old-mauve: rgba(97, 28, 53, 1);
+$btn-cancel: $accent-red-darker;
+$btn-edit: #0088f7;
+$btn-primary: $accent-teal;
+$btn-secondary: rgb(168, 168, 168);
+$btn-circ: $btn-edit;
+$btn-circ-hover: #0072cf;
 
-/* SCSS Gradient */
-$gradient-top: linear-gradient(0deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
-$gradient-right: linear-gradient(90deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
-$gradient-bottom: linear-gradient(180deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
-$gradient-left: linear-gradient(270deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
-$gradient-top-right: linear-gradient(45deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
-$gradient-bottom-right: linear-gradient(135deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
-$gradient-top-left: linear-gradient(225deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
-$gradient-bottom-left: linear-gradient(315deg, #ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
-$gradient-radial: radial-gradient(#ffa630ff, #d7e8baff, #4da1a9ff, #2e5077ff, #611c35ff);
+$error: rgb(255, 50, 50);
+
+$link: rgb(0, 174, 255);
+$link-hover: rgb(19, 125, 211);
+
+$trending-first: rgb(255, 157, 0);
+$trending-second: rgb(189, 72, 232);
+$trending-third: rgb(65, 153, 224);
+$trending-fourth: rgb(41, 230, 123);
+
+$social-views: rgb(3, 144, 252);
+$social-upvotes: rgb(233, 114, 114);
+$social-share-favorite: rgb(255, 174, 0);
+$social-follow: rgb(255, 174, 0);
+$social-comments: rgb(75, 200, 174);
+
+// Global style
+$card-border-radius: 18px;
+
+// Light theme color palette
+$background: white;
+$primary-txt: rgb(12, 12, 12);
+$secondary-txt: rgb(64, 64, 64);
+$tertiary-txt: rgb(128, 128, 128);
+$box-shadow: 3px 2px 8px 2px rgba(221, 221, 221, 0.527);
+
+// Dark theme color palette
+$background-dark: #2b2b2b;
+$backdrop-dark: rgb(29, 29, 29);
+$box-shadow-dark: 1px 1px 12px 1px rgba(0, 0, 0, 0.356);
+
+$primary-txt-dark: white;
+$secondary-txt-dark: rgb(200, 200, 200);
+$tertiary-txt-dark: rgb(153, 153, 153);
+
+$linear-gradient-see-more: linear-gradient(0deg, #2b2b2b 0%, #2b2b2bf8 85%, #2b2b2be7 100%);
+
+$clickable-box-shadow-dark: 0px 0px 0px 1px $accent-teal-lighter;

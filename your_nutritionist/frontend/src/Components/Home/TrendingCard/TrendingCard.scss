@@ -1,3 +1,5 @@
+@import "../../../global-theme";
+
 $padding: 0.5rem;
 
 .trending-card-wrapper {
@@ -36,7 +38,7 @@ $padding: 0.5rem;
 		grid-area: recipe-username;
 		padding-left: $padding;
 		padding-top: calc($padding - 0.25rem);
-		color: grey;
+		color: $tertiary-txt;
 	}
 	.trending-stats {
 		grid-area: recipe-stats;

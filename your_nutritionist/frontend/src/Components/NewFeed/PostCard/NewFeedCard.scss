@@ -1,3 +1,5 @@
+@import "../../../global-theme";
+
 $randInt: random(255);
 
 .newfeedcard-wrapper {
@@ -9,9 +11,8 @@ $randInt: random(255);
 	grid-template-columns: 0.1fr 6fr;
 	grid-template-areas: "profile-pic username" ". nf-content" "nf-media nf-media" "social-fn social-fn" "cmt-form cmt-form" "cmt-list cmt-list";
 	align-items: center;
-	border-radius: 18px;
-	color: rgb(99, 99, 99);
-
+	border-radius: $card-border-radius;
+	color: $primary-txt;
 	.profilepic-newfeed {
 		border-radius: 50%;
 		height: 80px;

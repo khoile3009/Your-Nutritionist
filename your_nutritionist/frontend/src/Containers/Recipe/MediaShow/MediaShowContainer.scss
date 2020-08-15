@@ -1,3 +1,11 @@
+@import "../../../global-theme";
+
+.media-container-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .media-container {
 	margin-top: 5rem;
 	flex: 0 1 100%;
@@ -9,35 +17,49 @@
 	justify-content: space-evenly;
 	padding-left: 0;
 	padding-right: 0;
-
+	width: 50vw;
 	.media-content {
 		flex: 0 0 55%;
 		height: 100%;
 		position: relative;
-		transition: .5s ease;
+		transition: 0.5s ease;
 	}
 	background: center;
 }
 
 .left-field {
 	left: 20px;
+	z-index: 6;
 	position: absolute;
+	&:hover {
+		> * {
+			background-color: $accent-teal-darker;
+			cursor: pointer;
+		}
+	}
 }
 
 .right-field {
 	right: 20px;
 	position: absolute;
+	&:hover {
+		> * {
+			background-color: $accent-teal-darker;
+			cursor: pointer;
+		}
+	}
+	z-index: 6;
 }
 
 .trigger-field {
 	text-align: center;
-	padding-top: .5rem;
+	padding-top: 0.5rem;
 	width: 3rem;
 	height: 3rem;
 	border-radius: 50%;
 	background-position: center;
 	&:hover {
-		background-color: rgba(128, 128, 128, 0.281);
+		background-color: $accent-teal-darker;
 		cursor: pointer;
 	}
 	margin: 0;
@@ -88,19 +110,19 @@
 	.left-card {
 		left: -20%;
 		top: 5%;
-		transition: .5s;
+		transition: 0.5s;
 		height: 80%;
 		width: 80%;
 		background-color: black;
-		transition: .5s ease;
+		transition: 0.5s ease;
 	}
 
 	.right-card {
 		right: -20%;
 		top: 5%;
-		transition: .5s all;
+		transition: 0.5s all;
 		height: 80%;
 		width: 80%;
-		transition: .5s ease;
+		transition: 0.5s ease;
 	}
 }

@@ -1,3 +1,5 @@
+@import "../../../global-theme";
+
 .user-wrapper {
 	width: 50vw;
 	margin-bottom: 2rem;
@@ -18,12 +20,12 @@
 			align-items: center;
 			&:hover {
 				cursor: pointer;
-				border-bottom: solid 2px rgb(255, 170, 184);
+				border-bottom: solid 2px $accent-red-lighter;
 				transition: 0.5s all;
 			}
 		}
 		.content-nav-active {
-			border-bottom: solid 2px rgb(252, 121, 143);
+			border-bottom: solid 2px $accent-red-darker;
 		}
 	}
 	.recipe-list-wrapper {

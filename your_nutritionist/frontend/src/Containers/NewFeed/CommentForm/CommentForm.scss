@@ -1,3 +1,5 @@
+@import "../../../global-theme";
+
 $comment-btn-color: rgb(0, 170, 85);
 
 .comment-input {
@@ -21,5 +23,12 @@ $comment-btn-color: rgb(0, 170, 85);
 			color: white;
 			background: $comment-btn-color;
 		}
+	}
+}
+
+html[data-theme="dark"] {
+	.comment-input {
+		box-shadow: $box-shadow-dark;
+		background-color: $background-dark;
 	}
 }

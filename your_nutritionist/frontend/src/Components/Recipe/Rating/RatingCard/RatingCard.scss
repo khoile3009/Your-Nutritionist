@@ -1,4 +1,4 @@
-/*# sourceMappingURL=RatingCard.css.map */
+@import "../../../../global-theme"; /*# sourceMappingURL=RatingCard.css.map */
 .rating-wrapper {
 	flex-direction: column;
 	align-items: center;
@@ -17,10 +17,10 @@
 		padding: 0;
 		.comment-profile {
 			border-radius: 50%;
-			box-shadow: 7px 6px 10px -6px rgba(91, 91, 91, 0.4);
+			box-shadow: 7px 6px 10px -6px $box-shadow-dark;
 			width: 80px;
 			height: 80px;
-			background: #bc002d;
+			background-color: rgb(random(255), random(255), random(255));
 			margin: 2rem;
 			background-size: cover;
 			background-position: center;
@@ -103,15 +103,10 @@
 
 html[data-theme="dark"] {
 	.card.rating-card {
-		background: rgba(17, 17, 17, 0.603);
-		box-shadow: 2px 3px 8px 3px rgba(0, 0, 0, 0.288);
+		background: $background-dark;
+		box-shadow: $box-shadow-dark;
 		.see-more-trigger {
-			background-image: linear-gradient(
-				0deg,
-				rgb(19, 19, 19) 0%,
-				rgba(19, 19, 19, 0.966) 85%,
-				rgba(19, 19, 19, 0.842) 100%
-			);
+			background-image: $linear-gradient-see-more;
 		}
 	}
 }

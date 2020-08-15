@@ -14,7 +14,7 @@
 	a {
 		color: white;
 		&:hover {
-			color: $accent-color;
+			color: $accent-teal;
 			text-decoration: none;
 		}
 	}
@@ -39,21 +39,21 @@
 		a.nav-link {
 			color: white;
 			&:hover {
-				color: $accent-color;
+				color: $accent-teal;
 			}
 		}
 	}
 
 	height: 100px;
 
-	#basic-nav-dropdown {
-		text-align: right;
-		font-weight: 700;
-		color: white;
-		&:hover {
-			color: gold;
-		}
-	}
+	// #basic-nav-dropdown {
+	// 	text-align: right;
+	// 	font-weight: 700;
+	// 	color: white;
+	// 	&:hover {
+	// 		color: gold;
+	// 	}
+	// }
 	.navbar-toggler {
 		background: url("https://storage.googleapis.com/your-nutritionist-cdn/baseline_menu_white_18dp.png");
 		background-position: center;
@@ -83,12 +83,12 @@
 		background-image: url("https://storage.googleapis.com/your-nutritionist-cdn/header-bg.jpg");
 		background-size: cover;
 		background-position: center;
-		box-shadow: 3px 2px 8px 2px rgba(0, 0, 0, 0.329);
+		box-shadow: $box-shadow-dark;
 		border-bottom: solid 1px rgba(128, 128, 128, 0.37);
 		a {
-			color: rgb(255, 255, 255);
+			color: $primary-txt;
 			&:hover {
-				color: $accent-color;
+				color: $accent-teal;
 				text-decoration: none;
 			}
 		}
@@ -98,7 +98,7 @@
 			justify-content: center;
 			flex-direction: column;
 			background: none;
-			color: black;
+			color: $primary-txt;
 		}
 		.header-background {
 			display: none;
@@ -110,11 +110,11 @@
 			margin-top: 1rem;
 			color: black;
 			a#basic-nav-dropdown {
-				color: rgb(255, 255, 255);
+				color: $primary-txt-dark;
 				padding: 1rem;
-				background: rgba(128, 128, 128, 0.582);
+				background: $background-dark;
 				&:hover {
-					color: gold;
+					color: $accent-red;
 				}
 			}
 		}

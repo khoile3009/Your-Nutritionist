@@ -1,4 +1,5 @@
 @import "~material-design-icons/iconfont/material-icons.css";
+@import "./global-theme";
 .card {
 	box-shadow: 3px 2px 8px 2px rgba(221, 221, 221, 0.527);
 	border: 0;
@@ -12,6 +13,30 @@
 	100% {
 		box-shadow: 5px 3px 6px 2px rgba(202, 202, 202, 0.67);
 	}
+}
+
+body {
+	background: $background;
+	color: $primary-txt;
+
+	overflow-x: hidden;
+}
+
+a {
+	font-weight: bold;
+}
+
+.social-views {
+	color: $social-views;
+}
+.social-upvotes {
+	color: $social-upvotes;
+}
+.social-share-favorite {
+	color: $social-share-favorite;
+}
+.social-comments {
+	color: $social-comments;
 }
 
 textarea.form-control {
@@ -33,6 +58,37 @@ textarea {
 	}
 }
 
+.custom-btn-cancel {
+	background: transparent;
+	color: $btn-cancel !important;
+	border: solid 1px $btn-cancel;
+	&:hover {
+		border: solid 1px $btn-cancel;
+		background: $btn-cancel;
+		color: $background !important;
+	}
+}
+.custom-btn-primary {
+	background: transparent;
+	color: $btn-primary;
+	border: solid 1px $btn-primary;
+	&:hover {
+		border: solid 1px $btn-primary;
+		background: $btn-primary;
+		color: $background;
+	}
+}
+.custom-btn-secondary {
+	background: transparent;
+	color: $btn-secondary;
+	border: solid 1px $btn-secondary;
+	&:hover {
+		border: solid 1px $btn-secondary;
+		background: $btn-secondary;
+		color: $background;
+	}
+}
+
 .form-btn {
 	display: flex;
 	justify-content: center;
@@ -41,30 +97,33 @@ textarea {
 	height: 50px;
 	padding: 0;
 	border-radius: 50%;
+	background: $accent-teal;
 	.material-icons {
 		font-size: 16pt;
 	}
 	&:hover {
-		background: rgb(0, 76, 216);
+		background: $accent-teal-darker;
 	}
 }
 .form-cancel-btn {
-	background: rgb(255, 41, 41);
+	background: $accent-red;
 	border: 0;
 	&:hover {
-		background: rgb(214, 34, 34);
+		background: $accent-red-darker;
 	}
 }
 .form-submit-btn {
+	background: $accent-teal;
 	&:hover {
-		background: rgb(0, 76, 216);
+		background: $accent-teal-darker;
 	}
 }
 
 .link {
-	color: rgb(0, 119, 255);
+	font-weight: bold;
+	color: $link;
 	&:hover {
-		color: rgb(0, 96, 175);
+		color: $link-hover;
 		text-decoration: underline;
 	}
 }
@@ -73,12 +132,12 @@ textarea {
 
 html[data-theme="dark"] {
 	body {
-		background: rgb(29, 29, 29) !important;
-		color: rgb(235, 235, 235) !important;
+		background: $backdrop-dark;
+		color: $primary-txt-dark;
 		a {
-			color: rgb(240, 125, 144);
+			color: $link;
 			&:hover {
-				color: rgb(235, 85, 160);
+				color: $link-hover;
 			}
 		}
 	}
@@ -86,21 +145,47 @@ html[data-theme="dark"] {
 	.user-info-wrapper {
 		background: transparent;
 		.title {
-			color: white;
+			color: $primary-txt-dark;
 		}
 	}
 
 	.card,
 	.custom-container {
-		background: rgb(43, 43, 43);
-		color: rgb(231, 231, 231) !important;
-		box-shadow: 1px 1px 12px 1px rgba(0, 0, 0, 0.103);
+		background: $background-dark;
+		color: $secondary-txt-dark;
+		box-shadow: $box-shadow-dark;
 		a,
 		.link {
-			color: rgb(240, 125, 144) !important;
+			color: $link;
 			&:hover {
-				color: rgb(235, 85, 160) !important;
+				color: $link-hover;
 			}
+		}
+	}
+
+	.clickable {
+		&:hover {
+			box-shadow: none;
+			animation: none;
+			transition: none;
+			border: none;
+			box-shadow: $clickable-box-shadow-dark;
+		}
+	}
+
+	.custom-btn-cancel {
+		&:hover {
+			color: $background-dark !important;
+		}
+	}
+	.custom-btn-primary {
+		&:hover {
+			color: $background-dark;
+		}
+	}
+	.custom-btn-secondary {
+		&:hover {
+			color: $background-dark;
 		}
 	}
 }

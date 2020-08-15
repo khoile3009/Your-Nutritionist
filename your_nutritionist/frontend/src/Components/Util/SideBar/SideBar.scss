@@ -1,5 +1,7 @@
+@import "../../../global-theme";
+
 .side-bar-wrapper {
-	border-radius: 18px;
+	border-radius: $card-border-radius;
 	// border: solid 1px rgba(173, 173, 173, 0.322);
 	padding: 0.5rem;
 	align-items: center;
@@ -10,17 +12,26 @@
 	}
 	.side-bar-create {
 		margin: 0.25rem;
-		border: solid 1px rgb(56, 209, 176);
-		border-radius: 18px;
+		border: solid 1px $accent-teal;
+		color: $accent-teal;
+		border-radius: $card-border-radius;
 		width: 10vw;
 		text-align: center;
 		font-size: 12pt;
 		height: auto;
 		padding: 0.5rem;
 		&:hover {
-			color: white;
-			background: rgb(56, 209, 176);
+			color: $background;
+			background: $accent-teal;
 			cursor: pointer;
+		}
+	}
+}
+
+html[data-theme="dark"] {
+	.side-bar-create {
+		&:hover {
+			color: $background-dark;
 		}
 	}
 }

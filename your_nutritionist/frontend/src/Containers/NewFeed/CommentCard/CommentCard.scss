@@ -1,3 +1,4 @@
+@import "../../../global-theme";
 .comment-box {
 	.cmt-content-wrapper {
 		border-radius: 16pt;
@@ -25,7 +26,7 @@
 		}
 		#cmt-time {
 			font-size: 10pt;
-			color: rgba(128, 128, 128, 0.733);
+			color: $tertiary-txt;
 		}
 	}
 	.comment-content {
@@ -41,5 +42,12 @@
 			width: 40px;
 			height: 40px;
 		}
+	}
+}
+
+html[data-theme="dark"] {
+	.cmt-content-wrapper {
+		background: $background-dark;
+		box-shadow: $box-shadow-dark;
 	}
 }
