@@ -1,3 +1,5 @@
+@import "../../../global-theme";
+
 .user-info-wrapper {
 	display: grid;
 	background-color: rgba(255, 255, 255, 0.26);
@@ -58,6 +60,23 @@
 			margin: 1rem 0;
 			font-size: 16pt;
 		}
+		.follow-btn {
+			background: transparent;
+			border: solid 1px $social-follow;
+			color: $social-follow;
+			&:hover {
+				background: $social-follow;
+				border: solid 1px transparent;
+				color: white;
+			}
+		}
+		.following-btn {
+			background: $social-follow;
+			border: solid 1px transparent;
+			&:hover {
+				background: $accent-red-darker;
+			}
+		}
 		.edit-headline-wrapper {
 			width: 100%;
 			textarea {
@@ -96,5 +115,13 @@
 		grid-template-columns: 1fr;
 		grid-template-rows: 1fr 1fr;
 		grid-template-areas: "profile-pic" "username";
+	}
+}
+
+html[data-theme="dark"] {
+	.user-info-wrapper .username-wrapper .follow-btn {
+		&:hover {
+			color: $primary-txt;
+		}
 	}
 }
