@@ -2,26 +2,29 @@
 
 $comment-btn-color: rgb(0, 170, 85);
 
-.comment-input {
+.comment-input.form-control {
 	border-radius: 16pt;
 	padding: 1rem;
 	border-bottom: none !important;
-	background-color: rgba(236, 236, 236, 0.404);
+	background-color: $background;
+	box-shadow: $box-shadow;
+	color: $secondary-txt;
 }
 
 .comment-submit-btn-wrapper {
 	margin: 0.5rem auto auto auto;
 	.comment-submit-btn {
-		border: solid 1px $comment-btn-color;
-		background: white;
-		color: $comment-btn-color;
+		border: solid 1px $accent-teal;
+		background: transparent;
+		color: $accent-teal;
 		display: flex;
 		float: right;
 		border-radius: 16pt;
+
 		&:hover {
 			border: solid 1px transparent;
-			color: white;
-			background: $comment-btn-color;
+			color: $background;
+			background: $accent-teal-darker;
 		}
 	}
 }
@@ -30,5 +33,13 @@ html[data-theme="dark"] {
 	.comment-input {
 		box-shadow: $box-shadow-dark;
 		background-color: $background-dark;
+	}
+	.comment-submit-btn {
+		&:hover {
+			color: $background-dark;
+		}
+	}
+	.comment-input.form-control {
+		color: $secondary-txt-dark;
 	}
 }
