@@ -53,6 +53,9 @@ button {
 	justify-content: space-between;
 }
 .recipe {
+	position: absolute;
+	top: 60vh;
+	grid-area: recipe;
 	width: 50vw;
 	padding: 2rem;
 	margin-top: 3rem;

@@ -24,10 +24,10 @@ function App(props) {
 			<HeaderContainer />
 			<div className="page-wrapper">
 				<Row>
-					<Col className="custom-col" sm={0} md={3}>
+					<Col className="custom-col" sm="auto" md="auto">
 						<SideBarContainer />
 					</Col>
-					<Col className="custom-col" sm={12} md={6}>
+					<Col className="custom-col" sm={7} md={7}>
 						<Switch>
 							<Route path="/recipe/create" component={NewRecipeContainer} />
 							<Route
@@ -65,7 +65,7 @@ function App(props) {
 							</Route>
 						</Switch>
 					</Col>
-					<Col sm={0} md={3}>
+					<Col className="custom-col" sm={2} md={2}>
 						<RightBarContainer />
 					</Col>
 				</Row>
