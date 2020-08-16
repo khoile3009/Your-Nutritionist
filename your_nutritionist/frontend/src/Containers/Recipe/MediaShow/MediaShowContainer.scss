@@ -3,21 +3,25 @@
 .media-container-wrapper {
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
 	align-items: center;
+	height: 40vh;
+	margin-top: 1rem;
 }
 
 .media-container {
-	margin-top: 5rem;
+	// margin-top: 5rem;
 	flex: 0 1 100%;
 	display: flex;
 	justify-content: center;
 	height: 40rem;
+	width: 50vw;
 	position: relative;
 	align-items: center;
 	justify-content: space-evenly;
 	padding-left: 0;
 	padding-right: 0;
-	width: 50vw;
+
 	.media-content {
 		flex: 0 0 55%;
 		height: 100%;
@@ -86,7 +90,11 @@
 }
 
 @media (max-width: 900px) {
+	.media-container-wrapper {
+		margin-bottom: 5rem;
+	}
 	.media-container {
+		width: 100vw;
 		.media-content {
 			width: 100%;
 			position: absolute;

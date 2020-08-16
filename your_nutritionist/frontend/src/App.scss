@@ -15,7 +15,7 @@
 	}
 }
 
-.page-wrapper{
+.page-wrapper {
 	width: 100%;
 }
 
@@ -28,6 +28,10 @@ body {
 
 a {
 	font-weight: bold;
+}
+
+.custom-col {
+	padding: 0;
 }
 
 .social-views {
@@ -193,5 +197,3 @@ html[data-theme="dark"] {
 		}
 	}
 }
-
-
