@@ -1,11 +1,14 @@
 @import "../../global-theme";
 
 .right-bar-wrapper {
-	top: 9rem;
-	right: 2rem;
+	top: 1rem;
+	// right: 2rem;
 	height: auto;
-	position: fixed;
+	// position: fixed;
+	position: sticky;
+	margin-top: 1rem;
 	width: 20vw;
+	margin: 1rem auto;
 	.adverts-wrapper {
 		margin: 0 0 1rem 0;
 		border-radius: $card-border-radius;
@@ -23,8 +26,8 @@
 		display: block;
 		position: sticky;
 		height: auto;
-		width: 50vw;
-		left: 25vw;
+		// width: 50vw;
+		// left: 25vw;
 		padding-bottom: 2rem;
 	}
 	.adverts-wrapper {
