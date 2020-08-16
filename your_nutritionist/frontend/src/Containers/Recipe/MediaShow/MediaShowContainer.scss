@@ -5,7 +5,7 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	height: 60vh;
+	height: 50vh;
 	margin-top: 4rem;
 }
 
@@ -15,7 +15,7 @@
 	display: flex;
 	justify-content: center;
 	height: 40rem;
-	width: 50vw;
+	width: 60vw;
 	position: relative;
 	align-items: center;
 	justify-content: space-evenly;
@@ -27,12 +27,14 @@
 		height: 100%;
 		position: relative;
 		transition: 0.5s ease;
+		width: 100%;
 	}
 	background: center;
 }
 
 .left-field {
-	left: 20px;
+	top: 90%;
+	left: 100px;
 	z-index: 6;
 	position: absolute;
 	&:hover {
@@ -43,8 +45,26 @@
 	}
 }
 
+.left-card {
+	left: -20%;
+	top: 5%;
+	transition: 0.5s;
+
+	background-color: black;
+	transition: 0.5s ease;
+}
+
+.right-card {
+	right: -20%;
+	top: 5%;
+	transition: 0.5s all;
+
+	transition: 0.5s ease;
+}
+
 .right-field {
-	right: 20px;
+	top: 90%;
+	right: 100px;
 	position: absolute;
 	&:hover {
 		> * {
@@ -110,27 +130,27 @@
 	}
 }
 
-@media (min-width: 1000px) {
-	:root {
-		--media-card-offset: 0px;
-		--media-card-width: 80%;
-	}
-	.left-card {
-		left: -20%;
-		top: 5%;
-		transition: 0.5s;
-		height: 80%;
-		width: 80%;
-		background-color: black;
-		transition: 0.5s ease;
-	}
+// @media (max-width: 1000px) {
+// 	:root {
+// 		--media-card-offset: 0px;
+// 		--media-card-width: 80%;
+// 	}
+// 	.left-card {
+// 		left: -20%;
+// 		top: 5%;
+// 		transition: 0.5s;
+// 		height: 80%;
+// 		width: 80%;
+// 		background-color: black;
+// 		transition: 0.5s ease;
+// 	}
 
-	.right-card {
-		right: -20%;
-		top: 5%;
-		transition: 0.5s all;
-		height: 80%;
-		width: 80%;
-		transition: 0.5s ease;
-	}
-}
+// 	.right-card {
+// 		right: -20%;
+// 		top: 5%;
+// 		transition: 0.5s all;
+// 		height: 80%;
+// 		width: 80%;
+// 		transition: 0.5s ease;
+// 	}
+// }
