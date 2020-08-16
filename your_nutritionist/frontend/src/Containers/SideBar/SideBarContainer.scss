@@ -1,10 +1,12 @@
 .sidebar-container {
-	position: fixed;
+	position: sticky;
 	left: 2rem;
-	top: 9rem;
+	top: 1rem; // T de cai nay sticky co gi m sua lai giup t
+	margin-top: 1rem;
 	height: auto;
 	width: 20vw;
 	display: grid;
+	margin: 1rem auto;
 	#trending-title {
 		display: none;
 	}
