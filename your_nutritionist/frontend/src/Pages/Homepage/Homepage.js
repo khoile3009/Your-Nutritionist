@@ -100,9 +100,9 @@ class Homepage extends Component {
 					search={this.search}
 				/>
 				<div className="overall-layout">
-					<SideBarContainer />
+					{/* <SideBarContainer /> */}
 					<PostCardList posts={this.state.posts} loadPosts={this.loadPosts} />
-					<RightBarContainer></RightBarContainer>
+					{/* <RightBarContainer></RightBarContainer> */}
 				</div>
 			</div>
 		);
