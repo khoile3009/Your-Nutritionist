@@ -102,7 +102,6 @@ class SearchPage extends Component {
 	render() {
 		return (
 			<div className="search-page-wrapper">
-				<SideBarContainer />
 				<RecipeSearchbox
 					setRecipes={this.setRecipes}
 					setSearchQuery={this.setSearchQuery}
