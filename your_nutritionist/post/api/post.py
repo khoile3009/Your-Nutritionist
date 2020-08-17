@@ -1,7 +1,7 @@
 from accounts.helpers import get_profile_pic
 from ..models import PostMedia, Post
 from utils.files import GCLOUD
-from social.apis.like_api import get_number_of_like
+from social.apis import like_api
 from social.apis.comment_api import get_number_of_comment_post
 from social.models import Like
 from django.http import HttpResponse, JsonResponse
@@ -23,7 +23,7 @@ def get_post_info(post_instance,user):
             post_info['liked'] = True
         except Like.DoesNotExist:
             post_info['liked'] = False
-    post_info['num_like'] = get_number_of_like(post_instance)
+    post_info['num_like'] = post_instance.number_of_like
     post_info['num_comment'] = get_number_of_comment_post(post_instance)
     media_instances = PostMedia.objects.filter(post=post_instance)
     post_info['medias'] = []

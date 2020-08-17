@@ -7,7 +7,11 @@ from post.models import Post, PostMedia
 from utils.files import GCLOUD
 from .post import *
 from social.models import Follow
+from social.apis import like_api
 import json
+
+
+
 class PostCreateAPI(generics.GenericAPIView):
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly,
@@ -68,10 +72,10 @@ class PostQueryAPI(generics.GenericAPIView):
     ]
     
     def get(self, *args, **kwargs):
-        if(self.request.GET.get('limit')):
-            limit = int(self.request.GET.get('limit'))
+        if(self.request.GET.get('num')):
+            num = int(self.request.GET.get('num'))
         else:
-            limit = 5
+            num = 20
         before_id = None
         if(self.request.GET.get('before_id')):
             before_id = int(self.request.GET.get('before_id'))
@@ -88,7 +92,7 @@ class PostQueryAPI(generics.GenericAPIView):
                 ) else Post.objects.filter(
                     creator__id=int(self.request.GET.get('user_id')),
                 ).order_by('-created_at')
-                context['posts'] = [get_post_info(post_instance,self.request.user) for post_instance in post_instances[:limit]]
+                context['posts'] = [get_post_info(post_instance,self.request.user) for post_instance in post_instances[:num]]
                 return JsonResponse(context, safe=True)
             else:
                 return JsonResponse({'status':'No user id provided'}, status=422)
@@ -104,8 +108,18 @@ class PostQueryAPI(generics.GenericAPIView):
                 ) else Post.objects.filter(
                     creator__id__in=following_user_ids
                 )
-                for post_instance in post_instances[:limit]:
+                for post_instance in post_instances[:num]:
                     context['posts'].append(get_post_info(post_instance,self.request.user))
                 return JsonResponse(context, safe=True)
             else:
-                return JsonResponse({'status':'Not authorized'}, status=405)                
+                context = {'posts': []}
+                post_instances = Post.objects.filter(
+                    id__lt = before_id
+                ) if (before_id and before_id != -1
+                ) else Post.objects.all()
+                for post_instance in post_instances[:num]:
+                    context['posts'].append(get_post_info(post_instance,self.request.user))
+                return JsonResponse(context, safe=True)
+def update_post_like(post_instance):
+    post_instance.number_of_like = like_api.get_number_of_like(post_instance)
+    post_instance.save()
