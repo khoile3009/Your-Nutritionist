@@ -14,7 +14,7 @@ import Homepage from "./Pages/Homepage/Homepage";
 import queryString from "query-string";
 import EditRecipeContainer from "./Containers/Recipe/EditRecipe/EditRecipeContainer";
 import DarkMode from "./Containers/Util/DarkMode/DarkMode";
-import { Row, Col } from "react-bootstrap"
+import { Row, Col } from "react-bootstrap";
 import SideBarContainer from "./Containers/SideBar/SideBarContainer";
 import RightBarContainer from "./Containers/RightBar/RightBarContainer";
 function App(props) {
@@ -24,23 +24,29 @@ function App(props) {
 			<HeaderContainer />
 			<div className="page-wrapper">
 				<Row>
-					<Col sm={0} md={3}>
+					<Col className="custom-col" sm="auto" md="auto">
 						<SideBarContainer />
 					</Col>
-					<Col sm={12} md={6}>
+					<Col className="custom-col" sm={7} md={7}>
 						<Switch>
 							<Route path="/recipe/create" component={NewRecipeContainer} />
 							<Route
 								path="/recipe/:recipe_id/edit"
 								render={(props) => (
-									<EditRecipeContainer key={props.match.params["user_id"]} {...props} />
+									<EditRecipeContainer
+										key={props.match.params["user_id"]}
+										{...props}
+									/>
 								)}
 							/>
 							<Route path="/recipe/:recipe_id" component={RecipeShowContainer} />
 							<Route
 								path="/user/:user_id"
 								render={(props) => (
-									<UserShowContaner key={props.match.params["user_id"]} {...props} />
+									<UserShowContaner
+										key={props.match.params["user_id"]}
+										{...props}
+									/>
 								)}
 							/>
 							<Route
@@ -59,12 +65,11 @@ function App(props) {
 							</Route>
 						</Switch>
 					</Col>
-					<Col sm={0} md={3}>
+					<Col className="custom-col" sm={2} md={2}>
 						<RightBarContainer />
 					</Col>
 				</Row>
 			</div>
-
 		</div>
 	);
 }

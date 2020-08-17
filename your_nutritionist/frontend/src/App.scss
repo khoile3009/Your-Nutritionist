@@ -15,7 +15,7 @@
 	}
 }
 
-.page-wrapper{
+.page-wrapper {
 	width: 100%;
 }
 
@@ -28,6 +28,13 @@ body {
 
 a {
 	font-weight: bold;
+}
+
+.custom-col {
+	padding: 1rem;
+	display: flex;
+	justify-content: center;
+	// align-items: center;
 }
 
 .social-views {
@@ -193,5 +200,3 @@ html[data-theme="dark"] {
 		}
 	}
 }
-
-

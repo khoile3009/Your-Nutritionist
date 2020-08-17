@@ -8,6 +8,7 @@ import MediaShowContainer from "../MediaShow/MediaShowContainer";
 import { Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import "./RecipeShowContainer.scss";
 
 class RecipeShowContainer extends Component {
 	constructor(props) {
@@ -145,7 +146,7 @@ class RecipeShowContainer extends Component {
 		// console.log(this.props);
 		console.log(this.props);
 		return this.state.recipe ? (
-			<>
+			<div className="recipe-show-wrapper">
 				{this.state.medias && this.state.medias.length != 0 ? (
 					<MediaShowContainer
 						medias={this.state.medias}
@@ -180,7 +181,7 @@ class RecipeShowContainer extends Component {
 						creatorId={this.state.recipe.creator_id}
 					></RecipeRatingContainer>
 				</Container>
-			</>
+			</div>
 		) : (
 			<NullPage></NullPage>
 		); //Update this to null page

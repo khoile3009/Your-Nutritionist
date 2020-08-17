@@ -3,32 +3,39 @@
 .media-container-wrapper {
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
 	align-items: center;
+	height: auto;
+	margin-top: 3rem;
+	grid-area: media-cont;
 }
 
 .media-container {
-	margin-top: 5rem;
+	// margin-top: 5rem;
 	flex: 0 1 100%;
 	display: flex;
 	justify-content: center;
-	height: 40rem;
+	height: 60vh;
+	width: 45vw;
 	position: relative;
 	align-items: center;
 	justify-content: space-evenly;
 	padding-left: 0;
 	padding-right: 0;
-	width: 50vw;
+
 	.media-content {
 		flex: 0 0 55%;
 		height: 100%;
 		position: relative;
 		transition: 0.5s ease;
+		width: 100%;
 	}
 	background: center;
 }
 
 .left-field {
-	left: 20px;
+	top: 90%;
+	left: 25%;
 	z-index: 6;
 	position: absolute;
 	&:hover {
@@ -39,8 +46,26 @@
 	}
 }
 
+.left-card {
+	left: -20%;
+	// top: 5%;
+	transition: 0.5s;
+
+	background-color: black;
+	transition: 0.5s ease;
+}
+
+.right-card {
+	right: -20%;
+	// top: 5%;
+	transition: 0.5s all;
+
+	transition: 0.5s ease;
+}
+
 .right-field {
-	right: 20px;
+	top: 90%;
+	right: 25%;
 	position: absolute;
 	&:hover {
 		> * {
@@ -74,7 +99,7 @@
 	width: 20%;
 	position: absolute;
 	z-index: 3;
-	left: -11vw;
+	left: -5vw;
 }
 
 .right-media-cover {
@@ -82,11 +107,15 @@
 	width: 20%;
 	position: absolute;
 	z-index: 3;
-	right: -11vw;
+	right: -5vw;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
+	.media-container-wrapper {
+		margin-bottom: 5rem;
+	}
 	.media-container {
+		width: 100vw;
 		.media-content {
 			width: 100%;
 			position: absolute;
@@ -102,7 +131,7 @@
 	}
 }
 
-@media (min-width: 1000px) {
+@media (max-width: 1000px) {
 	:root {
 		--media-card-offset: 0px;
 		--media-card-width: 80%;
