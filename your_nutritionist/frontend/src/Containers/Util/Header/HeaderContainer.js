@@ -101,6 +101,11 @@ class HeaderContainer extends Component {
 		});
 	};
 
+	refresh = () => {
+		this.props.history.push("/temp");
+		this.props.history.goBack()
+	}
+
 	render() {
 		return (
 			<>

@@ -27,10 +27,17 @@ class Homepage extends Component {
 		this.loadPosts = this.loadPosts.bind(this);
 	}
 
-	componentDidMount = () => {
+	componentWillReceiveProps = () => {
+		this.resetPost();
 		this.loadPosts();
 	};
 
+	resetPost = () => {
+		this.setState({
+			posts: []
+		})
+	}
+	
 	loadPosts = () => {
 		if (this.props.token) {
 			let headers = {

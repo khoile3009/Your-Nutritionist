@@ -73,7 +73,7 @@ class ModalContainer extends Component {
 
 	refresh = () => {
 		this.props.history.push("/temp");
-		this.props.history.goBack()
+		this.props.history.goBack();
 	};
 
 	CodeToModal = (modalCode) => {
@@ -321,7 +321,6 @@ class ModalContainer extends Component {
 			this.state.auth.username,
 			this.state.auth.password,
 			this.state.auth.remember,
-			this.refresh
 		);
 		this.resetPasswords();
 	};
@@ -337,7 +336,6 @@ class ModalContainer extends Component {
 			this.state.user_info.introduction,
 			this.props.userId,
 			this.props.token,
-			this.refresh
 		);
 		this.props.hideModal();
 	};
@@ -385,8 +383,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		signin: (username, password, remember, callback) =>
-			dispatch(actions.signin(username, password, remember,callback)),
+		signin: (username, password, remember) =>
+			dispatch(actions.signin(username, password, remember)),
 		register: (username, email, password, first_name, last_name, remember) =>
 			dispatch(actions.register(username, email, password, first_name, last_name, remember)),
 		showRegisterModal: (event) => dispatch(actions.showRegisterModal(event)),
@@ -394,10 +392,10 @@ const mapDispatchToProps = (dispatch) => {
 		showForgetPasswordModal: (event) => dispatch(actions.showForgetPasswordModal(event)),
 		showInfoModal: (event) => dispatch(actions.showInfoModal()),
 		hideModal: () => dispatch(actions.hideModal()),
-		submitHeadline: (headline, user_id, token, callback) =>
-			dispatch(actions.submitHeadline(headline, user_id, token, callback)),
-		submitIntroduction: (introduction, user_id, token, callback) =>
-			dispatch(actions.submitIntroduction(introduction, user_id, token, callback)),
+		submitHeadline: (headline, user_id, token) =>
+			dispatch(actions.submitHeadline(headline, user_id, token)),
+		submitIntroduction: (introduction, user_id, token) =>
+			dispatch(actions.submitIntroduction(introduction, user_id, token)),
 	};
 };
 
