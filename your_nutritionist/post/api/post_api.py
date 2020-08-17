@@ -112,8 +112,14 @@ class PostQueryAPI(generics.GenericAPIView):
                     context['posts'].append(get_post_info(post_instance,self.request.user))
                 return JsonResponse(context, safe=True)
             else:
-                return JsonResponse({'status':'Not authorized'}, status=405)                
-
+                context = {'posts': []}
+                post_instances = Post.objects.filter(
+                    id__lt = before_id
+                ) if (before_id and before_id != -1
+                ) else Post.objects.all()
+                for post_instance in post_instances[:num]:
+                    context['posts'].append(get_post_info(post_instance,self.request.user))
+                return JsonResponse(context, safe=True)
 def update_post_like(post_instance):
     post_instance.number_of_like = like_api.get_number_of_like(post_instance)
     post_instance.save()

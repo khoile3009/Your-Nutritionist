@@ -26,8 +26,15 @@ class Homepage extends Component {
 		this.toPage = this.toPage.bind(this);
 		this.loadPosts = this.loadPosts.bind(this);
 	}
+	
+	componentDidMount = () => {
+		console.log('receive')
+		this.resetPost();
+		this.loadPosts();
+	};
 
 	componentWillReceiveProps = () => {
+		console.log('receive')
 		this.resetPost();
 		this.loadPosts();
 	};
@@ -37,38 +44,37 @@ class Homepage extends Component {
 			posts: []
 		})
 	}
-	
-	loadPosts = () => {
-		if (this.props.token) {
-			let headers = {
-				"Content-Type": "application/json",
-				Authorization: "Token " + this.props.token,
-			};
 
-			axios
-				.get("api/post", {
-					headers: headers,
-					params: {
-						before_id: this.state.last_id,
-						type: "feed",
-						num: 20,
-					},
-				})
-				.then((response) => {
-					let posts = this.state.posts;
-					if (response.data.posts && response.data.posts.length != 0) {
-						posts.push.apply(posts, response.data.posts);
-						console.log(response.data.posts[response.data.posts.length - 1].post_id);
-						this.setState({
-							posts: posts,
-							last_id: response.data.posts[response.data.posts.length - 1].post_id,
-						});
-					} // this.setState({ posts: posts})
-				});
-		}
+	loadPosts = () => {
+		let headers = {
+			"Content-Type": "application/json",
+			Authorization: this.props.token ? "Token " + this.props.token : '',
+		};
+
+		axios
+			.get("api/post", {
+				headers: headers,
+				params: {
+					before_id: this.state.last_id,
+					type: "feed",
+					num: 20,
+				},
+			})
+			.then((response) => {
+				let posts = this.state.posts;
+				if (response.data.posts && response.data.posts.length != 0) {
+					posts.push.apply(posts, response.data.posts);
+					console.log(response.data.posts[response.data.posts.length - 1].post_id);
+					this.setState({
+						posts: posts,
+						last_id: response.data.posts[response.data.posts.length - 1].post_id,
+					});
+				} // this.setState({ posts: posts})
+			});
+
 	};
 
-	componentWillReceiveProps(props) {}
+	componentWillReceiveProps(props) { }
 
 	setSearchQuery = (event) => {
 		this.setState({ query: event.target.value });
@@ -123,4 +129,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, () => {})(withRouter(Homepage));
+export default connect(mapStateToProps, () => { })(withRouter(Homepage));
