@@ -44,7 +44,7 @@ class Homepage extends Component {
 					params: {
 						before_id: this.state.last_id,
 						type: "feed",
-						limit: 5,
+						num: 20,
 					},
 				})
 				.then((response) => {

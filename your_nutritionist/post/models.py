@@ -7,6 +7,7 @@ from utils.files import GCLOUD
 class Post(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    number_of_like = models.IntegerField()
     content = models.TextField()
     class Meta:
         ordering = ['-created_at']

@@ -7,6 +7,8 @@ from social.models import Like, Comment
 from post.models import Post
 import json
 from social.models import Action
+from post.api.post_api import update_post_like
+
 class LikeAPI(generics.GenericAPIView):
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly,
@@ -25,6 +27,7 @@ class LikeAPI(generics.GenericAPIView):
                     action_type = 8,
                     target_id = target_id
                 )
+            update_post_like(post_instance)
             return JsonResponse({'status':'ok'}, safe=True)
         except Post.DoesNotExist:
             return JsonResponse({'status': 'No post'}, status=404)
@@ -44,6 +47,7 @@ class LikeAPI(generics.GenericAPIView):
                     action_type = 8,
                     target_id = target_id
                 ).delete()
+            update_post_like(post_instance)
             return JsonResponse({'status':'ok'}, safe=True)
         except Post.DoesNotExist:
             return JsonResponse({'status': 'No post'}, status=404)
