@@ -199,6 +199,8 @@ class ModalContainer extends Component {
 				password: "",
 				repassword: "",
 				remember: false,
+				first_name: "",
+				last_name: "",
 			},
 			ok: {
 				okEmail: null,

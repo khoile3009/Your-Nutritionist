@@ -25,7 +25,7 @@ SECRET_KEY = ')!aw()x7t*vc)td*kwthfp3)gll*n)bl90f7_^f11sh2i-9jw6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -50,7 +50,6 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES' : ['knox.auth.TokenAuthentication',]
 }
-
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # added to solve CORS
     'django.middleware.security.SecurityMiddleware',
@@ -92,17 +91,32 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
 
-        'NAME': 'eborhdiq',
+        'NAME': 'recipe-database',
 
-        'USER': 'eborhdiq',
+        'USER': 'django-api',
 
-        'PASSWORD': '7geZYeDmxuIs17785Z3YUxcf7GwN4Ic5',
+        'PASSWORD': 'Steven309!',
 
-        'HOST': 'drona.db.elephantsql.com',
+        'HOST': '/cloudsql/cookery-281115:us-east4:cookery-postgresql',
 
         'PORT': '5432',
     }
 }
+
+if os.getenv('GAE_INSTANCE'):
+    pass
+else:
+    DATABASES['default']['HOST'] = '127.0.0.1'
+
+
+if os.getenv('TRAMPOLINE_CI', None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
+        }
+    }
+
 
 
 # Password validation
@@ -141,6 +155,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
 
-CORS_ORIGIN_ALLOW_ALL = True # added to solve CORS
+# If local turn this on
+STATIC_URL = '/static/'
+STATIC_ROOT = 'static/'
+
+# If public turn this on
+# STATIC_URL = 'https://storage.googleapis.com/cookery-static/static/'
+# STATIC_ROOT = 'https://storage.googleapis.com/cookery-static/'
+REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend') 
+
+STATICFILES_DIRS = [
+    os.path.join(REACT_APP_DIR, 'build', 'static'),
+]
+
+
+CORS_ORIGIN_ALLOW_ALL = True # added to solve CORS  
