@@ -181,7 +181,7 @@ def create_recipe(recipe,creator_id, urls, bucket_paths):
 
     # Initialize ingredient_section
     media_id_map = create_media_section(recipe_instance, recipe['medias'], urls, bucket_paths)
-    create_ingredient_section(recipe_instance, recipe['ingredient_ections'])
+    create_ingredient_section(recipe_instance, recipe['ingredient_sections'])
     create_step_section(recipe_instance,recipe['step_sections'], media_id_map)
     
     return recipe_id
