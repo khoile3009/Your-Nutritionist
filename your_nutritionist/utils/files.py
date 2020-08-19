@@ -1,6 +1,7 @@
 from google.cloud import storage
 import os
 from datetime import timedelta, datetime
+import platform
 
 
 class GCLOUD:
@@ -8,7 +9,10 @@ class GCLOUD:
     @staticmethod
     def delete_bucket_url(bucket_url):
         print(bucket_url)
-        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\gcloud\gcloud_privatekey.json'
+        if platform.system() == "Linux":
+            os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'/home/anh/gcloud/gcloud_privatekey.json'
+        else: 
+            os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\gcloud\gcloud_privatekey.json'
         client = storage.Client()
         bucket = client.get_bucket('mediastorage-cookery')
         blob = bucket.get_blob(bucket_url)
@@ -17,7 +21,10 @@ class GCLOUD:
 
     @staticmethod
     def upload_and_return_url(user_id,files, media_ids_map):
-        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\gcloud\gcloud_privatekey.json'
+        if platform.system() == "Linux":
+            os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'/home/anh/gcloud/gcloud_privatekey.json'
+        else: 
+            os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:\gcloud\gcloud_privatekey.json'
         client = storage.Client()
         bucket = client.get_bucket('mediastorage-cookery')
         urls = []

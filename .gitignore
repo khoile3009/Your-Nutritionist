@@ -8,3 +8,4 @@ your-nutritionist/__pycache__/
 /*.pyc
 
 __pycache__/
+.vscode/settings.json
