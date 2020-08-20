@@ -8,6 +8,8 @@
 	height: auto;
 	margin-top: 3rem;
 	grid-area: media-cont;
+	position: relative;
+	z-index: 6;
 }
 
 .media-container {
@@ -15,7 +17,7 @@
 	flex: 0 1 100%;
 	display: flex;
 	justify-content: center;
-	height: 60vh;
+	height: 40vh;
 	width: 45vw;
 	position: relative;
 	align-items: center;
@@ -118,7 +120,7 @@
 		width: 100vw;
 		.media-content {
 			width: 100%;
-			position: absolute;
+			// position: absolute;
 		}
 	}
 
@@ -136,12 +138,15 @@
 		--media-card-offset: 0px;
 		--media-card-width: 80%;
 	}
+	.media-container {
+		width: 100vw;
+		height: 50vh;
+	}
 	.left-card {
 		left: -20%;
 		top: 5%;
 		transition: 0.5s;
-		height: 80%;
-		width: 80%;
+
 		background-color: black;
 		transition: 0.5s ease;
 	}
@@ -150,8 +155,7 @@
 		right: -20%;
 		top: 5%;
 		transition: 0.5s all;
-		height: 80%;
-		width: 80%;
+
 		transition: 0.5s ease;
 	}
 }
