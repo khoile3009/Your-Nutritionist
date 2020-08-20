@@ -53,7 +53,7 @@ button {
 	justify-content: space-between;
 }
 .recipe {
-	position: absolute;
+	// position: absolute;
 	top: 60vh;
 	grid-area: recipe;
 	width: 50vw;
@@ -100,7 +100,7 @@ button.edit-btn {
 	display: flex;
 	padding: 0;
 }
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
 	.shadow.custom-container.recipe.container-sm {
 		box-shadow: none !important;
 		border: 0 !important;

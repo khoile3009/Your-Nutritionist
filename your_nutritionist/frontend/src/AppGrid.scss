@@ -1,20 +1,22 @@
 .spa-wrapper {
 	display: grid;
-	// grid-template-rows: 1fr;
-	grid-template-columns: repeat(auto-fit, minmax(1fr, 2fr, 1fr));
+	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-areas: "onethird twothirds threethirds";
 	// justify-content: space-between;
 	grid-auto-flow: dense;
+
 	> * {
 		padding: 1rem;
+		justify-content: center;
+		align-items: center;
 	}
-	.one-third {
+	> .one-third {
 		grid-area: onethird;
 	}
-	.two-thirds {
+	> .two-thirds {
 		grid-area: twothirds;
 	}
-	.three-thirds {
+	> .three-thirds {
 		grid-area: threethirds;
 	}
 }
@@ -22,5 +24,8 @@
 @media (max-width: 1000px) {
 	.spa-wrapper {
 		grid-template-areas: "onethird" "twothirds" "threethirds";
+		> * {
+			padding: 0;
+		}
 	}
 }
