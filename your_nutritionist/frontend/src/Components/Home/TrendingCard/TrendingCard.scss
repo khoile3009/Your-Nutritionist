@@ -1,70 +1,69 @@
 @import "../../../global-theme";
 
-$padding: 0.5rem;
+$padding: 1rem;
 
 .trending-card-wrapper {
-	margin: 1rem 0 0 0;
-	height: 150px;
-	border-radius: 18px;
-	align-items: center;
-	display: grid;
-	grid-template-columns: 20px 1fr;
-	grid-template-rows: 1fr 2fr 3fr;
-	align-items: center;
-	grid-template-areas: "recipe-banner recipe-name" "recipe-banner recipe-username" "recipe-banner recipe-stats";
-	font-size: 11pt;
+    margin: 1rem 0 0 0;
+    height: minmax(160px, 192px);
+    border-radius: 18px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    align-items: center;
+    grid-template-areas: "recipe-banner recipe-name" "recipe-banner recipe-username" "recipe-banner recipe-stats";
+    font-size: 11pt;
+    .trending-banner-wrapper {
+        grid-area: recipe-banner;
+        // background: teal;
+        height: 100%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px 0 0 18px;
+        display: flex;
+        vertical-align: middle;
+        // color: white;
+        font-weight: 700;
+    }
 
-	.trending-banner-wrapper {
-		grid-area: recipe-banner;
-		// background: teal;
-		height: 100%;
-		text-align: center;
-		align-items: center;
-		justify-content: center;
-		border-radius: 18px 0 0 18px;
-		display: flex;
-		vertical-align: middle;
-		// color: white;
-		font-weight: 700;
-	}
-
-	.trending-recipe {
-		grid-area: recipe-name;
-		padding-left: $padding;
-		padding-top: calc($padding - 0.25rem);
-		font-size: 1.2rem;
-	}
-	.trending-username {
-		grid-area: recipe-username;
-		padding-left: $padding;
-		padding-top: calc($padding - 0.25rem);
-		color: $tertiary-txt;
-	}
-	.trending-stats {
-		grid-area: recipe-stats;
-		padding-left: $padding;
-		padding-top: calc($padding - 0.25rem);
-		text-align: right;
-		.social-fn {
-			vertical-align: middle;
-			line-height: 1rem;
-			padding: 0 1rem 0 0;
-			display: inline-flex;
-			.material-icons {
-				font-size: 12pt;
-			}
-		}
-	}
+    .trending-recipe {
+        grid-area: recipe-name;
+        padding-left: $padding;
+        padding-top: $padding;
+        font-size: 1.2rem;
+    }
+    .trending-username {
+        grid-area: recipe-username;
+        padding-left: $padding;
+        padding-top: calc($padding - 0.25rem);
+        color: $tertiary-txt;
+    }
+    .trending-stats {
+        grid-area: recipe-stats;
+        padding-left: $padding;
+        padding-top: calc($padding - 0.25rem);
+        text-align: right;
+        .social-fn {
+            vertical-align: middle;
+            line-height: 1rem;
+            padding: 0 1rem 0 0;
+            display: inline-flex;
+            .material-icons {
+                font-size: 12pt;
+            }
+        }
+    }
 }
 
 @media (max-width: 1000px) {
-	.trending-card-wrapper {
-		width: 80vw;
-	}
+    .trending-card-wrapper {
+        width: 80vw;
+    }
 }
 
 @media (max-width: 800px) {
-	.trending-card-wrapper {
-		display: none;
-	}
+    .trending-card-wrapper {
+        display: none;
+    }
 }

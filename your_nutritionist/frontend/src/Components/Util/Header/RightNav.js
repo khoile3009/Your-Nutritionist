@@ -4,12 +4,12 @@ import "./RightNav.scss";
 import DarkModeToggleContainer from "../../../Containers/Util/DarkModeToggle/DarkModeToggleContainer";
 
 const AuthenticationNav = (props) => {
-	return (
-		<Nav>
-			<Nav.Link onClick={props.showSigninModal}>Sign in</Nav.Link>
-			<Nav.Link onClick={props.showRegisterModal}>Register</Nav.Link>
-		</Nav>
-	);
+    return (
+        <Nav>
+            <Nav.Link onClick={props.showSigninModal}>Sign in</Nav.Link>
+            <Nav.Link onClick={props.showRegisterModal}>Register</Nav.Link>
+        </Nav>
+    );
 };
 
 const UserNav = (props) => {
