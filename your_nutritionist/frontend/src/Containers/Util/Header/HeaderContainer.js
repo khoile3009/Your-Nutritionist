@@ -8,6 +8,7 @@ import queryString from "query-string";
 import { UserNav, AuthenticationNav } from "../../../Components/Util/Header/RightNav";
 
 class HeaderContainer extends Component {
+
     constructor(props) {
         super(props);
         this.toHomePage = this.toHomePage.bind(this);
