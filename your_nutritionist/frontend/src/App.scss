@@ -1,202 +1,202 @@
 @import "~material-design-icons/iconfont/material-icons.css";
 @import "./global-theme";
 .card {
-	box-shadow: 3px 2px 8px 2px rgba(221, 221, 221, 0.527);
-	border: 0;
-	border-radius: 0;
+    box-shadow: 3px 2px 8px 2px rgba(221, 221, 221, 0.527);
+    border: 0;
+    border-radius: 0;
 }
 
 @keyframes highlight {
-	0% {
-		box-shadow: 4px 2px 6px 2px rgba(204, 204, 204, 0.67);
-	}
-	100% {
-		box-shadow: 5px 3px 6px 2px rgba(202, 202, 202, 0.67);
-	}
+    0% {
+        box-shadow: 4px 2px 6px 2px rgba(204, 204, 204, 0.67);
+    }
+    100% {
+        box-shadow: 5px 3px 6px 2px rgba(202, 202, 202, 0.67);
+    }
 }
 
 .page-wrapper {
-	width: 100%;
+    width: 100%;
 }
 
 body {
-	background: $background;
-	color: $primary-txt;
+    background: $background;
+    color: $primary-txt;
 
-	overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 a {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .custom-col {
-	padding: 1rem;
-	display: flex;
-	justify-content: center;
-	// align-items: center;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
 }
 
 .social-views {
-	color: $social-views;
+    color: $social-views;
 }
 .social-upvotes {
-	color: $social-upvotes;
+    color: $social-upvotes;
 }
 .social-share-favorite {
-	color: $social-share-favorite;
+    color: $social-share-favorite;
 }
 .social-comments {
-	color: $social-comments;
+    color: $social-comments;
 }
 
 textarea.form-control {
-	border-bottom: solid 1px grey;
+    border-bottom: solid 1px grey;
 }
 
 textarea {
-	background: #f1f1f1;
-	border: none;
-	border-bottom: solid 1px grey;
+    background: #f1f1f1;
+    border: none;
+    border-bottom: solid 1px grey;
 }
 
 .clickable {
-	&:hover {
-		animation-timing-function: ease-in-out;
-		animation: highlight 0.5s;
-		animation-fill-mode: forwards;
-		cursor: pointer;
-	}
+    &:hover {
+        animation-timing-function: ease-in-out;
+        animation: highlight 0.5s;
+        animation-fill-mode: forwards;
+        cursor: pointer;
+    }
 }
 
 .custom-btn-cancel {
-	background: transparent;
-	color: $btn-cancel !important;
-	border: solid 1px $btn-cancel;
-	&:hover {
-		border: solid 1px $btn-cancel;
-		background: $btn-cancel;
-		color: $background !important;
-	}
+    background: transparent;
+    color: $btn-cancel !important;
+    border: solid 1px $btn-cancel;
+    &:hover {
+        border: solid 1px $btn-cancel;
+        background: $btn-cancel;
+        color: $background !important;
+    }
 }
 .custom-btn-primary {
-	background: transparent;
-	color: $btn-primary;
-	border: solid 1px $btn-primary;
-	&:hover {
-		border: solid 1px $btn-primary;
-		background: $btn-primary;
-		color: $background;
-	}
+    background: transparent;
+    color: $btn-primary;
+    border: solid 1px $btn-primary;
+    &:hover {
+        border: solid 1px $btn-primary;
+        background: $btn-primary;
+        color: $background;
+    }
 }
 .custom-btn-secondary {
-	background: transparent;
-	color: $btn-secondary;
-	border: solid 1px $btn-secondary;
-	&:hover {
-		border: solid 1px $btn-secondary;
-		background: $btn-secondary;
-		color: $background;
-	}
+    background: transparent;
+    color: $btn-secondary;
+    border: solid 1px $btn-secondary;
+    &:hover {
+        border: solid 1px $btn-secondary;
+        background: $btn-secondary;
+        color: $background;
+    }
 }
 
 .form-btn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 50px;
-	height: 50px;
-	padding: 0;
-	border-radius: 50%;
-	background: $accent-teal;
-	.material-icons {
-		font-size: 16pt;
-	}
-	&:hover {
-		background: $accent-teal-darker;
-	}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background: $accent-teal;
+    .material-icons {
+        font-size: 16pt;
+    }
+    &:hover {
+        background: $accent-teal-darker;
+    }
 }
 .form-cancel-btn {
-	background: $accent-red;
-	border: 0;
-	&:hover {
-		background: $accent-red-darker;
-	}
+    background: $accent-red;
+    border: 0;
+    &:hover {
+        background: $accent-red-darker;
+    }
 }
 .form-submit-btn {
-	background: $accent-teal;
-	&:hover {
-		background: $accent-teal-darker;
-	}
+    background: $btn-circ;
+    &:hover {
+        background: $btn-circ-hover;
+    }
 }
 
 .link {
-	font-weight: bold;
-	color: $link;
-	&:hover {
-		color: $link-hover;
-		text-decoration: underline;
-	}
+    font-weight: bold;
+    color: $link;
+    &:hover {
+        color: $link-hover;
+        text-decoration: underline;
+    }
 }
 
 // Uncomment these lines below to enable THE DEVELOPER-EXCLUSIVE DARK MODE
 
 html[data-theme="dark"] {
-	body {
-		background: $backdrop-dark;
-		color: $primary-txt-dark;
-		a {
-			color: $link;
-			&:hover {
-				color: $link-hover;
-			}
-		}
-	}
+    body {
+        background: $backdrop-dark;
+        color: $primary-txt-dark;
+        a {
+            color: $link;
+            &:hover {
+                color: $link-hover;
+            }
+        }
+    }
 
-	.user-info-wrapper {
-		background: transparent;
-		.title {
-			color: $primary-txt-dark;
-		}
-	}
+    .user-info-wrapper {
+        background: transparent;
+        .title {
+            color: $primary-txt-dark;
+        }
+    }
 
-	.card,
-	.custom-container {
-		background: $background-dark;
-		color: $secondary-txt-dark;
-		box-shadow: $box-shadow-dark;
-		a,
-		.link {
-			color: $link;
-			&:hover {
-				color: $link-hover;
-			}
-		}
-	}
+    .card,
+    .custom-container {
+        background: $background-dark;
+        color: $secondary-txt-dark;
+        box-shadow: $box-shadow-dark;
+        a,
+        .link {
+            color: $link;
+            &:hover {
+                color: $link-hover;
+            }
+        }
+    }
 
-	.clickable {
-		&:hover {
-			box-shadow: none;
-			animation: none;
-			transition: none;
-			border: none;
-			box-shadow: $clickable-box-shadow-dark;
-		}
-	}
+    .clickable {
+        &:hover {
+            box-shadow: none;
+            animation: none;
+            transition: none;
+            border: none;
+            box-shadow: $clickable-box-shadow-dark;
+        }
+    }
 
-	.custom-btn-cancel {
-		&:hover {
-			color: $background-dark !important;
-		}
-	}
-	.custom-btn-primary {
-		&:hover {
-			color: $background-dark;
-		}
-	}
-	.custom-btn-secondary {
-		&:hover {
-			color: $background-dark;
-		}
-	}
+    .custom-btn-cancel {
+        &:hover {
+            color: $background-dark !important;
+        }
+    }
+    .custom-btn-primary {
+        &:hover {
+            color: $background-dark;
+        }
+    }
+    .custom-btn-secondary {
+        &:hover {
+            color: $background-dark;
+        }
+    }
 }

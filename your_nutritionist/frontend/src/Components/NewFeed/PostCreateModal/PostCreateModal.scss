@@ -1,5 +1,9 @@
 @import "../../../global-theme";
 
+.modal-header {
+	background: $accent-blue-dark;
+}
+
 .cancel-post-btn.btn.btn-primary {
 	background: transparent;
 	border: solid 1px $btn-cancel;
@@ -19,5 +23,18 @@
 	&:hover {
 		color: $background;
 		background: $btn-primary;
+	}
+}
+
+html[data-theme="dark"] {
+	.modal-body {
+		background: $background-dark;
+	}
+	.form-control {
+		background: $background-dark;
+		color: $primary-txt-dark;
+	}
+	.modal-content {
+		background: $background-dark;
 	}
 }
