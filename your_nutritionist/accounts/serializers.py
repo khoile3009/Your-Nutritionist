@@ -4,9 +4,13 @@ from django.contrib.auth import authenticate
 
 # User Serializer
 class UserSerializer(serializers.ModelSerializer):
+  full_name = serializers.SerializerMethodField(method_name='get_full_name')
   class Meta:
     model = User
-    fields = ('id', 'username', 'email')
+    fields = ('id', 'username', 'email','full_name')
+
+  def get_full_name(self, instance):
+      return instance.get_full_name()
 
 # Register Serializer
 class RegisterSerializer(serializers.ModelSerializer):
