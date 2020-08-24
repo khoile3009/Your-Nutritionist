@@ -115,14 +115,14 @@ class HeaderContainer extends Component {
 					toCreateRecipe={this.toCreateRecipe}
 					toHomePage={this.toHomePage}
 					rightNav={
-						this.props.username === null ? (
+						this.props.token === null ? (
 							<AuthenticationNav
 								showSigninModal={this.props.showSigninModal}
 								showRegisterModal={this.props.showRegisterModal}
 							></AuthenticationNav>
 						) : (
 							<UserNav
-								username={this.props.username}
+								fullname={this.props.fullname}
 								toUserPage={this.toUserPage}
 								signout={() => {
 									this.props.signout(this.props.token);
@@ -149,6 +149,7 @@ class HeaderContainer extends Component {
 const mapStateToProps = (state) => {
 	return {
 		username: state.auth.username,
+		fullname: state.auth.fullname,
 		token: state.auth.token,
 		userId: state.auth.userId,
 	};

@@ -17,7 +17,7 @@ const UserNav = (props) => {
 		<Nav className="rightnav-wrapper">
 			<NavDropdown
 				className="nav-dropdown"
-				title={"Welcome back, " + props.username + "!"}
+				title={"Welcome back, " + props.fullname + "!"}
 				id="basic-nav-dropdown"
 				alignRight
 			>

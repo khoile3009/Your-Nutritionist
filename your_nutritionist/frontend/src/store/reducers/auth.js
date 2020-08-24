@@ -5,6 +5,7 @@ const initialState = {
     token: localStorage.getItem('TOKEN'),
     userId: null,
     username: null,
+    fullname: null,
     error: null,
     loading: false
 };
@@ -18,6 +19,7 @@ const authSuccess = (state, action) => {
         token: action.token,
         userId: action.userId,
         username: action.username,
+        fullname: action.fullname,
         error: null,
         loading: false
      } );

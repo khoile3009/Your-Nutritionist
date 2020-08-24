@@ -9,12 +9,13 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (token, userId, username) => {
+export const authSuccess = (token, userId, username, fullname) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
         token: token,
         userId: userId,
-        username: username
+        username: username,
+        fullname: fullname
     };
 };
 
@@ -52,7 +53,7 @@ export const signin = (username, password, remember) => {
                 if(remember === true) {
                     localStorage.setItem('TOKEN', response.data.token);
                 }    
-                dispatch(authSuccess(response.data.token, response.data.user.id, response.data.user.username));
+                dispatch(authSuccess(response.data.token, response.data.user.id, response.data.user.username, response.data.user.full_name));
                 dispatch(hideModal());
             })
             .catch(err => {
@@ -80,7 +81,7 @@ export const register = (username, email, password, first_name, last_name, remem
                 if(remember === true) {
                     localStorage.setItem('TOKEN', response.data.token);
                 }
-                dispatch(authSuccess(response.data.token, response.data.user.id, response.data.user.username));
+                dispatch(authSuccess(response.data.token, response.data.user.id, response.data.user.username, response.data.user.full_name));
                 dispatch(showInfoModal());
             })
             .catch(err => {
@@ -166,7 +167,7 @@ export const retrieveUserFromToken = (token) => {
         axios.get(url, { headers: headers })
             .then(response => {
                 console.log(response);
-                dispatch(authSuccess(token, response.data.id, response.data.username));
+                dispatch(authSuccess(token, response.data.id, response.data.username, response.data.full_name));
             })
             .catch(err => {
                 console.log(err)
