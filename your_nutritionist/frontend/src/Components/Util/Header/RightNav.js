@@ -13,23 +13,18 @@ const AuthenticationNav = (props) => {
 };
 
 const UserNav = (props) => {
-	return (
-		<Nav className="rightnav-wrapper">
-			<NavDropdown
-				className="nav-dropdown"
-				title={"Welcome back, " + props.fullname + "!"}
-				id="basic-nav-dropdown"
-				alignRight
-			>
-				<NavDropdown.Item onClick={props.toUserPage}>Profile</NavDropdown.Item>
-				<NavDropdown.Divider />
-				<NavDropdown.Item onClick={props.signout}>Sign out</NavDropdown.Item>
-				<NavDropdown.Divider />
-				<div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-					<DarkModeToggleContainer></DarkModeToggleContainer>
-				</div>
-			</NavDropdown>
-		</Nav>
-	);
+    return (
+        <Nav className="rightnav-wrapper">
+            <NavDropdown className="nav-dropdown" title={"Welcome back, " + props.fullname + "!"} id="basic-nav-dropdown" alignRight>
+                <NavDropdown.Item onClick={props.toUserPage}>Profile</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={props.signout}>Sign out</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <DarkModeToggleContainer></DarkModeToggleContainer>
+                </div>
+            </NavDropdown>
+        </Nav>
+    );
 };
 export { AuthenticationNav, UserNav };
