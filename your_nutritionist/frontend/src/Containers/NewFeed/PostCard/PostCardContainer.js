@@ -20,6 +20,7 @@ class PostCardContainer extends Component {
             postEdit: {
                 showEdit: false,
                 postContent: this.props.post.content,
+                medias: [],
             },
         };
         this.toCreator = this.toCreator.bind(this);
@@ -43,6 +44,63 @@ class PostCardContainer extends Component {
 
     editPostChangeHandler = (event) => {
         this.setState({ postEdit: { ...this.state.postEdit, postContent: event.target.value } });
+    };
+
+    submitEdit = () => {
+        let data = this.dataFromEditPost();
+        this.setState({
+            uploading: true,
+        });
+        axios
+            .post("api/post/create", data, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Authorization: "Token " + this.props.token,
+                },
+            })
+            .then(() => {
+                this.props.history.push("/homepage");
+                this.props.hideEditModal();
+            })
+            .catch((error) => {
+                console.log("edit post err: " + error);
+            });
+    };
+
+    submitEditHandler = (event) => {
+        event.preventDefault();
+        this.updateErrorStateWithCallback(this.submitEdit);
+    };
+
+    updateErrorStateWithCallback = (callback) => {
+        this.setState({
+            chk: {
+                postContentChk: this.postContentValidate(),
+            },
+        }),
+            () => {
+                console.log(this.state.chk.postContentChk);
+                if (this.isErrorFree()) {
+                    callback();
+                }
+            };
+    };
+
+    dataFromEditPost = () => {
+        let data = new FormData();
+        console.log(
+            JSON.stringify({
+                content: this.state.postEdit.postContent,
+                media: [],
+            })
+        );
+        data.append(
+            "post",
+            JSON.stringify({
+                content: this.state.postEdit.postContent,
+                medias: this.state.postEdit.medias,
+            })
+        );
     };
 
     toCreator = (event) => {
@@ -153,6 +211,7 @@ class PostCardContainer extends Component {
                 {this.state.postEdit.showEdit ? (
                     <PostEditModal
                         // show={this.state.postEdit.showEdit}
+                        submitEditHandler={this.state.submitEditHandler}
                         content={this.state.postEdit.postContent}
                         hideEditModal={this.hideEditModal}
                         editChangeHandler={this.editPostChangeHandler}
