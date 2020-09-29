@@ -1,0 +1,16 @@
+@import "../../../global-theme";
+
+.newfeedcard-wrapper {
+    .edit-post-btn {
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        background: transparent;
+        border: solid 1px $btn-circ;
+        color: $btn-edit;
+        &:hover {
+            color: $background;
+            background: $btn-circ-hover;
+        }
+    }
+}

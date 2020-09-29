@@ -2,6 +2,12 @@
     font-size: 5px;
 } */
 
+@import "../../../global-theme";
+
+.custom-container {
+	width: 100%;
+}
+
 .subtitle {
 	color: gray;
 	font-size: 15px;
@@ -53,7 +59,7 @@ button {
 	justify-content: space-between;
 }
 .recipe {
-	position: absolute;
+	// position: absolute;
 	top: 60vh;
 	grid-area: recipe;
 	width: 50vw;
@@ -100,7 +106,7 @@ button.edit-btn {
 	display: flex;
 	padding: 0;
 }
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
 	.shadow.custom-container.recipe.container-sm {
 		box-shadow: none !important;
 		border: 0 !important;
@@ -108,6 +114,7 @@ button.edit-btn {
 		width: 100vw;
 		margin: 1rem 0;
 		padding: 0.5rem;
+		border-radius: 0;
 	}
 }
 .edit-btn-wrapper {

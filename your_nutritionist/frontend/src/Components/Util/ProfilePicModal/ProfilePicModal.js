@@ -1,8 +1,10 @@
 import React from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
+import './ProfilePicModal.scss'
+
 const ProfilePicModal = (props) => {
 	return (
-		<Modal show={props.modal !== 0} onHide={props.hideModal} aria-labelledby="contained-modal-title-vcenter" centered>
+		<Modal className="profile-pic-modal-wrapper" show={props.modal !== 0} onHide={props.hideModal} aria-labelledby="contained-modal-title-vcenter" centered>
 			<Modal.Header>
 				<Modal.Title>Choose a new profile picture</Modal.Title>
 			</Modal.Header>

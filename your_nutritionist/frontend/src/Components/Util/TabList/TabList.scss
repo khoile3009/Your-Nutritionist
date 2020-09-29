@@ -1,27 +1,35 @@
 @import "../../../global-theme";
 
 .tab-list-wrapper {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	margin-bottom: 0;
-	position: relative;
-	z-index: 2;
-	.tab-nav {
-		font-size: 12pt;
-		margin: 0 1rem 0 0;
-		border-bottom: solid 2px transparent;
-		height: 3.5rem;
-		width: 6rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		&:hover {
-			border-bottom: solid 2px $accent-red-lighter;
-		}
-	}
-	.tab-nav-active {
-		border-bottom: solid 2px $accent-red-darker;
-		transition: 0.25s all;
-	}
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+    .tab-nav {
+        font-size: 12pt;
+        margin: 0 1rem 0 0;
+        border-bottom: solid 2px transparent;
+        height: 3.5rem;
+        width: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+            border-bottom: solid 2px $accent-red-lighter;
+        }
+    }
+    .tab-nav-active {
+        border-bottom: solid 2px $accent-red-darker;
+        transition: 0.25s all;
+    }
+}
+
+html[data-theme="dark"] {
+    .tab-list-wrapper {
+        .tab-nav {
+            color: $secondary-txt-dark;
+        }
+    }
 }

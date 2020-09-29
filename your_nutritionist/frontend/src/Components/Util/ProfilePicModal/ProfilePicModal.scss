@@ -1,0 +1,14 @@
+@import "../../../global-theme";
+
+.profile-pic-modal-wrapper {
+    color: $primary-txt;
+}
+
+html[data-theme="dark"] {
+    .profile-pic-modal-wrapper {
+        color: $primary-txt-dark;
+    }
+    #formGroupUsername {
+        border-bottom: solid 0.5px $tertiary-txt-dark;
+    }
+}

@@ -1,13 +1,6 @@
 @import "../../../global-theme";
 
-.modal-header {
-    background: $accent-blue-dark;
-    .modal-title {
-        color: $primary-txt-dark;
-    }
-}
-
-.cancel-post-btn.btn.btn-primary {
+.cancel-edit-btn.btn.btn-primary {
     background: transparent;
     border: solid 1px $btn-cancel;
     color: $btn-cancel;
@@ -18,7 +11,7 @@
     width: 100%;
 }
 
-.create-post-btn.btn.btn-primary {
+.edit-post-btn.btn.btn-primary {
     background: transparent;
     border: solid 1px $btn-primary;
     color: $btn-primary;
@@ -32,11 +25,9 @@
 html[data-theme="dark"] {
     .modal-body {
         background: $background-dark;
-    }
-    .form-control {
-        background: $background-dark;
         color: $primary-txt-dark;
     }
+
     .modal-content {
         background: $background-dark;
     }

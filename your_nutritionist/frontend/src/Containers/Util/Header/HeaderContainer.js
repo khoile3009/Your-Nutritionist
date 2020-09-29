@@ -8,103 +8,104 @@ import queryString from "query-string";
 import { UserNav, AuthenticationNav } from "../../../Components/Util/Header/RightNav";
 
 class HeaderContainer extends Component {
-	constructor(props) {
-		super(props);
-		this.toHomePage = this.toHomePage.bind(this);
-		this.toUserPage = this.toUserPage.bind(this);
-		this.showRegisterModal = this.showRegisterModal.bind(this);
-		this.showSigninModal = this.showSigninModal.bind(this);
-		this.toCreateRecipe = this.toCreateRecipe.bind(this);
-		this.onChangeSearchBar = this.onChangeSearchBar.bind(this);
-		this.searchSubmit = this.searchSubmit.bind(this);
-		this.state = {
-			search_input: "",
-		};
-		// this.state = {
-		//     modalShow: false,
-		//     modalType: 1
-		// }
-		// this.showSigninForm = this.showSigninForm.bind(this)
-		// this.showRegisterForm = this.showRegisterForm.bind(this)
-		// this.hideModal = this.hideModal.bind(this)
-	}
 
-	// showSigninForm = (event) => {
-	//     event.preventDefault()
-	//     this.setState({
-	//         modalShow: true,
-	//         modalType: 1
-	//     })
-	// }
+    constructor(props) {
+        super(props);
+        this.toHomePage = this.toHomePage.bind(this);
+        this.toUserPage = this.toUserPage.bind(this);
+        this.showRegisterModal = this.showRegisterModal.bind(this);
+        this.showSigninModal = this.showSigninModal.bind(this);
+        this.toCreateRecipe = this.toCreateRecipe.bind(this);
+        this.onChangeSearchBar = this.onChangeSearchBar.bind(this);
+        this.searchSubmit = this.searchSubmit.bind(this);
+        this.state = {
+            search_input: "",
+        };
+        // this.state = {
+        //     modalShow: false,
+        //     modalType: 1
+        // }
+        // this.showSigninForm = this.showSigninForm.bind(this)
+        // this.showRegisterForm = this.showRegisterForm.bind(this)
+        // this.hideModal = this.hideModal.bind(this)
+    }
 
-	// showRegisterForm = (event) => {
-	//     event.preventDefault()
-	//     this.setState({
-	//         modalShow: true,
-	//         modalType: 2
-	//     })
-	// }
+    // showSigninForm = (event) => {
+    //     event.preventDefault()
+    //     this.setState({
+    //         modalShow: true,
+    //         modalType: 1
+    //     })
+    // }
 
-	// showForgetPasswordForm = () => {
-	//     this.setState({
-	//         modalShow: true,
-	//         modalType: 3
-	//     })
-	// }
+    // showRegisterForm = (event) => {
+    //     event.preventDefault()
+    //     this.setState({
+    //         modalShow: true,
+    //         modalType: 2
+    //     })
+    // }
 
-	// hideModal = () => {
-	//     this.setState({ modalShow: false })
-	// }
+    // showForgetPasswordForm = () => {
+    //     this.setState({
+    //         modalShow: true,
+    //         modalType: 3
+    //     })
+    // }
 
-	componentDidMount() {
-		if (this.props.token) this.props.retrieveUserFromToken(this.props.token);
-	}
+    // hideModal = () => {
+    //     this.setState({ modalShow: false })
+    // }
 
-	getTokenFromLocalStorage = () => {
-		return localStorage.getItem("TOKEN");
-	};
+    componentDidMount() {
+        if (this.props.token) this.props.retrieveUserFromToken(this.props.token);
+    }
 
-	toUserPage = (event) => {
-		event.preventDefault();
-		this.props.history.push("/user/" + this.props.userId);
-	};
+    getTokenFromLocalStorage = () => {
+        return localStorage.getItem("TOKEN");
+    };
 
-	toHomePage = (event) => {
-		event.preventDefault();
-		this.props.history.push("/home");
-	};
+    toUserPage = (event) => {
+        event.preventDefault();
+        this.props.history.push("/user/" + this.props.userId);
+    };
 
-	showSigninModal = (event) => {
-		event.preventDefault();
-		this.props.showSigninModal();
-	};
+    toHomePage = (event) => {
+        event.preventDefault();
+        this.props.history.push("/home");
+    };
 
-	showRegisterModal = (event) => {
-		event.preventDefault();
-		this.props.showRegisterModal();
-	};
+    showSigninModal = (event) => {
+        event.preventDefault();
+        this.props.showSigninModal();
+    };
 
-	toCreateRecipe = (event) => {
-		event.preventDefault();
-		this.props.history.push("/recipe/create");
-	};
+    showRegisterModal = (event) => {
+        event.preventDefault();
+        this.props.showRegisterModal();
+    };
 
-	onChangeSearchBar = (event) => {
-		this.setState({ search_input: event.target.value });
-	};
+    toCreateRecipe = (event) => {
+        event.preventDefault();
+        this.props.history.push("/recipe/create");
+    };
 
-	searchSubmit = (event) => {
-		event.preventDefault();
-		this.props.history.push({
-			pathname: "/search",
-			search: queryString.stringify({ query: this.state.search_input, page: 1 }),
-		});
-	};
+    onChangeSearchBar = (event) => {
+        this.setState({ search_input: event.target.value });
+    };
 
-	refresh = () => {
-		this.props.history.push("/temp");
-		this.props.history.goBack()
-	}
+    searchSubmit = (event) => {
+        event.preventDefault();
+        this.props.history.push({
+            pathname: "/search",
+            search: queryString.stringify({ query: this.state.search_input, page: 1 }),
+        });
+    };
+
+    refresh = () => {
+        this.props.history.push("/temp");
+        this.props.history.goBack();
+    };
 
 	render() {
 		return (
@@ -115,14 +116,14 @@ class HeaderContainer extends Component {
 					toCreateRecipe={this.toCreateRecipe}
 					toHomePage={this.toHomePage}
 					rightNav={
-						this.props.username === null ? (
+						this.props.token === null ? (
 							<AuthenticationNav
 								showSigninModal={this.props.showSigninModal}
 								showRegisterModal={this.props.showRegisterModal}
 							></AuthenticationNav>
 						) : (
 							<UserNav
-								username={this.props.username}
+								fullname={this.props.fullname}
 								toUserPage={this.toUserPage}
 								signout={() => {
 									this.props.signout(this.props.token);
@@ -149,18 +150,19 @@ class HeaderContainer extends Component {
 const mapStateToProps = (state) => {
 	return {
 		username: state.auth.username,
+		fullname: state.auth.fullname,
 		token: state.auth.token,
 		userId: state.auth.userId,
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
-	return {
-		showRegisterModal: (event) => dispatch(actions.showRegisterModal(event)),
-		showSigninModal: (event) => dispatch(actions.showSigninModal(event)),
-		signout: (token) => dispatch(actions.signout(token)),
-		retrieveUserFromToken: (token) => dispatch(actions.retrieveUserFromToken(token)),
-	};
+    return {
+        showRegisterModal: (event) => dispatch(actions.showRegisterModal(event)),
+        showSigninModal: (event) => dispatch(actions.showSigninModal(event)),
+        signout: (token) => dispatch(actions.signout(token)),
+        retrieveUserFromToken: (token) => dispatch(actions.retrieveUserFromToken(token)),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(HeaderContainer));

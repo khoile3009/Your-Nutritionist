@@ -1,41 +1,49 @@
 @import "../../../global-theme";
 
 .file-input-field {
-	border: 1px solid;
-	border-radius: 2px;
+    border: 1px solid;
+    border-radius: 2px;
 }
 
 .file-preview {
-	position: relative;
-	height: 200px;
-	width: auto;
-	background-size: cover;
-	background-position: center;
+    position: relative;
+    height: 200px;
+    width: auto;
+    background-size: cover;
+    background-position: center;
 }
 
 .image-preview-big {
-	height: 300px;
-	width: 300px;
-	background-size: contain;
-	background-position: center;
-	display: flex;
-	flex-direction: row;
+    height: 300px;
+    width: 300px;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    flex-direction: row;
 }
 
 .media-preview-list-wrapper {
-	height: auto;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	width: 100%;
-	box-shadow: $box-shadow;
-	padding: 2rem 0;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    box-shadow: $box-shadow;
+    padding: 2rem 0;
 }
 
 .media-preview-wrapper {
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 3rem;
-	align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    align-items: center;
+}
+
+html[data-theme="dark"] {
+    .media-preview-wrapper {
+        .media-preview-list-wrapper {
+            box-shadow: $box-shadow-dark;
+        }
+    }
 }

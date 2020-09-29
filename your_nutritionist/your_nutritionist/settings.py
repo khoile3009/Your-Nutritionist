@@ -91,31 +91,18 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
 
-        'NAME': 'recipe-database',
+        'NAME': 'wywbylik',
 
-        'USER': 'django-api',
+        'USER': 'wywbylik',
 
-        'PASSWORD': 'Steven309!',
+        'PASSWORD': 'a5s_p0YWQtlAIHvSetKuxwFGwV-nA36E',
 
-        'HOST': '/cloudsql/cookery-281115:us-east4:cookery-postgresql',
+        'HOST': 'ruby.db.elephantsql.com',
 
         'PORT': '5432',
     }
 }
 
-if os.getenv('GAE_INSTANCE'):
-    pass
-else:
-    DATABASES['default']['HOST'] = '127.0.0.1'
-
-
-if os.getenv('TRAMPOLINE_CI', None):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
-        }
-    }
 
 
 
