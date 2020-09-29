@@ -1,0 +1,34 @@
+@import "../../../global-theme";
+
+.cancel-edit-btn.btn.btn-primary {
+    background: transparent;
+    border: solid 1px $btn-cancel;
+    color: $btn-cancel;
+    &:hover {
+        color: $background;
+        background: $btn-cancel;
+    }
+    width: 100%;
+}
+
+.edit-post-btn.btn.btn-primary {
+    background: transparent;
+    border: solid 1px $btn-primary;
+    color: $btn-primary;
+    width: 100%;
+    &:hover {
+        color: $background;
+        background: $btn-primary;
+    }
+}
+
+html[data-theme="dark"] {
+    .modal-body {
+        background: $background-dark;
+        color: $primary-txt-dark;
+    }
+
+    .modal-content {
+        background: $background-dark;
+    }
+}

@@ -8,8 +8,8 @@ $randInt: random(255);
     margin: 0 auto 2rem auto;
     padding: 1rem;
     width: 50vw;
-    grid-template-columns: 0.1fr 6fr;
-    grid-template-areas: "profile-pic username" ". nf-content" "nf-media nf-media" "social-fn social-fn" "cmt-form cmt-form" "cmt-list cmt-list";
+    grid-template-columns: 0.1fr 6fr auto;
+    grid-template-areas: "profile-pic username edit-btn" ". nf-content nf-content" "nf-media nf-media nf-media" "social-fn social-fn social-fn" "cmt-form cmt-form cmt-form" "cmt-list cmt-list cmt-list";
     align-items: center;
     border-radius: $card-border-radius;
     color: $primary-txt;
@@ -20,6 +20,9 @@ $randInt: random(255);
         background-size: cover;
         grid-area: profile-pic;
         margin: 1rem;
+    }
+    .post-edit-btn-wrapper {
+        grid-area: edit-btn;
     }
     .username-newfeed {
         grid-area: username;

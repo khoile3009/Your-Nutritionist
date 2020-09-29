@@ -1,0 +1,38 @@
+@import "../../../global-theme";
+
+.newfeedcard-wrapper {
+    .post-edit-btn-wrapper {
+        height: 100%;
+        .edit-post-btn {
+            border-radius: 50%;
+            padding: 0.5rem;
+            background: transparent;
+            width: 30px;
+            height: 30px;
+            border: solid 1px $btn-circ;
+            color: $btn-edit;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover {
+                color: $background;
+                background: $btn-circ-hover;
+            }
+            .material-icons {
+                font-size: 10pt;
+                line-height: 1rem;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+html[data-theme="dark"] {
+    .newfeedcard-wrapper {
+        .edit-post-btn {
+            &:hover {
+                color: $background-dark;
+            }
+        }
+    }
+}
